@@ -1,0 +1,58 @@
+.jcgk-mh-dialog {
+  background-color: transparent !important;
+  background: url("../images/dialog/dialog-bg-01.png") !important;
+  background-size: 100% 100% !important;
+  padding: 30px 50px;
+  color: #fff;
+  &.el-dialog {
+    .el-dialog__header {
+      position: absolute;
+      top: -75px;
+      width: 100%;
+      margin-right: 0;
+      background-color: transparent !important;
+      border: none !important;
+    }
+  }
+  &-header {
+    position: absolute;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    font-weight: 600;
+    color: #cbdeff;
+    text-shadow: 3px 3x 10px rgba(124, 110, 110, 0.5);
+    letter-spacing: 2px;
+    // .close-btn {
+    //   position: absolute;
+    //   right: -36px;
+    //   img {
+    //     cursor: pointer;
+    //     transition: all 0.3s;
+    //     &:hover {
+    //       transform: scale(1.1);
+    //     }
+    //   }
+    // }
+    .header-title {
+      position: relative;
+      .header-line {
+        position: absolute;
+        bottom: -30px;
+        left: 50%;
+        transform: translate(-50%);
+        width: 175px;
+        height: 34px;
+        background: url("../images/dialog/dialog-title-line.png");
+        background-size: 100% 100%;
+      }
+    }
+  }
+  .el-dialog__body {
+    padding: 0 0 20px 0 !important;
+  }
+}

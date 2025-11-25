@@ -1,0 +1,89 @@
+/*
+树形组件
+*/
+
+
+// 树形
+.el-tree {
+  @include bg_background_color_fourth;
+  @include ft_font_color_second;
+  .el-tree-node {
+    .el-tree-node__content {
+      .el-tree-node__expand-icon {
+        padding: 6px;
+        @include ft_base_color_first;
+        font-size: 12px;
+        font-weight: 500;
+        &::before {
+          content: "\e6d9";
+          display: inline-block;
+          padding: 1px;
+          @include bg_warning_color_first;
+          border-width: 1px;
+          border-style: solid;
+          @include bd_warning_color_first;
+          border-radius: 3px;
+          @include ft_base_color_first;
+        }
+        &.expanded {
+          -webkit-transform: none;
+          transform: none;
+          &::before {
+            content: "\e6d8";
+          }
+        }
+        &.is-leaf {
+          &::before {
+            background-color: transparent;
+            border-color: transparent;
+            color: transparent;
+          }
+        }
+        + .el-tree-node__label {
+          margin-left: 2px;
+        }
+        + .hdty-space-between {
+          margin-left: 2px;
+        }
+      }
+      .el-tree-node__label {
+        font-size: 14px;
+      }
+      .hdty-space-between {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        font-size: 14px;
+        padding-right: 8px;
+      }
+      > label {
+        &.el-checkbox {
+          margin-right: 8px;
+        }
+      }
+      &:hover {
+        @include bg_main_color_fourth;
+      }
+    }
+    &.is-current {
+      > .el-tree-node__content {
+        @include bg_main_color_fourth;
+      }
+    }
+    &:focus {
+      > .el-tree-node__content {
+        @include bg_main_color_fourth;
+      }
+    }
+  }
+  .el-tree__empty-text {
+    @include ft_font_color_third;
+  }
+}

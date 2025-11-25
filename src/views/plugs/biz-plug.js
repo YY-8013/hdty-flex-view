@@ -1,0 +1,48 @@
+import upperFirst from 'lodash/upperFirst';
+import camelCase from 'lodash/camelCase';
+
+const requireComponent = {
+  install: function (Vue) {
+    const files = require.context(
+      // 其组件目录的相对路径
+      '.',
+      // 是否查询其子目录
+      true,
+      // 匹配基础组件文件名的正则表达式
+      /\.(vue|js)$/
+    );
+
+    files.keys().forEach(filepath => {
+      // 获取符合组件注册规则的文件
+      let filepathArr = filepath.split('/');
+      let consistentFilepathArr = filepathArr.map((v, i, arr) => {
+        if(v.includes('biz-') || (v.includes('index') && arr[i - 1].includes('biz-'))) {
+          return v;
+        }
+        return null;
+      }).filter(v => v);
+      consistentFilepathArr = consistentFilepathArr.length >= 2 && consistentFilepathArr;
+      if(!consistentFilepathArr) return ;
+      let filename = consistentFilepathArr.filter(e => e.includes('biz-')).slice(-1)[0];
+      filename = filename && filename.replace(/\.\w+$/, '');
+      if(!filename) return;
+
+      // 获取组件配置
+      const componentConfig = files(filepath);
+
+      // 获取组件的 PascalCase 命名
+      const componentName = upperFirst(camelCase(filename));
+
+      // 全局注册组件
+      Vue.component(
+        componentName,
+        // 如果这个组件选项是通过 `export default` 导出的，
+        // 那么就会优先使用 `.default`，
+        // 否则回退到使用模块的根。
+        componentConfig.default || componentConfig
+      )
+    });
+  }
+};
+
+export default requireComponent;

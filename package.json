@@ -1,0 +1,101 @@
+{
+  "name": "hdty-framework-w4",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_OPTIONS=--max-old-space-size=4096 vue-cli-service serve --no-lint",
+    "serve": "nvm use 14 && cross-env NODE_OPTIONS=--max-old-space-size=4096 vue-cli-service serve --no-lint",
+    "start": "npm run dev",
+    "startNVM": "npm run useNVM && npm run dev",
+    "build": "node scripts/version-updater.js && vue-cli-service build --no-lint",
+    "buildNVM": "npm run useNVM && npm run build",
+    "build:no-version": "vue-cli-service build --no-lint",
+    "lint": "vue-cli-service lint",
+    "currentNVM": "nvm current",
+    "listNVM": "nvm list",
+    "useNVM": "nvm use 14.21.3"
+  },
+  "dependencies": {
+    "@easydarwin/easyplayer": "^5.1.1",
+    "@huoyu/vue-digitroll": "^1.0.4",
+    "@tinymce/tinymce-vue": "^3.2.2",
+    "@turf/turf": "^6.5.0",
+    "@wangeditor/editor": "^5.1.23",
+    "@wangeditor/editor-for-vue": "^1.0.2",
+    "animate.css": "^3.5.2",
+    "axios": "^0.18.0",
+    "compressorjs": "^1.2.1",
+    "core-js": "^3.6.5",
+    "crypto-js": "^4.0.0",
+    "dayjs": "^1.11.18",
+    "echarts": "^5.2.2",
+    "element-resize-detector": "^1.2.3",
+    "element-ui": "^2.12.0",
+    "esri-loader": "^2.14.0",
+    "exceljs": "^1.15.0",
+    "file-saver": "^2.0.5",
+    "gm-crypt": "0.0.2",
+    "hard-source-webpack-plugin": "^0.13.1",
+    "i": "^0.3.6",
+    "jsoneditor": "^8.0.0",
+    "mqtt": "^4.1.0",
+    "nprogress": "^0.2.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.8",
+    "promise.prototype.finally": "^3.1.2",
+    "sass": "^1.32.0",
+    "sass-loader": "^10.1.1",
+    "screenfull": "^4.2.0",
+    "sm-crypto": "^0.3.13",
+    "terser-webpack-plugin": "^4.2.3",
+    "thread-loader": "^2.1.3",
+    "tinymce": "^5.4.2",
+    "v-viewer": "^1.6.4",
+    "videojs-contrib-hls": "^5.15.0",
+    "viewerjs": "^1.5.0",
+    "vue": "^2.6.14",
+    "vue-count-to": "^1.0.13",
+    "vue-cropper": "^0.5.6",
+    "vue-izitoast": "^1.2.1",
+    "vue-native-websocket": "^2.0.13",
+    "vue-photo-preview": "^1.1.3",
+    "vue-qr": "^2.5.0",
+    "vue-router": "^3.0.1",
+    "vue-video-player": "^5.0.2",
+    "vue2-datepicker": "^3.11.1",
+    "vuex": "^3.6.0",
+    "webpack": "^4.46.0",
+    "webpack-bundle-analyzer": "^3.9.0",
+    "xlsx": "^0.17.2"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.15",
+    "@vue/cli-plugin-eslint": "~4.5.15",
+    "@vue/cli-service": "~4.5.15",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "moment": "^2.30.1",
+    "style-resources-loader": "^1.5.0",
+    "vue-cli-plugin-style-resources-loader": "^0.1.5",
+    "vue-template-compiler": "^2.6.14"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

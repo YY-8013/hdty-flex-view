@@ -1,0 +1,284 @@
+/*
+登录样式
+*/
+
+.hdty-login {
+  display: block;
+  @include img_login_bg_001;
+  background-size: 100% 100%;
+  overflow: hidden;
+  .hdty-login-header {
+    height: 20%;
+    + .hdty-login-wrapper {
+      height: 80%;
+    }
+  }
+  .hdty-login-wrapper {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    .hdty-login-container {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      width: 100%;
+      min-height: 100%;
+      margin-bottom: -50px;
+      padding-bottom: 50px;
+      .hdty-login-content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        .hdty-row {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          > *[class^="hdty-col-"] {
+            -webkit-box-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            > .hdty-column {
+              height: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+  .hdty-logo {
+    display: block;
+    height: 100%;
+    padding: 8px 0;
+    line-height: 1;
+    text-align: center;
+    // @include lg_from_ornament_color_second_to_main_color_first;
+    // -webkit-background-clip: text !important;
+    // -o-background-clip: text !important;
+    // -moz-background-clip: text !important;
+    // background-clip: text !important;
+    // color: transparent !important;
+    span {
+      font-family: "方正风雅宋简体", serif;
+      font-size: 54px;
+      font-weight: bold;
+    }
+    &.hdty-logo-text {
+      color: rgba(28, 158, 254, 1) !important;
+    }
+  }
+  .hdty-login-intro {
+    .hdty-logo {
+      margin-bottom: 64px;
+    }
+    .hdty-login-banner {
+      position: relative;
+      width: 426px;
+      height: 426px;
+      margin: 0 auto;
+      border-radius: 50%;
+      @include img_login_banner_001;
+      background-size: 100% 100%;
+    }
+    .hdty-login-carousel {
+      position: relative;
+      width: 426px;
+      height: 426px;
+      margin: 0 auto;
+      border-radius: 50%;
+      .el-carousel {
+        width: 100%;
+        height: 100%;
+        ::v-deep .el-carousel__container {
+          height: 100%;
+        }
+        ::v-deep .el-carousel__indicators {
+          z-index: 4;
+          .el-carousel__button {
+            width: 6px;
+            height: 6px;
+            @include bg_background_color_fourth;
+            border-radius: 50%;
+          }
+        }
+        &.is-bomb {
+          ::v-deep .el-carousel__container {
+            .el-carousel__item {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              -webkit-transform: translate(-50%, -50%) !important;
+              transform: translate(-50%, -50%) !important;
+              opacity: 0;
+              width: 0;
+              height: 0;
+              > * {
+                width: 100%;
+                height: 100%;
+              }
+              &.is-active {
+                width: 100%;
+                height: 100%;
+                opacity: 1;
+                -webkit-transform: translate(-50%, -50%) !important;
+                transform: translate(-50%, -50%) !important;
+              }
+              &.is-animating {
+                @include transition(
+                  width 0.3s,
+                  height 0.3s,
+                  opacity 0.3s ease-out
+                );
+              }
+            }
+          }
+        }
+      }
+      ::v-deep .bomb-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        a {
+          position: relative;
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
+        span {
+          display: inline-block;
+        }
+      }
+    }
+  }
+  .hdty-login-body {
+    position: relative;
+    width: 348px;
+    margin: 32px;
+    padding: 40px;
+    border-radius: 10px;
+    @include img_login_img_002;
+    background-size: 100% 100%;
+    @include bg_shadow_base_color_first;
+    @include bs_shadow_dark_color_third(0 0 32px);
+    h4 {
+      padding-bottom: 18px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 500;
+      @include ft_brand_color_first;
+      @include ts_brand_color_first(0 0 1px);
+    }
+    .el-form {
+      .el-form-item {
+        margin-bottom: 48px;
+        ::v-deep .el-form-item__label {
+          line-height: 50px;
+        }
+        ::v-deep .el-form-item__content {
+          line-height: 50px;
+        }
+      }
+      .el-input {
+        @include img_login_img_001;
+        background-size: 100% 100%;
+        padding: 2px;
+        font-size: 14px;
+        ::v-deep .el-input__inner {
+          height: 50px;
+          line-height: 50px;
+          padding-right: 48px;
+          @include bg_shadow_base_color_fourth;
+          @include bd_border_color_second;
+          border-radius: 0;
+          @include ft_font_color_second;
+          &::-webkit-input-safebox-button {
+            display: none;
+          }
+          &:-internal-autofill-previewed,
+          &:-internal-autofill-selected,
+          &:-webkit-autofill {
+            @include tf_font_color_second(!important);
+            @include transition(background-color 5000s ease-in-out !important);
+          }
+        }
+        ::v-deep .el-input__suffix {
+          right: 15px;
+          @include transition(none);
+          .el-input__icon {
+            font-size: 18px;
+            @include ft_brand_color_first;
+            @include transition(none);
+          }
+        }
+        ::v-deep .el-input__icon {
+          line-height: 54px;
+        }
+      }
+      .el-checkbox {
+        display: block;
+        margin-bottom: 20px;
+        line-height: 1;
+        text-align: right;
+      }
+    }
+    .hdty-login-button {
+      width: 100%;
+      padding: 12px 20px;
+      @include bg_brand_color_first;
+      @include bd_brand_color_first;
+      border-radius: 3px;
+      font-size: 18px;
+    }
+    .hdty-login-tips {
+      position: absolute;
+      left: 40px;
+      right: 40px;
+      top: 80px;
+      bottom: 84px;
+      z-index: 1;
+      .icon-check {
+        display: block;
+        text-align: center;
+        @include ft_success_color_first;
+        font-size: 56px;
+      }
+      .hdty-tips {
+        padding-top: 12px;
+        @include ft_font_color_second;
+        font-size: 18px;
+        font-weight: 600;
+      }
+    }
+  }
+  .hdty-login-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 16px 0;
+    text-align: center;
+    .hdty-copyright {
+      @include ft_base_color_third;
+      a {
+        @include ft_ornament_color_fourth;
+        &:hover {
+          @include ft_base_color_third;
+        }
+      }
+      &.hdty-copyright-emboss {
+        @include ts_shadow_odd_color_first(1px 1px 1px);
+      }
+    }
+  }
+}
+
+::v-deep #sogou_secure_inputs_container {
+  display: none;
+}

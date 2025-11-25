@@ -1,0 +1,2071 @@
+/*
+表单组件
+*/
+
+
+// 表单
+.el-form {
+  position: relative;
+  // 表格
+  .el-table {
+    .cell {
+      overflow: visible;
+      &.el-tooltip {
+        overflow: hidden;
+      }
+    }
+    // 表单项
+    .el-form-item {
+      margin-top: 6px;
+      margin-bottom: 6px;
+      .el-form-item__label {
+        line-height: 32px;
+      }
+      .el-form-item__content {
+        line-height: 32px;
+      }
+      .el-form-item__error {
+        padding-top: 0;
+      }
+      &.el-form-item--medium {
+        .el-form-item__label {
+          line-height: 36px;
+        }
+        .el-form-item__content {
+          line-height: 36px;
+        }
+        // 单选框
+        .el-radio {
+          margin-right: 10px;
+          &:last-of-type {
+            margin-right: 0;
+          }
+        }
+        // 复选框
+        .el-checkbox {
+          margin-right: 10px;
+          &:last-of-type {
+            margin-right: 0;
+          }
+        }
+        // 自定义表单元素
+        .hdty-underline {
+          > .el-checkbox {
+            &:last-of-type {
+              margin-right: 10px;
+            }
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+      &.el-form-item--small {
+        .el-form-item__label {
+          line-height: 28px;
+        }
+        .el-form-item__content {
+          line-height: 28px;
+        }
+        // 单选框
+        .el-radio {
+          margin-right: 10px;
+          &:last-of-type {
+            margin-right: 0;
+          }
+        }
+        // 复选框
+        .el-checkbox {
+          margin-right: 10px;
+          &:last-of-type {
+            margin-right: 0;
+          }
+        }
+        // 自定义表单元素
+        .hdty-underline {
+          > .el-checkbox {
+            &:last-of-type {
+              margin-right: 10px;
+            }
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+      &.el-form-item--mini {
+        .el-form-item__label {
+          line-height: 24px;
+        }
+        .el-form-item__content {
+          line-height: 24px;
+        }
+        // 单选框
+        .el-radio {
+          margin-right: 10px;
+          &:last-of-type {
+            margin-right: 0;
+          }
+        }
+        // 复选框
+        .el-checkbox {
+          margin-right: 10px;
+          &:last-of-type {
+            margin-right: 0;
+          }
+        }
+        // 自定义表单元素
+        .hdty-underline {
+          > .el-checkbox {
+            &:last-of-type {
+              margin-right: 10px;
+            }
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+    }
+    &[editable] {
+      .el-form-item {
+        margin-top: 13px;
+        margin-bottom: 13px;
+        &.el-form-item--mini {
+          margin-top: 12px;
+          margin-bottom: 12px;
+        }
+      }
+    }
+  }
+  &:not([border]) {
+    .hdty-card {
+      margin-bottom: 0;
+    }
+    .hdty-card-body {
+      > .el-form-item, > .hdty-form-expand-item > .el-form-item {
+        margin-left: -18px;
+        margin-right: -18px;
+      }
+      > .el-row, > .hdty-form-expand-item > .el-row {
+        > .el-form-item {
+          margin-left: -18px;
+          margin-right: -18px;
+        }
+        > .el-col {
+          &:first-child {
+            .el-form-item {
+              margin-left: -18px;
+              margin-right: 0;
+            }
+            .el-col {
+              &:not(:first-child) {
+                .el-form-item {
+                  margin-left: 0;
+                  margin-right: 0;
+                }
+              }
+            }
+          }
+          &:last-child {
+            .el-form-item {
+              margin-left: 0;
+              margin-right: -18px;
+            }
+            .el-col {
+              &:not(:last-child) {
+                .el-form-item {
+                  margin-left: 0;
+                  margin-right: 0;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &::after {
+    content: "";
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  + .hdty-btn-container {
+    margin-top: 8px;
+  }
+}
+
+// 表单项
+.el-form-item {
+  position: relative;
+  margin-bottom: 20px;
+  .el-form-item__label {
+    position: relative;
+    line-height: 38px;
+    @include ft_font_color_second;
+    font-size: 14px;
+  }
+  .el-form-item__content {
+    position: relative;
+    line-height: 38px;
+    font-size: 14px;
+    // 辅助元素
+    *[aux] {
+      display: inline-block;
+      line-height: inherit;
+      vertical-align: middle;
+      /*&:first-of-type:not(:last-of-type) {
+        position: absolute;
+        left: 0;
+      }
+      &:last-of-type:not(:first-of-type) {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: auto;
+        margin-left: 0;
+        padding: 0 5px;
+        z-index: 1;
+      }
+      &:first-of-type:last-of-type {
+        float: right;
+      }*/
+    }
+    > [aux] {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 1;
+      width: auto;
+      @include bg_background_color_fourth;
+      + .el-input {
+        margin-left: 0;
+        padding-right: 62px;
+        .el-input__suffix {
+          right: 67px;
+        }
+      }
+      + .hdty-factor-input {
+        margin-left: 0;
+        padding-right: 62px;
+        .el-input__suffix {
+          right: 62px;
+        }
+      }
+      + .el-textarea,
+      + .el-select,
+      + .el-cascader,
+      + .el-date-editor,
+      + .el-input-number,
+      + .hdty-dialog-select {
+        margin-left: 0;
+        padding-right: 62px;
+      }
+      + .el-radio-group,
+      + .el-checkbox-group,
+      + .el-switch,
+      + .hdty-underline {
+        margin-left: 0;
+        padding-right: 62px;
+        &[underline] {
+          &::after {
+            right: 62px;
+            width: auto;
+          }
+        }
+      }
+      + .el-range-editor {
+        margin-left: 0;
+        padding-right: 92px;
+        .el-range__icon, .el-range__close-icon {
+          right: 67px;
+        }
+        &[underline] {
+          &::after {
+            right: 62px;
+            width: auto;
+          }
+        }
+      }
+      + .hdty-number-range {
+        margin-left: 0;
+        padding-right: 92px;
+        .hdty-range-icon, .hdty-range-close-icon {
+          right: 67px;
+        }
+        &[underline] {
+          &::after {
+            right: 62px;
+            width: auto;
+          }
+        }
+      }
+    }
+    > .el-input,
+    > .el-textarea {
+      + [aux] {
+        right: 0;
+        margin: 1px 2px 2px 0;
+        padding: 0 5px;
+      }
+    }
+    > .el-input-number {
+      + [aux] {
+        right: 40px;
+        margin: 1px 0 1px 0;
+        padding: 0 5px;
+      }
+      &[underline] {
+        + [aux] {
+          margin: 0 0 2px 0;
+        }
+      }
+    }
+    > .el-radio-group,
+    > .el-checkbox-group,
+    > .el-switch,
+    > .hdty-underline {
+      + [aux] {
+        right: 0;
+        margin-left: 0;
+        padding: 0 5px;
+      }
+      &[underline] {
+        + [aux] {
+          margin-bottom: 2px;
+        }
+      }
+    }
+    > .el-select,
+    > .el-cascader,
+    > .el-date-editor,
+    > .el-range-editor,
+    > .hdty-number-range,
+    > .hdty-dialog-select {
+      + [aux] {
+        right: 30px;
+        margin: 1px 0 1px 0;
+        padding: 0 5px;
+      }
+      &[underline] {
+        + [aux] {
+          margin: 0 0 2px 0;
+        }
+      }
+    }
+    > .hdty-factor-input {
+      + [aux] {
+        right: 40px;
+        margin: 1px 0 2px 0;
+        padding: 0 5px;
+      }
+    }
+  }
+  .el-form-item__label-wrap {
+    position: relative;
+  }
+  .el-form-item__error {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    line-height: 1;
+    padding-top: 2px;
+    @include ft_danger_color_first;
+    font-size: 14px;
+  }
+  &.is-required {
+    &:not(.is-no-asterisk) {
+      .el-form-item__label-wrap {
+        > .el-form-item__label {
+          &::before {
+            @include ft_danger_color_first;
+          }
+        }
+      }
+      > .el-form-item__label {
+        &::before {
+          @include ft_danger_color_first;
+        }
+      }
+    }
+  }
+  &.is-error {
+    .el-input {
+      .el-input__inner {
+        @include bd_danger_color_first;
+      }
+    }
+    .el-textarea {
+      .el-textarea__inner {
+        @include bd_danger_color_first;
+      }
+    }
+    .el-radio-group:not([underline]) {
+      .el-radio {
+        .el-radio__inner {
+          @include bd_danger_color_first;
+        }
+        &.is-bordered {
+          @include bd_danger_color_first;
+          .el-radio__inner {
+            @include bd_border_color_second;
+          }
+        }
+      }
+      .el-radio-button {
+        .el-radio-button__inner {
+          @include bdt_danger_color_first;
+          @include bdb_danger_color_first;
+        }
+        &:first-child {
+          .el-radio-button__inner {
+            @include bdl_danger_color_first;
+          }
+        }
+        &:last-child {
+          .el-radio-button__inner {
+            @include bdr_danger_color_first;
+          }
+        }
+      }
+    }
+    .el-checkbox-group:not([underline]) {
+      .el-checkbox {
+        .el-checkbox__inner {
+          @include bd_danger_color_first;
+        }
+        &.is-bordered {
+          @include bd_danger_color_first;
+          .el-checkbox__inner {
+            @include bd_border_color_second;
+          }
+        }
+      }
+      .el-checkbox-button {
+        .el-checkbox-button__inner {
+          @include bdt_danger_color_first;
+          @include bdb_danger_color_first;
+        }
+        &:first-child {
+          .el-checkbox-button__inner {
+            @include bdl_danger_color_first;
+          }
+        }
+        &:last-child {
+          .el-checkbox-button__inner {
+            @include bdr_danger_color_first;
+          }
+        }
+      }
+    }
+    .el-range-editor {
+      @include bd_danger_color_first;
+    }
+    .el-upload {
+      @include bd_danger_color_first;
+      .el-upload-dragger {
+        @include bd_danger_color_first;
+      }
+    }
+    .hdty-underline:not([underline]) {
+      > .el-checkbox {
+        .el-checkbox__inner {
+          @include bd_danger_color_first;
+        }
+        &.is-bordered {
+          @include bd_danger_color_first;
+          .el-checkbox__inner {
+            @include bd_border_color_second;
+          }
+        }
+      }
+      > .el-checkbox-button {
+        .el-checkbox-button__inner {
+          @include bdt_danger_color_first;
+          @include bdb_danger_color_first;
+        }
+        &:first-child {
+          .el-checkbox-button__inner {
+            @include bdl_danger_color_first;
+          }
+        }
+      }
+    }
+    .hdty-number-range {
+      @include bd_danger_color_first;
+    }
+    .hdty-jsoneditor {
+      .jsoneditor-menu {
+        @include bd_danger_color_first;
+      }
+      .ace-jsoneditor {
+        @include bd_danger_color_first;
+      }
+      .jsoneditor-statusbar {
+        @include bd_danger_color_first;
+      }
+    }
+    .el-input .el-input__inner[underline] {
+      @include lg_from_main_color_first_to_danger_color_first;
+    }
+    .el-input[underline] .el-input__inner {
+      @include lg_from_main_color_first_to_danger_color_first;
+    }
+    .el-textarea .el-textarea__inner[underline] {
+      @include lg_from_main_color_first_to_border_color_first;
+    }
+    .el-select[underline] {
+      .el-input__inner {
+        @include lg_from_main_color_first_to_danger_color_first;
+      }
+      &.has-search-input {
+        &::after {
+          @include lg_from_main_color_first_to_danger_color_first;
+        }
+      }
+    }
+    .el-cascader[underline] {
+      .el-input__inner {
+        @include lg_from_main_color_first_to_danger_color_first;
+      }
+      &.has-search-input {
+        &::after {
+          @include lg_from_main_color_first_to_danger_color_first;
+        }
+      }
+    }
+    .el-input-number[underline] .el-input__inner {
+      @include lg_from_main_color_first_to_danger_color_first;
+    }
+    .hdty-dialog-select[underline] .el-input__inner {
+      @include lg_from_main_color_first_to_danger_color_first;
+    }
+    .el-radio-group[underline] {
+      &::after {
+        @include lg_from_main_color_first_to_danger_color_first;
+      }
+    }
+    .el-checkbox-group[underline] {
+      &::after {
+        @include lg_from_main_color_first_to_danger_color_first;
+      }
+    }
+    .el-range-editor[underline] {
+      &::after {
+        @include lg_from_main_color_first_to_danger_color_first;
+      }
+    }
+    .el-switch[underline] {
+      &::after {
+        @include lg_from_main_color_first_to_danger_color_first;
+      }
+    }
+    .hdty-underline[underline] {
+      .el-checkbox {
+        .el-checkbox__inner {
+          @include bd_border_color_second;
+        }
+        &.is-bordered {
+          @include bd_border_color_second;
+        }
+      }
+      .el-checkbox-button {
+        .el-checkbox-button__inner {
+          @include bd_border_color_second;
+        }
+        &:first-child {
+          .el-checkbox-button__inner {
+            @include bdl_border_color_second;
+          }
+        }
+        &:last-child {
+          .el-checkbox-button__inner {
+            @include bdr_border_color_second;
+          }
+        }
+      }
+      &::after {
+        @include lg_from_main_color_first_to_danger_color_first;
+      }
+    }
+    .hdty-number-range[underline] {
+      &::after {
+        @include lg_from_main_color_first_to_danger_color_first;
+      }
+    }
+  }
+  &.is-success {
+    .el-input {
+      .el-input__inner {
+        @include bd_success_color_first;
+      }
+    }
+    .el-textarea {
+      .el-textarea__inner {
+        @include bd_success_color_first;
+      }
+    }
+    .el-range-editor {
+      @include bd_success_color_first;
+    }
+    .el-upload {
+      @include bd_success_color_first;
+      .el-upload-dragger {
+        @include bd_success_color_first;
+      }
+    }
+    .hdty-number-range {
+      @include bd_success_color_first;
+    }
+    .hdty-jsoneditor {
+      .jsoneditor-menu {
+        @include bd_success_color_first;
+      }
+      .ace-jsoneditor {
+        @include bd_success_color_first;
+      }
+      .jsoneditor-statusbar {
+        @include bd_success_color_first;
+      }
+    }
+    .el-input .el-input__inner[underline] {
+      @include lg_from_main_color_first_to_success_color_first;
+    }
+    .el-input[underline] .el-input__inner {
+      @include lg_from_main_color_first_to_success_color_first;
+    }
+    .el-textarea .el-textarea__inner[underline] {
+      @include lg_from_main_color_first_to_success_color_first;
+    }
+    .el-select[underline] {
+      .el-input__inner {
+        @include lg_from_main_color_first_to_success_color_first;
+      }
+      &.has-search-input {
+        &::after {
+          @include lg_from_main_color_first_to_success_color_first;
+        }
+      }
+    }
+    .el-cascader[underline] {
+      .el-input__inner {
+        @include lg_from_main_color_first_to_success_color_first;
+      }
+      &.has-search-input {
+        &::after {
+          @include lg_from_main_color_first_to_success_color_first;
+        }
+      }
+    }
+    .el-input-number[underline] .el-input__inner {
+      @include lg_from_main_color_first_to_success_color_first;
+    }
+    .hdty-dialog-select[underline] .el-input__inner {
+      @include lg_from_main_color_first_to_success_color_first;
+    }
+    .el-radio-group[underline] {
+      &::after {
+        @include lg_from_main_color_first_to_success_color_first;
+      }
+    }
+    .el-checkbox-group[underline] {
+      &::after {
+        @include lg_from_main_color_first_to_success_color_first;
+      }
+    }
+    .el-range-editor[underline] {
+      &::after {
+        @include lg_from_main_color_first_to_success_color_first;
+      }
+    }
+    .el-switch[underline] {
+      &::after {
+        @include lg_from_main_color_first_to_success_color_first;
+      }
+    }
+    .hdty-underline[underline] {
+      &::after {
+        @include lg_from_main_color_first_to_success_color_first;
+      }
+    }
+    .hdty-number-range[underline] {
+      &::after {
+        @include lg_from_main_color_first_to_success_color_first;
+      }
+    }
+  }
+  &.el-form-item--medium {
+    margin-bottom: 22px;
+    .el-form-item__label {
+      line-height: 42px;
+      font-size: 16px;
+    }
+    .el-form-item__content {
+      line-height: 42px;
+      font-size: 16px;
+    }
+    .el-form-item__error {
+      font-size: 16px;
+    }
+    // 单选框
+    .el-radio {
+      margin-right: 30px;
+      font-size: 16px;
+      .el-radio__input {
+        .el-radio__inner {
+          width: 16px;
+          height: 16px;
+          &::after {
+            width: 5px;
+            height: 5px;
+          }
+        }
+      }
+      .el-radio__label {
+        font-size: 16px;
+      }
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+    // 复选框
+    .el-checkbox {
+      margin-right: 30px;
+      font-size: 16px;
+      .el-checkbox__input {
+        .el-checkbox__inner {
+          width: 16px;
+          height: 16px;
+          &:after {
+            left: 5px;
+            height: 8px;
+            border-width: 2px;
+          }
+        }
+        &.is-indeterminate {
+          .el-checkbox__inner {
+            &::before {
+              height: 4px;
+            }
+          }
+        }
+      }
+      .el-checkbox__label {
+        font-size: 16px;
+      }
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+    // 自定义表单元素
+    .hdty-underline {
+      > .el-checkbox {
+        &:last-of-type {
+          margin-right: 30px;
+        }
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+  &.el-form-item--small {
+    margin-bottom: 19px;
+    .el-form-item__label {
+      line-height: 34px;
+      font-size: 14px;
+    }
+    .el-form-item__content {
+      line-height: 34px;
+      font-size: 14px;
+    }
+    .el-form-item__error {
+      font-size: 14px;
+    }
+    // 单选框
+    .el-radio {
+      margin-right: 24px;
+      font-size: 14px;
+      .el-radio__input {
+        .el-radio__inner {
+          width: 14px;
+          height: 14px;
+          &::after {
+            width: 4px;
+            height: 4px;
+          }
+        }
+      }
+      .el-radio__label {
+        font-size: 14px;
+      }
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+    // 复选框
+    .el-checkbox {
+      margin-right: 24px;
+      font-size: 14px;
+      .el-checkbox__input {
+        .el-checkbox__inner {
+          width: 14px;
+          height: 14px;
+          &:after {
+            left: 4px;
+            height: 7px;
+            border-width: 1px;
+          }
+        }
+        &.is-indeterminate {
+          .el-checkbox__inner {
+            &::before {
+              height: 2px;
+            }
+          }
+        }
+      }
+      .el-checkbox__label {
+        font-size: 14px;
+      }
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+    // 自定义表单元素
+    .hdty-underline {
+      > .el-checkbox {
+        &:last-of-type {
+          margin-right: 24px;
+        }
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+  &.el-form-item--mini {
+    margin-bottom: 17px;
+    .el-form-item__label {
+      line-height: 30px;
+      font-size: 12px;
+    }
+    .el-form-item__content {
+      line-height: 30px;
+      font-size: 12px;
+    }
+    .el-form-item__error {
+      font-size: 12px;
+    }
+    // 单选框
+    .el-radio {
+      margin-right: 16px;
+      font-size: 12px;
+      .el-radio__input {
+        .el-radio__inner {
+          width: 12px;
+          height: 12px;
+          &::after {
+            width: 3px;
+            height: 3px;
+          }
+        }
+      }
+      .el-radio__label {
+        font-size: 12px;
+      }
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+    // 复选框
+    .el-checkbox {
+      margin-right: 16px;
+      font-size: 12px;
+      .el-checkbox__input {
+        .el-checkbox__inner {
+          width: 12px;
+          height: 12px;
+          &:after {
+            left: 3px;
+            top: 0;
+            height: 6px;
+            border-width: 1px;
+          }
+        }
+        &.is-indeterminate {
+          .el-checkbox__inner {
+            &::before {
+              top: 4px;
+              height: 2px;
+            }
+          }
+        }
+      }
+      .el-checkbox__label {
+        font-size: 12px;
+      }
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+    // 自定义表单元素
+    .hdty-underline {
+      > .el-checkbox {
+        &:last-of-type {
+          margin-right: 16px;
+        }
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+  &[block] {
+    .el-form-item__label {
+      display: block;
+      float: none;
+      width: auto !important;
+      text-align: left;
+    }
+    .el-form-item__content {
+      display: block;
+      margin-left: 0 !important;
+    }
+  }
+  &[readonly] {
+    margin-bottom: 0;
+  }
+}
+
+// 背景风格表单
+.el-form[background] {
+  @include bg_background_color_fourth;
+}
+
+// 条纹风格表单
+.el-form[stripe] {
+  .el-form-item {
+    overflow: hidden;
+    .el-form-item__label {
+      @include bg_shadow_main_color_fourth;
+    }
+    .el-form-item__label-wrap {
+      @include bg_shadow_main_color_fourth;
+      .el-form-item__label {
+        background-color: transparent;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        left: -100%;
+        right: 100%;
+        top: 0;
+        bottom: 0;
+        @include bg_shadow_main_color_fourth;
+      }
+    }
+  }
+}
+
+// 边框风格表单
+.el-form[border] {
+  .el-form-item {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    width: 100%;
+    margin-bottom: 0;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-style: solid;
+    @include bd_border_color_first;
+    .el-form-item__label {
+      float: none;
+    }
+    .el-form-item__content {
+      -webkit-box-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+      margin-left: 0 !important;
+    }
+    .el-form-item__label-wrap {
+      float: none;
+      .el-form-item__label {
+        padding-left: 12px;
+      }
+    }
+    > .el-form-item__content {
+      padding: 0 12px;
+      border-left-width: 1px;
+      border-style: solid;
+      @include bd_border_color_first;
+      &:first-child {
+        border-left-width: 0;
+      }
+    }
+    &:first-of-type {
+      border-top-width: 1px;
+    }
+    &[block] {
+      display: block;
+      .el-form-item__label {
+        padding-left: 12px;
+      }
+      .el-form-item__content {
+        -webkit-box-flex: initial;
+        -ms-flex: initial;
+        flex: initial;
+      }
+      .el-form-item__label-wrap {
+        margin-left: 0 !important;
+      }
+      .el-form-item__label, .el-form-item__label-wrap {
+        + .el-form-item__content {
+          min-height: 39px;
+        }
+      }
+      > .el-form-item__content {
+        border-left-width: 0;
+        border-top-width: 1px;
+        &:first-child {
+          border-top-width: 0;
+        }
+      }
+      &.el-form-item--medium {
+        .el-form-item__label, .el-form-item__label-wrap {
+          + .el-form-item__content {
+            min-height: 43px;
+          }
+        }
+      }
+      &.el-form-item--small {
+        .el-form-item__label, .el-form-item__label-wrap {
+          + .el-form-item__content {
+            min-height: 35px;
+          }
+        }
+      }
+      &.el-form-item--mini {
+        .el-form-item__label, .el-form-item__label-wrap {
+          + .el-form-item__content {
+            min-height: 31px;
+          }
+        }
+      }
+    }
+  }
+  .el-row {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-style: solid;
+    @include bd_border_color_first;
+    .el-row {
+      border-left-width: 0;
+      &:first-of-type {
+        border-top-width: 0;
+      }
+      &:last-of-type {
+        border-bottom-width: 0;
+      }
+    }
+    > .el-form-item {
+      border-left-width: 0;
+      border-right-width: 0;
+      border-bottom-width: 0;
+      &:first-of-type {
+        border-top-width: 0;
+      }
+    }
+    > .el-col {
+      > .el-form-item {
+        height: 100%;
+        border-left-width: 0;
+        border-right-width: 1px;
+        border-bottom-width: 0;
+        &:first-of-type {
+          border-top-width: 0;
+        }
+      }
+      &:last-of-type {
+        > .el-form-item {
+          border-right-width: 0;
+        }
+      }
+    }
+    &:first-of-type {
+      border-top-width: 1px;
+    }
+  }
+  .hdty-form-expand-item {
+    .el-form-item {
+      &:first-of-type {
+        border-top-width: 0;
+      }
+    }
+    .el-row {
+      &:first-of-type {
+        border-top-width: 0;
+      }
+    }
+  }
+  &[block] {
+    .el-form-item {
+      display: block;
+      .el-form-item__label {
+        padding-left: 12px;
+      }
+      .el-form-item__content {
+        -webkit-box-flex: initial;
+        -ms-flex: initial;
+        flex: initial;
+      }
+      .el-form-item__label-wrap {
+        margin-left: 0 !important;
+      }
+      .el-form-item__label, .el-form-item__label-wrap {
+        + .el-form-item__content {
+          min-height: 39px;
+        }
+      }
+      > .el-form-item__content {
+        border-left-width: 0;
+        border-top-width: 1px;
+        &:first-child {
+          border-top-width: 0;
+        }
+      }
+      &.el-form-item--medium {
+        .el-form-item__label, .el-form-item__label-wrap {
+          + .el-form-item__content {
+            min-height: 43px;
+          }
+        }
+      }
+      &.el-form-item--small {
+        .el-form-item__label, .el-form-item__label-wrap {
+          + .el-form-item__content {
+            min-height: 35px;
+          }
+        }
+      }
+      &.el-form-item--mini {
+        .el-form-item__label, .el-form-item__label-wrap {
+          + .el-form-item__content {
+            min-height: 31px;
+          }
+        }
+      }
+    }
+    &[fixed] {
+      .el-form-item {
+        .el-form-item__label, .el-form-item__label-wrap {
+          + .el-form-item__content {
+            min-height: 41px;
+          }
+        }
+      }
+    }
+  }
+  &[fixed] {
+    .el-form-item {
+      &[block] {
+        .el-form-item__label, .el-form-item__label-wrap {
+          + .el-form-item__content {
+            min-height: 41px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 行内上下文风格表单
+.el-form.el-form--inline {
+  .el-form-item {
+    display: inline-block;
+    margin-right: 10px;
+    &.el-form-item--medium {
+      // 单选框
+      .el-radio {
+        margin-right: 10px;
+        &:last-of-type {
+          margin-right: 0;
+        }
+      }
+      // 复选框
+      .el-checkbox {
+        margin-right: 10px;
+        &:last-of-type {
+          margin-right: 0;
+        }
+      }
+      // 自定义表单元素
+      .hdty-underline {
+        > .el-checkbox {
+          &:last-of-type {
+            margin-right: 10px;
+          }
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+    &.el-form-item--small {
+      // 单选框
+      .el-radio {
+        margin-right: 10px;
+        &:last-of-type {
+          margin-right: 0;
+        }
+      }
+      // 复选框
+      .el-checkbox {
+        margin-right: 10px;
+        &:last-of-type {
+          margin-right: 0;
+        }
+      }
+      // 自定义表单元素
+      .hdty-underline {
+        > .el-checkbox {
+          &:last-of-type {
+            margin-right: 10px;
+          }
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+    &.el-form-item--mini {
+      // 单选框
+      .el-radio {
+        margin-right: 10px;
+        &:last-of-type {
+          margin-right: 0;
+        }
+      }
+      // 复选框
+      .el-checkbox {
+        margin-right: 10px;
+        &:last-of-type {
+          margin-right: 0;
+        }
+      }
+      // 自定义表单元素
+      .hdty-underline {
+        > .el-checkbox {
+          &:last-of-type {
+            margin-right: 10px;
+          }
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+  // 单选框
+  .el-radio {
+    margin-right: 10px;
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+  // 复选框
+  .el-checkbox {
+    margin-right: 10px;
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+  // 自定义表单元素
+  .hdty-underline {
+    > .el-checkbox {
+      &:last-of-type {
+        margin-right: 10px;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  + .hdty-btn-container {
+    margin-top: 0;
+    margin-bottom: 6px;
+    .hdty-btn, .el-button {
+      margin-right: 10px;
+      margin-bottom: 10px;
+      &:last-of-type {
+        margin-right: 0;
+        + .hdty-btn-group, + .el-button-group {
+          margin-left: 10px;
+        }
+        + .el-dropdown {
+          margin-left: 10px;
+        }
+      }
+      + .hdty-btn, + .el-button {
+        margin-left: 0;
+      }
+      + .hdty-btn-group, + .el-button-group {
+        margin-left: 0;
+      }
+      + .el-dropdown {
+        margin-left: 0;
+      }
+    }
+    .hdty-btn-group, .el-button-group {
+      margin-right: 10px;
+      .hdty-btn, .el-button {
+        &:not(:last-child) {
+          margin-right: -1px;
+        }
+      }
+      &:last-of-type {
+        margin-right: 0;
+        + .hdty-btn, + .el-button {
+          margin-left: 10px;
+        }
+        + .el-dropdown {
+          margin-left: 10px;
+        }
+      }
+      + .hdty-btn, + .el-button {
+        margin-left: 0;
+      }
+      + .hdty-btn-group, + .el-button-group {
+        margin-left: 0;
+      }
+      + .el-dropdown {
+        margin-left: 0;
+      }
+    }
+    .el-dropdown {
+      margin-right: 10px;
+      &:last-of-type {
+        margin-right: 0;
+        + .hdty-btn, + .el-button {
+          margin-left: 10px;
+        }
+        + .hdty-btn-group, + .el-button-group {
+          margin-left: 10px;
+        }
+      }
+      + .hdty-btn, + .el-button {
+        margin-left: 0;
+      }
+      + .hdty-btn-group, + .el-button-group {
+        margin-left: 0;
+      }
+      + .el-dropdown {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+// 块级上下文风格表单
+.el-form[block] {
+  .el-form-item {
+    .el-form-item__label {
+      display: block;
+      float: none;
+      width: auto !important;
+      text-align: left;
+    }
+    .el-form-item__content {
+      display: block;
+      margin-left: 0 !important;
+    }
+  }
+}
+
+// 只读表单
+.el-form[readonly] {
+  .el-form-item {
+    margin-bottom: 0;
+  }
+}
+
+// 表单固定高度
+.el-form[fixed] {
+  .el-form-item {
+    .el-form-item__label {
+      line-height: 40px;
+    }
+    .el-form-item__content {
+      line-height: 40px;
+    }
+  }
+}
+
+// 原生输入框下划线
+input[underline], textarea[underline] {
+  padding-left: 0;
+  padding-right: 0;
+  background-color: transparent;
+  @include lg_from_main_color_first_to_border_color_first;
+  background-repeat: no-repeat;
+  background-size: 0 2px, 100% 1px;
+  background-position: center bottom, center calc(100% - 1px);
+  border: 0 none;
+  border-radius: 0;
+  box-shadow: none;
+  @include transition(all ease-in-out 0s);
+  &:focus {
+    background-size: 100% 2px, 100% 1px;
+    outline: 0 none;
+    transition-duration: 0.3s;
+  }
+}
+
+// 输入框下划线
+.el-input {
+  .el-input__inner[underline] {
+    padding-left: 0;
+    padding-right: 0;
+    background-color: transparent;
+    @include lg_from_main_color_first_to_border_color_first;
+    background-repeat: no-repeat;
+    background-size: 0 2px, 100% 1px;
+    background-position: center bottom, center calc(100% - 1px);
+    border: 0 none;
+    border-radius: 0;
+    box-shadow: none;
+    @include transition(all ease-in-out 0s);
+    ~ .el-input-group__append {
+      background-color: transparent;
+      border: 0 none;
+      border-radius: 0;
+    }
+    &:focus {
+      background-size: 100% 2px, 100% 1px;
+      outline: 0 none;
+      transition-duration: 0.3s;
+    }
+  }
+  .el-input-group__append {
+    .el-input {
+      .el-input__inner[underline] {
+        background-color: transparent;
+        border: 0 none;
+        border-radius: 0;
+      }
+      &[underline] {
+        .el-input__inner {
+          background-color: transparent;
+          border: 0 none;
+          border-radius: 0;
+        }
+      }
+    }
+    .el-select[underline] {
+      .el-input__inner {
+        background-color: transparent;
+        border: 0 none;
+        border-radius: 0;
+      }
+    }
+    .el-cascader[underline] {
+      .el-input__inner {
+        background-color: transparent;
+        border: 0 none;
+        border-radius: 0;
+      }
+    }
+    .el-input-number[underline] {
+      .el-input__inner {
+        background-color: transparent;
+        border-top: 0 none;
+        border-bottom: 0 none;
+      }
+      &.is-controls-right {
+        .el-input__inner {
+          border-left: 0 none;
+        }
+      }
+      &.is-without-controls {
+        .el-input__inner {
+          border-left: 0 none;
+          border-right: 0 none;
+        }
+      }
+    }
+    .hdty-dialog-select[underline] {
+      .el-input__inner {
+        background-color: transparent;
+        border: 0 none;
+        border-radius: 0;
+      }
+    }
+  }
+  &.el-input--prefix {
+    .el-input__inner[underline] {
+      padding-left: 30px;
+    }
+  }
+  &.el-input--suffix {
+    .el-input__inner[underline] {
+      padding-right: 30px;
+    }
+  }
+  &.hdty-factor-input {
+    .el-input__inner[underline] {
+      padding-left: 0;
+      padding-right: 40px;
+    }
+  }
+  &.is-disabled {
+    .el-input__inner[underline] {
+      background-color: transparent;
+    }
+  }
+  &[underline] {
+    width: 100%;
+    .el-input__inner {
+      padding-left: 0;
+      padding-right: 0;
+      background-color: transparent;
+      @include lg_from_main_color_first_to_border_color_first;
+      background-repeat: no-repeat;
+      background-size: 0 2px, 100% 1px;
+      background-position: center bottom, center calc(100% - 1px);
+      border: 0 none;
+      border-radius: 0;
+      box-shadow: none;
+      @include transition(all ease-in-out 0s);
+      &:focus {
+        background-size: 100% 2px, 100% 1px;
+        outline: 0 none;
+        transition-duration: 0.3s;
+      }
+    }
+    &.el-input--prefix {
+      .el-input__inner {
+        padding-left: 30px;
+      }
+    }
+    &.el-input--suffix {
+      .el-input__inner {
+        padding-right: 30px;
+      }
+    }
+    &.el-date-editor {
+      .el-input__inner {
+        padding-left: 0;
+        padding-right: 30px;
+      }
+    }
+    &.is-disabled {
+      .el-input__inner {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+// 文本域下划线
+.el-textarea {
+  .el-textarea__inner[underline] {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    background-color: transparent;
+    @include lg_from_main_color_first_to_border_color_first;
+    background-repeat: no-repeat;
+    background-size: 0 2px, 100% 1px;
+    background-position: center bottom, center calc(100% - 1px);
+    border: 0 none;
+    border-radius: 0;
+    box-shadow: none;
+    @include transition(all ease-in-out 0s);
+    &:focus {
+      background-size: 100% 2px, 100% 1px;
+      outline: 0 none;
+      transition-duration: 0.3s;
+    }
+  }
+  &.is-disabled {
+    .el-textarea__inner[underline] {
+      background-color: transparent;
+    }
+  }
+}
+
+// 下拉选择框下划线
+.el-select[underline] {
+  width: 100%;
+  .el-input__inner {
+    padding-left: 0;
+    padding-right: 30px;
+    background-color: transparent;
+    @include lg_from_main_color_first_to_border_color_first;
+    background-repeat: no-repeat;
+    background-size: 0 2px, 100% 1px;
+    background-position: center bottom, center calc(100% - 1px);
+    border: 0 none;
+    border-radius: 0;
+    box-shadow: none;
+    @include transition(all ease-in-out 0s);
+    &:focus {
+      background-size: 100% 2px, 100% 1px;
+      outline: 0 none;
+      transition-duration: 0.3s;
+    }
+  }
+  &.has-search-input {
+    .el-input__inner {
+      background-image: none;
+      background-size: 0;
+      background-position: 0;
+      @include transition(none);
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background-color: transparent;
+      @include lg_from_main_color_first_to_border_color_first;
+      background-repeat: no-repeat;
+      background-size: 0 2px, 100% 1px;
+      background-position: center bottom, center calc(100% - 1px);
+      box-shadow: none;
+      @include transition(all ease-in-out 0s);
+    }
+    &:not(.is-disabled):focus-within {
+      &::after {
+        background-size: 100% 2px, 100% 1px;
+        outline: 0 none;
+        transition-duration: 0.3s;
+      }
+    }
+  }
+  .el-input {
+    &.is-disabled {
+      .el-input__inner {
+        background-color: transparent;
+      }
+    }
+  }
+  .el-select__input {
+    margin-left: 1px;
+  }
+}
+
+// 级联选择框下划线
+.el-cascader[underline] {
+  width: 100%;
+  .el-input__inner {
+    padding-left: 0;
+    padding-right: 30px;
+    background-color: transparent;
+    @include lg_from_main_color_first_to_border_color_first;
+    background-repeat: no-repeat;
+    background-size: 0 2px, 100% 1px;
+    background-position: center bottom, center calc(100% - 1px);
+    border: 0 none;
+    border-radius: 0;
+    box-shadow: none;
+    @include transition(all ease-in-out 0s);
+    &:focus {
+      background-size: 100% 2px, 100% 1px;
+      outline: 0 none;
+      transition-duration: 0.3s;
+    }
+  }
+  &.has-search-input {
+    .el-input__inner {
+      background-image: none;
+      background-size: 0;
+      background-position: 0;
+      @include transition(none);
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background-color: transparent;
+      @include lg_from_main_color_first_to_border_color_first;
+      background-repeat: no-repeat;
+      background-size: 0 2px, 100% 1px;
+      background-position: center bottom, center calc(100% - 1px);
+      box-shadow: none;
+      @include transition(all ease-in-out 0s);
+    }
+    &:not(.is-disabled):focus-within {
+      &::after {
+        background-size: 100% 2px, 100% 1px;
+        outline: 0 none;
+        transition-duration: 0.3s;
+      }
+    }
+  }
+  .el-input {
+    &.is-disabled {
+      .el-input__inner {
+        background-color: transparent;
+      }
+    }
+  }
+  .el-cascader__search-input {
+    margin-left: 1px;
+  }
+}
+
+// 计数器输入框下划线
+.el-input-number[underline] {
+  width: 100%;
+  .el-input__inner {
+    background-color: transparent;
+    @include lg_from_main_color_first_to_border_color_first;
+    background-repeat: no-repeat;
+    background-size: 0 2px, 100% 1px;
+    background-position: center bottom, center calc(100% - 1px);
+    border-top: 0 none;
+    border-bottom: 0 none;
+    box-shadow: none;
+    @include transition(all ease-in-out 0s);
+    &:focus {
+      background-size: 100% 2px, 100% 1px;
+      outline: 0 none;
+      transition-duration: 0.3s;
+    }
+  }
+  &.is-controls-right {
+    .el-input__inner {
+      border-left: 0 none;
+    }
+  }
+  &.is-without-controls {
+    .el-input__inner {
+      border-left: 0 none;
+      border-right: 0 none;
+    }
+  }
+  .el-input {
+    &.is-disabled {
+      .el-input__inner {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+// 会话层选择框下划线
+.hdty-dialog-select[underline] {
+  width: 100%;
+  .el-input__inner {
+    padding-left: 0;
+    padding-right: 30px;
+    background-color: transparent;
+    @include lg_from_main_color_first_to_border_color_first;
+    background-repeat: no-repeat;
+    background-size: 0 2px, 100% 1px;
+    background-position: center bottom, center calc(100% - 1px);
+    border: 0 none;
+    border-radius: 0;
+    box-shadow: none;
+    @include transition(all ease-in-out 0s);
+    &:focus {
+      background-size: 100% 2px, 100% 1px;
+      outline: 0 none;
+      transition-duration: 0.3s;
+    }
+  }
+  .hdty-iconfont-echo {
+    left: 0;
+    right: 3px;
+  }
+  .el-input {
+    &.is-disabled {
+      .el-input__inner {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+// 单选框下划线
+.el-radio-group[underline] {
+  width: 100%;
+  background-color: transparent;
+  border: 0 none;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: transparent;
+    @include lg_from_main_color_first_to_border_color_first;
+    background-repeat: no-repeat;
+    background-size: 0 2px, 100% 1px;
+    background-position: center bottom, center calc(100% - 1px);
+    box-shadow: none;
+    @include transition(all ease-in-out 0s);
+  }
+  &:not(.is-disabled):focus-within {
+    &::after {
+      background-size: 100% 2px, 100% 1px;
+      outline: 0 none;
+      transition-duration: 0.3s;
+    }
+  }
+  .el-radio__input {
+    .el-radio__inner {
+      background-color: transparent;
+    }
+  }
+}
+
+// 复选框下划线
+.el-checkbox-group[underline] {
+  width: 100%;
+  background-color: transparent;
+  border: 0 none;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: transparent;
+    @include lg_from_main_color_first_to_border_color_first;
+    background-repeat: no-repeat;
+    background-size: 0 2px, 100% 1px;
+    background-position: center bottom, center calc(100% - 1px);
+    box-shadow: none;
+    @include transition(all ease-in-out 0s);
+  }
+  &:not(.is-disabled):focus-within {
+    &::after {
+      background-size: 100% 2px, 100% 1px;
+      outline: 0 none;
+      transition-duration: 0.3s;
+    }
+  }
+  .el-checkbox__input {
+    .el-checkbox__inner {
+      background-color: transparent;
+    }
+  }
+}
+
+// 日期时间范围选择器下划线
+.el-date-editor.el-range-editor[underline] {
+  width: 100%;
+  padding-left: 0;
+  background-color: transparent;
+  border: 0 none;
+  &.el-date-editor--datetimerange {
+    width: 100%;
+  }
+  &.el-date-editor--daterange {
+    width: 100%;
+  }
+  &.el-date-editor--timerange {
+    width: 100%;
+  }
+  &.el-date-editor--monthrange {
+    width: 100%;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: transparent;
+    @include lg_from_main_color_first_to_border_color_first;
+    background-repeat: no-repeat;
+    background-size: 0 2px, 100% 1px;
+    background-position: center bottom, center calc(100% - 1px);
+    box-shadow: none;
+    @include transition(all ease-in-out 0s);
+  }
+  &:not(.is-disabled):focus-within {
+    &::after {
+      background-size: 100% 2px, 100% 1px;
+      outline: 0 none;
+      transition-duration: 0.3s;
+    }
+  }
+  &.is-disabled {
+    background-color: transparent;
+  }
+}
+
+// 数量范围输入框下划线
+.hdty-number-range[underline] {
+  width: 100%;
+  padding-left: 0;
+  background-color: transparent;
+  border: 0 none;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: transparent;
+    @include lg_from_main_color_first_to_border_color_first;
+    background-repeat: no-repeat;
+    background-size: 0 2px, 100% 1px;
+    background-position: center bottom, center calc(100% - 1px);
+    box-shadow: none;
+    @include transition(all ease-in-out 0s);
+  }
+  &:not(.is-disabled):focus-within {
+    &::after {
+      background-size: 100% 2px, 100% 1px;
+      outline: 0 none;
+      transition-duration: 0.3s;
+    }
+  }
+  &.is-disabled {
+    background-color: transparent;
+  }
+}
+
+// 开关下划线
+.el-switch[underline] {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: 0 none;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: transparent;
+    @include lg_from_main_color_first_to_border_color_first;
+    background-repeat: no-repeat;
+    background-size: 0 2px, 100% 1px;
+    background-position: center bottom, center calc(100% - 1px);
+    box-shadow: none;
+    @include transition(all ease-in-out 0s);
+  }
+  &:not(.is-disabled):focus-within {
+    &::after {
+      background-size: 100% 2px, 100% 1px;
+      outline: 0 none;
+      transition-duration: 0.3s;
+    }
+  }
+}
+
+// 自定义表单元素下划线
+.hdty-underline {
+  display: inline-block;
+  line-height: 1;
+  width: 100%;
+  font-size: 0;
+  > .el-checkbox {
+    &:last-of-type {
+      margin-right: 30px;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+    + .el-checkbox-group {
+      margin-left: 0;
+    }
+  }
+  > .el-checkbox-button {
+    + .el-checkbox-group {
+      margin-left: 0;
+      .el-checkbox-button {
+        &:first-child {
+          .el-checkbox-button__inner {
+            border-left: 0;
+            border-radius: 0;
+          }
+        }
+        &.is-checked {
+          .el-checkbox-button__inner {
+            @include bs_brand_color_fourth(-1px 0 0, !important);
+          }
+        }
+      }
+    }
+  }
+  &[readonly] {
+    cursor: default;
+  }
+  &.is-disabled {
+    cursor: not-allowed;
+  }
+  &[underline] {
+    .el-radio {
+      .el-radio__input {
+        &:not(.is-checked) {
+          .el-radio__inner {
+            background-color: transparent;
+          }
+        }
+      }
+    }
+    .el-checkbox {
+      .el-checkbox__input {
+        &:not(.is-checked) {
+          .el-checkbox__inner {
+            background-color: transparent;
+          }
+        }
+      }
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background-color: transparent;
+      @include lg_from_main_color_first_to_border_color_first;
+      background-repeat: no-repeat;
+      background-size: 0 2px, 100% 1px;
+      background-position: center bottom, center calc(100% - 1px);
+      box-shadow: none;
+      @include transition(all ease-in-out 0s);
+    }
+    &:not(.is-disabled):focus-within {
+      &::after {
+        background-size: 100% 2px, 100% 1px;
+        outline: 0 none;
+        transition-duration: 0.3s;
+      }
+    }
+  }
+}

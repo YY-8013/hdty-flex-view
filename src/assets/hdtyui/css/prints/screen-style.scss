@@ -1,0 +1,94 @@
+@charset "UTF-8";
+
+.hdty-print {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.hdty-print .hdty-print-header {
+  display: block;
+  position: relative;
+  padding: 16px;
+  text-align: center;
+}
+
+.hdty-print .hdty-print-header + .hdty-print-body {
+  top: 102px;
+}
+
+.hdty-print .hdty-print-header .hdty-print-button {
+  display: inline-block;
+  position: relative;
+  margin-top: 16px;
+  @include bg_filling_color_second;
+  border-width: 2px;
+  border-style: solid;
+  @include bd_filling_color_first;
+  border-radius: 5px;
+  cursor: pointer;
+  @include transition(color 150ms cubic-bezier(0.1, 0.7, 0.6, 0.9));
+}
+
+.hdty-print .hdty-print-header .hdty-print-button::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  @include bg_filling_color_first;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: left center;
+  transform-origin: left center;
+  @include transition(transform 150ms cubic-bezier(0.1, 0.7, 0.6, 0.9));
+}
+
+.hdty-print .hdty-print-header .hdty-print-button:hover::before {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+.hdty-print .hdty-print-header .hdty-print-button span {
+  display: inline-block;
+  position: relative;
+  padding: 12px 54px 10px 54px;
+  line-height: 1;
+  letter-spacing: 4px;
+  font-size: 28px;
+  @include ft_font_color_first;
+}
+
+.hdty-print .hdty-print-body {
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 16px;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 0;
+}
+
+.hdty-print .hdty-print-body::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+
+.hdty-print .hdty-print-container {
+  display: inline-block;
+  padding: 18px;
+  background-color: #fff;
+  vertical-align: middle;
+  text-align: left;
+  white-space: normal;
+  font-size: 14px;
+  color: #606266;
+  @include bs_from_filling_color_fourth_to_background_color_fourth_to_filling_color_third(inset 0 0 0 6px, inset 0 0 0 16px, inset 0 0 0 18px);
+}

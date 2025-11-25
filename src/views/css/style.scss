@@ -1,0 +1,93 @@
+/*
+自定义样式
+*/
+.main-notice-content {
+  // 基础样式
+  line-height: 1.5 !important;
+  color: #000 !important;
+  font-family: serif !important;
+  margin: 0 auto !important;
+  padding: 8px 12px !important;
+
+  // 文本元素
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 1em 0 !important;
+    font-weight: normal !important;
+    display: block !important;
+  }
+
+  // 链接
+  a {
+    color: inherit !important;
+    text-decoration: underline !important;
+    cursor: pointer !important;
+  }
+
+  // 列表
+  ul,
+  ol {
+    padding-left: 2em !important;
+    margin: 1em 0 !important;
+    display: block !important;
+
+    li {
+      display: list-item !important;
+    }
+  }
+
+  ul {
+    li {
+      list-style-type: disc !important;
+    }
+
+    ul {
+      li {
+        list-style-type: circle !important;
+      }
+    }
+  }
+
+  ol {
+    li {
+      list-style-type: decimal !important;
+    }
+
+    ol {
+      li {
+        list-style-type: lower-alpha !important;
+      }
+    }
+  }
+
+  // 表格
+  table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    margin: 1em 0 !important;
+    display: table !important;
+
+    th,
+    td {
+      border: 1px solid #ddd !important;
+      padding: 8px !important;
+      text-align: left !important;
+      display: table-cell !important;
+    }
+
+    th {
+      font-weight: bold !important;
+    }
+  }
+
+  // 图片
+  img {
+    max-width: 100% !important;
+    object-fit: contain !important;
+  }
+}

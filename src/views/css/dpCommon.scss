@@ -1,0 +1,520 @@
+// 定义变量
+$primary-color: #00a7bd;
+$second-color: #028091;
+$third-color: #69ceda;
+$unchecked-bg-color: transparent;
+$checked-bg-color: $primary-color;
+
+// 定义自定义变量
+$custom-select-bg: #051d37; // 下拉框背景色为透明
+$custom-select-text-color: #fff; // 字体颜色
+$custom-select-border-color: #00a7bd; // 边框颜色，和上面checkbox的边框颜色一样
+
+$dp-box-bg-color: #051d37;
+$dp-box-text-color: #1bf9fa;
+$dp-box-border-color: #00a7bd;
+
+$dp-date-bg-color: #052f47;
+$dp-date-ft-color: $primary-color;
+$dp-date-ft-second-color: $second-color;
+$dp-date-ft-third-color: $third-color;
+$dp-date-range-bg-color: rgba(11, 66, 103, 0.82);
+$dp-date-range-hover-bg-color: #085488;
+
+$dp-button-bg-color: #01a6bc;
+$dp-button-hover-bg-color: #06c1da;
+$dp-button-ft-color: #fff;
+
+$dp-radio-group-bg-color: #064761;
+$dp-radio-group-check-bg-color: $primary-color;
+$dp-radio-group-ft-color: #fff;
+$dp-radio-group-check-ft-color: #000;
+
+.dp-container {
+  .dp-header {
+    display: flex;
+    //justify-content: space-between;
+    .dp-header-title-form {
+      //flex: 1;
+    }
+    .dp-button-container {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+  .el-form {
+    display: flex;
+    flex-wrap: wrap;
+    .el-form-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+      .el-form-item__label {
+        color: $dp-box-text-color;
+        line-height: 20px;
+      }
+    }
+  }
+  .el-form-item .el-form-item__content {
+    line-height: 20px !important;
+  }
+}
+
+// 下拉框容器
+.dp-input {
+  // 背景色
+  background-color: $custom-select-bg !important;
+  // 字体颜色
+  color: $custom-select-text-color !important;
+  // 边框样式和颜色
+  border: 1px solid $custom-select-border-color !important;
+  // 边框圆角
+  border-radius: 0;
+  .el-input__suffix .el-select__caret {
+    color: $custom-select-text-color !important;
+  }
+  .el-input__icon {
+    line-height: 28px !important;
+  }
+  // 输入框和下拉框对齐
+  .el-input__inner {
+    padding-right: 0 !important;
+    border: none !important;
+    background-color: $dp-box-bg-color !important;
+    color: $custom-select-text-color !important;
+    line-height: 28px !important;
+    height: 28px !important;
+  }
+  // 悬停时的边框颜色
+  &.is-focus {
+    //border-color: $custom-primary-color;
+  }
+  input {
+    color: $custom-select-text-color !important;
+  }
+}
+
+.dp-textarea {
+  // 背景色
+  background-color: $custom-select-bg !important;
+  // 字体颜色
+  color: $custom-select-text-color !important;
+  // 边框样式和颜色
+  border: 1px solid $custom-select-border-color !important;
+  // 边框圆角
+  border-radius: 0;
+  .el-input__suffix .el-select__caret {
+    color: $custom-select-text-color !important;
+  }
+  .el-input__icon {
+    line-height: 28px !important;
+  }
+  // 输入框和下拉框对齐
+  .el-textarea__inner {
+    padding-right: 0 !important;
+    border: none !important;
+    background-color: $dp-box-bg-color !important;
+    color: $custom-select-text-color !important;
+    line-height: 28px !important;
+  }
+  // 悬停时的边框颜色
+  &.is-focus {
+    //border-color: $custom-primary-color;
+  }
+  input {
+    color: $custom-select-text-color !important;
+  }
+}
+
+.dp-radio-group {
+  .el-radio {
+    .el-radio__label {
+      color: $primary-color !important;
+    }
+    &.is-checked .el-radio__label {
+      color: #1194fb !important;
+    }
+  }
+}
+
+// 自定义 el-select 样式
+.dp-select {
+  background-color: $primary-color !important;
+  line-height: 28px !important;
+  // 下拉框容器
+  .el-input {
+    // 背景色
+    background-color: $custom-select-bg;
+    // 字体颜色
+    color: $custom-select-text-color !important;
+    // 边框样式和颜色
+    border: 1px solid $custom-select-border-color;
+    // 边框圆角
+    border-radius: 0;
+    .el-input__suffix .el-select__caret {
+      color: $custom-select-text-color;
+    }
+    .el-input__icon {
+      line-height: 28px;
+    }
+    // 输入框和下拉框对齐
+    .el-input__inner {
+      padding-right: 0;
+      border: none;
+      background-color: $dp-box-bg-color !important;
+      color: $custom-select-text-color !important;
+      line-height: 28px;
+      height: 28px;
+    }
+    // 悬停时的边框颜色
+    &.is-focus {
+      //border-color: $custom-primary-color;
+    }
+  }
+}
+// 下拉框样式
+.dp-select-dropdown {
+  background-color: $dp-box-bg-color !important;
+  border-color: $primary-color !important;
+  // 隐藏下拉箭头
+  .popper__arrow {
+    border-color: $primary-color !important;
+    &::after {
+      border-color: $primary-color !important;
+    }
+  }
+  .el-select-dropdown__item {
+    height: 24px;
+    line-height: 24px;
+    color: $dp-box-text-color !important;
+    &:hover,
+    &.selected,
+    &.hover {
+      background-color: $primary-color !important;
+    }
+  }
+}
+
+// 自定义 dp-cascader 样式
+.dp-cascader {
+  background-color: $primary-color !important;
+  line-height: 28px !important;
+  // 下拉框容器
+  .el-input {
+    // 背景色
+    background-color: $custom-select-bg;
+    // 字体颜色
+    color: $custom-select-text-color !important;
+    // 边框样式和颜色
+    border: 1px solid $custom-select-border-color;
+    // 边框圆角
+    border-radius: 0;
+    .el-input__suffix .el-select__caret {
+      color: $custom-select-text-color;
+    }
+    .el-input__icon {
+      line-height: 28px;
+    }
+    // 输入框和下拉框对齐
+    .el-input__inner {
+      padding-right: 0;
+      border: none;
+      background-color: $dp-box-bg-color !important;
+      color: $custom-select-text-color !important;
+      line-height: 28px;
+      height: 28px;
+    }
+    // 悬停时的边框颜色
+    &.is-focus {
+      //border-color: $custom-primary-color;
+    }
+  }
+}
+
+// 日期选择控件大屏样式
+.dp-date-picker {
+  &.el-date-editor.el-range-editor {
+    border-color: $dp-box-border-color !important;
+    background-color: $dp-date-bg-color !important;
+    height: 24px;
+    line-height: 24px;
+    color: $dp-box-text-color !important;
+
+    .el-range-separator {
+      line-height: 16px;
+      color: $dp-box-text-color !important;
+    }
+    .el-range-input {
+      color: $dp-date-ft-color !important;
+      &::placeholder {
+        color: $dp-date-ft-color !important;
+      }
+    }
+    .el-range__icon,
+    .el-range__close-icon {
+      line-height: 24px;
+      color: $dp-date-ft-color !important;
+    }
+  }
+}
+// 日期下拉框
+.dp-date-picker-dropdown {
+  // 隐藏下拉箭头
+  .popper__arrow {
+    border-color: $primary-color !important;
+    &::after {
+      border-color: $primary-color !important;
+    }
+  }
+  &.el-picker-panel {
+    color: $dp-date-ft-color !important;
+    background-color: $dp-date-bg-color !important;
+    border-color: $primary-color !important;
+    .el-picker-panel__sidebar {
+      background-color: $dp-date-bg-color !important;
+      border-color: $primary-color !important;
+    }
+    .el-picker-panel__shortcut {
+      color: $dp-date-ft-second-color !important;
+      &:hover {
+        color: $dp-date-ft-color !important;
+      }
+    }
+    .el-date-table td.in-range div {
+      background-color: $dp-date-range-bg-color !important;
+      &:hover {
+        background-color: $dp-date-range-hover-bg-color !important;
+      }
+    }
+    .el-date-range-picker__content.is-left {
+      border-color: $primary-color !important;
+    }
+    .el-date-range-picker__header .el-picker-panel__icon-btn {
+      color: $dp-date-ft-second-color !important;
+      &:hover {
+        color: $dp-date-ft-color !important;
+      }
+    }
+    .el-date-table {
+      th {
+        color: $dp-date-ft-color !important;
+        border-color: $primary-color !important;
+      }
+      td {
+        &.prev-month,
+        &.next-month {
+          color: $dp-date-ft-third-color !important;
+          &:hover {
+            color: $dp-date-ft-second-color !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 按钮样式
+.dp-button-container {
+  .dp-button {
+    &.el-button {
+      background-color: $dp-button-bg-color;
+      border-color: $primary-color !important;
+      color: $dp-button-ft-color !important;
+      height: 24px;
+      padding: 2px 8px;
+      &.el-button--default:focus,
+      &.el-button--default:hover {
+        background-color: $dp-button-hover-bg-color;
+      }
+    }
+  }
+}
+.dp-container {
+  //大屏样式： 个性化配置复选框的选中和非选中状态
+  .dp-checkbox {
+    .el-checkbox__input {
+      border: 2px solid #00a7bd;
+      /* 圆角 */
+      border-radius: 3px;
+      /* 未选中时的背景色透明 */
+      background-color: transparent;
+      .el-checkbox__inner {
+        background-color: transparent;
+        border: none;
+        &::after {
+          transition: none !important;
+        }
+      }
+      &.is-checked {
+        background-color: #00a7bd;
+        transition: none !important;
+        .el-checkbox__inner::after {
+          content: "";
+          display: block;
+          width: 10px;
+          height: 10px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          /* 背景色 */
+          background-color: #00a7bd;
+          border: none;
+          transition: none !important;
+        }
+      }
+    }
+  }
+}
+
+.dp-radio-group {
+  .el-radio-button {
+    .el-radio-button__inner {
+      padding: 4px 12px;
+      border: 1px solid $primary-color;
+      background-color: $dp-radio-group-bg-color;
+      color: $dp-radio-group-ft-color;
+      &:hover {
+        color: $primary-color;
+      }
+    }
+    .el-radio-button__orig-radio:checked + .el-radio-button__inner {
+      border: 1px solid $primary-color;
+      background-color: $dp-radio-group-check-bg-color;
+      color: $dp-radio-group-check-ft-color;
+      box-shadow: none;
+    }
+    &:first-child .el-radio-button__inner {
+      border-color: $primary-color;
+    }
+  }
+}
+
+.dp-dialog {
+}
+
+/* 设置滚动条样式 */
+.dp-scroll {
+  overflow: auto;
+  &::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    width: 6px; /*高宽分别对应横竖滚动条的尺寸*/
+    height: 12px;
+  }
+  &::-webkit-scrollbar-track {
+    /*滚动条里面轨道*/
+    border-radius: 0;
+    //-webkit-box-shadow: transparent;
+    //box-shadow: transparent;
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块*/
+    border-radius: 6px;
+    -webkit-box-shadow: transparent;
+    box-shadow: transparent;
+    background-color: transparent;
+  }
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      //-webkit-box-shadow: inset 0 0 0 2px #adf7f4;
+      //box-shadow: inset 0 0 0 2px #adf7f4;
+      background-color: rgba(191, 218, 236, 0.5);
+    }
+  }
+  &[lock] {
+    &::-webkit-scrollbar-track {
+      /*滚动条里面轨道*/
+      //-webkit-box-shadow: inset 0 0 5px #bdbfc5;
+      //box-shadow: inset 0 0 5px #bdbfc5;
+      background-color: #adf7f4;
+    }
+    &::-webkit-scrollbar-thumb {
+      /*滚动条里面小方块*/
+      //-webkit-box-shadow: inset 0 0 0 2px #adf7f4;
+      //box-shadow: inset 0 0 0 2px #adf7f4;
+      background-color: rgba(0, 0, 0, 0.15);
+    }
+    &:hover {
+      &::-webkit-scrollbar-thumb {
+        //-webkit-box-shadow: inset 0 0 0 2px #adf7f4;
+        //box-shadow: inset 0 0 0 2px #adf7f4;
+        background-color: rgba(81, 182, 249, 0.5);
+      }
+    }
+  }
+}
+
+.dp-query-popover {
+  color: #16ddde !important;
+  border-color: #0059be !important;
+  background-color: #003271 !important;
+  min-width: 100px !important;
+  // 弹出框
+  &.el-popover {
+    line-height: 24px;
+    padding: 12px;
+    @include bg_background_color_fourth;
+    @include bd_border_color_third;
+    border-radius: 2px;
+    @include ft_font_color_second;
+    @include bs_shadow_dark_color_fourth(0 2px 12px);
+    .el-popover__title {
+      color: #1bf9fa !important;
+      border-color: #0059be !important;
+      background-color: #003d86 !important;
+      margin: -12px -12px 12px -12px !important;
+      padding: 13px 16px 12px !important;
+      border-bottom-width: 1px !important;
+      border-style: solid !important;
+      font-size: 16px !important;
+      line-height: 1 !important;
+    }
+    .hdty-popover-title {
+      display: block;
+      line-height: 1;
+      padding: 12px 0;
+      font-size: 16px;
+      font-weight: 500;
+      @include ft_font_color_first;
+    }
+    .hdty-popover-close {
+      display: inline-block;
+      position: absolute;
+      right: 16px;
+      top: 13px;
+      z-index: 1;
+      line-height: 1;
+      vertical-align: middle;
+      font-family: "element-icons", sans-serif !important;
+      font-size: 16px;
+      @include ft_font_color_second;
+      @include transition(all 0.3s);
+      &::before {
+        content: "\e6db";
+      }
+      &:hover {
+        cursor: pointer;
+        opacity: 0.8;
+      }
+    }
+    .hdty-menu {
+      width: auto;
+      margin: 0 -12px;
+      -webkit-box-shadow: none !important;
+      box-shadow: none !important;
+      .hdty-menu-item {
+        margin-bottom: 0;
+      }
+    }
+    &[x-placement^="bottom"] {
+      .el-popover__title {
+        ~ .popper__arrow {
+          &::after {
+            @include bd_background_color_third;
+          }
+        }
+      }
+    }
+  }
+}

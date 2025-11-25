@@ -1,0 +1,1 @@
+const BMAP_SEARCH_TRIGGER_LOCATION_CHANGE="location-change";const BMAP_SEARCH_CLEAR_TRIGGER_BUTTON="button";

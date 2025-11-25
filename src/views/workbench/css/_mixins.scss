@@ -1,0 +1,5 @@
+@mixin card-base {
+  background: $panel-bg;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(2, 8, 22, 0.45);
+}

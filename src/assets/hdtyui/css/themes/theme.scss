@@ -1,0 +1,3861 @@
+/*
+主题样式
+*/
+
+@import "./variable";
+
+/* 1.主色 primary-color */
+
+// 1.1.品牌色
+@mixin bg_brand_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-brand-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-brand-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-brand-color-first $important;
+  }
+}
+@mixin bd_brand_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-brand-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-brand-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-brand-color-first $important;
+  }
+}
+@mixin bdl_brand_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-left-color: $classical-green-brand-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-left-color: $police-blue-brand-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-left-color: $ocean-blue-brand-color-first $important;
+  }
+}
+@mixin bdr_brand_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-right-color: $classical-green-brand-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-right-color: $police-blue-brand-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-right-color: $ocean-blue-brand-color-first $important;
+  }
+}
+@mixin bdt_brand_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-top-color: $classical-green-brand-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-top-color: $police-blue-brand-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-top-color: $ocean-blue-brand-color-first $important;
+  }
+}
+@mixin bdb_brand_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-bottom-color: $classical-green-brand-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-bottom-color: $police-blue-brand-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-bottom-color: $ocean-blue-brand-color-first $important;
+  }
+}
+@mixin ft_brand_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-brand-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-brand-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-brand-color-first $important;
+  }
+}
+@mixin bs_brand_color_first($shadow, $important: null) {
+  [theme-alias^="classical-green"] & {
+    -webkit-box-shadow: $shadow $classical-green-brand-color-first $important;
+    box-shadow: $shadow $classical-green-brand-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    -webkit-box-shadow: $shadow $police-blue-brand-color-first $important;
+    box-shadow: $shadow $police-blue-brand-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    -webkit-box-shadow: $shadow $ocean-blue-brand-color-first $important;
+    box-shadow: $shadow $ocean-blue-brand-color-first $important;
+  }
+}
+@mixin ts_brand_color_first($shadow, $important: null) {
+  [theme-alias^="classical-green"] & {
+    text-shadow: $shadow $classical-green-brand-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    text-shadow: $shadow $police-blue-brand-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    text-shadow: $shadow $ocean-blue-brand-color-first $important;
+  }
+}
+@mixin tl_brand_color_first($shadow1, $shadow2, $important: null) {
+  [theme-alias^="classical-green"] & {
+    text-shadow: $shadow1 $classical-green-brand-color-first,
+      $shadow2 $classical-green-brand-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    text-shadow: $shadow1 $police-blue-brand-color-first,
+      $shadow2 $police-blue-brand-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    text-shadow: $shadow1 $ocean-blue-brand-color-first,
+      $shadow2 $ocean-blue-brand-color-first $important;
+  }
+}
+@mixin bg_brand_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-brand-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-brand-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-brand-color-second $important;
+  }
+}
+@mixin bd_brand_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-brand-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-brand-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-brand-color-second $important;
+  }
+}
+@mixin ft_brand_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-brand-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-brand-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-brand-color-second $important;
+  }
+}
+@mixin bg_brand_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-brand-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-brand-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-brand-color-third $important;
+  }
+}
+@mixin bd_brand_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-brand-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-brand-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-brand-color-third $important;
+  }
+}
+@mixin ft_brand_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-brand-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-brand-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-brand-color-third $important;
+  }
+}
+@mixin bg_brand_color_fourth($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-brand-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-brand-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-brand-color-fourth $important;
+  }
+}
+@mixin bs_brand_color_fourth($shadow, $important: null) {
+  [theme-alias^="classical-green"] & {
+    -webkit-box-shadow: $shadow $classical-green-brand-color-fourth $important;
+    box-shadow: $shadow $classical-green-brand-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    -webkit-box-shadow: $shadow $police-blue-brand-color-fourth $important;
+    box-shadow: $shadow $police-blue-brand-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    -webkit-box-shadow: $shadow $ocean-blue-brand-color-fourth $important;
+    box-shadow: $shadow $ocean-blue-brand-color-fourth $important;
+  }
+}
+
+// 1.2.重要色
+@mixin bg_main_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-main-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-main-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-main-color-first $important;
+  }
+}
+@mixin bd_main_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-main-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-main-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-main-color-first $important;
+  }
+}
+@mixin bdl_main_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-left-color: $classical-green-main-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-left-color: $police-blue-main-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-left-color: $ocean-blue-main-color-first $important;
+  }
+}
+@mixin bdr_main_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-right-color: $classical-green-main-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-right-color: $police-blue-main-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-right-color: $ocean-blue-main-color-first $important;
+  }
+}
+@mixin bdt_main_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-top-color: $classical-green-main-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-top-color: $police-blue-main-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-top-color: $ocean-blue-main-color-first $important;
+  }
+}
+@mixin bdb_main_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-bottom-color: $classical-green-main-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-bottom-color: $police-blue-main-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-bottom-color: $ocean-blue-main-color-first $important;
+  }
+}
+@mixin ft_main_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-main-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-main-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-main-color-first $important;
+  }
+}
+@mixin ts_main_color_first($shadow, $important: null) {
+  [theme-alias^="classical-green"] & {
+    text-shadow: $shadow $classical-green-main-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    text-shadow: $shadow $police-blue-main-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    text-shadow: $shadow $ocean-blue-main-color-first $important;
+  }
+}
+@mixin tl_main_color_first($shadow1, $shadow2, $important: null) {
+  [theme-alias^="classical-green"] & {
+    text-shadow: $shadow1 $classical-green-main-color-first,
+      $shadow2 $classical-green-main-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    text-shadow: $shadow1 $police-blue-main-color-first,
+      $shadow2 $police-blue-main-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    text-shadow: $shadow1 $ocean-blue-main-color-first,
+      $shadow2 $ocean-blue-main-color-first $important;
+  }
+}
+@mixin bg_main_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-main-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-main-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-main-color-second $important;
+  }
+}
+@mixin bd_main_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-main-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-main-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-main-color-second $important;
+  }
+}
+@mixin ft_main_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-main-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-main-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-main-color-second $important;
+  }
+}
+@mixin bg_main_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-main-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-main-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-main-color-third $important;
+  }
+}
+@mixin bd_main_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-main-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-main-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-main-color-third $important;
+  }
+}
+@mixin ft_main_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-main-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-main-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-main-color-third $important;
+  }
+}
+@mixin bg_main_color_fourth($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-main-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-main-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-main-color-fourth $important;
+  }
+}
+
+// 1.3.成功色
+@mixin bg_success_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-success-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-success-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-success-color-first $important;
+  }
+}
+@mixin bd_success_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-success-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-success-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-success-color-first $important;
+  }
+}
+@mixin bdl_success_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-left-color: $classical-green-success-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-left-color: $police-blue-success-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-left-color: $ocean-blue-success-color-first $important;
+  }
+}
+@mixin bdr_success_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-right-color: $classical-green-success-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-right-color: $police-blue-success-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-right-color: $ocean-blue-success-color-first $important;
+  }
+}
+@mixin bdt_success_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-top-color: $classical-green-success-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-top-color: $police-blue-success-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-top-color: $ocean-blue-success-color-first $important;
+  }
+}
+@mixin bdb_success_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-bottom-color: $classical-green-success-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-bottom-color: $police-blue-success-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-bottom-color: $ocean-blue-success-color-first $important;
+  }
+}
+@mixin ft_success_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-success-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-success-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-success-color-first $important;
+  }
+}
+@mixin bs_success_color_first($shadow, $important: null) {
+  [theme-alias^="classical-green"] & {
+    -webkit-box-shadow: $shadow $classical-green-success-color-first $important;
+    box-shadow: $shadow $classical-green-success-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    -webkit-box-shadow: $shadow $police-blue-success-color-first $important;
+    box-shadow: $shadow $police-blue-success-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    -webkit-box-shadow: $shadow $ocean-blue-success-color-first $important;
+    box-shadow: $shadow $ocean-blue-success-color-first $important;
+  }
+}
+@mixin ts_success_color_first($shadow, $important: null) {
+  [theme-alias^="classical-green"] & {
+    text-shadow: $shadow $classical-green-success-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    text-shadow: $shadow $police-blue-success-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    text-shadow: $shadow $ocean-blue-success-color-first $important;
+  }
+}
+@mixin tl_success_color_first($shadow1, $shadow2, $important: null) {
+  [theme-alias^="classical-green"] & {
+    text-shadow: $shadow1 $classical-green-success-color-first,
+      $shadow2 $classical-green-success-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    text-shadow: $shadow1 $police-blue-success-color-first,
+      $shadow2 $police-blue-success-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    text-shadow: $shadow1 $ocean-blue-success-color-first,
+      $shadow2 $ocean-blue-success-color-first $important;
+  }
+}
+@mixin st_success_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    stroke: $classical-green-success-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    stroke: $police-blue-success-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    stroke: $ocean-blue-success-color-first $important;
+  }
+}
+@mixin bg_success_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-success-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-success-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-success-color-second $important;
+  }
+}
+@mixin bd_success_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-success-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-success-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-success-color-second $important;
+  }
+}
+@mixin ft_success_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-success-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-success-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-success-color-second $important;
+  }
+}
+@mixin bg_success_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-success-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-success-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-success-color-third $important;
+  }
+}
+@mixin bd_success_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-success-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-success-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-success-color-third $important;
+  }
+}
+@mixin ft_success_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-success-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-success-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-success-color-third $important;
+  }
+}
+@mixin bg_success_color_fourth($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-success-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-success-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-success-color-fourth $important;
+  }
+}
+
+// 1.4.资讯色
+@mixin bg_info_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-info-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-info-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-info-color-first $important;
+  }
+}
+@mixin bd_info_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-info-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-info-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-info-color-first $important;
+  }
+}
+@mixin ft_info_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-info-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-info-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-info-color-first $important;
+  }
+}
+@mixin ts_info_color_first($shadow, $important: null) {
+  [theme-alias^="classical-green"] & {
+    text-shadow: $shadow $classical-green-info-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    text-shadow: $shadow $police-blue-info-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    text-shadow: $shadow $ocean-blue-info-color-first $important;
+  }
+}
+@mixin tl_info_color_first($shadow1, $shadow2, $important: null) {
+  [theme-alias^="classical-green"] & {
+    text-shadow: $shadow1 $classical-green-info-color-first,
+      $shadow2 $classical-green-info-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    text-shadow: $shadow1 $police-blue-info-color-first,
+      $shadow2 $police-blue-info-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    text-shadow: $shadow1 $ocean-blue-info-color-first,
+      $shadow2 $ocean-blue-info-color-first $important;
+  }
+}
+@mixin bg_info_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-info-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-info-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-info-color-second $important;
+  }
+}
+@mixin bd_info_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-info-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-info-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-info-color-second $important;
+  }
+}
+@mixin ft_info_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-info-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-info-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-info-color-second $important;
+  }
+}
+@mixin bg_info_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-info-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-info-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-info-color-third $important;
+  }
+}
+@mixin bd_info_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-info-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-info-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-info-color-third $important;
+  }
+}
+@mixin ft_info_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-info-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-info-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-info-color-third $important;
+  }
+}
+@mixin bg_info_color_fourth($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-info-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-info-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-info-color-fourth $important;
+  }
+}
+
+// 1.5.注意色
+@mixin bg_remind_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-remind-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-remind-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-remind-color-first $important;
+  }
+}
+@mixin bd_remind_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-remind-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-remind-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-remind-color-first $important;
+  }
+}
+@mixin ft_remind_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-remind-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-remind-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-remind-color-first $important;
+  }
+}
+@mixin bg_remind_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-remind-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-remind-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-remind-color-second $important;
+  }
+}
+@mixin bd_remind_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-remind-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-remind-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-remind-color-second $important;
+  }
+}
+@mixin ft_remind_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-remind-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-remind-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-remind-color-second $important;
+  }
+}
+@mixin bg_remind_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-remind-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-remind-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-remind-color-third $important;
+  }
+}
+@mixin bd_remind_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-remind-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-remind-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-remind-color-third $important;
+  }
+}
+@mixin ft_remind_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-remind-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-remind-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-remind-color-third $important;
+  }
+}
+@mixin bg_remind_color_fourth($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-remind-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-remind-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-remind-color-fourth $important;
+  }
+}
+
+// 1.6.警告色
+@mixin bg_warning_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-warning-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-warning-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-warning-color-first $important;
+  }
+}
+@mixin bd_warning_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-warning-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-warning-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-warning-color-first $important;
+  }
+}
+@mixin ft_warning_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-warning-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-warning-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-warning-color-first $important;
+  }
+}
+@mixin bg_warning_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-warning-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-warning-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-warning-color-second $important;
+  }
+}
+@mixin bd_warning_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-warning-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-warning-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-warning-color-second $important;
+  }
+}
+@mixin ft_warning_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-warning-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-warning-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-warning-color-second $important;
+  }
+}
+@mixin bg_warning_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-warning-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-warning-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-warning-color-third $important;
+  }
+}
+@mixin bd_warning_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-warning-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-warning-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-warning-color-third $important;
+  }
+}
+@mixin ft_warning_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-warning-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-warning-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-warning-color-third $important;
+  }
+}
+@mixin bg_warning_color_fourth($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-warning-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-warning-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-warning-color-fourth $important;
+  }
+}
+
+// 1.7.危险色
+@mixin bg_danger_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-danger-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-danger-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-danger-color-first $important;
+  }
+}
+@mixin bd_danger_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-danger-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-danger-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-danger-color-first $important;
+  }
+}
+@mixin bdl_danger_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-left-color: $classical-green-danger-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-left-color: $police-blue-danger-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-left-color: $ocean-blue-danger-color-first $important;
+  }
+}
+@mixin bdr_danger_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-right-color: $classical-green-danger-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-right-color: $police-blue-danger-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-right-color: $ocean-blue-danger-color-first $important;
+  }
+}
+@mixin bdt_danger_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-top-color: $classical-green-danger-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-top-color: $police-blue-danger-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-top-color: $ocean-blue-danger-color-first $important;
+  }
+}
+@mixin bdb_danger_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-bottom-color: $classical-green-danger-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-bottom-color: $police-blue-danger-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-bottom-color: $ocean-blue-danger-color-first $important;
+  }
+}
+@mixin ft_danger_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-danger-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-danger-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-danger-color-first $important;
+  }
+}
+@mixin bg_danger_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-danger-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-danger-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-danger-color-second $important;
+  }
+}
+@mixin bd_danger_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-danger-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-danger-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-danger-color-second $important;
+  }
+}
+@mixin ft_danger_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-danger-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-danger-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-danger-color-second $important;
+  }
+}
+@mixin bg_danger_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-danger-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-danger-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-danger-color-third $important;
+  }
+}
+@mixin bd_danger_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-danger-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-danger-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-danger-color-third $important;
+  }
+}
+@mixin ft_danger_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-danger-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-danger-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-danger-color-third $important;
+  }
+}
+@mixin bg_danger_color_fourth($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-danger-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-danger-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-danger-color-fourth $important;
+  }
+}
+
+/* 2.副色 secondary-color */
+
+// 2.1.导航色
+@mixin bg_navigation_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-navigation-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-navigation-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-navigation-color-first $important;
+  }
+}
+@mixin bg_navigation_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-navigation-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-navigation-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-navigation-color-second $important;
+  }
+}
+@mixin bg_navigation_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-navigation-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-navigation-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-navigation-color-third $important;
+  }
+}
+@mixin bg_navigation_color_fourth($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-navigation-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-navigation-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-navigation-color-fourth $important;
+  }
+}
+
+// 2.2.背景色
+@mixin bg_background_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-background-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-background-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-background-color-first $important;
+  }
+}
+@mixin bg_background_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-background-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-background-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-background-color-second $important;
+  }
+}
+@mixin bd_background_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-background-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-background-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-background-color-second $important;
+  }
+}
+@mixin bdr_background_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-right-color: $classical-green-background-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-right-color: $police-blue-background-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-right-color: $ocean-blue-background-color-second $important;
+  }
+}
+@mixin bdb_background_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-bottom-color: $classical-green-background-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-bottom-color: $police-blue-background-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-bottom-color: $ocean-blue-background-color-second $important;
+  }
+}
+@mixin bg_background_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-background-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-background-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-background-color-third $important;
+  }
+}
+@mixin bd_background_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-background-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-background-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-background-color-third $important;
+  }
+}
+@mixin bg_background_color_fourth($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-background-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-background-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-background-color-fourth $important;
+  }
+}
+@mixin bd_background_color_fourth($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-background-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-background-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-background-color-fourth $important;
+  }
+}
+@mixin bdr_background_color_fourth($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-right-color: $classical-green-background-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-right-color: $police-blue-background-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-right-color: $ocean-blue-background-color-fourth $important;
+  }
+}
+@mixin bdb_background_color_fourth($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-bottom-color: $classical-green-background-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-bottom-color: $police-blue-background-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-bottom-color: $ocean-blue-background-color-fourth $important;
+  }
+}
+@mixin ft_background_color_fourth($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-background-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-background-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-background-color-fourth $important;
+  }
+}
+
+// 2.3.基础色
+@mixin bg_base_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-base-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-base-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-base-color-first $important;
+  }
+}
+@mixin bd_base_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-base-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-base-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-base-color-first $important;
+  }
+}
+@mixin ft_base_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-base-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-base-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-base-color-first $important;
+  }
+}
+@mixin bs_base_color_first($shadow, $important: null) {
+  [theme-alias^="classical-green"] & {
+    -webkit-box-shadow: $shadow $classical-green-base-color-first $important;
+    box-shadow: $shadow $classical-green-base-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    -webkit-box-shadow: $shadow $police-blue-base-color-first $important;
+    box-shadow: $shadow $police-blue-base-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    -webkit-box-shadow: $shadow $ocean-blue-base-color-first $important;
+    box-shadow: $shadow $ocean-blue-base-color-first $important;
+  }
+}
+@mixin ts_base_color_first($shadow, $important: null) {
+  [theme-alias^="classical-green"] & {
+    text-shadow: $shadow $classical-green-base-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    text-shadow: $shadow $police-blue-base-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    text-shadow: $shadow $ocean-blue-base-color-first $important;
+  }
+}
+@mixin ft_base_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-base-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-base-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-base-color-second $important;
+  }
+}
+@mixin ft_base_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-base-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-base-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-base-color-third $important;
+  }
+}
+@mixin bg_base_color_fourth($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-base-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-base-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-base-color-fourth $important;
+  }
+}
+@mixin ft_base_color_fourth($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-base-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-base-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-base-color-fourth $important;
+  }
+}
+@mixin bs_base_color_fourth($shadow, $important: null) {
+  [theme-alias^="classical-green"] & {
+    -webkit-box-shadow: $shadow $classical-green-base-color-fourth $important;
+    box-shadow: $shadow $classical-green-base-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    -webkit-box-shadow: $shadow $police-blue-base-color-fourth $important;
+    box-shadow: $shadow $police-blue-base-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    -webkit-box-shadow: $shadow $ocean-blue-base-color-fourth $important;
+    box-shadow: $shadow $ocean-blue-base-color-fourth $important;
+  }
+}
+@mixin ts_base_color_fourth($shadow, $important: null) {
+  [theme-alias^="classical-green"] & {
+    text-shadow: $shadow $classical-green-base-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    text-shadow: $shadow $police-blue-base-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    text-shadow: $shadow $ocean-blue-base-color-fourth $important;
+  }
+}
+
+/* 3.辅助色 auxiliary-color */
+
+// 3.1.填充色
+@mixin bg_filling_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-filling-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-filling-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-filling-color-first $important;
+  }
+}
+@mixin bd_filling_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-filling-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-filling-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-filling-color-first $important;
+  }
+}
+@mixin bg_filling_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-filling-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-filling-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-filling-color-second $important;
+  }
+}
+@mixin ft_filling_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-filling-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-filling-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-filling-color-second $important;
+  }
+}
+@mixin ft_filling_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-filling-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-filling-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-filling-color-third $important;
+  }
+}
+@mixin ft_filling_color_fourth($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-filling-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-filling-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-filling-color-fourth $important;
+  }
+}
+
+// 3.2.字体色
+@mixin bg_font_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-font-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-font-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-font-color-first $important;
+  }
+}
+@mixin ft_font_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-font-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-font-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-font-color-first $important;
+  }
+}
+@mixin ft_font_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-font-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-font-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-font-color-second $important;
+  }
+}
+@mixin tf_font_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    -webkit-text-fill-color: $classical-green-font-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    -webkit-text-fill-color: $police-blue-font-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    -webkit-text-fill-color: $ocean-blue-font-color-second $important;
+  }
+}
+@mixin bd_font_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-font-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-font-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-font-color-third $important;
+  }
+}
+@mixin bdl_font_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-left-color: $classical-green-font-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-left-color: $police-blue-font-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-left-color: $ocean-blue-font-color-third $important;
+  }
+}
+@mixin bdr_font_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-right-color: $classical-green-font-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-right-color: $police-blue-font-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-right-color: $ocean-blue-font-color-third $important;
+  }
+}
+@mixin bdt_font_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-top-color: $classical-green-font-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-top-color: $police-blue-font-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-top-color: $ocean-blue-font-color-third $important;
+  }
+}
+@mixin bdb_font_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-bottom-color: $classical-green-font-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-bottom-color: $police-blue-font-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-bottom-color: $ocean-blue-font-color-third $important;
+  }
+}
+@mixin ft_font_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-font-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-font-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-font-color-third $important;
+  }
+}
+@mixin bg_font_color_fourth($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-font-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-font-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-font-color-fourth $important;
+  }
+}
+@mixin bd_font_color_fourth($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-font-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-font-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-font-color-fourth $important;
+  }
+}
+@mixin bdl_font_color_fourth($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-left-color: $classical-green-font-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-left-color: $police-blue-font-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-left-color: $ocean-blue-font-color-fourth $important;
+  }
+}
+@mixin bdr_font_color_fourth($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-right-color: $classical-green-font-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-right-color: $police-blue-font-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-right-color: $ocean-blue-font-color-fourth $important;
+  }
+}
+@mixin bdt_font_color_fourth($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-top-color: $classical-green-font-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-top-color: $police-blue-font-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-top-color: $ocean-blue-font-color-fourth $important;
+  }
+}
+@mixin bdb_font_color_fourth($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-bottom-color: $classical-green-font-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-bottom-color: $police-blue-font-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-bottom-color: $ocean-blue-font-color-fourth $important;
+  }
+}
+@mixin ft_font_color_fourth($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-font-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-font-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-font-color-fourth $important;
+  }
+}
+
+// 3.3.边框色
+@mixin bg_border_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-border-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-border-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-border-color-first $important;
+  }
+}
+@mixin bd_border_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-border-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-border-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-border-color-first $important;
+  }
+}
+@mixin bdl_border_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-left-color: $classical-green-border-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-left-color: $police-blue-border-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-left-color: $ocean-blue-border-color-first $important;
+  }
+}
+@mixin bdr_border_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-right-color: $classical-green-border-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-right-color: $police-blue-border-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-right-color: $ocean-blue-border-color-first $important;
+  }
+}
+@mixin bdt_border_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-top-color: $classical-green-border-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-top-color: $police-blue-border-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-top-color: $ocean-blue-border-color-first $important;
+  }
+}
+@mixin bdb_border_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-bottom-color: $classical-green-border-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-bottom-color: $police-blue-border-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-bottom-color: $ocean-blue-border-color-first $important;
+  }
+}
+@mixin bs_border_color_first($shadow, $important: null) {
+  [theme-alias^="classical-green"] & {
+    -webkit-box-shadow: $shadow $classical-green-border-color-first $important;
+    box-shadow: $shadow $classical-green-border-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    -webkit-box-shadow: $shadow $police-blue-border-color-first $important;
+    box-shadow: $shadow $police-blue-border-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    -webkit-box-shadow: $shadow $ocean-blue-border-color-first $important;
+    box-shadow: $shadow $ocean-blue-border-color-first $important;
+  }
+}
+@mixin bg_border_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-border-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-border-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-border-color-second $important;
+  }
+}
+@mixin bd_border_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-border-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-border-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-border-color-second $important;
+  }
+}
+@mixin bdl_border_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-left-color: $classical-green-border-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-left-color: $police-blue-border-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-left-color: $ocean-blue-border-color-second $important;
+  }
+}
+@mixin bdr_border_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-right-color: $classical-green-border-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-right-color: $police-blue-border-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-right-color: $ocean-blue-border-color-second $important;
+  }
+}
+@mixin bdt_border_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-top-color: $classical-green-border-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-top-color: $police-blue-border-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-top-color: $ocean-blue-border-color-second $important;
+  }
+}
+@mixin bdb_border_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-bottom-color: $classical-green-border-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-bottom-color: $police-blue-border-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-bottom-color: $ocean-blue-border-color-second $important;
+  }
+}
+@mixin bg_border_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-border-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-border-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-border-color-third $important;
+  }
+}
+@mixin bd_border_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-border-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-border-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-border-color-third $important;
+  }
+}
+@mixin bdr_border_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-right-color: $classical-green-border-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-right-color: $police-blue-border-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-right-color: $ocean-blue-border-color-third $important;
+  }
+}
+@mixin bdb_border_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-bottom-color: $classical-green-border-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-bottom-color: $police-blue-border-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-bottom-color: $ocean-blue-border-color-third $important;
+  }
+}
+@mixin ft_border_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-border-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-border-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-border-color-third $important;
+  }
+}
+@mixin bg_border_color_fourth($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-border-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-border-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-border-color-fourth $important;
+  }
+}
+@mixin bd_border_color_fourth($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-border-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-border-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-border-color-fourth $important;
+  }
+}
+@mixin ft_border_color_fourth($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-border-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-border-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-border-color-fourth $important;
+  }
+}
+@mixin bs_border_color_fourth($shadow, $important: null) {
+  [theme-alias^="classical-green"] & {
+    -webkit-box-shadow: $shadow $classical-green-border-color-fourth $important;
+    box-shadow: $shadow $classical-green-border-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    -webkit-box-shadow: $shadow $police-blue-border-color-fourth $important;
+    box-shadow: $shadow $police-blue-border-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    -webkit-box-shadow: $shadow $ocean-blue-border-color-fourth $important;
+    box-shadow: $shadow $ocean-blue-border-color-fourth $important;
+  }
+}
+
+// 3.4.阴影色
+@mixin bg_shadow_base_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-shadow-base-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-shadow-base-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-shadow-base-color-first $important;
+  }
+}
+@mixin bg_shadow_base_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-shadow-base-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-shadow-base-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-shadow-base-color-second $important;
+  }
+}
+@mixin bdl_shadow_base_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-left-color: $classical-green-shadow-base-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-left-color: $police-blue-shadow-base-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-left-color: $ocean-blue-shadow-base-color-second $important;
+  }
+}
+@mixin bdr_shadow_base_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-right-color: $classical-green-shadow-base-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-right-color: $police-blue-shadow-base-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-right-color: $ocean-blue-shadow-base-color-second $important;
+  }
+}
+@mixin ts_shadow_base_color_second($shadow, $important: null) {
+  [theme-alias^="classical-green"] & {
+    text-shadow: $shadow $classical-green-shadow-base-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    text-shadow: $shadow $police-blue-shadow-base-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    text-shadow: $shadow $ocean-blue-shadow-base-color-second $important;
+  }
+}
+@mixin bg_shadow_base_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-shadow-base-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-shadow-base-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-shadow-base-color-third $important;
+  }
+}
+@mixin bd_shadow_base_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-shadow-base-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-shadow-base-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-shadow-base-color-third $important;
+  }
+}
+@mixin tl_shadow_base_color_third($shadow1, $shadow2, $important: null) {
+  [theme-alias^="classical-green"] & {
+    text-shadow: $shadow1 $classical-green-shadow-base-color-third,
+      $shadow2 $classical-green-shadow-base-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    text-shadow: $shadow1 $police-blue-shadow-base-color-third,
+      $shadow2 $police-blue-shadow-base-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    text-shadow: $shadow1 $ocean-blue-shadow-base-color-third,
+      $shadow2 $ocean-blue-shadow-base-color-third $important;
+  }
+}
+@mixin bg_shadow_base_color_fourth($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-shadow-base-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-shadow-base-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-shadow-base-color-fourth $important;
+  }
+}
+@mixin bd_shadow_base_color_fourth($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-shadow-base-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-shadow-base-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-shadow-base-color-fourth $important;
+  }
+}
+@mixin bg_shadow_dark_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-shadow-dark-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-shadow-dark-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-shadow-dark-color-first $important;
+  }
+}
+@mixin bg_shadow_dark_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-shadow-dark-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-shadow-dark-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-shadow-dark-color-second $important;
+  }
+}
+@mixin bs_shadow_dark_color_second($shadow, $important: null) {
+  [theme-alias^="classical-green"] & {
+    -webkit-box-shadow: $shadow $classical-green-shadow-dark-color-second
+      $important;
+    box-shadow: $shadow $classical-green-shadow-dark-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    -webkit-box-shadow: $shadow $police-blue-shadow-dark-color-second $important;
+    box-shadow: $shadow $police-blue-shadow-dark-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    -webkit-box-shadow: $shadow $ocean-blue-shadow-dark-color-second $important;
+    box-shadow: $shadow $ocean-blue-shadow-dark-color-second $important;
+  }
+}
+@mixin ts_shadow_dark_color_second($shadow, $important: null) {
+  [theme-alias^="classical-green"] & {
+    text-shadow: $shadow $classical-green-shadow-dark-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    text-shadow: $shadow $police-blue-shadow-dark-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    text-shadow: $shadow $ocean-blue-shadow-dark-color-second $important;
+  }
+}
+@mixin bg_shadow_dark_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-shadow-dark-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-shadow-dark-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-shadow-dark-color-third $important;
+  }
+}
+@mixin bs_shadow_dark_color_third($shadow, $important: null) {
+  [theme-alias^="classical-green"] & {
+    -webkit-box-shadow: $shadow $classical-green-shadow-dark-color-third
+      $important;
+    box-shadow: $shadow $classical-green-shadow-dark-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    -webkit-box-shadow: $shadow $police-blue-shadow-dark-color-third $important;
+    box-shadow: $shadow $police-blue-shadow-dark-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    -webkit-box-shadow: $shadow $ocean-blue-shadow-dark-color-third $important;
+    box-shadow: $shadow $ocean-blue-shadow-dark-color-third $important;
+  }
+}
+@mixin bg_shadow_dark_color_fourth($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-shadow-dark-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-shadow-dark-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-shadow-dark-color-fourth $important;
+  }
+}
+@mixin bs_shadow_dark_color_fourth($shadow, $important: null) {
+  [theme-alias^="classical-green"] & {
+    -webkit-box-shadow: $shadow $classical-green-shadow-dark-color-fourth
+      $important;
+    box-shadow: $shadow $classical-green-shadow-dark-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    -webkit-box-shadow: $shadow $police-blue-shadow-dark-color-fourth $important;
+    box-shadow: $shadow $police-blue-shadow-dark-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    -webkit-box-shadow: $shadow $ocean-blue-shadow-dark-color-fourth $important;
+    box-shadow: $shadow $ocean-blue-shadow-dark-color-fourth $important;
+  }
+}
+@mixin ds_shadow_dark_color_fourth($shadow, $important: null) {
+  [theme-alias^="classical-green"] & {
+    -webkit-filter: drop-shadow(
+        $shadow $classical-green-shadow-dark-color-fourth
+      )
+      $important;
+    filter: drop-shadow($shadow $classical-green-shadow-dark-color-fourth)
+      $important;
+  }
+  [theme-alias^="police-blue"] & {
+    -webkit-filter: drop-shadow($shadow $police-blue-shadow-dark-color-fourth)
+      $important;
+    filter: drop-shadow($shadow $police-blue-shadow-dark-color-fourth)
+      $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    -webkit-filter: drop-shadow($shadow $ocean-blue-shadow-dark-color-fourth)
+      $important;
+    filter: drop-shadow($shadow $ocean-blue-shadow-dark-color-fourth) $important;
+  }
+}
+@mixin ts_shadow_odd_color_first($shadow, $important: null) {
+  [theme-alias^="classical-green"] & {
+    text-shadow: $shadow $classical-green-shadow-odd-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    text-shadow: $shadow $police-blue-shadow-odd-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    text-shadow: $shadow $ocean-blue-shadow-odd-color-first $important;
+  }
+}
+@mixin ol_shadow_main_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    outline-color: $classical-green-shadow-main-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    outline-color: $police-blue-shadow-main-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    outline-color: $ocean-blue-shadow-main-color-first $important;
+  }
+}
+@mixin bs_shadow_main_color_second($shadow, $important: null) {
+  [theme-alias^="classical-green"] & {
+    -webkit-box-shadow: $shadow $classical-green-shadow-main-color-second
+      $important;
+    box-shadow: $shadow $classical-green-shadow-main-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    -webkit-box-shadow: $shadow $police-blue-shadow-main-color-second $important;
+    box-shadow: $shadow $police-blue-shadow-main-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    -webkit-box-shadow: $shadow $ocean-blue-shadow-main-color-second $important;
+    box-shadow: $shadow $ocean-blue-shadow-main-color-second $important;
+  }
+}
+@mixin bg_shadow_main_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-shadow-main-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-shadow-main-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-shadow-main-color-third $important;
+  }
+}
+@mixin bg_shadow_main_color_fourth($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-shadow-main-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-shadow-main-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-shadow-main-color-fourth $important;
+  }
+}
+@mixin bg_shadow_success_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-shadow-success-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-shadow-success-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-shadow-success-color-first $important;
+  }
+}
+@mixin bd_shadow_success_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-shadow-success-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-shadow-success-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-shadow-success-color-first $important;
+  }
+}
+@mixin bg_shadow_info_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-shadow-info-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-shadow-info-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-shadow-info-color-first $important;
+  }
+}
+@mixin bg_shadow_info_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-shadow-info-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-shadow-info-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-shadow-info-color-second $important;
+  }
+}
+@mixin bg_shadow_info_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-shadow-info-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-shadow-info-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-shadow-info-color-third $important;
+  }
+}
+@mixin bg_shadow_remind_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-shadow-remind-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-shadow-remind-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-shadow-remind-color-first $important;
+  }
+}
+@mixin bs_shadow_remind_color_first($shadow, $important: null) {
+  [theme-alias^="classical-green"] & {
+    -webkit-box-shadow: $shadow $classical-green-shadow-remind-color-first
+      $important;
+    box-shadow: $shadow $classical-green-shadow-remind-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    -webkit-box-shadow: $shadow $police-blue-shadow-remind-color-first
+      $important;
+    box-shadow: $shadow $police-blue-shadow-remind-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    -webkit-box-shadow: $shadow $ocean-blue-shadow-remind-color-first $important;
+    box-shadow: $shadow $ocean-blue-shadow-remind-color-first $important;
+  }
+}
+
+// 3.5.点缀色
+@mixin bg_ornament_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-color: $classical-green-ornament-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-color: $police-blue-ornament-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-color: $ocean-blue-ornament-color-first $important;
+  }
+}
+@mixin bd_ornament_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    border-color: $classical-green-ornament-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    border-color: $police-blue-ornament-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    border-color: $ocean-blue-ornament-color-first $important;
+  }
+}
+@mixin ft_ornament_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-ornament-color-first $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-ornament-color-first $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-ornament-color-first $important;
+  }
+}
+@mixin ft_ornament_color_second($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-ornament-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-ornament-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-ornament-color-second $important;
+  }
+}
+@mixin bs_ornament_color_second($shadow, $important: null) {
+  [theme-alias^="classical-green"] & {
+    -webkit-box-shadow: $shadow $classical-green-ornament-color-second
+      $important;
+    box-shadow: $shadow $classical-green-ornament-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    -webkit-box-shadow: $shadow $police-blue-ornament-color-second $important;
+    box-shadow: $shadow $police-blue-ornament-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    -webkit-box-shadow: $shadow $ocean-blue-ornament-color-second $important;
+    box-shadow: $shadow $ocean-blue-ornament-color-second $important;
+  }
+}
+@mixin ft_ornament_color_third($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-ornament-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-ornament-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-ornament-color-third $important;
+  }
+}
+@mixin ft_ornament_color_fourth($important: null) {
+  [theme-alias^="classical-green"] & {
+    color: $classical-green-ornament-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    color: $police-blue-ornament-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    color: $ocean-blue-ornament-color-fourth $important;
+  }
+}
+
+// 3.6.特定阴影色
+@mixin bs_from_filling_color_fourth_to_background_color_fourth_to_filling_color_third(
+  $shadow1,
+  $shadow2,
+  $shadow3,
+  $important: null
+) {
+  [theme-alias^="classical-green"] & {
+    -webkit-box-shadow: $shadow1 $classical-green-filling-color-fourth,
+      $shadow2 $classical-green-background-color-fourth,
+      $shadow3 $classical-green-filling-color-third $important;
+    box-shadow: $shadow1 $classical-green-filling-color-fourth,
+      $shadow2 $classical-green-background-color-fourth,
+      $shadow3 $classical-green-filling-color-third $important;
+  }
+  [theme-alias^="police-blue"] & {
+    -webkit-box-shadow: $shadow1 $police-blue-filling-color-fourth,
+      $shadow2 $police-blue-background-color-fourth,
+      $shadow3 $police-blue-filling-color-third $important;
+    box-shadow: $shadow1 $police-blue-filling-color-fourth,
+      $shadow2 $police-blue-background-color-fourth,
+      $shadow3 $police-blue-filling-color-third $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    -webkit-box-shadow: $shadow1 $ocean-blue-filling-color-fourth,
+      $shadow2 $ocean-blue-background-color-fourth,
+      $shadow3 $ocean-blue-filling-color-third $important;
+    box-shadow: $shadow1 $ocean-blue-filling-color-fourth,
+      $shadow2 $ocean-blue-background-color-fourth,
+      $shadow3 $ocean-blue-filling-color-third $important;
+  }
+}
+@mixin bs_from_shadow_dark_color_third_to_shadow_dark_color_fourth_to_shadow_dark_color_second(
+  $shadow1,
+  $shadow2,
+  $shadow3,
+  $important: null
+) {
+  [theme-alias^="classical-green"] & {
+    -webkit-box-shadow: $shadow1 $classical-green-shadow-dark-color-third,
+      $shadow2 $classical-green-shadow-dark-color-fourth,
+      $shadow3 $classical-green-shadow-dark-color-second $important;
+    box-shadow: $shadow1 $classical-green-shadow-dark-color-third,
+      $shadow2 $classical-green-shadow-dark-color-fourth,
+      $shadow3 $classical-green-shadow-dark-color-second $important;
+  }
+  [theme-alias^="police-blue"] & {
+    -webkit-box-shadow: $shadow1 $police-blue-shadow-dark-color-third,
+      $shadow2 $police-blue-shadow-dark-color-fourth,
+      $shadow3 $police-blue-shadow-dark-color-second $important;
+    box-shadow: $shadow1 $police-blue-shadow-dark-color-third,
+      $shadow2 $police-blue-shadow-dark-color-fourth,
+      $shadow3 $police-blue-shadow-dark-color-second $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    -webkit-box-shadow: $shadow1 $ocean-blue-shadow-dark-color-third,
+      $shadow2 $ocean-blue-shadow-dark-color-fourth,
+      $shadow3 $ocean-blue-shadow-dark-color-second $important;
+    box-shadow: $shadow1 $ocean-blue-shadow-dark-color-third,
+      $shadow2 $ocean-blue-shadow-dark-color-fourth,
+      $shadow3 $ocean-blue-shadow-dark-color-second $important;
+  }
+}
+@mixin bs_from_shadow_dark_color_third_to_shadow_dark_color_fourth_to_shadow_dark_color_fourth(
+  $shadow1,
+  $shadow2,
+  $shadow3,
+  $important: null
+) {
+  [theme-alias^="classical-green"] & {
+    -webkit-box-shadow: $shadow1 $classical-green-shadow-dark-color-third,
+      $shadow2 $classical-green-shadow-dark-color-fourth,
+      $shadow3 $classical-green-shadow-dark-color-fourth $important;
+    box-shadow: $shadow1 $classical-green-shadow-dark-color-third,
+      $shadow2 $classical-green-shadow-dark-color-fourth,
+      $shadow3 $classical-green-shadow-dark-color-fourth $important;
+  }
+  [theme-alias^="police-blue"] & {
+    -webkit-box-shadow: $shadow1 $police-blue-shadow-dark-color-third,
+      $shadow2 $police-blue-shadow-dark-color-fourth,
+      $shadow3 $police-blue-shadow-dark-color-fourth $important;
+    box-shadow: $shadow1 $police-blue-shadow-dark-color-third,
+      $shadow2 $police-blue-shadow-dark-color-fourth,
+      $shadow3 $police-blue-shadow-dark-color-fourth $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    -webkit-box-shadow: $shadow1 $ocean-blue-shadow-dark-color-third,
+      $shadow2 $ocean-blue-shadow-dark-color-fourth,
+      $shadow3 $ocean-blue-shadow-dark-color-fourth $important;
+    box-shadow: $shadow1 $ocean-blue-shadow-dark-color-third,
+      $shadow2 $ocean-blue-shadow-dark-color-fourth,
+      $shadow3 $ocean-blue-shadow-dark-color-fourth $important;
+  }
+}
+
+// 3.7.特定渐变色
+@mixin lg_from_ornament_color_second_to_main_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-image: -webkit-linear-gradient(
+        left,
+        $classical-green-ornament-color-second,
+        $classical-green-main-color-first
+      )
+      $important; /* Safari 5.1 - 6.0 */
+    background-image: -o-linear-gradient(
+        right,
+        $classical-green-ornament-color-second,
+        $classical-green-main-color-first
+      )
+      $important; /* Opera 11.1 - 12.0 */
+    background-image: -moz-linear-gradient(
+        right,
+        $classical-green-ornament-color-second,
+        $classical-green-main-color-first
+      )
+      $important; /* Firefox 3.6 - 15 */
+    background-image: linear-gradient(
+        to right,
+        $classical-green-ornament-color-second,
+        $classical-green-main-color-first
+      )
+      $important; /* 标准的语法（必须放在最后） */
+  }
+  [theme-alias^="police-blue"] & {
+    background-image: -webkit-linear-gradient(
+        left,
+        $police-blue-ornament-color-second,
+        $police-blue-main-color-first
+      )
+      $important; /* Safari 5.1 - 6.0 */
+    background-image: -o-linear-gradient(
+        right,
+        $police-blue-ornament-color-second,
+        $police-blue-main-color-first
+      )
+      $important; /* Opera 11.1 - 12.0 */
+    background-image: -moz-linear-gradient(
+        right,
+        $police-blue-ornament-color-second,
+        $police-blue-main-color-first
+      )
+      $important; /* Firefox 3.6 - 15 */
+    background-image: linear-gradient(
+        to right,
+        $police-blue-ornament-color-second,
+        $police-blue-main-color-first
+      )
+      $important; /* 标准的语法（必须放在最后） */
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-image: -webkit-linear-gradient(
+        left,
+        $ocean-blue-ornament-color-second,
+        $ocean-blue-main-color-first
+      )
+      $important; /* Safari 5.1 - 6.0 */
+    background-image: -o-linear-gradient(
+        right,
+        $ocean-blue-ornament-color-second,
+        $ocean-blue-main-color-first
+      )
+      $important; /* Opera 11.1 - 12.0 */
+    background-image: -moz-linear-gradient(
+        right,
+        $ocean-blue-ornament-color-second,
+        $ocean-blue-main-color-first
+      )
+      $important; /* Firefox 3.6 - 15 */
+    background-image: linear-gradient(
+        to right,
+        $ocean-blue-ornament-color-second,
+        $ocean-blue-main-color-first
+      )
+      $important; /* 标准的语法（必须放在最后） */
+  }
+}
+@mixin lg_from_main_color_first_to_info_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-image: -webkit-linear-gradient(
+        top,
+        $classical-green-main-color-first,
+        $classical-green-info-color-first
+      )
+      $important; /* Safari 5.1 - 6.0 */
+    background-image: -o-linear-gradient(
+        bottom,
+        $classical-green-main-color-first,
+        $classical-green-info-color-first
+      )
+      $important; /* Opera 11.1 - 12.0 */
+    background-image: -moz-linear-gradient(
+        bottom,
+        $classical-green-main-color-first,
+        $classical-green-info-color-first
+      )
+      $important; /* Firefox 3.6 - 15 */
+    background-image: linear-gradient(
+        to bottom,
+        $classical-green-main-color-first,
+        $classical-green-info-color-first
+      )
+      $important; /* 标准的语法（必须放在最后） */
+  }
+  [theme-alias^="police-blue"] & {
+    background-image: -webkit-linear-gradient(
+        top,
+        $police-blue-main-color-first,
+        $police-blue-info-color-first
+      )
+      $important; /* Safari 5.1 - 6.0 */
+    background-image: -o-linear-gradient(
+        bottom,
+        $police-blue-main-color-first,
+        $police-blue-info-color-first
+      )
+      $important; /* Opera 11.1 - 12.0 */
+    background-image: -moz-linear-gradient(
+        bottom,
+        $police-blue-main-color-first,
+        $police-blue-info-color-first
+      )
+      $important; /* Firefox 3.6 - 15 */
+    background-image: linear-gradient(
+        to bottom,
+        $police-blue-main-color-first,
+        $police-blue-info-color-first
+      )
+      $important; /* 标准的语法（必须放在最后） */
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-image: -webkit-linear-gradient(
+        top,
+        $ocean-blue-main-color-first,
+        $ocean-blue-info-color-first
+      )
+      $important; /* Safari 5.1 - 6.0 */
+    background-image: -o-linear-gradient(
+        bottom,
+        $ocean-blue-main-color-first,
+        $ocean-blue-info-color-first
+      )
+      $important; /* Opera 11.1 - 12.0 */
+    background-image: -moz-linear-gradient(
+        bottom,
+        $ocean-blue-main-color-first,
+        $ocean-blue-info-color-first
+      )
+      $important; /* Firefox 3.6 - 15 */
+    background-image: linear-gradient(
+        to bottom,
+        $ocean-blue-main-color-first,
+        $ocean-blue-info-color-first
+      )
+      $important; /* 标准的语法（必须放在最后） */
+  }
+}
+@mixin lg_from_info_color_first_to_main_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-image: -webkit-linear-gradient(
+        top,
+        $classical-green-info-color-first,
+        $classical-green-main-color-first
+      )
+      $important; /* Safari 5.1 - 6.0 */
+    background-image: -o-linear-gradient(
+        bottom,
+        $classical-green-info-color-first,
+        $classical-green-main-color-first
+      )
+      $important; /* Opera 11.1 - 12.0 */
+    background-image: -moz-linear-gradient(
+        bottom,
+        $classical-green-info-color-first,
+        $classical-green-main-color-first
+      )
+      $important; /* Firefox 3.6 - 15 */
+    background-image: linear-gradient(
+        to bottom,
+        $classical-green-info-color-first,
+        $classical-green-main-color-first
+      )
+      $important; /* 标准的语法（必须放在最后） */
+  }
+  [theme-alias^="police-blue"] & {
+    background-image: -webkit-linear-gradient(
+        top,
+        $police-blue-info-color-first,
+        $police-blue-main-color-first
+      )
+      $important; /* Safari 5.1 - 6.0 */
+    background-image: -o-linear-gradient(
+        bottom,
+        $police-blue-info-color-first,
+        $police-blue-main-color-first
+      )
+      $important; /* Opera 11.1 - 12.0 */
+    background-image: -moz-linear-gradient(
+        bottom,
+        $police-blue-info-color-first,
+        $police-blue-main-color-first
+      )
+      $important; /* Firefox 3.6 - 15 */
+    background-image: linear-gradient(
+        to bottom,
+        $police-blue-info-color-first,
+        $police-blue-main-color-first
+      )
+      $important; /* 标准的语法（必须放在最后） */
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-image: -webkit-linear-gradient(
+        top,
+        $ocean-blue-info-color-first,
+        $ocean-blue-main-color-first
+      )
+      $important; /* Safari 5.1 - 6.0 */
+    background-image: -o-linear-gradient(
+        bottom,
+        $ocean-blue-info-color-first,
+        $ocean-blue-main-color-first
+      )
+      $important; /* Opera 11.1 - 12.0 */
+    background-image: -moz-linear-gradient(
+        bottom,
+        $ocean-blue-info-color-first,
+        $ocean-blue-main-color-first
+      )
+      $important; /* Firefox 3.6 - 15 */
+    background-image: linear-gradient(
+        to bottom,
+        $ocean-blue-info-color-first,
+        $ocean-blue-main-color-first
+      )
+      $important; /* 标准的语法（必须放在最后） */
+  }
+}
+@mixin lg_from_remind_color_first_to_warning_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-image: -webkit-linear-gradient(
+        top,
+        $classical-green-remind-color-first,
+        $classical-green-warning-color-first
+      )
+      $important; /* Safari 5.1 - 6.0 */
+    background-image: -o-linear-gradient(
+        bottom,
+        $classical-green-remind-color-first,
+        $classical-green-warning-color-first
+      )
+      $important; /* Opera 11.1 - 12.0 */
+    background-image: -moz-linear-gradient(
+        bottom,
+        $classical-green-remind-color-first,
+        $classical-green-warning-color-first
+      )
+      $important; /* Firefox 3.6 - 15 */
+    background-image: linear-gradient(
+        to bottom,
+        $classical-green-remind-color-first,
+        $classical-green-warning-color-first
+      )
+      $important; /* 标准的语法（必须放在最后） */
+  }
+  [theme-alias^="police-blue"] & {
+    background-image: -webkit-linear-gradient(
+        top,
+        $police-blue-remind-color-first,
+        $police-blue-warning-color-first
+      )
+      $important; /* Safari 5.1 - 6.0 */
+    background-image: -o-linear-gradient(
+        bottom,
+        $police-blue-remind-color-first,
+        $police-blue-warning-color-first
+      )
+      $important; /* Opera 11.1 - 12.0 */
+    background-image: -moz-linear-gradient(
+        bottom,
+        $police-blue-remind-color-first,
+        $police-blue-warning-color-first
+      )
+      $important; /* Firefox 3.6 - 15 */
+    background-image: linear-gradient(
+        to bottom,
+        $police-blue-remind-color-first,
+        $police-blue-warning-color-first
+      )
+      $important; /* 标准的语法（必须放在最后） */
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-image: -webkit-linear-gradient(
+        top,
+        $ocean-blue-remind-color-first,
+        $ocean-blue-warning-color-first
+      )
+      $important; /* Safari 5.1 - 6.0 */
+    background-image: -o-linear-gradient(
+        bottom,
+        $ocean-blue-remind-color-first,
+        $ocean-blue-warning-color-first
+      )
+      $important; /* Opera 11.1 - 12.0 */
+    background-image: -moz-linear-gradient(
+        bottom,
+        $ocean-blue-remind-color-first,
+        $ocean-blue-warning-color-first
+      )
+      $important; /* Firefox 3.6 - 15 */
+    background-image: linear-gradient(
+        to bottom,
+        $ocean-blue-remind-color-first,
+        $ocean-blue-warning-color-first
+      )
+      $important; /* 标准的语法（必须放在最后） */
+  }
+}
+@mixin lg_from_warning_color_first_to_remind_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-image: -webkit-linear-gradient(
+        top,
+        $classical-green-warning-color-first,
+        $classical-green-remind-color-first
+      )
+      $important; /* Safari 5.1 - 6.0 */
+    background-image: -o-linear-gradient(
+        bottom,
+        $classical-green-warning-color-first,
+        $classical-green-remind-color-first
+      )
+      $important; /* Opera 11.1 - 12.0 */
+    background-image: -moz-linear-gradient(
+        bottom,
+        $classical-green-warning-color-first,
+        $classical-green-remind-color-first
+      )
+      $important; /* Firefox 3.6 - 15 */
+    background-image: linear-gradient(
+        to bottom,
+        $classical-green-warning-color-first,
+        $classical-green-remind-color-first
+      )
+      $important; /* 标准的语法（必须放在最后） */
+  }
+  [theme-alias^="police-blue"] & {
+    background-image: -webkit-linear-gradient(
+        top,
+        $police-blue-warning-color-first,
+        $police-blue-remind-color-first
+      )
+      $important; /* Safari 5.1 - 6.0 */
+    background-image: -o-linear-gradient(
+        bottom,
+        $police-blue-warning-color-first,
+        $police-blue-remind-color-first
+      )
+      $important; /* Opera 11.1 - 12.0 */
+    background-image: -moz-linear-gradient(
+        bottom,
+        $police-blue-warning-color-first,
+        $police-blue-remind-color-first
+      )
+      $important; /* Firefox 3.6 - 15 */
+    background-image: linear-gradient(
+        to bottom,
+        $police-blue-warning-color-first,
+        $police-blue-remind-color-first
+      )
+      $important; /* 标准的语法（必须放在最后） */
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-image: -webkit-linear-gradient(
+        top,
+        $ocean-blue-warning-color-first,
+        $ocean-blue-remind-color-first
+      )
+      $important; /* Safari 5.1 - 6.0 */
+    background-image: -o-linear-gradient(
+        bottom,
+        $ocean-blue-warning-color-first,
+        $ocean-blue-remind-color-first
+      )
+      $important; /* Opera 11.1 - 12.0 */
+    background-image: -moz-linear-gradient(
+        bottom,
+        $ocean-blue-warning-color-first,
+        $ocean-blue-remind-color-first
+      )
+      $important; /* Firefox 3.6 - 15 */
+    background-image: linear-gradient(
+        to bottom,
+        $ocean-blue-warning-color-first,
+        $ocean-blue-remind-color-first
+      )
+      $important; /* 标准的语法（必须放在最后） */
+  }
+}
+@mixin lg_from_main_color_first_to_success_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-image: -webkit-linear-gradient(
+        $classical-green-main-color-first,
+        $classical-green-main-color-first
+      ),
+      -webkit-linear-gradient(
+          $classical-green-success-color-first,
+          $classical-green-success-color-first
+        ) $important;
+    background-image: -o-linear-gradient(
+        $classical-green-main-color-first,
+        $classical-green-main-color-first
+      ),
+      -o-linear-gradient(
+          $classical-green-success-color-first,
+          $classical-green-success-color-first
+        ) $important;
+    background-image: -moz-linear-gradient(
+        $classical-green-main-color-first,
+        $classical-green-main-color-first
+      ),
+      -moz-linear-gradient(
+          $classical-green-success-color-first,
+          $classical-green-success-color-first
+        ) $important;
+    background-image: linear-gradient(
+        $classical-green-main-color-first,
+        $classical-green-main-color-first
+      ),
+      linear-gradient(
+          $classical-green-success-color-first,
+          $classical-green-success-color-first
+        )
+        $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-image: -webkit-linear-gradient(
+        $police-blue-main-color-first,
+        $police-blue-main-color-first
+      ),
+      -webkit-linear-gradient(
+          $police-blue-success-color-first,
+          $police-blue-success-color-first
+        ) $important;
+    background-image: -o-linear-gradient(
+        $police-blue-main-color-first,
+        $police-blue-main-color-first
+      ),
+      -o-linear-gradient(
+          $police-blue-success-color-first,
+          $police-blue-success-color-first
+        ) $important;
+    background-image: -moz-linear-gradient(
+        $police-blue-main-color-first,
+        $police-blue-main-color-first
+      ),
+      -moz-linear-gradient(
+          $police-blue-success-color-first,
+          $police-blue-success-color-first
+        ) $important;
+    background-image: linear-gradient(
+        $police-blue-main-color-first,
+        $police-blue-main-color-first
+      ),
+      linear-gradient(
+          $police-blue-success-color-first,
+          $police-blue-success-color-first
+        )
+        $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-image: -webkit-linear-gradient(
+        $ocean-blue-main-color-first,
+        $ocean-blue-main-color-first
+      ),
+      -webkit-linear-gradient(
+          $ocean-blue-success-color-first,
+          $ocean-blue-success-color-first
+        ) $important;
+    background-image: -o-linear-gradient(
+        $ocean-blue-main-color-first,
+        $ocean-blue-main-color-first
+      ),
+      -o-linear-gradient(
+          $ocean-blue-success-color-first,
+          $ocean-blue-success-color-first
+        ) $important;
+    background-image: -moz-linear-gradient(
+        $ocean-blue-main-color-first,
+        $ocean-blue-main-color-first
+      ),
+      -moz-linear-gradient(
+          $ocean-blue-success-color-first,
+          $ocean-blue-success-color-first
+        ) $important;
+    background-image: linear-gradient(
+        $ocean-blue-main-color-first,
+        $ocean-blue-main-color-first
+      ),
+      linear-gradient(
+          $ocean-blue-success-color-first,
+          $ocean-blue-success-color-first
+        )
+        $important;
+  }
+}
+@mixin lg_from_main_color_first_to_danger_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-image: -webkit-linear-gradient(
+        $classical-green-main-color-first,
+        $classical-green-main-color-first
+      ),
+      -webkit-linear-gradient(
+          $classical-green-danger-color-first,
+          $classical-green-danger-color-first
+        ) $important;
+    background-image: -o-linear-gradient(
+        $classical-green-main-color-first,
+        $classical-green-main-color-first
+      ),
+      -o-linear-gradient(
+          $classical-green-danger-color-first,
+          $classical-green-danger-color-first
+        ) $important;
+    background-image: -moz-linear-gradient(
+        $classical-green-main-color-first,
+        $classical-green-main-color-first
+      ),
+      -moz-linear-gradient(
+          $classical-green-danger-color-first,
+          $classical-green-danger-color-first
+        ) $important;
+    background-image: linear-gradient(
+        $classical-green-main-color-first,
+        $classical-green-main-color-first
+      ),
+      linear-gradient(
+          $classical-green-danger-color-first,
+          $classical-green-danger-color-first
+        )
+        $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-image: -webkit-linear-gradient(
+        $police-blue-main-color-first,
+        $police-blue-main-color-first
+      ),
+      -webkit-linear-gradient(
+          $police-blue-danger-color-first,
+          $police-blue-danger-color-first
+        ) $important;
+    background-image: -o-linear-gradient(
+        $police-blue-main-color-first,
+        $police-blue-main-color-first
+      ),
+      -o-linear-gradient(
+          $police-blue-danger-color-first,
+          $police-blue-danger-color-first
+        ) $important;
+    background-image: -moz-linear-gradient(
+        $police-blue-main-color-first,
+        $police-blue-main-color-first
+      ),
+      -moz-linear-gradient(
+          $police-blue-danger-color-first,
+          $police-blue-danger-color-first
+        ) $important;
+    background-image: linear-gradient(
+        $police-blue-main-color-first,
+        $police-blue-main-color-first
+      ),
+      linear-gradient(
+          $police-blue-danger-color-first,
+          $police-blue-danger-color-first
+        )
+        $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-image: -webkit-linear-gradient(
+        $ocean-blue-main-color-first,
+        $ocean-blue-main-color-first
+      ),
+      -webkit-linear-gradient(
+          $ocean-blue-danger-color-first,
+          $ocean-blue-danger-color-first
+        ) $important;
+    background-image: -o-linear-gradient(
+        $ocean-blue-main-color-first,
+        $ocean-blue-main-color-first
+      ),
+      -o-linear-gradient(
+          $ocean-blue-danger-color-first,
+          $ocean-blue-danger-color-first
+        ) $important;
+    background-image: -moz-linear-gradient(
+        $ocean-blue-main-color-first,
+        $ocean-blue-main-color-first
+      ),
+      -moz-linear-gradient(
+          $ocean-blue-danger-color-first,
+          $ocean-blue-danger-color-first
+        ) $important;
+    background-image: linear-gradient(
+        $ocean-blue-main-color-first,
+        $ocean-blue-main-color-first
+      ),
+      linear-gradient(
+          $ocean-blue-danger-color-first,
+          $ocean-blue-danger-color-first
+        )
+        $important;
+  }
+}
+@mixin lg_from_main_color_first_to_border_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-image: -webkit-linear-gradient(
+        $classical-green-main-color-first,
+        $classical-green-main-color-first
+      ),
+      -webkit-linear-gradient(
+          $classical-green-border-color-first,
+          $classical-green-border-color-first
+        ) $important;
+    background-image: -o-linear-gradient(
+        $classical-green-main-color-first,
+        $classical-green-main-color-first
+      ),
+      -o-linear-gradient(
+          $classical-green-border-color-first,
+          $classical-green-border-color-first
+        ) $important;
+    background-image: -moz-linear-gradient(
+        $classical-green-main-color-first,
+        $classical-green-main-color-first
+      ),
+      -moz-linear-gradient(
+          $classical-green-border-color-first,
+          $classical-green-border-color-first
+        ) $important;
+    background-image: linear-gradient(
+        $classical-green-main-color-first,
+        $classical-green-main-color-first
+      ),
+      linear-gradient(
+          $classical-green-border-color-first,
+          $classical-green-border-color-first
+        )
+        $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-image: -webkit-linear-gradient(
+        $police-blue-main-color-first,
+        $police-blue-main-color-first
+      ),
+      -webkit-linear-gradient(
+          $police-blue-border-color-first,
+          $police-blue-border-color-first
+        ) $important;
+    background-image: -o-linear-gradient(
+        $police-blue-main-color-first,
+        $police-blue-main-color-first
+      ),
+      -o-linear-gradient(
+          $police-blue-border-color-first,
+          $police-blue-border-color-first
+        ) $important;
+    background-image: -moz-linear-gradient(
+        $police-blue-main-color-first,
+        $police-blue-main-color-first
+      ),
+      -moz-linear-gradient(
+          $police-blue-border-color-first,
+          $police-blue-border-color-first
+        ) $important;
+    background-image: linear-gradient(
+        $police-blue-main-color-first,
+        $police-blue-main-color-first
+      ),
+      linear-gradient(
+          $police-blue-border-color-first,
+          $police-blue-border-color-first
+        )
+        $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-image: -webkit-linear-gradient(
+        $ocean-blue-main-color-first,
+        $ocean-blue-main-color-first
+      ),
+      -webkit-linear-gradient(
+          $ocean-blue-border-color-first,
+          $ocean-blue-border-color-first
+        ) $important;
+    background-image: -o-linear-gradient(
+        $ocean-blue-main-color-first,
+        $ocean-blue-main-color-first
+      ),
+      -o-linear-gradient(
+          $ocean-blue-border-color-first,
+          $ocean-blue-border-color-first
+        ) $important;
+    background-image: -moz-linear-gradient(
+        $ocean-blue-main-color-first,
+        $ocean-blue-main-color-first
+      ),
+      -moz-linear-gradient(
+          $ocean-blue-border-color-first,
+          $ocean-blue-border-color-first
+        ) $important;
+    background-image: linear-gradient(
+        $ocean-blue-main-color-first,
+        $ocean-blue-main-color-first
+      ),
+      linear-gradient(
+          $ocean-blue-border-color-first,
+          $ocean-blue-border-color-first
+        )
+        $important;
+  }
+}
+@mixin lg_from_shadow_info_color_first_to_shadow_info_color_third_to_shadow_info_color_first(
+  $important: null
+) {
+  [theme-alias^="classical-green"] & {
+    background-image: -webkit-linear-gradient(
+        left,
+        $classical-green-shadow-info-color-first 0%,
+        $classical-green-shadow-info-color-second 20%,
+        $classical-green-shadow-info-color-third 50%,
+        $classical-green-shadow-info-color-second 80%,
+        $classical-green-shadow-info-color-first 100%
+      )
+      $important; /* Safari 5.1 - 6.0 */
+    background-image: -o-linear-gradient(
+        right,
+        $classical-green-shadow-info-color-first 0%,
+        $classical-green-shadow-info-color-second 20%,
+        $classical-green-shadow-info-color-third 50%,
+        $classical-green-shadow-info-color-second 80%,
+        $classical-green-shadow-info-color-first 100%
+      )
+      $important; /* Opera 11.1 - 12.0 */
+    background-image: -moz-linear-gradient(
+        right,
+        $classical-green-shadow-info-color-first 0%,
+        $classical-green-shadow-info-color-second 20%,
+        $classical-green-shadow-info-color-third 50%,
+        $classical-green-shadow-info-color-second 80%,
+        $classical-green-shadow-info-color-first 100%
+      )
+      $important; /* Firefox 3.6 - 15 */
+    background-image: linear-gradient(
+        to right,
+        $classical-green-shadow-info-color-first 0%,
+        $classical-green-shadow-info-color-second 20%,
+        $classical-green-shadow-info-color-third 50%,
+        $classical-green-shadow-info-color-second 80%,
+        $classical-green-shadow-info-color-first 100%
+      )
+      $important; /* 标准的语法（必须放在最后） */
+  }
+  [theme-alias^="police-blue"] & {
+    background-image: -webkit-linear-gradient(
+        left,
+        $police-blue-shadow-info-color-first 0%,
+        $police-blue-shadow-info-color-second 20%,
+        $police-blue-shadow-info-color-third 50%,
+        $police-blue-shadow-info-color-second 80%,
+        $police-blue-shadow-info-color-first 100%
+      )
+      $important; /* Safari 5.1 - 6.0 */
+    background-image: -o-linear-gradient(
+        right,
+        $police-blue-shadow-info-color-first 0%,
+        $police-blue-shadow-info-color-second 20%,
+        $police-blue-shadow-info-color-third 50%,
+        $police-blue-shadow-info-color-second 80%,
+        $police-blue-shadow-info-color-first 100%
+      )
+      $important; /* Opera 11.1 - 12.0 */
+    background-image: -moz-linear-gradient(
+        right,
+        $police-blue-shadow-info-color-first 0%,
+        $police-blue-shadow-info-color-second 20%,
+        $police-blue-shadow-info-color-third 50%,
+        $police-blue-shadow-info-color-second 80%,
+        $police-blue-shadow-info-color-first 100%
+      )
+      $important; /* Firefox 3.6 - 15 */
+    background-image: linear-gradient(
+        to right,
+        $police-blue-shadow-info-color-first 0%,
+        $police-blue-shadow-info-color-second 20%,
+        $police-blue-shadow-info-color-third 50%,
+        $police-blue-shadow-info-color-second 80%,
+        $police-blue-shadow-info-color-first 100%
+      )
+      $important; /* 标准的语法（必须放在最后） */
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-image: -webkit-linear-gradient(
+        left,
+        $ocean-blue-shadow-info-color-first 0%,
+        $ocean-blue-shadow-info-color-second 20%,
+        $ocean-blue-shadow-info-color-third 50%,
+        $ocean-blue-shadow-info-color-second 80%,
+        $ocean-blue-shadow-info-color-first 100%
+      )
+      $important; /* Safari 5.1 - 6.0 */
+    background-image: -o-linear-gradient(
+        right,
+        $ocean-blue-shadow-info-color-first 0%,
+        $ocean-blue-shadow-info-color-second 20%,
+        $ocean-blue-shadow-info-color-third 50%,
+        $ocean-blue-shadow-info-color-second 80%,
+        $ocean-blue-shadow-info-color-first 100%
+      )
+      $important; /* Opera 11.1 - 12.0 */
+    background-image: -moz-linear-gradient(
+        right,
+        $ocean-blue-shadow-info-color-first 0%,
+        $ocean-blue-shadow-info-color-second 20%,
+        $ocean-blue-shadow-info-color-third 50%,
+        $ocean-blue-shadow-info-color-second 80%,
+        $ocean-blue-shadow-info-color-first 100%
+      )
+      $important; /* Firefox 3.6 - 15 */
+    background-image: linear-gradient(
+        to right,
+        $ocean-blue-shadow-info-color-first 0%,
+        $ocean-blue-shadow-info-color-second 20%,
+        $ocean-blue-shadow-info-color-third 50%,
+        $ocean-blue-shadow-info-color-second 80%,
+        $ocean-blue-shadow-info-color-first 100%
+      )
+      $important; /* 标准的语法（必须放在最后） */
+  }
+}
+@mixin lg_corner_brand_color_first($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-image: linear-gradient(
+        $classical-green-brand-color-first,
+        $classical-green-brand-color-first
+      ),
+      linear-gradient(
+        $classical-green-brand-color-first,
+        $classical-green-brand-color-first
+      ),
+      linear-gradient(
+        $classical-green-brand-color-first,
+        $classical-green-brand-color-first
+      ),
+      linear-gradient(
+        $classical-green-brand-color-first,
+        $classical-green-brand-color-first
+      ),
+      linear-gradient(
+        $classical-green-brand-color-first,
+        $classical-green-brand-color-first
+      ),
+      linear-gradient(
+        $classical-green-brand-color-first,
+        $classical-green-brand-color-first
+      ),
+      linear-gradient(
+        $classical-green-brand-color-first,
+        $classical-green-brand-color-first
+      ),
+      linear-gradient(
+          $classical-green-brand-color-first,
+          $classical-green-brand-color-first
+        )
+        $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-image: linear-gradient(
+        $police-blue-brand-color-first,
+        $police-blue-brand-color-first
+      ),
+      linear-gradient(
+        $police-blue-brand-color-first,
+        $police-blue-brand-color-first
+      ),
+      linear-gradient(
+        $police-blue-brand-color-first,
+        $police-blue-brand-color-first
+      ),
+      linear-gradient(
+        $police-blue-brand-color-first,
+        $police-blue-brand-color-first
+      ),
+      linear-gradient(
+        $police-blue-brand-color-first,
+        $police-blue-brand-color-first
+      ),
+      linear-gradient(
+        $police-blue-brand-color-first,
+        $police-blue-brand-color-first
+      ),
+      linear-gradient(
+        $police-blue-brand-color-first,
+        $police-blue-brand-color-first
+      ),
+      linear-gradient(
+          $police-blue-brand-color-first,
+          $police-blue-brand-color-first
+        )
+        $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-image: linear-gradient(
+        $ocean-blue-brand-color-first,
+        $ocean-blue-brand-color-first
+      ),
+      linear-gradient(
+        $ocean-blue-brand-color-first,
+        $ocean-blue-brand-color-first
+      ),
+      linear-gradient(
+        $ocean-blue-brand-color-first,
+        $ocean-blue-brand-color-first
+      ),
+      linear-gradient(
+        $ocean-blue-brand-color-first,
+        $ocean-blue-brand-color-first
+      ),
+      linear-gradient(
+        $ocean-blue-brand-color-first,
+        $ocean-blue-brand-color-first
+      ),
+      linear-gradient(
+        $ocean-blue-brand-color-first,
+        $ocean-blue-brand-color-first
+      ),
+      linear-gradient(
+        $ocean-blue-brand-color-first,
+        $ocean-blue-brand-color-first
+      ),
+      linear-gradient(
+          $ocean-blue-brand-color-first,
+          $ocean-blue-brand-color-first
+        )
+        $important;
+  }
+}
+
+/* 4.背景图片 background-image */
+
+// 4.1.登录区
+@mixin img_login_bg_001($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-image: $classical-green-login-bg-001 $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-image: $police-blue-login-bg-001 $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-image: $ocean-blue-login-bg-001 $important;
+  }
+}
+@mixin img_login_banner_001($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-image: $classical-green-login-banner-001 $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-image: $police-blue-login-banner-001 $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-image: $ocean-blue-login-banner-001 $important;
+  }
+}
+@mixin img_login_img_001($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-image: $classical-green-login-img-001 $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-image: $police-blue-login-img-001 $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-image: $ocean-blue-login-img-001 $important;
+  }
+}
+@mixin img_login_img_002($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-image: $classical-green-login-img-002 $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-image: $police-blue-login-img-002 $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-image: $ocean-blue-login-img-002 $important;
+  }
+}
+
+// 4.2.顶部栏
+@mixin img_header_avatar_001($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-image: $classical-green-header-avatar-001 $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-image: $police-blue-header-avatar-001 $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-image: $ocean-blue-header-avatar-001 $important;
+  }
+}
+@mixin img_header_avatar_002($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-image: $classical-green-header-avatar-002,
+      $classical-green-header-bg-001 $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-image: $police-blue-header-avatar-002,
+      $police-blue-header-bg-001 $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-image: $ocean-blue-header-avatar-002,
+      $ocean-blue-header-bg-001 $important;
+  }
+}
+@mixin img_header_corner_001($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-image: $classical-green-header-corner-001 $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-image: $police-blue-header-corner-001 $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-image: $ocean-blue-header-corner-001 $important;
+  }
+}
+@mixin img_header_corner_002($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-image: $classical-green-header-corner-002 $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-image: $police-blue-header-corner-002 $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-image: $ocean-blue-header-corner-002 $important;
+  }
+}
+
+// 4.3.主体栏
+@mixin img_body_bg_001($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-image: $classical-green-body-bg-001 $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-image: $police-blue-body-bg-001 $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-image: $ocean-blue-body-bg-001 $important;
+  }
+}
+@mixin img_body_bg_002($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-image: $classical-green-body-bg-002 $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-image: $police-blue-body-bg-002 $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-image: $ocean-blue-body-bg-002 $important;
+  }
+}
+@mixin img_body_bd_001_bg_003($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-image: $classical-green-body-bd-001,
+      $classical-green-body-bg-003 $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-image: $police-blue-body-bd-001,
+      $police-blue-body-bg-003 $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-image: $ocean-blue-body-bd-001,
+      $ocean-blue-body-bg-003 $important;
+  }
+}
+@mixin img_body_bd_002_bg_004($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-image: $classical-green-body-bd-002,
+      $classical-green-body-bg-004 $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-image: $police-blue-body-bd-002,
+      $police-blue-body-bg-004 $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-image: $ocean-blue-body-bd-002,
+      $ocean-blue-body-bg-004 $important;
+  }
+}
+@mixin img_body_bd_003($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-image: $classical-green-body-bd-003 $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-image: $police-blue-body-bd-003 $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-image: $ocean-blue-body-bd-003 $important;
+  }
+}
+@mixin img_body_img_001($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-image: $classical-green-body-img-001 $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-image: $police-blue-body-img-001 $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-image: $ocean-blue-body-img-001 $important;
+  }
+}
+@mixin img_body_img_002($important: null) {
+  [theme-alias^="classical-green"] & {
+    background-image: $classical-green-body-img-002 $important;
+  }
+  [theme-alias^="police-blue"] & {
+    background-image: $police-blue-body-img-002 $important;
+  }
+  [theme-alias^="ocean-blue"] &,
+  [dashboard] & {
+    background-image: $ocean-blue-body-img-002 $important;
+  }
+}

@@ -1,0 +1,81 @@
+/*
+字体规则
+*/
+
+
+@font-face {
+  font-family: "DIN-Regular";
+  src: url('./DIN-Regular/DIN-Regular.eot');/* IE9 Compat Modes */
+  src: url('./DIN-Regular/DIN-Regular.eot?#iefix') format('embedded-opentype'),/* IE6-IE8 */
+  url('./DIN-Regular/DIN-Regular.woff') format('woff'),/* Modern Browsers */
+  url('./DIN-Regular/DIN-Regular.ttf') format('truetype'),/* Safari, Android, iOS */
+  url('./DIN-Regular/DIN-Regular.svg#DIN-Regular') format('svg');/* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "DIN-Bold";
+  src: url('./DIN-Bold/DIN-Bold.eot');/* IE9 Compat Modes */
+  src: url('./DIN-Bold/DIN-Bold.eot?#iefix') format('embedded-opentype'),/* IE6-IE8 */
+  url('./DIN-Bold/DIN-Bold.woff') format('woff'),/* Modern Browsers */
+  url('./DIN-Bold/DIN-Bold.ttf') format('truetype'),/* Safari, Android, iOS */
+  url('./DIN-Bold/DIN-Bold.svg#DIN-Bold') format('svg');/* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "DS-Digital-Regular";
+  src: url('./DS-Digital-Regular/DS-Digital-Regular.eot');/* IE9 Compat Modes */
+  src: url('./DS-Digital-Regular/DS-Digital-Regular.eot?#iefix') format('embedded-opentype'),/* IE6-IE8 */
+  url('./DS-Digital-Regular/DS-Digital-Regular.woff') format('woff'),/* Modern Browsers */
+  url('./DS-Digital-Regular/DS-Digital-Regular.ttf') format('truetype'),/* Safari, Android, iOS */
+  url('./DS-Digital-Regular/DS-Digital-Regular.svg#DS-Digital-Regular') format('svg');/* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "DS-Digital-Bold";
+  src: url('./DS-Digital-Bold/DS-Digital-Bold.eot');/* IE9 Compat Modes */
+  src: url('./DS-Digital-Bold/DS-Digital-Bold.eot?#iefix') format('embedded-opentype'),/* IE6-IE8 */
+  url('./DS-Digital-Bold/DS-Digital-Bold.woff') format('woff'),/* Modern Browsers */
+  url('./DS-Digital-Bold/DS-Digital-Bold.ttf') format('truetype'),/* Safari, Android, iOS */
+  url('./DS-Digital-Bold/DS-Digital-Bold.svg#DS-Digital-Bold') format('svg');/* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "方正风雅宋简体";
+  src: url('./方正风雅宋简体/方正风雅宋简体.eot');/* IE9 Compat Modes */
+  src: url('./方正风雅宋简体/方正风雅宋简体.eot?#iefix') format('embedded-opentype'),/* IE6-IE8 */
+  url('./方正风雅宋简体/方正风雅宋简体.woff') format('woff'),/* Modern Browsers */
+  url('./方正风雅宋简体/方正风雅宋简体.ttf') format('truetype'),/* Safari, Android, iOS */
+  url('./方正风雅宋简体/方正风雅宋简体.svg#方正风雅宋简体') format('svg');/* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "迷你简综艺";
+  src: url('./迷你简综艺/迷你简综艺.eot');/* IE9 Compat Modes */
+  src: url('./迷你简综艺/迷你简综艺.eot?#iefix') format('embedded-opentype'),/* IE6-IE8 */
+  url('./迷你简综艺/迷你简综艺.woff') format('woff'),/* Modern Browsers */
+  url('./迷你简综艺/迷你简综艺.ttf') format('truetype'),/* Safari, Android, iOS */
+  url('./迷你简综艺/迷你简综艺.svg#迷你简综艺') format('svg');/* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "锐字钧线准黑简";
+  src: url('./锐字钧线准黑简/锐字钧线准黑简.eot');/* IE9 Compat Modes */
+  src: url('./锐字钧线准黑简/锐字钧线准黑简.eot?#iefix') format('embedded-opentype'),/* IE6-IE8 */
+  url('./锐字钧线准黑简/锐字钧线准黑简.woff') format('woff'),/* Modern Browsers */
+  url('./锐字钧线准黑简/锐字钧线准黑简.ttf') format('truetype'),/* Safari, Android, iOS */
+  url('./锐字钧线准黑简/锐字钧线准黑简.svg#锐字钧线准黑简') format('svg');/* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}

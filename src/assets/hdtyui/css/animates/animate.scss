@@ -1,0 +1,158 @@
+/*
+设置不同的进入和离开过渡与动画
+*/
+
+
+// 设置transition过度属性（transition: property duration timing-function delay; 默认值: all 0 ease 0;）
+@mixin transition($transition...) {
+  -webkit-transition: $transition;
+  -o-transition: $transition;
+  -moz-transition: $transition;
+  transition: $transition;
+}
+
+// 设置animation属性（animation: name duration timing-function delay iteration-count direction fill-mode play-state; 默认值: none 0 ease 0 1 normal none running;）
+@mixin animation($animation...) {
+  -webkit-animation: $animation;
+  -o-animation: $animation;
+  -moz-animation: $animation;
+  animation: $animation;
+}
+
+// 设置@keyframes规则选择器
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @-o-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+// 淡入淡出
+.fadeInOut-enter-active, .fadeInOut-leave-active {
+  @include transition(all .2s);
+}
+.fadeInOut-enter, .fadeInOut-leave-to {
+  opacity: 0;
+}
+
+// 左侧滑动进入
+.slideInLeft-enter-active {
+  @include transition(all .5s);
+}
+.slideInLeft-enter {
+  margin-left: -10%;
+}
+
+// 左侧滑动离开
+.slideOutLeft-leave-active {
+  @include transition(all .5s);
+}
+.slideOutLeft-leave-to {
+  margin-left: -10%;
+}
+
+// 上方滑动进入
+.slideInUp-enter-active {
+  @include transition(all 1s);
+}
+.slideInUp-enter {
+  margin-top: -10%;
+}
+
+// 上方滑动离开
+.slideOutUp-leave-active {
+  @include transition(all 1s);
+}
+.slideOutUp-leave-to {
+  margin-top: -10%;
+}
+
+// 左上角绽放进入
+.bloomInTopLeft-enter-active {
+  @include transition(all .5s);
+}
+.bloomInTopLeft-enter {
+  padding: 0;
+  opacity: 0;
+  width: 0;
+  height: 0 !important;
+}
+
+// x轴翻转进入
+.flipInX-enter-active {
+  @include animation(flipInX 1.2s);
+  @include keyframes(flipInX) {
+    0% {
+      -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+      transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+      -webkit-animation-timing-function: ease-in;
+      animation-timing-function: ease-in;
+      opacity: 0;
+    }
+    40% {
+      -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+      transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+      -webkit-animation-timing-function: ease-in;
+      animation-timing-function: ease-in;
+    }
+    60% {
+      -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+      transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+      opacity: 1;
+    }
+    80% {
+      -webkit-transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+      transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    }
+    100% {
+      -webkit-transform: perspective(400px);
+      transform: perspective(400px);
+    }
+  }
+}
+
+// 发光进入
+.brightIn {
+  @include animation(brightIn 4s ease-in);
+  @include keyframes(brightIn) {
+    0% {
+      -webkit-box-shadow: 0 0 20px #ffaf01;
+      box-shadow: 0 0 20px #ffaf01;
+    }
+    80% {
+      -webkit-box-shadow: 0 0 20px #ffaf01;
+      box-shadow: 0 0 20px #ffaf01;
+    }
+    100% {
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+  }
+}
+
+// 渐变进入
+.gradientIn::after {
+  @include animation(gradientIn 4s ease-in forwards);
+  @include keyframes(gradientIn) {
+    0% {
+      background-position: 100%, 0;
+    }
+    80% {
+      background-position: 100%, 0;
+    }
+    100% {
+      background-position: 0, 100%;
+    }
+  }
+}

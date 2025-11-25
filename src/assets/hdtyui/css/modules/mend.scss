@@ -1,0 +1,2163 @@
+/*
+基于hdtyui.css的私有化修补
+*/
+
+
+body {
+  @include bg_background_color_second;
+  @include ft_font_color_first;
+}
+
+/* 设置标题 */
+h1, h2, h3, h4 {
+  @include ft_font_color_first;
+}
+
+/* 设置字段集 */
+fieldset {
+  @include bd_border_color_first;
+}
+
+fieldset legend {
+  @include ft_font_color_first;
+}
+
+  /* 设置分割线 */
+hr {
+  @include bg_border_color_third;
+}
+
+/* 用于字体图标设置圆形背景 */
+[class^="icon-"][circle], [class*=" icon-"][circle] {
+  @include bg_border_color_second;
+}
+
+/* 用于悬停 */
+.hdty-hover:hover::after {
+  @include bg_shadow_dark_color_third;
+}
+
+/* 用于设置元素不可点击状态 */
+.hdty-disabled, .hdty-disabled:hover {
+  @include ft_font_color_fourth;
+}
+
+/* 用于设置一条竖向分隔线 */
+.hdty-separator::after {
+  @include bg_border_color_third;
+}
+
+/* 用于标签文字 */
+.hdty-label {
+  @include ft_font_color_second;
+}
+
+/* 用于文本文字 */
+.hdty-text {
+  @include ft_font_color_second;
+}
+
+/* 用于标记文字 */
+.hdty-mark {
+  @include ft_danger_color_first;
+}
+
+/* 用于辅助文字 */
+.hdty-aux {
+  margin-left: 8px;
+  @include ft_font_color_third;
+  + .hdty-btn, + .el-button {
+    margin-left: 10px;
+  }
+  + .hdty-btn-group, + .el-button-group {
+    margin-left: 10px;
+  }
+  + .hdty-tag, + .el-tag {
+    margin-left: 10px;
+  }
+}
+
+/* 用于提示文字 */
+.hdty-tips {
+  @include ft_font_color_third;
+}
+
+/* 用于空提示文字 */
+.hdty-empty-tips {
+  @include ft_font_color_third;
+  > *[class^="icon-"], > *[class*=" icon-"] {
+    display: block;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 40px;
+    &[light] {
+      margin-bottom: 12px;
+      @include tl_shadow_base_color_third(0 0 0.2em, -0 -0 0.2em);
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  > *[class^="el-icon-"], > *[class*=" el-icon-"] {
+    display: block;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 40px;
+    &[light] {
+      margin-bottom: 12px;
+      @include tl_shadow_base_color_third(0 0 0.2em, -0 -0 0.2em);
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  > a {
+    @include ft_main_color_first;
+  }
+}
+
+/* 用于空提示文字垂直居中 */
+.hdty-empty-middle {
+  @include ft_font_color_third;
+  > *[class^="icon-"], > *[class*=" icon-"] {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 42px;
+    &[light] {
+      margin-bottom: 12px;
+      @include tl_shadow_base_color_third(0 0 0.2em, -0 -0 0.2em);
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  > *[class^="el-icon-"], > *[class*=" el-icon-"] {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 42px;
+    &[light] {
+      margin-bottom: 12px;
+      @include tl_shadow_base_color_third(0 0 0.2em, -0 -0 0.2em);
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  > a {
+    @include ft_main_color_first;
+  }
+}
+
+/* 用于设置一个标题 */
+.hdty-title {
+  &::before {
+    @include bg_main_color_first;
+  }
+}
+
+/* 用于设置一个引用区块 */
+.hdty-blockquote {
+  @include bg_border_color_fourth;
+  @include bd_brand_color_first;
+  &.hdty-blockquote-brand {
+    @include bd_brand_color_first;
+  }
+  &.hdty-blockquote-primary {
+    @include bd_main_color_first;
+  }
+  &.hdty-blockquote-success {
+    @include bd_success_color_first;
+  }
+  &.hdty-blockquote-info {
+    @include bd_info_color_first;
+  }
+  &.hdty-blockquote-remind {
+    @include bd_remind_color_first;
+  }
+  &.hdty-blockquote-warning {
+    @include bd_warning_color_first;
+  }
+  &.hdty-blockquote-danger {
+    @include bd_danger_color_first;
+  }
+  &.hdty-blockquote-plain {
+    @include bd_border_color_first;
+  }
+  &.hdty-blockquote-light {
+    @include bg_border_color_third;
+  }
+}
+
+/* 用于设置一个字段集区块 */
+.hdty-fieldset {
+  @include bd_border_color_third;
+}
+
+/* 用于设置一个纯标题字段集区块 */
+.hdty-fieldset-title {
+  @include bd_border_color_third;
+}
+
+/* 用于设置四角边框 */
+.hdty-corner-border {
+  @include bd_border_color_first;
+  &::after {
+    @include lg_corner_brand_color_first;
+  }
+}
+
+// 用于设置字体颜色为品牌色
+.hdty-brand-color {
+  @include ft_brand_color_first;
+}
+
+// 用于设置字体颜色为重要色
+.hdty-main-color {
+  @include ft_main_color_first;
+}
+
+// 用于设置字体颜色为成功色
+.hdty-success-color {
+  @include ft_success_color_first;
+}
+
+// 用于设置字体颜色为信息色
+.hdty-info-color {
+  @include ft_info_color_first;
+}
+
+// 用于设置字体颜色为注意色
+.hdty-remind-color {
+  @include ft_remind_color_first;
+}
+
+// 用于设置字体颜色为警告色
+.hdty-warning-color {
+  @include ft_warning_color_first;
+}
+
+// 用于设置字体颜色为危险色
+.hdty-danger-color {
+  @include ft_danger_color_first;
+}
+
+// 用于设置字体颜色为基础色
+.hdty-base-color {
+  @include ft_base_color_first;
+}
+
+// 用于设置背景颜色为品牌色
+.hdty-brand-bg {
+  @include bg_brand_color_first;
+}
+
+// 用于设置背景颜色为重要色
+.hdty-main-bg {
+  @include bg_main_color_first;
+}
+
+// 用于设置背景颜色为成功色
+.hdty-success-bg {
+  @include bg_success_color_first;
+}
+
+// 用于设置背景颜色为信息色
+.hdty-info-bg {
+  @include bg_info_color_first;
+}
+
+// 用于设置背景颜色为注意色
+.hdty-remind-bg {
+  @include bg_remind_color_first;
+}
+
+// 用于设置背景颜色为警告色
+.hdty-warning-bg {
+  @include bg_warning_color_first;
+}
+
+// 用于设置背景颜色为危险色
+.hdty-danger-bg {
+  @include bg_danger_color_first;
+}
+
+// 用于设置背景颜色为基础色
+.hdty-base-bg {
+  @include bg_background_color_fourth;
+}
+
+/* 用于设置底部栏 */
+.hdty-footer {
+  @include ft_font_color_second;
+}
+
+/* 用于设置菜单 */
+.hdty-menu {
+  @include bg_background_color_fourth;
+  @include ft_font_color_first;
+  @include bs_shadow_dark_color_third(0 1px 2px);
+  .hdty-menu-item {
+    &.is-active {
+      @include bg_border_color_fourth;
+      &::after {
+        @include bg_main_color_first;
+      }
+    }
+    a {
+      @include ft_font_color_second;
+      &:hover {
+        @include bg_border_color_fourth;
+      }
+    }
+  }
+}
+
+/* 用于设置头像 */
+.hdty-avatar {
+  background: none;
+  @include ft_base_color_first;
+  @include bs_shadow_dark_color_fourth(0 0 15px);
+  img {
+    @include bg_base_color_fourth;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .hdty-avatar-error {
+    width: 100%;
+    height: 100%;
+    @include bg_brand_color_first;
+    @include img_header_avatar_001;
+    background-size: 100% 100%;
+    border-radius: inherit;
+  }
+  .hdty-avatar-placeholder {
+    @include bg_background_color_third;
+  }
+}
+
+/* 用于设置版权 */
+.hdty-copyright {
+  @include ft_font_color_second;
+  a {
+    @include ft_font_color_first;
+    @include transition(all .3s);
+    &:hover {
+      @include ft_font_color_second;
+    }
+  }
+  &.hdty-copyright-emboss {
+    @include ts_shadow_base_color_second(1px 1px 1px);
+  }
+}
+
+/* 用于设置一个轮廓 */
+.hdty-outline {
+  @include bd_main_color_first;
+}
+
+.hdty-outline-header {
+  @include bd_background_color_second;
+  @include bdb_main_color_first;
+  @include ft_font_color_first;
+}
+
+.hdty-outline-title {
+  @include bg_main_color_first;
+  @include ft_base_color_first;
+  [class^="icon-"], [class*=" icon-"] {
+    + span {
+      margin-left: 5px;
+    }
+  }
+  [class^="el-icon-"], [class*=" el-icon-"] {
+    + span {
+      margin-left: 5px;
+    }
+  }
+  &::after {
+    @include bg_main_color_first;
+  }
+  + .hdty-btn, + .el-button {
+    margin-left: 10px;
+  }
+  + .hdty-btn-group, + .el-button-group {
+    margin-left: 10px;
+  }
+}
+
+.hdty-outline-more {
+  @include ft_font_color_first;
+  &:hover {
+    @include ft_font_color_second;
+  }
+}
+
+/* 用于设置一个卡片 */
+.hdty-card {
+  @include bg_background_color_fourth;
+  @include bs_shadow_dark_color_fourth(0 1px 2px);
+  &.hdty-card-outline {
+    .hdty-card-header {
+      @include bg_background_color_third;
+      @include bd_background_color_third;
+    }
+  }
+}
+
+.hdty-card-header {
+  border-bottom-width: 1px;
+  border-style: solid;
+  @include bd_border_color_fourth;
+  @include ft_font_color_first;
+}
+
+.hdty-card-footer {
+  @include ft_font_color_second;
+}
+
+.hdty-card-title {
+  padding: 10px 0;
+  @include ft_font_color_first;
+  [class^="icon-"], [class*=" icon-"] {
+    + span {
+      margin-left: 5px;
+    }
+  }
+  [class^="el-icon-"], [class*=" el-icon-"] {
+    + span {
+      margin-left: 5px;
+    }
+  }
+  ~ .hdty-card-more {
+    padding: 10px 0;
+  }
+  + span.hdty-card-subtitle {
+    margin-left: 10px;
+  }
+  + .hdty-card-subtitle.hdty-inline {
+    margin-left: 10px;
+  }
+  + .hdty-btn, + .el-button {
+    margin-left: 10px;
+  }
+  + .hdty-btn-group, + .el-button-group {
+    margin-left: 10px;
+  }
+}
+
+.hdty-card-subtitle {
+  padding: 0 0 10px 0;
+  @include ft_font_color_third;
+  &.hdty-inline  {
+    + .hdty-btn, + .el-button {
+      margin-left: 10px;
+    }
+    + .hdty-btn-group, + .el-button-group {
+      margin-left: 10px;
+    }
+  }
+}
+
+span.hdty-card-subtitle {
+  + .hdty-btn, + .el-button {
+    margin-left: 10px;
+  }
+  + .hdty-btn-group, + .el-button-group {
+    margin-left: 10px;
+  }
+}
+
+.hdty-card-more {
+  @include ft_font_color_first;
+  &:hover {
+    @include ft_font_color_second;
+  }
+}
+
+/* 用于设置卡片组 */
+.hdty-card-group {
+  .hdty-card {
+    &:first-child, &:not(:first-child):not(:last-child) {
+      border-right-width: 1px;
+      border-style: solid;
+      @include bd_border_color_second;
+    }
+  }
+}
+
+/* 用于设置目录 */
+.hdty-dir {
+  @include bg_background_color_fourth;
+  @include bd_border_color_first;
+  .hdty-dir-title {
+    @include bd_border_color_third;
+    @include ft_font_color_first;
+  }
+  .hdty-dir-item {
+    @include ft_font_color_second;
+    a {
+      @include bd_border_color_second;
+    }
+    &:hover {
+      @include ft_font_color_third;
+    }
+    &.is-active {
+      @include ft_main_color_first;
+    }
+  }
+}
+
+/* 用于设置列表 */
+.hdty-list {
+  .hdty-list-item {
+    &:hover {
+      @include bg_main_color_fourth;
+    }
+    &.is-active {
+      @include bg_main_color_fourth;
+    }
+  }
+}
+
+/* 用于设置链接菜单 */
+.hdty-links {
+  @include ft_font_color_first;
+  .hdty-links-item {
+    @include bg_main_color_first;
+    a {
+      @include ft_base_color_first;
+    }
+    &:hover {
+      @include bg_main_color_second;
+    }
+  }
+}
+
+/* 用于设置图例 */
+.hdty-legend-item {
+  @include ft_font_color_second;
+  &.hdty-legend-brand {
+    @include ft_brand_color_first;
+    .hdty-legend-symbol {
+      @include bg_brand_color_first;
+      @include bd_brand_color_first;
+    }
+  }
+  &.hdty-legend-primary {
+    @include ft_main_color_first;
+    .hdty-legend-symbol {
+      @include bg_main_color_first;
+      @include bd_main_color_first;
+    }
+  }
+  &.hdty-legend-success {
+    @include ft_success_color_first;
+    .hdty-legend-symbol {
+      @include bg_success_color_first;
+      @include bd_success_color_first;
+    }
+  }
+  &.hdty-legend-info {
+    @include ft_info_color_first;
+    .hdty-legend-symbol {
+      @include bg_info_color_first;
+      @include bd_info_color_first;
+    }
+  }
+  &.hdty-legend-remind {
+    @include ft_remind_color_first;
+    .hdty-legend-symbol {
+      @include bg_remind_color_first;
+      @include bd_remind_color_first;
+    }
+  }
+  &.hdty-legend-warning {
+    @include ft_warning_color_first;
+    .hdty-legend-symbol {
+      @include bg_warning_color_first;
+      @include bd_warning_color_first;
+    }
+  }
+  &.hdty-legend-danger {
+    @include ft_danger_color_first;
+    .hdty-legend-symbol {
+      @include bg_danger_color_first;
+      @include bd_danger_color_first;
+    }
+  }
+  &.hdty-legend-brand-o {
+    @include ft_brand_color_first;
+    .hdty-legend-symbol {
+      background: none;
+      @include bd_brand_color_first;
+    }
+  }
+  &.hdty-legend-primary-o {
+    @include ft_main_color_first;
+    .hdty-legend-symbol {
+      background: none;
+      @include bd_main_color_first;
+    }
+  }
+  &.hdty-legend-success-o {
+    @include ft_success_color_first;
+    .hdty-legend-symbol {
+      background: none;
+      @include bd_success_color_first;
+    }
+  }
+  &.hdty-legend-info-o {
+    @include ft_info_color_first;
+    .hdty-legend-symbol {
+      background: none;
+      @include bd_info_color_first;
+    }
+  }
+  &.hdty-legend-remind-o {
+    @include ft_remind_color_first;
+    .hdty-legend-symbol {
+      background: none;
+      @include bd_remind_color_first;
+    }
+  }
+  &.hdty-legend-warning-o {
+    @include ft_warning_color_first;
+    .hdty-legend-symbol {
+      background: none;
+      @include bd_warning_color_first;
+    }
+  }
+  &.hdty-legend-danger-o {
+    @include ft_danger_color_first;
+    .hdty-legend-symbol {
+      background: none;
+      @include bd_danger_color_first;
+    }
+  }
+  .hdty-legend-symbol {
+    &.hdty-legend-brand {
+      @include bg_brand_color_first;
+      @include bd_brand_color_first;
+    }
+    &.hdty-legend-primary {
+      @include bg_main_color_first;
+      @include bd_main_color_first;
+    }
+    &.hdty-legend-success {
+      @include bg_success_color_first;
+      @include bd_success_color_first;
+    }
+    &.hdty-legend-info {
+      @include bg_info_color_first;
+      @include bd_info_color_first;
+    }
+    &.hdty-legend-remind {
+      @include bg_remind_color_first;
+      @include bd_remind_color_first;
+    }
+    &.hdty-legend-warning {
+      @include bg_warning_color_first;
+      @include bd_warning_color_first;
+    }
+    &.hdty-legend-danger {
+      @include bg_danger_color_first;
+      @include bd_danger_color_first;
+    }
+    &.hdty-legend-brand-o {
+      background: none;
+      @include bd_brand_color_first;
+    }
+    &.hdty-legend-primary-o {
+      background: none;
+      @include bd_main_color_first;
+    }
+    &.hdty-legend-success-o {
+      background: none;
+      @include bd_success_color_first;
+    }
+    &.hdty-legend-info-o {
+      background: none;
+      @include bd_info_color_first;
+    }
+    &.hdty-legend-remind-o {
+      background: none;
+      @include bd_remind_color_first;
+    }
+    &.hdty-legend-warning-o {
+      background: none;
+      @include bd_warning_color_first;
+    }
+    &.hdty-legend-danger-o {
+      background: none;
+      @include bd_danger_color_first;
+    }
+  }
+}
+
+.hdty-legend-symbol {
+  @include bg_background_color_fourth;
+  @include bd_border_color_second;
+  &.hdty-legend-brand {
+    @include bg_brand_color_first;
+    @include bd_brand_color_first;
+  }
+  &.hdty-legend-primary {
+    @include bg_main_color_first;
+    @include bd_main_color_first;
+  }
+  &.hdty-legend-success {
+    @include bg_success_color_first;
+    @include bd_success_color_first;
+  }
+  &.hdty-legend-info {
+    @include bg_info_color_first;
+    @include bd_info_color_first;
+  }
+  &.hdty-legend-remind {
+    @include bg_remind_color_first;
+    @include bd_remind_color_first;
+  }
+  &.hdty-legend-warning {
+    @include bg_warning_color_first;
+    @include bd_warning_color_first;
+  }
+  &.hdty-legend-danger {
+    @include bg_danger_color_first;
+    @include bd_danger_color_first;
+  }
+  &.hdty-legend-brand-o {
+    background: none;
+    @include bd_brand_color_first;
+  }
+  &.hdty-legend-primary-o {
+    background: none;
+    @include bd_main_color_first;
+  }
+  &.hdty-legend-success-o {
+    background: none;
+    @include bd_success_color_first;
+  }
+  &.hdty-legend-info-o {
+    background: none;
+    @include bd_info_color_first;
+  }
+  &.hdty-legend-remind-o {
+    background: none;
+    @include bd_remind_color_first;
+  }
+  &.hdty-legend-warning-o {
+    background: none;
+    @include bd_warning_color_first;
+  }
+  &.hdty-legend-danger-o {
+    background: none;
+    @include bd_danger_color_first;
+  }
+}
+
+/* 用于设置标签 */
+.hdty-tag {
+  @include bg_background_color_fourth;
+  @include bd_border_color_second;
+  @include ft_font_color_second;
+  &.hdty-tag-brand {
+    @include bg_brand_color_first;
+    @include bd_brand_color_first;
+    @include ft_base_color_first;
+  }
+  &.hdty-tag-primary {
+    @include bg_main_color_first;
+    @include bd_main_color_first;
+    @include ft_base_color_first;
+  }
+  &.hdty-tag-success {
+    @include bg_success_color_first;
+    @include bd_success_color_first;
+    @include ft_base_color_first;
+  }
+  &.hdty-tag-info {
+    @include bg_info_color_first;
+    @include bd_info_color_first;
+    @include ft_base_color_first;
+  }
+  &.hdty-tag-remind {
+    @include bg_remind_color_first;
+    @include bd_remind_color_first;
+    @include ft_base_color_first;
+  }
+  &.hdty-tag-warning {
+    @include bg_warning_color_first;
+    @include bd_warning_color_first;
+    @include ft_base_color_first;
+  }
+  &.hdty-tag-danger {
+    @include bg_danger_color_first;
+    @include bd_danger_color_first;
+    @include ft_base_color_first;
+  }
+  &.hdty-tag-brand-o {
+    background: none;
+    @include bd_brand_color_first;
+    @include ft_brand_color_first;
+  }
+  &.hdty-tag-primary-o {
+    background: none;
+    @include bd_main_color_first;
+    @include ft_main_color_first;
+  }
+  &.hdty-tag-success-o {
+    background: none;
+    @include bd_success_color_first;
+    @include ft_success_color_first;
+  }
+  &.hdty-tag-info-o {
+    background: none;
+    @include bd_info_color_first;
+    @include ft_info_color_first;
+  }
+  &.hdty-tag-remind-o {
+    background: none;
+    @include bd_remind_color_first;
+    @include ft_remind_color_first;
+  }
+  &.hdty-tag-warning-o {
+    background: none;
+    @include bd_warning_color_first;
+    @include ft_warning_color_first;
+  }
+  &.hdty-tag-danger-o {
+    background: none;
+    @include bd_danger_color_first;
+    @include ft_danger_color_first;
+  }
+  &.hdty-tag-disabled {
+    @include bg_background_color_third;
+    @include bd_border_color_third;
+    @include ft_font_color_fourth;
+  }
+}
+
+/* 用于设置标签页 */
+.hdty-tab {
+  &.is-left {
+    .hdty-tab-item {
+      &.is-active {
+        border-right-color: transparent;
+        @include bdb_border_color_third;
+      }
+    }
+    .hdty-tab-header {
+      @include bdr_border_color_third;
+      .hdty-tab-item {
+        &.is-active {
+          @include bdr_background_color_second;
+        }
+      }
+      > .hdty-tab-item {
+        &.is-active {
+          @include bdr_main_color_first;
+        }
+      }
+    }
+  }
+}
+
+.hdty-tab-item {
+  @include bd_border_color_third;
+  @include ft_font_color_first;
+  &:hover {
+    @include ft_main_color_first;
+  }
+  &.is-active {
+    border-bottom-color: transparent;
+    @include ft_main_color_first;
+  }
+  &.is-left {
+    &.is-active {
+      border-right-color: transparent;
+      @include bdb_border_color_third;
+    }
+  }
+}
+
+.hdty-tab-title {
+  &.is-left {
+    .hdty-tab-item {
+      &.is-active {
+        border-right-color: transparent;
+        @include bdb_border_color_third;
+      }
+    }
+  }
+}
+
+.hdty-tab-header {
+  @include bdb_border_color_third;
+  .hdty-tab-item {
+    &.is-active {
+      @include bdb_background_color_second;
+    }
+  }
+  > .hdty-tab-item {
+    &.is-active {
+      @include bdb_main_color_first;
+    }
+  }
+  &.is-left {
+    @include bdr_border_color_third;
+    .hdty-tab-item {
+      &.is-active {
+        @include bdr_background_color_second;
+        @include bdb_border_color_third;
+      }
+    }
+    > .hdty-tab-item {
+      &.is-active {
+        @include bdr_main_color_first;
+      }
+    }
+  }
+}
+
+/* 用于设置表单 */
+.hdty-form-label {
+  width: 108px;
+  padding: 9px 12px;
+}
+
+.hdty-form-content {
+  margin-left: 108px;
+}
+
+/* 用于设置按钮 */
+.hdty-btn {
+  background-color: transparent;
+  @include bd_border_color_second;
+  @include ft_font_color_second;
+  [class^="icon-"], [class*=" icon-"] {
+    + span {
+      margin-left: 5px;
+    }
+  }
+  [class^="el-icon-"], [class*=" el-icon-"] {
+    + span {
+      margin-left: 5px;
+    }
+  }
+  &:hover {
+    @include bd_success_color_first;
+    @include ft_font_color_first;
+  }
+  &.hdty-btn-brand {
+    @include bg_brand_color_first;
+    @include bd_brand_color_first;
+    @include ft_base_color_first;
+    &:hover {
+      @include bd_brand_color_first;
+      @include ft_base_color_first;
+    }
+  }
+  &.hdty-btn-primary {
+    @include bg_main_color_first;
+    @include bd_main_color_first;
+    @include ft_base_color_first;
+    &:hover {
+      @include bd_main_color_first;
+      @include ft_base_color_first;
+    }
+  }
+  &.hdty-btn-success {
+    @include bg_success_color_first;
+    @include bd_success_color_first;
+    @include ft_base_color_first;
+    &:hover {
+      @include bd_success_color_first;
+      @include ft_base_color_first;
+    }
+  }
+  &.hdty-btn-info {
+    @include bg_info_color_first;
+    @include bd_info_color_first;
+    @include ft_base_color_first;
+    &:hover {
+      @include bd_info_color_first;
+      @include ft_base_color_first;
+    }
+  }
+  &.hdty-btn-remind {
+    @include bg_remind_color_first;
+    @include bd_remind_color_first;
+    @include ft_base_color_first;
+    &:hover {
+      @include bd_remind_color_first;
+      @include ft_base_color_first;
+    }
+  }
+  &.hdty-btn-warning {
+    @include bg_warning_color_first;
+    @include bd_warning_color_first;
+    @include ft_base_color_first;
+    &:hover {
+      @include bd_warning_color_first;
+      @include ft_base_color_first;
+    }
+  }
+  &.hdty-btn-danger {
+    @include bg_danger_color_first;
+    @include bd_danger_color_first;
+    @include ft_base_color_first;
+    &:hover {
+      @include bd_danger_color_first;
+      @include ft_base_color_first;
+    }
+  }
+  &.hdty-btn-brand-o {
+    background: none;
+    @include bd_brand_color_first;
+    @include ft_brand_color_first;
+    &:hover {
+      @include bd_brand_color_first;
+      @include ft_brand_color_first;
+    }
+  }
+  &.hdty-btn-primary-o {
+    background: none;
+    @include bd_main_color_first;
+    @include ft_main_color_first;
+    &:hover {
+      @include bd_main_color_first;
+      @include ft_main_color_first;
+    }
+  }
+  &.hdty-btn-success-o {
+    background: none;
+    @include bd_success_color_first;
+    @include ft_success_color_first;
+    &:hover {
+      @include bd_success_color_first;
+      @include ft_success_color_first;
+    }
+  }
+  &.hdty-btn-info-o {
+    background: none;
+    @include bd_info_color_first;
+    @include ft_info_color_first;
+    &:hover {
+      @include bd_info_color_first;
+      @include ft_info_color_first;
+    }
+  }
+  &.hdty-btn-remind-o {
+    background: none;
+    @include bd_remind_color_first;
+    @include ft_remind_color_first;
+    &:hover {
+      @include bd_remind_color_first;
+      @include ft_remind_color_first;
+    }
+  }
+  &.hdty-btn-warning-o {
+    background: none;
+    @include bd_warning_color_first;
+    @include ft_warning_color_first;
+    &:hover {
+      @include bd_warning_color_first;
+      @include ft_warning_color_first;
+    }
+  }
+  &.hdty-btn-danger-o {
+    background: none;
+    @include bd_danger_color_first;
+    @include ft_danger_color_first;
+    &:hover {
+      @include bd_danger_color_first;
+      @include ft_danger_color_first;
+    }
+  }
+  &.hdty-btn-disabled {
+    @include bg_background_color_third;
+    @include bd_border_color_third;
+    @include ft_font_color_fourth;
+    &:active, &:hover {
+      @include bg_background_color_third;
+      @include bd_border_color_third;
+      @include ft_font_color_fourth;
+    }
+  }
+  &.hdty-btn-text {
+    background-color: transparent;
+    border-color: transparent;
+    @include ft_main_color_first;
+    &:hover {
+      border-color: transparent;
+      @include ft_main_color_first;
+    }
+    &.hdty-btn-disabled {
+      background-color: transparent;
+      border-color: transparent;
+      @include ft_font_color_fourth;
+      &:active, &:hover {
+        background-color: transparent;
+        border-color: transparent;
+        @include ft_font_color_fourth;
+      }
+    }
+  }
+  &.hdty-btn-fluid {
+    + .hdty-btn, + .hdty-btn-group {
+      margin-left: 0;
+    }
+    + .el-button, + .el-button-group {
+      margin-left: 0;
+    }
+  }
+  + .hdty-btn {
+    margin-left: 10px;
+    &.hdty-btn-fluid {
+      margin-left: 0;
+    }
+  }
+  + .hdty-btn-group {
+    margin-left: 10px;
+  }
+  + .el-button {
+    margin-left: 10px;
+    &.hdty-btn-fluid {
+      margin-left: 0;
+    }
+  }
+  + .el-button-group {
+    margin-left: 10px;
+  }
+}
+
+/* 用于设置按钮组 */
+.hdty-btn-group {
+  .hdty-btn-brand, .hdty-btn-primary, .hdty-btn-success, .hdty-btn-info, .hdty-btn-remind, .hdty-btn-warning, .hdty-btn-danger {
+    &:not(.hdty-btn-disabled) {
+      &:first-child {
+        @include bdr_shadow_base_color_second;
+      }
+      &:last-child {
+        @include bdl_shadow_base_color_second;
+      }
+      &:not(:first-child):not(:last-child) {
+        @include bdl_shadow_base_color_second;
+        @include bdr_shadow_base_color_second;
+      }
+    }
+  }
+  + .hdty-btn-group, + .hdty-btn {
+    margin-left: 10px;
+  }
+}
+
+/* 用于设置按钮容器 */
+.hdty-btn-container {
+  .hdty-btn, .el-button {
+    margin-right: 16px;
+    margin-bottom: 10px;
+    &.hdty-btn-fluid {
+      margin-right: 0;
+    }
+    &:last-of-type {
+      margin-right: 0;
+      + .hdty-btn-group, + .el-button-group {
+        margin-left: 16px;
+      }
+      + .el-dropdown {
+        margin-left: 16px;
+      }
+    }
+    + .hdty-btn, + .el-button {
+      margin-left: 0;
+    }
+    + .hdty-btn-group, + .el-button-group {
+      margin-left: 0;
+    }
+    + .el-dropdown {
+      margin-left: 0;
+    }
+  }
+  .hdty-btn-group, .el-button-group {
+    margin-right: 16px;
+    .hdty-btn, .el-button {
+      &:not(:last-child) {
+        margin-right: -1px;
+      }
+    }
+    &:last-of-type {
+      margin-right: 0;
+      + .hdty-btn, + .el-button {
+        margin-left: 16px;
+      }
+      + .el-dropdown {
+        margin-left: 16px;
+      }
+    }
+    + .hdty-btn, + .el-button {
+      margin-left: 0;
+    }
+    + .hdty-btn-group, + .el-button-group {
+      margin-left: 0;
+    }
+    + .el-dropdown {
+      margin-left: 0;
+    }
+  }
+  .el-dropdown {
+    margin-right: 16px;
+    &:last-of-type {
+      margin-right: 0;
+      + .hdty-btn, + .el-button {
+        margin-left: 16px;
+      }
+      + .hdty-btn-group, + .el-button-group {
+        margin-left: 16px;
+      }
+    }
+    + .hdty-btn, + .el-button {
+      margin-left: 0;
+    }
+    + .hdty-btn-group, + .el-button-group {
+      margin-left: 0;
+    }
+    + .el-dropdown {
+      margin-left: 0;
+    }
+  }
+  > .el-input, > .el-select, > .el-cascader, > .el-range-editor, > .el-input-number, > .el-switch, > .hdty-dialog-select {
+    margin-right: 16px;
+    &:last-child {
+      margin-right: 0;
+    }
+    + .hdty-btn, + .el-button {
+      margin-left: 0;
+    }
+    + .hdty-btn-group, + .el-button-group {
+      margin-left: 0;
+    }
+    + .el-input, + .el-select, + .el-cascader, + .el-range-editor, + .el-input-number, + .el-switch, + .hdty-dialog-select {
+      margin-left: 0;
+    }
+    + .el-radio, + .el-checkbox {
+      margin-left: 0;
+    }
+  }
+  > .el-radio, > .el-checkbox {
+    margin-right: 16px;
+    &:last-of-type {
+      margin-right: 16px;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+    + .hdty-btn, + .el-button {
+      margin-left: 0;
+    }
+    + .hdty-btn-group, + .el-button-group {
+      margin-left: 0;
+    }
+    + .el-input, + .el-select, + .el-cascader, + .el-range-editor, + .el-input-number, + .el-switch, + .hdty-dialog-select {
+      margin-left: 0;
+    }
+    + .el-radio, + .el-checkbox {
+      margin-left: 0;
+    }
+  }
+  &.hdty-btn-space4 {
+    .hdty-btn, .el-button {
+      margin-right: 4px;
+      margin-bottom: 4px;
+      &.hdty-btn-fluid {
+        margin-right: 0;
+      }
+      &:last-of-type {
+        margin-right: 0;
+        + .hdty-btn-group, + .el-button-group {
+          margin-left: 4px;
+        }
+        + .el-dropdown {
+          margin-left: 4px;
+        }
+      }
+      + .hdty-btn, + .el-button {
+        margin-left: 0;
+      }
+      + .hdty-btn-group, + .el-button-group {
+        margin-left: 0;
+      }
+      + .el-dropdown {
+        margin-left: 0;
+      }
+    }
+    .hdty-btn-group, .el-button-group {
+      margin-right: 4px;
+      .hdty-btn, .el-button {
+        &:not(:last-child) {
+          margin-right: -1px;
+        }
+      }
+      &:last-of-type {
+        margin-right: 0;
+        + .hdty-btn, + .el-button {
+          margin-left: 4px;
+        }
+        + .el-dropdown {
+          margin-left: 4px;
+        }
+      }
+      + .hdty-btn, + .el-button {
+        margin-left: 0;
+      }
+      + .hdty-btn-group, + .el-button-group {
+        margin-left: 0;
+      }
+      + .el-dropdown {
+        margin-left: 0;
+      }
+    }
+    .el-dropdown {
+      margin-right: 4px;
+      &:last-of-type {
+        margin-right: 0;
+        + .hdty-btn, + .el-button {
+          margin-left: 4px;
+        }
+        + .hdty-btn-group, + .el-button-group {
+          margin-left: 4px;
+        }
+      }
+      + .hdty-btn, + .el-button {
+        margin-left: 0;
+      }
+      + .hdty-btn-group, + .el-button-group {
+        margin-left: 0;
+      }
+      + .el-dropdown {
+        margin-left: 0;
+      }
+    }
+    > .el-input, > .el-select, > .el-cascader, > .el-range-editor, > .el-input-number, > .el-switch, > .hdty-dialog-select {
+      margin-right: 4px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    > .el-radio, > .el-checkbox {
+      margin-right: 4px;
+      &:last-of-type {
+        margin-right: 4px;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  &.hdty-btn-space6 {
+    .hdty-btn, .el-button {
+      margin-right: 6px;
+      margin-bottom: 6px;
+      &.hdty-btn-fluid {
+        margin-right: 0;
+      }
+      &:last-of-type {
+        margin-right: 0;
+        + .hdty-btn-group, + .el-button-group {
+          margin-left: 6px;
+        }
+        + .el-dropdown {
+          margin-left: 6px;
+        }
+      }
+      + .hdty-btn, + .el-button {
+        margin-left: 0;
+      }
+      + .hdty-btn-group, + .el-button-group {
+        margin-left: 0;
+      }
+      + .el-dropdown {
+        margin-left: 0;
+      }
+    }
+    .hdty-btn-group, .el-button-group {
+      margin-right: 6px;
+      .hdty-btn, .el-button {
+        &:not(:last-child) {
+          margin-right: -1px;
+        }
+      }
+      &:last-of-type {
+        margin-right: 0;
+        + .hdty-btn, + .el-button {
+          margin-left: 6px;
+        }
+        + .el-dropdown {
+          margin-left: 6px;
+        }
+      }
+      + .hdty-btn, + .el-button {
+        margin-left: 0;
+      }
+      + .hdty-btn-group, + .el-button-group {
+        margin-left: 0;
+      }
+      + .el-dropdown {
+        margin-left: 0;
+      }
+    }
+    .el-dropdown {
+      margin-right: 6px;
+      &:last-of-type {
+        margin-right: 0;
+        + .hdty-btn, + .el-button {
+          margin-left: 6px;
+        }
+        + .hdty-btn-group, + .el-button-group {
+          margin-left: 6px;
+        }
+      }
+      + .hdty-btn, + .el-button {
+        margin-left: 0;
+      }
+      + .hdty-btn-group, + .el-button-group {
+        margin-left: 0;
+      }
+      + .el-dropdown {
+        margin-left: 0;
+      }
+    }
+    > .el-input, > .el-select, > .el-cascader, > .el-range-editor, > .el-input-number, > .el-switch, > .hdty-dialog-select {
+      margin-right: 6px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    > .el-radio, > .el-checkbox {
+      margin-right: 6px;
+      &:last-of-type {
+        margin-right: 6px;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  &.hdty-btn-space8 {
+    .hdty-btn, .el-button {
+      margin-right: 8px;
+      margin-bottom: 8px;
+      &.hdty-btn-fluid {
+        margin-right: 0;
+      }
+      &:last-of-type {
+        margin-right: 0;
+        + .hdty-btn-group, + .el-button-group {
+          margin-left: 8px;
+        }
+        + .el-dropdown {
+          margin-left: 8px;
+        }
+      }
+      + .hdty-btn, + .el-button {
+        margin-left: 0;
+      }
+      + .hdty-btn-group, + .el-button-group {
+        margin-left: 0;
+      }
+      + .el-dropdown {
+        margin-left: 0;
+      }
+    }
+    .hdty-btn-group, .el-button-group {
+      margin-right: 8px;
+      .hdty-btn, .el-button {
+        &:not(:last-child) {
+          margin-right: -1px;
+        }
+      }
+      &:last-of-type {
+        margin-right: 0;
+        + .hdty-btn, + .el-button {
+          margin-left: 8px;
+        }
+        + .el-dropdown {
+          margin-left: 8px;
+        }
+      }
+      + .hdty-btn, + .el-button {
+        margin-left: 0;
+      }
+      + .hdty-btn-group, + .el-button-group {
+        margin-left: 0;
+      }
+      + .el-dropdown {
+        margin-left: 0;
+      }
+    }
+    .el-dropdown {
+      margin-right: 8px;
+      &:last-of-type {
+        margin-right: 0;
+        + .hdty-btn, + .el-button {
+          margin-left: 8px;
+        }
+        + .hdty-btn-group, + .el-button-group {
+          margin-left: 8px;
+        }
+      }
+      + .hdty-btn, + .el-button {
+        margin-left: 0;
+      }
+      + .hdty-btn-group, + .el-button-group {
+        margin-left: 0;
+      }
+      + .el-dropdown {
+        margin-left: 0;
+      }
+    }
+    > .el-input, > .el-select, > .el-cascader, > .el-range-editor, > .el-input-number, > .el-switch, > .hdty-dialog-select {
+      margin-right: 8px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    > .el-radio, > .el-checkbox {
+      margin-right: 8px;
+      &:last-of-type {
+        margin-right: 8px;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  &.hdty-btn-space10 {
+    .hdty-btn, .el-button {
+      margin-right: 10px;
+      margin-bottom: 10px;
+      &.hdty-btn-fluid {
+        margin-right: 0;
+      }
+      &:last-of-type {
+        margin-right: 0;
+        + .hdty-btn-group, + .el-button-group {
+          margin-left: 10px;
+        }
+        + .el-dropdown {
+          margin-left: 10px;
+        }
+      }
+      + .hdty-btn, + .el-button {
+        margin-left: 0;
+      }
+      + .hdty-btn-group, + .el-button-group {
+        margin-left: 0;
+      }
+      + .el-dropdown {
+        margin-left: 0;
+      }
+    }
+    .hdty-btn-group, .el-button-group {
+      margin-right: 10px;
+      .hdty-btn, .el-button {
+        &:not(:last-child) {
+          margin-right: -1px;
+        }
+      }
+      &:last-of-type {
+        margin-right: 0;
+        + .hdty-btn, + .el-button {
+          margin-left: 10px;
+        }
+        + .el-dropdown {
+          margin-left: 10px;
+        }
+      }
+      + .hdty-btn, + .el-button {
+        margin-left: 0;
+      }
+      + .hdty-btn-group, + .el-button-group {
+        margin-left: 0;
+      }
+      + .el-dropdown {
+        margin-left: 0;
+      }
+    }
+    .el-dropdown {
+      margin-right: 10px;
+      &:last-of-type {
+        margin-right: 0;
+        + .hdty-btn, + .el-button {
+          margin-left: 10px;
+        }
+        + .hdty-btn-group, + .el-button-group {
+          margin-left: 10px;
+        }
+      }
+      + .hdty-btn, + .el-button {
+        margin-left: 0;
+      }
+      + .hdty-btn-group, + .el-button-group {
+        margin-left: 0;
+      }
+      + .el-dropdown {
+        margin-left: 0;
+      }
+    }
+    > .el-input, > .el-select, > .el-cascader, > .el-range-editor, > .el-input-number, > .el-switch, > .hdty-dialog-select {
+      margin-right: 10px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    > .el-radio, > .el-checkbox {
+      margin-right: 10px;
+      &:last-of-type {
+        margin-right: 10px;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  &.hdty-btn-space12 {
+    .hdty-btn, .el-button {
+      margin-right: 12px;
+      margin-bottom: 12px;
+      &.hdty-btn-fluid {
+        margin-right: 0;
+      }
+      &:last-of-type {
+        margin-right: 0;
+        + .hdty-btn-group, + .el-button-group {
+          margin-left: 12px;
+        }
+        + .el-dropdown {
+          margin-left: 12px;
+        }
+      }
+      + .hdty-btn, + .el-button {
+        margin-left: 0;
+      }
+      + .hdty-btn-group, + .el-button-group {
+        margin-left: 0;
+      }
+      + .el-dropdown {
+        margin-left: 0;
+      }
+    }
+    .hdty-btn-group, .el-button-group {
+      margin-right: 12px;
+      .hdty-btn, .el-button {
+        &:not(:last-child) {
+          margin-right: -1px;
+        }
+      }
+      &:last-of-type {
+        margin-right: 0;
+        + .hdty-btn, + .el-button {
+          margin-left: 12px;
+        }
+        + .el-dropdown {
+          margin-left: 12px;
+        }
+      }
+      + .hdty-btn, + .el-button {
+        margin-left: 0;
+      }
+      + .hdty-btn-group, + .el-button-group {
+        margin-left: 0;
+      }
+      + .el-dropdown {
+        margin-left: 0;
+      }
+    }
+    .el-dropdown {
+      margin-right: 12px;
+      &:last-of-type {
+        margin-right: 0;
+        + .hdty-btn, + .el-button {
+          margin-left: 12px;
+        }
+        + .hdty-btn-group, + .el-button-group {
+          margin-left: 12px;
+        }
+      }
+      + .hdty-btn, + .el-button {
+        margin-left: 0;
+      }
+      + .hdty-btn-group, + .el-button-group {
+        margin-left: 0;
+      }
+      + .el-dropdown {
+        margin-left: 0;
+      }
+    }
+    > .el-input, > .el-select, > .el-cascader, > .el-range-editor, > .el-input-number, > .el-switch, > .hdty-dialog-select {
+      margin-right: 12px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    > .el-radio, > .el-checkbox {
+      margin-right: 12px;
+      &:last-of-type {
+        margin-right: 12px;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  &.hdty-btn-space16 {
+    .hdty-btn, .el-button {
+      margin-right: 16px;
+      margin-bottom: 16px;
+      &.hdty-btn-fluid {
+        margin-right: 0;
+      }
+      &:last-of-type {
+        margin-right: 0;
+        + .hdty-btn-group, + .el-button-group {
+          margin-left: 16px;
+        }
+        + .el-dropdown {
+          margin-left: 16px;
+        }
+      }
+      + .hdty-btn, + .el-button {
+        margin-left: 0;
+      }
+      + .hdty-btn-group, + .el-button-group {
+        margin-left: 0;
+      }
+      + .el-dropdown {
+        margin-left: 0;
+      }
+    }
+    .hdty-btn-group, .el-button-group {
+      margin-right: 16px;
+      .hdty-btn, .el-button {
+        &:not(:last-child) {
+          margin-right: -1px;
+        }
+      }
+      &:last-of-type {
+        margin-right: 0;
+        + .hdty-btn, + .el-button {
+          margin-left: 16px;
+        }
+        + .el-dropdown {
+          margin-left: 16px;
+        }
+      }
+      + .hdty-btn, + .el-button {
+        margin-left: 0;
+      }
+      + .hdty-btn-group, + .el-button-group {
+        margin-left: 0;
+      }
+      + .el-dropdown {
+        margin-left: 0;
+      }
+    }
+    .el-dropdown {
+      margin-right: 16px;
+      &:last-of-type {
+        margin-right: 0;
+        + .hdty-btn, + .el-button {
+          margin-left: 16px;
+        }
+        + .hdty-btn-group, + .el-button-group {
+          margin-left: 16px;
+        }
+      }
+      + .hdty-btn, + .el-button {
+        margin-left: 0;
+      }
+      + .hdty-btn-group, + .el-button-group {
+        margin-left: 0;
+      }
+      + .el-dropdown {
+        margin-left: 0;
+      }
+    }
+    > .el-input, > .el-select, > .el-cascader, > .el-range-editor, > .el-input-number, > .el-switch, > .hdty-dialog-select {
+      margin-right: 16px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    > .el-radio, > .el-checkbox {
+      margin-right: 16px;
+      &:last-of-type {
+        margin-right: 16px;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  &.hdty-btn-space20 {
+    .hdty-btn, .el-button {
+      margin-right: 20px;
+      margin-bottom: 20px;
+      &.hdty-btn-fluid {
+        margin-right: 0;
+      }
+      &:last-of-type {
+        margin-right: 0;
+        + .hdty-btn-group, + .el-button-group {
+          margin-left: 20px;
+        }
+        + .el-dropdown {
+          margin-left: 20px;
+        }
+      }
+      + .hdty-btn, + .el-button {
+        margin-left: 0;
+      }
+      + .hdty-btn-group, + .el-button-group {
+        margin-left: 0;
+      }
+      + .el-dropdown {
+        margin-left: 0;
+      }
+    }
+    .hdty-btn-group, .el-button-group {
+      margin-right: 20px;
+      .hdty-btn, .el-button {
+        &:not(:last-child) {
+          margin-right: -1px;
+        }
+      }
+      &:last-of-type {
+        margin-right: 0;
+        + .hdty-btn, + .el-button {
+          margin-left: 20px;
+        }
+        + .el-dropdown {
+          margin-left: 20px;
+        }
+      }
+      + .hdty-btn, + .el-button {
+        margin-left: 0;
+      }
+      + .hdty-btn-group, + .el-button-group {
+        margin-left: 0;
+      }
+      + .el-dropdown {
+        margin-left: 0;
+      }
+    }
+    .el-dropdown {
+      margin-right: 20px;
+      &:last-of-type {
+        margin-right: 0;
+        + .hdty-btn, + .el-button {
+          margin-left: 20px;
+        }
+        + .hdty-btn-group, + .el-button-group {
+          margin-left: 20px;
+        }
+      }
+      + .hdty-btn, + .el-button {
+        margin-left: 0;
+      }
+      + .hdty-btn-group, + .el-button-group {
+        margin-left: 0;
+      }
+      + .el-dropdown {
+        margin-left: 0;
+      }
+    }
+    > .el-input, > .el-select, > .el-cascader, > .el-range-editor, > .el-input-number, > .el-switch, > .hdty-dialog-select {
+      margin-right: 20px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    > .el-radio, > .el-checkbox {
+      margin-right: 20px;
+      &:last-of-type {
+        margin-right: 20px;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  &.hdty-btn-space24 {
+    .hdty-btn, .el-button {
+      margin-right: 24px;
+      margin-bottom: 24px;
+      &.hdty-btn-fluid {
+        margin-right: 0;
+      }
+      &:last-of-type {
+        margin-right: 0;
+        + .hdty-btn-group, + .el-button-group {
+          margin-left: 24px;
+        }
+        + .el-dropdown {
+          margin-left: 24px;
+        }
+      }
+      + .hdty-btn, + .el-button {
+        margin-left: 0;
+      }
+      + .hdty-btn-group, + .el-button-group {
+        margin-left: 0;
+      }
+      + .el-dropdown {
+        margin-left: 0;
+      }
+    }
+    .hdty-btn-group, .el-button-group {
+      margin-right: 24px;
+      .hdty-btn, .el-button {
+        &:not(:last-child) {
+          margin-right: -1px;
+        }
+      }
+      &:last-of-type {
+        margin-right: 0;
+        + .hdty-btn, + .el-button {
+          margin-left: 24px;
+        }
+        + .el-dropdown {
+          margin-left: 24px;
+        }
+      }
+      + .hdty-btn, + .el-button {
+        margin-left: 0;
+      }
+      + .hdty-btn-group, + .el-button-group {
+        margin-left: 0;
+      }
+      + .el-dropdown {
+        margin-left: 0;
+      }
+    }
+    .el-dropdown {
+      margin-right: 24px;
+      &:last-of-type {
+        margin-right: 0;
+        + .hdty-btn, + .el-button {
+          margin-left: 24px;
+        }
+        + .hdty-btn-group, + .el-button-group {
+          margin-left: 24px;
+        }
+      }
+      + .hdty-btn, + .el-button {
+        margin-left: 0;
+      }
+      + .hdty-btn-group, + .el-button-group {
+        margin-left: 0;
+      }
+      + .el-dropdown {
+        margin-left: 0;
+      }
+    }
+    > .el-input, > .el-select, > .el-cascader, > .el-range-editor, > .el-input-number, > .el-switch, > .hdty-dialog-select {
+      margin-right: 24px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    > .el-radio, > .el-checkbox {
+      margin-right: 24px;
+      &:last-of-type {
+        margin-right: 24px;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+/* 用于设置折叠栏 */
+.hdty-expand {
+  @include bg_background_color_fourth;
+  .hdty-expand-header {
+    @include bd_border_color_third;
+    @include ft_font_color_first;
+  }
+  .hdty-expand-footer {
+    @include bg_border_color_third;
+  }
+  .hdty-expand-btn {
+    @include bg_background_color_fourth;
+    @include ft_font_color_third;
+  }
+}
+
+/* 用于遮罩 */
+.hdty-mask {
+  @include bg_base_color_fourth;
+  opacity: .5;
+}
+
+/* 用于设置文字提示 */
+.hdty-tooltip {
+  //@include bg_warning_color_fourth;
+  //@include bd_font_color_third;
+  //@include ft_warning_color_first;
+  //@include bs_shadow_dark_color_third(0 0 2px);
+}
+
+/* 用于设置引导条 */
+.hdty-guide {
+  &.has-hover {
+    .hdty-guide-item {
+      &:hover {
+        @include bd_main_color_first;
+        @include ft_main_color_first;
+      }
+    }
+  }
+}
+
+.hdty-guide-item {
+  @include bg_background_color_fourth;
+  @include bd_border_color_third;
+  @include ft_font_color_second;
+  &::after {
+    @include bd_border_color_third;
+  }
+  &.is-active {
+    @include bd_main_color_first;
+    @include ft_main_color_first;
+    @include bs_shadow_main_color_second(0 0 6px);
+  }
+  &.is-complete {
+    @include bg_main_color_first;
+    @include bd_main_color_first;
+    @include ft_base_color_first;
+  }
+}
+
+/* 用于设置一个时间线 */
+.hdty-timeline-item {
+  &.is-active {
+    .hdty-timeline-badge {
+      @include bg_warning_color_first;
+    }
+  }
+  &::before {
+    @include ft_warning_color_first;
+  }
+  &::after {
+    @include bg_border_color_second;
+  }
+}
+
+.hdty-timeline-date {
+  @include ft_font_color_first;
+}
+
+.hdty-timeline-badge {
+  @include bg_border_color_second;
+  @include ft_base_color_first;
+}
+
+.hdty-timeline-title {
+  @include ft_font_color_first;
+}
+
+.hdty-timeline-content {
+  @include ft_font_color_third;
+}
+
+.hdty-timeline-group {
+  .hdty-timeline-item {
+    &:first-child {
+      &::before {
+        @include ft_warning_color_first;
+      }
+      &::after {
+        @include bg_border_color_second;
+      }
+    }
+  }
+  &.is-active {
+    .hdty-timeline-badge {
+      @include bg_warning_color_first;
+    }
+  }
+}
+
+.hdty-timeline-banner {
+  &.is-active {
+    .hdty-timeline-badge {
+      @include bg_warning_color_first;
+    }
+  }
+  &::after {
+    @include bg_border_color_second;
+  }
+}
+
+/* 设置输入框水印 */
+input, textarea {
+  &::-webkit-input-placeholder { /* WebKit browsers */
+    @include ft_font_color_fourth(!important);
+  }
+  &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    @include ft_font_color_fourth(!important);
+  }
+  &::-moz-placeholder { /* Mozilla Firefox 19+ */
+    @include ft_font_color_fourth(!important);
+  }
+  &:-ms-input-placeholder { /* Internet Explorer 10+ */
+    @include ft_font_color_fourth(!important);
+  }
+}
+
+@media screen and (min-width:992px) {
+  /* 自定义滚动条样式 */
+  .hdty-scrollbar, .hdty-scroll {
+    &::-webkit-scrollbar { /*滚动条整体样式*/
+      width: 10px;      /*高宽分别对应横竖滚动条的尺寸*/
+      height: 12px;
+    }
+    &::-webkit-scrollbar-track { /*滚动条里面轨道*/
+      border-radius: 0;
+      -webkit-box-shadow: transparent;
+      box-shadow: transparent;
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb { /*滚动条里面小方块*/
+      border-radius: 6px;
+      -webkit-box-shadow: transparent;
+      box-shadow: transparent;
+      background-color: transparent;
+    }
+    &:hover {
+      &::-webkit-scrollbar-thumb {
+        @include bs_border_color_fourth(inset 0 0 0 2px);
+        @include bg_border_color_first;
+      }
+    }
+    &[lock] {
+      &::-webkit-scrollbar-track { /*滚动条里面轨道*/
+        @include bs_border_color_first(inset 0 0 5px);
+        @include bg_border_color_fourth;
+      }
+      &::-webkit-scrollbar-thumb { /*滚动条里面小方块*/
+        @include bs_border_color_fourth(inset 0 0 0 2px);
+        @include bg_shadow_dark_color_fourth;
+      }
+      &:hover {
+        &::-webkit-scrollbar-thumb {
+          @include bs_border_color_fourth(inset 0 0 0 2px);
+          @include bg_border_color_first;
+        }
+      }
+    }
+  }
+}

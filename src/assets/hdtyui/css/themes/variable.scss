@@ -1,0 +1,451 @@
+/*
+主题风格
+*/
+
+
+/******************************************* 1.经典绿 theme-classical-green *******************************************/
+
+
+/* 1.1.主色 primary-color */
+
+// 1.1.1.品牌色
+$classical-green-brand-color-first: #1cc9b5;
+$classical-green-brand-color-second: #34dcc8;
+$classical-green-brand-color-third: #9ef7e7;
+$classical-green-brand-color-fourth: #e6fefa;
+
+// 1.1.2.重要色
+$classical-green-main-color-first: #3496f1;
+$classical-green-main-color-second: #5ba8f0;
+$classical-green-main-color-third: #b3dbff;
+$classical-green-main-color-fourth: #eaf5ff;
+
+// 1.1.3.成功色
+$classical-green-success-color-first: #1cc9b5;
+$classical-green-success-color-second: #34dcc8;
+$classical-green-success-color-third: #9ef7e7;
+$classical-green-success-color-fourth: #e6fefa;
+
+// 1.1.4.资讯色
+$classical-green-info-color-first: #3a71a8;
+$classical-green-info-color-second: #6292d2;
+$classical-green-info-color-third: #94bae0;
+$classical-green-info-color-fourth: #e6f0fa;
+
+// 1.1.5.注意色
+$classical-green-remind-color-first: #ffcb00;
+$classical-green-remind-color-second: #ffdb4e;
+$classical-green-remind-color-third: #ffea97;
+$classical-green-remind-color-fourth: #fff8de;
+
+// 1.1.6.警告色
+$classical-green-warning-color-first: #fa944a;
+$classical-green-warning-color-second: #ffae74;
+$classical-green-warning-color-third: #ffd2b6;
+$classical-green-warning-color-fourth: #fff3eb;
+
+// 1.1.7.危险色
+$classical-green-danger-color-first: #ff5959;
+$classical-green-danger-color-second: #ff7676;
+$classical-green-danger-color-third: #f8c2c2;
+$classical-green-danger-color-fourth: #ffebeb;
+
+
+/* 1.2.副色 secondary-color */
+
+// 1.2.1.导航色
+$classical-green-navigation-color-first: #0f1525;
+$classical-green-navigation-color-second: #111c35;
+$classical-green-navigation-color-third: #20335d;
+$classical-green-navigation-color-fourth: #2f4371;
+
+// 1.2.2.背景色
+$classical-green-background-color-first: #1cc9b5;
+$classical-green-background-color-second: #eef5f9;
+$classical-green-background-color-third: #f5f7fa;
+$classical-green-background-color-fourth: #fff;
+
+// 1.2.3 基础色
+$classical-green-base-color-first: #fff;
+$classical-green-base-color-second: #eef5f9;
+$classical-green-base-color-third: #606266;
+$classical-green-base-color-fourth: #000;
+
+
+/* 1.3.辅助色 auxiliary-color */
+
+// 1.3.1.填充色
+$classical-green-filling-color-first: #079291;
+$classical-green-filling-color-second: #71dedd;
+$classical-green-filling-color-third: #bce2e1;
+$classical-green-filling-color-fourth: #c4e4e7;
+
+// 1.3.2.字体色
+$classical-green-font-color-first: #303133;
+$classical-green-font-color-second: #606266;
+$classical-green-font-color-third: #909399;
+$classical-green-font-color-fourth: #c6c9d0;
+
+// 1.3.3.边框色
+$classical-green-border-color-first: #bfc3cc;
+$classical-green-border-color-second: #dcdfe6;
+$classical-green-border-color-third: #e8ebf3;
+$classical-green-border-color-fourth: #f2f6fc;
+
+// 1.3.4.阴影色
+$classical-green-shadow-base-color-first: #fff;
+$classical-green-shadow-base-color-second: rgba(255, 255, 255, .8);
+$classical-green-shadow-base-color-third: rgba(255, 255, 255, .4);
+$classical-green-shadow-base-color-fourth: rgba(255, 255, 255, .2);
+
+$classical-green-shadow-dark-color-first: rgba(0, 0, 0, .7);
+$classical-green-shadow-dark-color-second: rgba(0, 0, 0, .4);
+$classical-green-shadow-dark-color-third: rgba(0, 0, 0, .2);
+$classical-green-shadow-dark-color-fourth: rgba(0, 0, 0, .1);
+
+$classical-green-shadow-odd-color-first: rgba(255, 255, 255, .8);
+
+$classical-green-shadow-main-color-first: rgba(52, 150, 241, .7);
+$classical-green-shadow-main-color-second: rgba(52, 150, 241, .5);
+$classical-green-shadow-main-color-third: rgba(52, 150, 241, .3);
+$classical-green-shadow-main-color-fourth: rgba(52, 150, 241, .1);
+
+$classical-green-shadow-success-color-first: rgba(2, 255, 222, .8);
+
+$classical-green-shadow-info-color-first: rgba(58, 113, 168, .7);
+$classical-green-shadow-info-color-second: rgba(58, 113, 168, .5);
+$classical-green-shadow-info-color-third: rgba(58, 113, 168, .3);
+
+$classical-green-shadow-remind-color-first: rgba(255, 203, 0, .7);
+
+
+// 1.3.5.点缀色
+$classical-green-ornament-color-first: #00ffb6;
+$classical-green-ornament-color-second: #1cc9b5;
+$classical-green-ornament-color-third: #02ffde;
+$classical-green-ornament-color-fourth: #3a71a8;
+
+
+/* 1.4.背景图片 background-image */
+
+// 1.4.1.登录区
+$classical-green-login-bg-001: url('../../assets/hdtyui/images/theme-classical-green/login/bg-001.jpg');
+$classical-green-login-banner-001: url('../../assets/hdtyui/images/theme-classical-green/login/banner-001.png');
+$classical-green-login-img-001: url('../../assets/hdtyui/images/theme-classical-green/login/img-001.png');
+$classical-green-login-img-002: none;
+
+// 1.4.2.顶部栏
+$classical-green-header-bg-001: url('./assets/hdtyui/images/theme-classical-green/header/bg-001.png');
+$classical-green-header-avatar-001: url('./assets/hdtyui/images/theme-classical-green/header/avatar-001.png');
+$classical-green-header-avatar-002: url('./assets/hdtyui/images/theme-classical-green/header/avatar-002.png');
+$classical-green-header-corner-001: url('./assets/hdtyui/images/theme-classical-green/header/corner-001.png');
+$classical-green-header-corner-002: url('./assets/hdtyui/images/theme-classical-green/header/corner-002.png');
+
+// 1.4.3.主体栏
+$classical-green-body-bg-001: url('./assets/hdtyui/images/theme-classical-green/body/bg-001.jpg');
+$classical-green-body-bg-002: url('./assets/hdtyui/images/theme-classical-green/body/bg-002.jpg');
+$classical-green-body-bg-003: url('./assets/hdtyui/images/theme-classical-green/body/bg-003.png');
+$classical-green-body-bg-004: url('./assets/hdtyui/images/theme-classical-green/body/bg-004.png');
+$classical-green-body-bd-001: url('./assets/hdtyui/images/theme-classical-green/body/bd-001.png');
+$classical-green-body-bd-002: url('./assets/hdtyui/images/theme-classical-green/body/bd-002.png');
+$classical-green-body-bd-003: url('./assets/hdtyui/images/theme-classical-green/body/bd-003.png');
+$classical-green-body-img-001: url('./assets/hdtyui/images/theme-classical-green/body/img-001.png');
+$classical-green-body-img-002: url('./assets/hdtyui/images/theme-classical-green/body/img-002.png');
+
+
+/******************************************* 2.警用蓝 police-blue *******************************************/
+
+
+/* 2.1.主色 primary-color */
+
+// 2.1.1.品牌色
+$police-blue-brand-color-first: #1194fb;
+$police-blue-brand-color-second: #35a1f7;
+$police-blue-brand-color-third: #6eadfa;
+$police-blue-brand-color-fourth: #e5eafb;
+
+// 2.1.2.重要色
+$police-blue-main-color-first: #1194fb;
+$police-blue-main-color-second: #35a1f7;
+$police-blue-main-color-third: #6eadfa;
+$police-blue-main-color-fourth: #e5eafb;
+
+// 2.1.3.成功色
+$police-blue-success-color-first: #1cad7b;
+$police-blue-success-color-second: #3dbf93;
+$police-blue-success-color-third: #61deb4;
+$police-blue-success-color-fourth: #d1fdf3;
+
+// 2.1.4.资讯色
+$police-blue-info-color-first: #115fbb;
+$police-blue-info-color-second: #408be3;
+$police-blue-info-color-third: #4c93bc;
+$police-blue-info-color-fourth: #d1e7f7;
+
+// 2.1.5.注意色
+$police-blue-remind-color-first: #ffcb00;
+$police-blue-remind-color-second: #ffdb4e;
+$police-blue-remind-color-third: #ffea97;
+$police-blue-remind-color-fourth: #fff8de;
+
+// 2.1.6.警告色
+$police-blue-warning-color-first: #ff9400;
+$police-blue-warning-color-second: #fba62f;
+$police-blue-warning-color-third: #ecb173;
+$police-blue-warning-color-fourth: #f9f2de;
+
+// 2.1.7.危险色
+$police-blue-danger-color-first: #ff3f4e;
+$police-blue-danger-color-second: #ff616b;
+$police-blue-danger-color-third: #f8727c;
+$police-blue-danger-color-fourth: #f3dddf;
+
+
+/* 2.2.副色 secondary-color */
+
+// 2.2.1.导航色
+$police-blue-navigation-color-first: #001325;
+$police-blue-navigation-color-second: #002243;
+$police-blue-navigation-color-third: #1a4982;
+$police-blue-navigation-color-fourth: #014aa2;
+
+// 2.2.2.背景色
+$police-blue-background-color-first: #002449;
+$police-blue-background-color-second: #e9e9e9;
+$police-blue-background-color-third: #e0e3ec;
+$police-blue-background-color-fourth: #f5f6f6;
+
+// 2.2.3 基础色
+$police-blue-base-color-first: #fff;
+$police-blue-base-color-second: #e9e9e9;
+$police-blue-base-color-third: #c9c9c9;
+$police-blue-base-color-fourth: #000;
+
+
+/* 2.3.辅助色 auxiliary-color */
+
+// 2.3.1.填充色
+$police-blue-filling-color-first: #1a4982;
+$police-blue-filling-color-second: #00c9ff;
+$police-blue-filling-color-third: #72C8FF;
+$police-blue-filling-color-fourth: #85c9f5;
+
+// 2.3.2.字体色
+$police-blue-font-color-first: #191919;
+$police-blue-font-color-second: #2f2f2f;
+$police-blue-font-color-third: #5c5c5c;
+$police-blue-font-color-fourth: #b2b2b2;
+
+// 2.3.3.边框色
+$police-blue-border-color-first: #8d8d8d;
+$police-blue-border-color-second: #9d9d9d;
+$police-blue-border-color-third: #c7c7c7;
+$police-blue-border-color-fourth: #dedee2;
+
+// 2.3.4.阴影色
+$police-blue-shadow-base-color-first: rgba(255, 255, 255, .8);
+$police-blue-shadow-base-color-second: rgba(255, 255, 255, .7);
+$police-blue-shadow-base-color-third: rgba(255, 255, 255, .4);
+$police-blue-shadow-base-color-fourth: rgba(255, 255, 255, .2);
+
+$police-blue-shadow-dark-color-first: rgba(0, 0, 0, .7);
+$police-blue-shadow-dark-color-second: rgba(0, 0, 0, .4);
+$police-blue-shadow-dark-color-third: rgba(0, 0, 0, .3);
+$police-blue-shadow-dark-color-fourth: rgba(0, 0, 0, .2);
+
+$police-blue-shadow-odd-color-first: rgba(0, 0, 0, .8);
+
+$police-blue-shadow-main-color-first: rgba(17, 148, 251, .7);
+$police-blue-shadow-main-color-second: rgba(17, 148, 251, .5);
+$police-blue-shadow-main-color-third: rgba(17, 148, 251, .3);
+$police-blue-shadow-main-color-fourth: rgba(17, 148, 251, .1);
+
+$police-blue-shadow-success-color-first: rgba(2, 255, 222, .8);
+
+$police-blue-shadow-info-color-first: rgba(17, 95, 187, .7);
+$police-blue-shadow-info-color-second: rgba(17, 95, 187, .5);
+$police-blue-shadow-info-color-third: rgba(17, 95, 187, .3);
+
+$police-blue-shadow-remind-color-first: rgba(255, 203, 0, .7);
+
+
+// 2.3.5.点缀色
+$police-blue-ornament-color-first: #82e8ff;
+$police-blue-ornament-color-second: #01fbfd;
+$police-blue-ornament-color-third: #02ffde;
+$police-blue-ornament-color-fourth: #8c939a;
+
+/* 2.4.背景图片 background-image */
+
+// 2.4.1.登录区
+$police-blue-login-bg-001: url('../../assets/hdtyui/images/theme-police-blue/login/bg-001.jpg');
+$police-blue-login-banner-001: url('../../assets/hdtyui/images/theme-police-blue/login/banner-001.png');
+$police-blue-login-img-001: url('../../assets/hdtyui/images/theme-police-blue/login/img-001.png');
+$police-blue-login-img-002: none;
+
+// 2.4.2.顶部栏
+$police-blue-header-bg-001: url('./assets/hdtyui/images/theme-police-blue/header/bg-001.png');
+$police-blue-header-avatar-001: url('./assets/hdtyui/images/theme-police-blue/header/avatar-001.png');
+$police-blue-header-avatar-002: url('./assets/hdtyui/images/theme-police-blue/header/avatar-002.png');
+$police-blue-header-corner-001: url('./assets/hdtyui/images/theme-police-blue/header/corner-001.png');
+$police-blue-header-corner-002: url('./assets/hdtyui/images/theme-police-blue/header/corner-002.png');
+
+// 2.4.3.主体栏
+$police-blue-body-bg-001: url('./assets/hdtyui/images/theme-police-blue/body/bg-001.jpg');
+$police-blue-body-bg-002: url('./assets/hdtyui/images/theme-police-blue/body/bg-002.jpg');
+$police-blue-body-bg-003: url('./assets/hdtyui/images/theme-police-blue/body/bg-003.png');
+$police-blue-body-bg-004: url('./assets/hdtyui/images/theme-police-blue/body/bg-004.png');
+$police-blue-body-bd-001: url('./assets/hdtyui/images/theme-police-blue/body/bd-001.png');
+$police-blue-body-bd-002: url('./assets/hdtyui/images/theme-police-blue/body/bd-002.png');
+$police-blue-body-bd-003: url('./assets/hdtyui/images/theme-police-blue/body/bd-003.png');
+$police-blue-body-img-001: url('./assets/hdtyui/images/theme-police-blue/body/img-001.png');
+$police-blue-body-img-002: url('./assets/hdtyui/images/theme-police-blue/body/img-002.png');
+
+
+/******************************************* 3.深海蓝 theme-ocean-blue *******************************************/
+
+
+/* 3.1.主色 primary-color */
+
+// 3.1.1.品牌色
+$ocean-blue-brand-color-first: #26b8ce;
+$ocean-blue-brand-color-second: #46cee3;
+$ocean-blue-brand-color-third: #73cfdd;
+$ocean-blue-brand-color-fourth: #3a5e70;
+
+// 3.1.2.重要色
+$ocean-blue-main-color-first: #11a8ef;
+$ocean-blue-main-color-second: #2cb7f9;
+$ocean-blue-main-color-third: #77d4ff;
+$ocean-blue-main-color-fourth: #364f6c;
+
+// 3.1.3.成功色
+$ocean-blue-success-color-first: #26b8ce;
+$ocean-blue-success-color-second: #46cee3;
+$ocean-blue-success-color-third: #73cfdd;
+$ocean-blue-success-color-fourth: #3a5e70;
+
+// 3.1.4.资讯色
+$ocean-blue-info-color-first: #0089ff;
+$ocean-blue-info-color-second: #2f8df7;
+$ocean-blue-info-color-third: #7bacfe;
+$ocean-blue-info-color-fourth: #34416a;
+
+// 3.1.5.注意色
+$ocean-blue-remind-color-first: #ffc12a;
+$ocean-blue-remind-color-second: #ffcc4f;
+$ocean-blue-remind-color-third: #ffda81;
+$ocean-blue-remind-color-fourth: #083a4b;
+
+// 3.1.6.警告色
+$ocean-blue-warning-color-first: #f78d20;
+$ocean-blue-warning-color-second: #fba441;
+$ocean-blue-warning-color-third: #ffc37f;
+$ocean-blue-warning-color-fourth: #365b6a;
+
+// 3.1.7.危险色
+$ocean-blue-danger-color-first: #ff5757;
+$ocean-blue-danger-color-second: #f87070;
+$ocean-blue-danger-color-third: #ffabab;
+$ocean-blue-danger-color-fourth: #394679;
+
+
+/* 3.2.副色 secondary-color */
+
+// 3.2.1.导航色
+$ocean-blue-navigation-color-first: #061e3b;
+$ocean-blue-navigation-color-second: #04234b;
+$ocean-blue-navigation-color-third: #013372;
+$ocean-blue-navigation-color-fourth: #04408a;
+
+// 3.2.2.背景色
+$ocean-blue-background-color-first: #003271;
+$ocean-blue-background-color-second: #084281;
+$ocean-blue-background-color-third: #003d86;
+$ocean-blue-background-color-fourth: #003271;
+
+// 3.2.3 基础色
+$ocean-blue-base-color-first: #fff;
+$ocean-blue-base-color-second: #cbe8ff;
+$ocean-blue-base-color-third: #16ddde;
+$ocean-blue-base-color-fourth: #000;
+
+
+/* 3.3.辅助色 auxiliary-color */
+
+// 3.3.1.填充色
+$ocean-blue-filling-color-first: #1446b9;
+$ocean-blue-filling-color-second: #007ee2;
+$ocean-blue-filling-color-third: #37b1e8;
+$ocean-blue-filling-color-fourth: #7ecef3;
+
+// 3.3.2.字体色
+$ocean-blue-font-color-first: #1bf9fa;
+$ocean-blue-font-color-second: #16ddde;
+$ocean-blue-font-color-third: #cbe8ff;
+$ocean-blue-font-color-fourth: #107dad;
+
+// 3.3.3.边框色
+$ocean-blue-border-color-first: #0059be;
+$ocean-blue-border-color-second: #054fab;
+$ocean-blue-border-color-third: #0059be;
+$ocean-blue-border-color-fourth: #014588;
+
+// 3.3.4.阴影色
+$ocean-blue-shadow-base-color-first: rgba(0, 0, 0, .4);
+$ocean-blue-shadow-base-color-second: rgba(1, 51, 114, .8);
+$ocean-blue-shadow-base-color-third: rgba(255, 255, 255, .4);
+$ocean-blue-shadow-base-color-fourth: rgba(1, 51, 114, .2);
+
+$ocean-blue-shadow-dark-color-first: rgba(0, 0, 0, .7);
+$ocean-blue-shadow-dark-color-second: rgba(0, 0, 0, .4);
+$ocean-blue-shadow-dark-color-third: rgba(17, 168, 239, .2);
+$ocean-blue-shadow-dark-color-fourth: rgba(17, 168, 239, .1);
+
+$ocean-blue-shadow-odd-color-first: rgba(1, 51, 114, .8);
+
+$ocean-blue-shadow-main-color-first: rgba(17, 168, 239, .7);
+$ocean-blue-shadow-main-color-second: rgba(17, 168, 239, .5);
+$ocean-blue-shadow-main-color-third: rgba(17, 168, 239, .3);
+$ocean-blue-shadow-main-color-fourth: rgba(17, 168, 239, .1);
+
+$ocean-blue-shadow-success-color-first: rgba(2, 255, 222, .8);
+
+$ocean-blue-shadow-info-color-first: rgba(0, 137, 255, .7);
+$ocean-blue-shadow-info-color-second: rgba(0, 137, 255, .5);
+$ocean-blue-shadow-info-color-third: rgba(0, 137, 255, .3);
+
+$ocean-blue-shadow-remind-color-first: rgba(255, 193, 42, .7);
+
+
+// 3.3.5.点缀色
+$ocean-blue-ornament-color-first: #00ffb6;
+$ocean-blue-ornament-color-second: #26b8ce;
+$ocean-blue-ornament-color-third: #02ffde;
+$ocean-blue-ornament-color-fourth: #cbe8ff;
+
+/* 3.4.背景图片 background-image */
+
+// 3.4.1.登录区
+$ocean-blue-login-bg-001: url('../../assets/hdtyui/images/theme-ocean-blue/login/bg-001.jpg');
+$ocean-blue-login-banner-001: url('../../assets/hdtyui/images/theme-ocean-blue/login/banner-001.png');
+$ocean-blue-login-img-001: url('../../assets/hdtyui/images/theme-ocean-blue/login/img-001.png');
+$ocean-blue-login-img-002: url('../../assets/hdtyui/images/theme-ocean-blue/login/img-002.png');
+
+// 3.4.2.顶部栏
+$ocean-blue-header-bg-001: url('./assets/hdtyui/images/theme-ocean-blue/header/bg-001.png');
+$ocean-blue-header-avatar-001: url('./assets/hdtyui/images/theme-ocean-blue/header/avatar-001.png');
+$ocean-blue-header-avatar-002: url('./assets/hdtyui/images/theme-ocean-blue/header/avatar-002.png');
+$ocean-blue-header-corner-001: url('./assets/hdtyui/images/theme-ocean-blue/header/corner-001.png');
+$ocean-blue-header-corner-002: url('./assets/hdtyui/images/theme-ocean-blue/header/corner-002.png');
+
+// 3.4.3.主体栏
+$ocean-blue-body-bg-001: url('./assets/hdtyui/images/theme-ocean-blue/body/bg-001.jpg');
+$ocean-blue-body-bg-002: url('./assets/hdtyui/images/theme-ocean-blue/body/bg-002.jpg');
+$ocean-blue-body-bg-003: url('./assets/hdtyui/images/theme-ocean-blue/body/bg-003.png');
+$ocean-blue-body-bg-004: url('./assets/hdtyui/images/theme-ocean-blue/body/bg-004.png');
+$ocean-blue-body-bd-001: url('./assets/hdtyui/images/theme-ocean-blue/body/bd-001.png');
+$ocean-blue-body-bd-002: url('./assets/hdtyui/images/theme-ocean-blue/body/bd-002.png');
+$ocean-blue-body-bd-003: url('./assets/hdtyui/images/theme-ocean-blue/body/bd-003.png');
+$ocean-blue-body-img-001: url('./assets/hdtyui/images/theme-ocean-blue/body/img-001.png');
+$ocean-blue-body-img-002: url('./assets/hdtyui/images/theme-ocean-blue/body/img-002.png');

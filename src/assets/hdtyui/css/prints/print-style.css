@@ -1,0 +1,167 @@
+@charset "UTF-8";
+
+@media print {
+  @page {
+    margin: 0;
+  }
+
+  html,
+  html body {
+    width: auto;
+    height: auto;
+  }
+
+  #HDTY_app_admin {
+    width: auto;
+    height: auto;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible;
+  }
+
+  #HDTY_app_admin #HDTY_app {
+    width: auto;
+    height: auto;
+  }
+
+  #HDTY_app_admin .page {
+    page-break-before: avoid;
+    page-break-after: avoid;
+  }
+
+  #HDTY_app_admin .hdty-print {
+    width: auto;
+    height: auto;
+    padding: 0;
+  }
+
+  #HDTY_app_admin .hdty-print .hdty-print-header {
+    display: none;
+  }
+
+  #HDTY_app_admin .hdty-print .hdty-print-body {
+    position: static;
+    padding: 0;
+    text-align: left;
+    overflow: visible;
+  }
+
+  #HDTY_app_admin .hdty-print .hdty-print-container {
+    padding: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  #HDTY_app_admin .hdty-print .hdty-print-content {
+    width: auto !important;
+    height: auto !important;
+    overflow: visible;
+  }
+
+  #HDTY_app_admin .hdty-layout {
+    width: auto;
+    height: auto;
+    padding: 0;
+  }
+
+  #HDTY_app_admin .hdty-layout > .hdty-header {
+    display: none;
+  }
+
+  #HDTY_app_admin .hdty-layout > .hdty-side {
+    display: none;
+  }
+
+  #HDTY_app_admin .hdty-layout > .hdty-pagetabs {
+    display: none;
+  }
+
+  #HDTY_app_admin .hdty-layout > .hdty-footer {
+    display: none;
+  }
+
+  #HDTY_app_admin .hdty-layout > .hdty-body {
+    position: static;
+    padding: 0;
+    overflow: visible;
+  }
+
+  #HDTY_app_admin .hdty-layout > .hdty-body *[hdty-print-bro-dom-tree]:not([class*="hdty-print"]) {
+    display: none;
+  }
+
+  #HDTY_app_admin .hdty-layout > .hdty-body *[hdty-print-self-dom-tree]:not([class*="hdty-print"]) {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    border: 0 none;
+    border-radius: 0;
+    overflow: visible;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  #HDTY_app_admin .el-dialog__wrapper {
+    position: static !important;
+    text-align: left;
+    overflow: visible;
+  }
+
+  #HDTY_app_admin .el-dialog__wrapper::after {
+    content: none;
+  }
+
+  #HDTY_app_admin .el-dialog__wrapper .el-dialog {
+    display: block;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  #HDTY_app_admin .el-dialog__wrapper .el-dialog .el-dialog__header {
+    display: none;
+  }
+
+  #HDTY_app_admin .el-dialog__wrapper .el-dialog .el-dialog__body {
+    width: auto;
+    height: auto;
+    padding: 0;
+  }
+
+  #HDTY_app_admin .el-dialog__wrapper .el-dialog .el-dialog__body *[hdty-print-bro-dom-tree]:not([class*="hdty-print"]) {
+    display: none;
+  }
+
+  #HDTY_app_admin .el-dialog__wrapper .el-dialog .el-dialog__body *[hdty-print-self-dom-tree]:not([class*="hdty-print"]) {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    border: 0 none;
+    border-radius: 0;
+    overflow: visible;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  #HDTY_app_admin .v-modal {
+    display: none;
+  }
+
+  #HDTY_app_admin .iziToast-wrapper {
+    display: none;
+  }
+
+  #HDTY_app_admin .el-message {
+    display: none;
+  }
+
+  #HDTY_app_admin #HDTY_watermark {
+    display: none;
+  }
+}

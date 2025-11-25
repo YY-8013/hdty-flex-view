@@ -1,0 +1,39 @@
+/*
+通知模板样式
+*/
+.notice-title {
+  margin-top: 24px;
+  text-align: center;
+  span {
+    color: #ebf3fa;
+    font-size: 26px;
+    font-weight: 700;
+  }
+  hr {
+    height: 2px;
+    border: none;
+    border-top: 2px solid;
+    border-top-color: rgba(255, 255, 255, 0.4);
+    margin-top: 10px;
+  }
+}
+.hdty-main-title {
+  width: 820px;
+  margin: auto;
+  height: 36px;
+  span {
+    font-weight: 700;
+    font-size: 15px;
+    color: white;
+  }
+}
+.main-notice-content {
+  width: 900px;
+  min-height: 600px;
+  height: 100%;
+  border: 1px solid #3496f1;
+  margin: auto;
+  border-radius: 15px;
+  background: white;
+  padding: 40px;
+}

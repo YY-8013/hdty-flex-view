@@ -1,0 +1,428 @@
+/*
+独立样式
+*/
+
+/* 表格里链接文字 */
+.table-link {
+  color: #1193fa;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.viewer-container {
+  z-index: 9999999 !important;
+}
+
+.html-content img {
+  max-width: 100% !important;
+  object-fit: contain !important;
+}
+
+/* 自定义项目CSS*/
+.warn-message {
+  /*说明性文字样式*/
+  font-weight: 500;
+  color: red;
+}
+
+.small-mini {
+  /*微小按钮*/
+  padding: 5px 5px !important;
+}
+
+.button-green {
+  color: #fff !important;
+  background-color: #67c23a !important;
+  border-color: #67c23a !important;
+}
+
+.big-button-green {
+  color: #fff !important;
+  background-color: #13ce66 !important;
+  border-color: #13ce66 !important;
+}
+
+/*JSON编辑器共用样式*/
+div.jsoneditor-menu {
+  background-color: #ebebeb;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.self-card-title {
+  text-align: center;
+  width: 100%;
+}
+
+.self-card-title > span {
+  color: #606266;
+  font-weight: 700;
+}
+
+.self-el-upload_text {
+  color: #3496f1;
+}
+
+.avatar-middle {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  width: 100%;
+}
+
+.avatar-img {
+  max-width: 178px;
+  max-height: 178px;
+}
+
+/*img图标居中显示图片不失帧*/
+.div-middle-img {
+  width: 100%;
+  display: table;
+}
+
+.div-parent-img {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  width: 100%;
+}
+
+.el-table__fixed {
+  height: auto !important;
+  bottom: 17px;
+}
+
+/* from表单项标题超过1行时内容居中 */
+.more-time-line-height > div {
+  line-height: 80px !important;
+}
+
+.can-click {
+  cursor: pointer;
+}
+
+.disable-click {
+  pointer-events: none;
+}
+
+/*去掉input输入框上下选择箭头*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.upload-self-class {
+  height: 186px;
+}
+
+.hdty-dialog-lg {
+  width: 100% !important;
+}
+
+.hdty-dialog-md {
+  width: 80% !important;
+}
+
+.hdty-dialog-sm {
+  width: 60% !important;
+}
+
+.hdty-dialog-xs {
+  width: 40% !important;
+}
+
+/* 适配多设备 */
+@media screen and (max-width: 1200px) {
+  /* 主布局 */
+  #HDTY_app_admin
+    .hdty-layout-admin
+    > .hdty-header
+    .hdty-topbar
+    .hdty-logo-wrapper {
+    padding: 0 70px;
+  }
+  #HDTY_app_admin
+    .hdty-layout-admin
+    > .hdty-header
+    .hdty-topbar
+    .hdty-logo-wrapper::before,
+  #HDTY_app_admin
+    .hdty-layout-admin
+    > .hdty-header
+    .hdty-topbar
+    .hdty-logo-wrapper::after {
+    width: 70px;
+  }
+  #HDTY_app_admin
+    .hdty-layout-admin
+    > .hdty-header
+    .hdty-topbar
+    .hdty-logo-wrapper
+    .hdty-logo {
+    min-width: 300px;
+  }
+  #HDTY_app_admin
+    .hdty-layout-admin
+    > .hdty-header
+    .hdty-topbar
+    .hdty-logo-wrapper
+    .hdty-logo
+    span {
+    font-size: 30px;
+  }
+
+  /* 弹层 */
+  #HDTY_app_admin .el-dialog {
+    width: 80%;
+  }
+  #HDTY_app_admin .el-dialog.is-fullscreen {
+    width: 100%;
+  }
+  #HDTY_app_admin .el-dialog.hdty-dialog-fit {
+    width: auto;
+  }
+  #HDTY_app_admin .el-dialog.hdty-dialog-basic {
+    width: 356px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  /* 登录区 */
+  #HDTY_app_admin .hdty-login {
+    overflow: auto;
+  }
+  #HDTY_app_admin .hdty-login .hdty-fluid {
+    padding: 12px 10px;
+  }
+  #HDTY_app_admin .hdty-login .hdty-row {
+    display: block;
+    margin: 0 -5px;
+  }
+  #HDTY_app_admin .hdty-login .hdty-col-md6 {
+    padding: 0 5px;
+  }
+  #HDTY_app_admin .hdty-login .hdty-column {
+    padding: 12px 0;
+  }
+  #HDTY_app_admin .hdty-login .hdty-logo {
+    margin-bottom: 32px;
+  }
+  #HDTY_app_admin .hdty-login .hdty-login-body {
+    margin: 0;
+  }
+  #HDTY_app_admin
+    .hdty-login
+    .hdty-login-header
+    + .hdty-login-wrapper
+    .hdty-col-md6:first-child {
+    display: none;
+  }
+  #HDTY_app_admin .hdty-login .hdty-login-banner {
+    display: none;
+  }
+  #HDTY_app_admin .hdty-login .hdty-login-carousel {
+    display: none;
+  }
+
+  /* 主布局 */
+  #HDTY_app_admin
+    .hdty-layout-admin
+    > .hdty-header
+    .hdty-breadcrumb
+    .el-breadcrumb {
+    padding-right: 0;
+  }
+  #HDTY_app_admin
+    .hdty-layout-admin
+    > .hdty-header
+    .hdty-breadcrumb
+    .el-breadcrumb__item:first-child {
+    display: none;
+  }
+  #HDTY_app_admin
+    .hdty-layout-admin
+    > .hdty-header
+    .hdty-toolbar
+    .hdty-nav-item
+    > a {
+    padding: 0 8px;
+  }
+  #HDTY_app_admin
+    .hdty-layout-admin
+    > .hdty-header
+    .hdty-toolbar
+    .el-dropdown-selfdefine
+    > span {
+    display: none;
+  }
+
+  /* 弹层 */
+  #HDTY_app_admin .el-dialog {
+    width: 80%;
+  }
+  #HDTY_app_admin .el-dialog.is-fullscreen {
+    width: 100%;
+  }
+  #HDTY_app_admin .el-dialog.hdty-dialog-fit {
+    width: auto;
+  }
+  #HDTY_app_admin .el-dialog.hdty-dialog-basic {
+    width: 356px;
+  }
+
+  /* 通知公告 */
+  #HDTY_app_admin .hdty-inform {
+    background-image: none;
+    background-color: #fff;
+  }
+  #HDTY_app_admin .hdty-inform .hdty-inform-logo {
+    display: none;
+  }
+  #HDTY_app_admin .hdty-inform .hdty-inform-wrapper {
+    width: 100%;
+    margin: 0 auto;
+  }
+  #HDTY_app_admin .hdty-inform .hdty-inform-wrapper::after {
+    content: none;
+  }
+  #HDTY_app_admin .hdty-inform .hdty-inform-collect {
+    display: none;
+  }
+  #HDTY_app_admin .hdty-inform .hdty-inform-content {
+    min-height: auto;
+    padding: 16px;
+    border-radius: 0;
+    text-align: left;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  #HDTY_app_admin .hdty-inform .hdty-inform-content .hdty-inform-subtitle {
+    display: none;
+  }
+  #HDTY_app_admin .hdty-inform .hdty-inform-content .hdty-inform-edition {
+    display: none;
+  }
+  #HDTY_app_admin .hdty-inform .hdty-inform-content .hdty-inform-tool {
+    display: none;
+  }
+  #HDTY_app_admin .hdty-inform .hdty-inform-content .hdty-inform-time[pc] {
+    display: none;
+  }
+  #HDTY_app_admin .hdty-inform .hdty-inform-content .hdty-inform-time[mobile] {
+    display: block;
+  }
+  #HDTY_app_admin .hdty-inform .hdty-inform-content .hdty-inform-meta[mobile] {
+    display: block;
+  }
+  #HDTY_app_admin
+    .hdty-inform
+    .hdty-inform-content
+    .hdty-inform-meta
+    .hdty-flex-fill {
+    margin-top: 10px;
+  }
+  #HDTY_app_admin
+    .hdty-inform
+    .hdty-inform-content
+    .hdty-inform-meta
+    .hdty-flex-fit {
+    margin-top: 10px;
+  }
+  #HDTY_app_admin
+    .hdty-inform
+    .hdty-inform-content
+    .hdty-inform-meta
+    .hdty-flex-fit.hdty-mobile-flex-center {
+    justify-content: center;
+  }
+  #HDTY_app_admin .hdty-inform .hdty-inform-content .hdty-inform-footer {
+    position: relative;
+    bottom: auto;
+    height: auto;
+    margin: 16px -16px 0 -16px;
+    padding: 0 16px;
+    -webkit-box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.1);
+  }
+  #HDTY_app_admin
+    .hdty-inform
+    .hdty-inform-content
+    .hdty-inform-footer
+    .hdty-inform-tool[mobile] {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  #HDTY_app_admin
+    .hdty-inform
+    .hdty-inform-content
+    .hdty-inform-footer
+    .hdty-copyright {
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    padding-top: 16px;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* 登录区 */
+  #HDTY_app_admin .hdty-login .hdty-logo {
+    margin-bottom: 0;
+  }
+  #HDTY_app_admin .hdty-login .hdty-logo span {
+    font-size: 32px;
+  }
+
+  /* 主布局 */
+  #HDTY_app_admin .hdty-layout-admin > .hdty-header .hdty-breadcrumb {
+    display: none;
+  }
+  #HDTY_app_admin
+    .hdty-layout-admin
+    > .hdty-header
+    .hdty-toolbar
+    .hdty-nav-item:nth-of-type(1),
+  #HDTY_app_admin
+    .hdty-layout-admin
+    > .hdty-header
+    .hdty-toolbar
+    .hdty-nav-item:nth-of-type(2),
+  #HDTY_app_admin
+    .hdty-layout-admin
+    > .hdty-header
+    .hdty-toolbar
+    .hdty-nav-item:nth-of-type(3) {
+    display: none;
+  }
+
+  /* 弹层 */
+  #HDTY_app_admin .el-dialog {
+    width: 100% !important;
+  }
+
+  /* 抽屉 */
+  #HDTY_app_admin .el-drawer.rtl,
+  #HDTY_app_admin .el-drawer.ltr {
+    width: 100% !important;
+  }
+  #HDTY_app_admin .el-drawer.hdty-drawer-fit.rtl {
+    right: 0;
+  }
+
+  /* 图片裁剪 */
+  #HDTY_app_admin .hdty-cutter .hdty-cutter-wrapper {
+    width: 100%;
+    min-width: 286px;
+  }
+}

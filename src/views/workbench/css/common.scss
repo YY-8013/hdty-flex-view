@@ -1,0 +1,280 @@
+@import "./_variables.scss";
+@import "./_mixins.scss";
+
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  font-family: "Microsoft Yahei", Arial, sans-serif;
+  background: $bg-gradient;
+  color: $white;
+}
+
+/* el-table 风格微调，保持深色背景 */
+.el-table {
+  background: transparent !important;
+  .el-table__header-wrapper {
+    background: rgba(255, 255, 255, 0.03);
+  }
+  th {
+    color: $muted !important;
+    font-weight: 600 !important;
+  }
+  td {
+    color: $white !important;
+  }
+}
+
+/* button 小样式保留 */
+.el-button {
+  border-radius: 6px;
+}
+
+/* 其它公用字色 */
+.text-muted {
+  color: $muted;
+}
+
+.section-box {
+  background-color: rgba(6, 61, 112, 0.5);
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  padding: 6px;
+}
+
+.work-section {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  .work-section-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 270px;
+    height: 40px;
+    color: #fbfbfb;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    background: url("~@/views/workbench/images/box-title-bg.png");
+
+    &-link {
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+  }
+  .work-section-btn {
+    position: absolute;
+    right: 12px;
+    top: 3px;
+    cursor: pointer;
+    .el-button {
+      font-size: 18px;
+    }
+
+    .header-query {
+      margin-top: 4px;
+    }
+  }
+  .work-section-body {
+    height: calc(100% - 40px);
+  }
+}
+
+/* 呼吸动画 */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.2);
+  }
+}
+
+// 表格
+.dp-table-container {
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+  /*表格的样式*/
+  ::v-deep .el-table {
+    font-size: 12px;
+    font-weight: 300;
+    color: #fff;
+  }
+  ::v-deep .el-table,
+  ::v-deep .el-table__expanded-cell {
+    background-color: transparent;
+  }
+  ::v-deep .el-table .cell {
+    font-size: 1.4vh;
+    color: #fff;
+    padding: 2px 5px;
+  }
+  ::v-deep .el-table .cell-1 .cell {
+    color: #ffffff;
+  }
+  ::v-deep .el-table .cell-rank-1 {
+    .cell,
+    .table-index {
+      color: #ff3300;
+      font-weight: bold;
+    }
+  }
+  ::v-deep .el-table .cell-rank-2 {
+    .cell,
+    .table-index {
+      color: #ff6633;
+      font-weight: bold;
+    }
+  }
+  ::v-deep .el-table .cell-rank-3 {
+    .cell,
+    .table-index {
+      color: #ffcc33;
+      font-weight: bold;
+    }
+  }
+  ::v-deep .el-table .cell-rank-last {
+    .cell,
+    .table-index {
+      color: #ff9966;
+      font-weight: bold;
+    }
+  }
+  ::v-deep .el-table .has-gutter .cell {
+    color: #fff;
+  }
+  ::v-deep .el-table td,
+  ::v-deep .el-table th,
+  ::v-deep .el-table tr {
+    padding: 0 !important;
+    height: 1.9vh !important;
+    line-height: 1.9vh !important;
+    background: transparent;
+    border: none;
+  }
+  ::v-deep .el-table .el-table__body tr:nth-child(odd) {
+    background: rgba(12, 67, 142, 0.8);
+    border: none;
+  }
+  ::v-deep .el-table .el-table__body tr:nth-child(even) {
+    background: transparent;
+    border: none;
+  }
+
+  ::v-deep .el-table tr:hover {
+    background: transparent !important;
+    border: none;
+  }
+
+  ::v-deep .el-table thead tr {
+    color: #fff !important;
+    background: #007edf !important;
+  }
+  ::v-deep .el-table--border::after,
+  ::v-deep .el-table--group::after,
+  ::v-deep .el-table::before {
+    background-color: transparent;
+  }
+  ::v-deep .el-table--enable-row-hover .el-table__body tr:hover > td {
+    background-color: rgba(12, 67, 142, 0.9);
+  }
+
+  ::v-deep .el-table .el-table__body {
+    width: 100% !important;
+  }
+
+  /*修改滚动条的样式*/
+  ::v-deep ::-webkit-scrollbar {
+    background-color: #044c83;
+    width: 7px;
+    height: 7px;
+  }
+  ::v-deep ::-webkit-scrollbar-track {
+    background-color: #044c83;
+    width: 7px;
+    height: 7px;
+  }
+  ::v-deep ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #0272c8;
+  }
+
+  /*表格暂无数据的样式*/
+  ::v-deep .el-table__empty-text {
+    color: #cbe8ff;
+    font-size: 1.6vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2vh;
+  }
+}
+
+.table-index {
+  color: #5fe0fd;
+  font-weight: bold;
+  font-family: "DingTalk", serif;
+}
+
+/* 设置滚动条样式 */
+.hdty-dp-scroll {
+  overflow: auto;
+  &::-webkit-scrollbar {
+    /*滚动条整体样式*/
+    width: 8px; /*高宽分别对应横竖滚动条的尺寸*/
+    height: 12px;
+  }
+  &::-webkit-scrollbar-track {
+    /*滚动条里面轨道*/
+    border-radius: 0;
+    //-webkit-box-shadow: transparent;
+    //box-shadow: transparent;
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块*/
+    border-radius: 6px;
+    -webkit-box-shadow: transparent;
+    box-shadow: transparent;
+    background-color: transparent;
+  }
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      //-webkit-box-shadow: inset 0 0 0 2px #adf7f4;
+      //box-shadow: inset 0 0 0 2px #adf7f4;
+      background-color: rgba(81, 182, 249, 0.5);
+    }
+  }
+  &[lock] {
+    &::-webkit-scrollbar-track {
+      /*滚动条里面轨道*/
+      //-webkit-box-shadow: inset 0 0 5px #bdbfc5;
+      //box-shadow: inset 0 0 5px #bdbfc5;
+      background-color: #adf7f4;
+    }
+    &::-webkit-scrollbar-thumb {
+      /*滚动条里面小方块*/
+      //-webkit-box-shadow: inset 0 0 0 2px #adf7f4;
+      //box-shadow: inset 0 0 0 2px #adf7f4;
+      background-color: rgba(0, 0, 0, 0.15);
+    }
+    &:hover {
+      &::-webkit-scrollbar-thumb {
+        //-webkit-box-shadow: inset 0 0 0 2px #adf7f4;
+        //box-shadow: inset 0 0 0 2px #adf7f4;
+        background-color: rgba(81, 182, 249, 0.5);
+      }
+    }
+  }
+}
