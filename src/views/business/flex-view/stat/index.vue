@@ -51,7 +51,7 @@ import StatTable from "./components/StatTable.vue";
 import DetailDialog from "./components/DetailDialog.vue";
 
 export default {
-  name: "FlexViewStatPage",
+  name: "ViewStatPage",
   components: {
     StatQuery,
     StatTable,

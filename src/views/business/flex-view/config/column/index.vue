@@ -148,7 +148,7 @@
 
 <script>
 export default {
-  name: "ColumnConfig",
+  name: "ViewColumnList",
   data() {
     return {
       queryData: {

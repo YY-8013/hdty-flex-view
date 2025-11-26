@@ -102,7 +102,7 @@
 
 <script>
 export default {
-  name: "FormConfigList",
+  name: "ViewFormList",
   data() {
     return {
       queryData: {
