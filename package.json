@@ -1,6 +1,8 @@
 {
   "name": "hdty-framework-w4",
-  "version": "0.1.0",
+  "version": "2.1.0",
+  "description": "华动泰越|基于vue2、webpack4、element-ui的快速开发框架，node环境升级到14，更新部分依赖版本",
+  "author": "zhaozhiyong",
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_OPTIONS=--max-old-space-size=4096 vue-cli-service serve --no-lint",
