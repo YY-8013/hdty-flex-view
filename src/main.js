@@ -104,12 +104,6 @@ async function loadStorage() {
   const { default: app } = await import("./config/app");
   Vue.prototype.$app = app;
 
-  // 全局定义是否验收
-  Vue.prototype.$isYs =
-    window.appEnv &&
-    window.appEnv.acceptanceDemo &&
-    window.appEnv.acceptanceDemo.enabled;
-
   const ElementUI = await import("element-ui");
 
   Vue.use(ElementUI, {

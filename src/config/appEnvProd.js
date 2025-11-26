@@ -88,59 +88,6 @@ export const appEnvProd = {
   // 请求加密算法（aes / sm4）
   encryptMETHOD: "aes",
 
-  // 编辑时：关注人员类型、群体类别、列管级别、附件是否禁用
-  disabledSpEdit: false,
-
-  // 点击工作台左上角总数，二级列表是否显示传入值
-  showParamTotalForHomeIndex: true,
-
-  // 生成pdf的画布系数
-  canvasScale: 2,
-
-  // 是否链接第三方（链接第三方时，避免因为第三方库链接失败，导致系统崩溃）
-  linkThird: {
-    jz: true // 警综库
-  },
-
-  // 可以使用人员档案的机构：包头
-  allowRydaOrgList: ["1500", "1502", "1506"],
-
-  // 可以使用电子签章的的机构：鄂尔多斯
-  allowDzqzOrgList: ["1500", "1506"],
-
-  // 验收演示相关开关
-  acceptanceDemo: {
-    // 演示用账号身份证号
-    accountUserList: ["000000000000000000"],
-    // 是否 显示涉恐人员
-    isShowSkry: true,
-    // 是否 显示通道下发人员 废弃按钮
-    isShowChannel: true,
-    // 是否显示 20250415 梳理删除的内容
-    isShowDeleteYw: true,
-    // 是否 显示全区治安字样
-    isShowQqZa: false,
-    // 全区反恐综合应用系统 替代文字
-    qqZaContent: "反恐综合应用系统",
-    // 验收开启
-    enabled: true
-  },
-
-  // 已建设基础管控中心，但未独立架设的地市
-  baseGKZJCity: ["1501", "1502"],
-
-  // 关注人员类型是否自定义翻译
-  zdrylxTranslateConfig: {
-    enabale: true,
-    gklx: ["2"],
-    replaceMappings: [
-      {
-        oldValue: "故意犯罪刑满释放不满五年的人员",
-        newValue: "刑事犯罪前科人员"
-      }
-    ]
-  },
-
   // 跳转治搜系统个人档案 AES 加解密 key
   searchCryptKey: "hdty-spcs-search",
 
@@ -165,7 +112,7 @@ export const appEnvProd = {
     { key: "RW", keyItem: "rwBaseConfig" }
   ],
   // 设置是否禁止通过本系统登录
-  loginDisabled: true,
+  loginDisabled: false,
   // 鄂尔多斯基管门户地址
   eedsJgMh: "http://26.169.100.38"
 };
