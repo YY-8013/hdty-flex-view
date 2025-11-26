@@ -34,7 +34,7 @@
 ## 配置参数
 
 ### 默认配置
-- `PREFIX`: 应用程序命名空间前缀，默认为 `appEnv.appKEY || "hdty-flex-view"`
+- `PREFIX`: 应用程序命名空间前缀，默认为 `appEnv.appKEY || "hdty-flex-view-web"`
 - `ENCRYPT`: 是否启用加密存储，默认为 `process.env.ENCRYPT_SESS`
 - `KEY`: 加密密钥，默认为 'L4Pda6uBBHcfqEhA'
 - `IV`: 初始化向量，默认为空字符串
@@ -74,7 +74,7 @@ const data = $storage.session.get('sensitiveData'); // 自动解密
 所有存储操作都会自动添加应用程序命名空间前缀，避免不同应用之间的数据冲突：
 
 ```javascript
-// 实际存储的键名会是: "hdty-flex-view:userInfo"
+// 实际存储的键名会是: "hdty-flex-view-web:userInfo"
 $storage.local.set('userInfo', { name: '张三' });
 ```
 

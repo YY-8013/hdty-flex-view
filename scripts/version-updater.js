@@ -3,7 +3,7 @@ const path = require("path");
 const moment = require("moment");
 
 // 从vue.config.js 获取项目名称
-const projectName = process.env.VUE_APP_PROJECT_NAME || "hdty-flex-view";
+const projectName = process.env.VUE_APP_PROJECT_NAME || "hdty-flex-view-web";
 const versionFile = "../public/version.json";
 
 // 读取当前版本

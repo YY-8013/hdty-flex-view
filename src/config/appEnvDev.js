@@ -4,7 +4,7 @@
 
 export const appEnvDev = {
   // 应用程序标识
-  appKEY: "hdty-flex-view",
+  appKEY: "hdty-flex-view-web",
 
   // 客户端类型（数据字典1017）
   clientTYPE: "0",
@@ -84,5 +84,5 @@ export const appEnvDev = {
   // 设置是否禁止通过本系统登录
   loginDisabled: false,
   // 鄂尔多斯基管门户地址
-  eedsJgMh: "http://172.16.60.175:8888/hdty-flex-view"
+  eedsJgMh: "http://172.16.60.175:8888/hdty-flex-view-web"
 };

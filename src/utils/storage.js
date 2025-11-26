@@ -10,7 +10,7 @@ const local = {};
 
 const session = {};
 
-const PREFIX = appEnv.appKEY || "hdty-flex-view";
+const PREFIX = appEnv.appKEY || "hdty-flex-view-web";
 
 const ENCRYPT = process.env.ENCRYPT_SESS;
 

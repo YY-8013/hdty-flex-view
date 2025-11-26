@@ -4,7 +4,7 @@
 
 export const appEnvProd = {
   // 应用程序标识
-  appKEY: "hdty-flex-view",
+  appKEY: "hdty-flex-view-web",
 
   // 客户端类型（数据字典1017）
   clientTYPE: "0",
