@@ -359,56 +359,8 @@ const dictType = {
   // 地址元素类型
   addressType: "2793",
 
-  // 重点目标防范登记
-  ffdj: "3741",
-
-  // 首次确定或变更
-  scqdhbg: "3742",
-
-  //值班人员岗位
-  workPersonJob: "2598",
-
-  // 勤务类型
-  qwType: "3748",
-
   // 注销状态
   zxbs: "099",
-
-  // 消息类型
-  xcjyMsgType: "3753",
-
-  // 案件类型
-  ajlx: "3760",
-
-  // 案件状态
-  ajzt: "3761",
-
-  // 训练科目类型
-  xlkmType: "3762",
-
-  // 考核类型
-  jnkhType: "3763",
-
-  // 专家人员标签
-  ryType: "3755",
-
-  // 勤务状态
-  qwStatus: "3756",
-
-  // 学位学历
-  xwxlType: "3757",
-
-  // 装备类型
-  tzzbType: "3758",
-
-  // 关注人员类型
-  gzryType: "3733",
-
-  // 关注人员等级
-  gzryLevel: "3767",
-
-  // 关注人员暂住理由
-  zzlyType: "3769",
 
   // 治综门户警种信息
   zzmhJzxx: "2555",
@@ -457,18 +409,6 @@ const dictType = {
   // 任务办理类型
   taskHandleType: "3586",
 
-  //事件类别
-  sjlb: "2730",
-
-  // 勤务类别
-  qwlb: "3789",
-
-  // 勤务上报状态
-  qwStatus: "3791",
-
-  // 流动审批状态
-  ldSpzt: "3766",
-
   // 业务审批类型
   ywspType: "3797",
 
@@ -478,89 +418,14 @@ const dictType = {
   // 审批模式
   ywspMode: "3798",
 
-  // 特种装备状态
-  tzzbStatus: "3800",
-
-  // 重点目标 数据状态
-  zdmbState: "3802",
-
-  // 重点目标 数据审批状态
-  zdmbDataSpState: "3803",
-
-  // 重点目标 达标状态
-  zdmbDbState: "3805",
-
-  // 重点目标 达标验收审批状态
-  zdmbDbysSpState: "3804",
-
-  // 人才类型（01：谈判、2：狙击、3：安检、4：排爆、5：特种驾驶、6：潜水救援）
-  zjrclx: "3807",
-
-  // 专家身份（01：政法编、02：事业编、03：辅警、04：文职、99：其他）
-  zjrcsf: "3806",
-
-  // 重点目标 验收状态
-  zdmbyYsState: "3812",
-
-  // 重点目标 验收审批状态
-  zdmbyYsSpState: "3813",
-
-  // 重点目标 提前验收审批状态
-  zdmbyTqysSpState: "3814",
-
-  // 重点目标 暂缓验收审批状态
-  zdmbyZhysSpState: "3815",
-
-  // 勤务工作情况
-  qwgzqk: "3875",
-
-  // 摸排类型
-  mpType: "3893",
-
-  // 督导检查数据状态
-  ddjcState: "3902",
-
-  // 督导检查整改结果
-  zgjlJcxState: "3912",
-
-  // 数量单位
-  tzzbSldw: "3924",
-
-  // 有无异常
-  gzryMpYwyc: "3925",
-
-  // 交通工具
-  jtgjType: "3927",
-
-  // 关注人员变更内容
-  gzryBgType: "3930",
-
-  // 变更状态
-  gzryBgState: "3766",
-
-  // 重点目标操作轨迹
-  zdmbRecordType: "3801",
-
-  // 借还审批状态
-  spState: "3961",
-
-  // 归还状态
-  jhGhState: "3954",
-
-  // 外借装备数据状态
-  wjzbState: "3962",
-
   // 创建任务、允许办理的用户机构类型
   allowOrgType: "3941",
 
   // 任务中心 - 待分配 操作类型
   operationType: "4017",
 
-  // 有无车辆
-  hasCar: "4020",
-
-  // 数据来源
-  fkywSjly: "4019"
+  // 启用状态
+  enableStatus: "2119"
 };
 
 // 字典项

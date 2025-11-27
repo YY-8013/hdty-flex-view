@@ -368,7 +368,7 @@ data() {
       props: {
         value: 'id',           // 值字段（必填）
         label: 'name',         // 显示字段（必填）
-        response: 'records'    // 响应数据字段（必填）
+        response: 'records'    // 响应属性名（必填）
       },
       
       // 表格列配置

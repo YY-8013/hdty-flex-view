@@ -17,46 +17,41 @@
                 </el-input>
               </el-form-item>
 
-              <!-- 数据字段 -->
-              <el-form-item label="数据字段" prop="prop">
+              <!-- 属性名 -->
+              <el-form-item label="属性名" prop="prop">
                 <el-input
                   v-model="queryData.prop"
-                  placeholder="请输入数据字段"
+                  placeholder="请输入属性名"
                   clearable
                   style="width: 180px"
                 >
                 </el-input>
               </el-form-item>
-
-              <!-- 状态 -->
-              <el-form-item label="状态" prop="status">
-                <el-select
+              <el-form-item label="启用状态" prop="status">
+                <hd-dict-radio
                   v-model="queryData.status"
-                  placeholder="请选择状态"
-                  clearable
-                  style="width: 120px"
-                >
-                  <el-option label="全部" value=""></el-option>
-                  <el-option label="启用" value="1"></el-option>
-                  <el-option label="停用" value="0"></el-option>
-                </el-select>
-              </el-form-item>
-
-              <!-- 注销状态 -->
-              <el-form-item label="注销状态" prop="zxbs" slot="after">
-                <el-select
-                  v-model="queryData.zxbs"
-                  placeholder="请选择注销状态"
-                  clearable
-                  underline
-                  style="width: 120px"
-                >
-                  <el-option label="全部" value=""></el-option>
-                  <el-option label="未注销" value="0"></el-option>
-                  <el-option label="已注销" value="1"></el-option>
-                </el-select>
+                  :dict-code="$global.dictType.enableStatus"
+                  show-all-button
+                ></hd-dict-radio>
               </el-form-item>
             </hd-query-fixed>
+            <hd-query-expand>
+              <el-form-item label="注销状态" prop="zxbs">
+                <hd-dict-radio
+                  v-model="queryData.zxbs"
+                  :dict-code="$global.dictType.zxbs"
+                  show-all-button
+                ></hd-dict-radio>
+              </el-form-item>
+              <el-row>
+                <el-form-item label="创建时间" prop="createTime">
+                  <hd-date-picker
+                    type="datetimerange"
+                    v-model="queryData.createTime"
+                  ></hd-date-picker>
+                </el-form-item>
+              </el-row>
+            </hd-query-expand>
           </hd-query>
         </hd-component>
       </el-form>
@@ -80,7 +75,7 @@
         >
           新增
         </hd-button>
-        <hd-button
+        <!-- <hd-button
           name="delete"
           type="danger"
           icon="el-icon-delete"
@@ -88,7 +83,7 @@
           @click="handleBatchDelete"
         >
           批量删除
-        </hd-button>
+        </hd-button> -->
       </hd-button-container>
     </div>
 
@@ -98,9 +93,9 @@
         v-loading="loading"
         ref="tableRef"
         :data="tableData"
-        row-key="id"
+        row-key="vo.id"
         :empty-text="emptyText"
-        :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
+        :tree-props="{ children: 'vo.children', hasChildren: 'hasChildren' }"
         default-expand-all
         border
         fit
@@ -112,92 +107,54 @@
         </el-table-column>
 
         <!-- 多选列 -->
-        <el-table-column
+        <!-- <el-table-column
           type="selection"
           reserve-selection
           align="center"
           width="50"
         >
-        </el-table-column>
+        </el-table-column> -->
 
         <!-- 列名称（树形列） -->
         <el-table-column
-          prop="label"
+          prop="vo.label"
           label="列名称"
           min-width="180"
           show-overflow-tooltip
         >
           <template slot-scope="scope">
             <span class="table-link" @click="handleDetail(scope.row)">
-              {{ scope.row.label }}
+              {{ scope.row.vo.label }}
             </span>
           </template>
         </el-table-column>
 
-        <!-- 数据字段 -->
+        <!-- 属性名 -->
         <el-table-column
-          prop="prop"
-          label="数据字段"
-          width="150"
+          prop="vo.prop"
+          label="属性名"
+          width="140"
           show-overflow-tooltip
         >
         </el-table-column>
 
-        <!-- 列宽 -->
-        <el-table-column
-          prop="columnWidth"
-          label="列宽"
-          align="center"
-          width="80"
-        >
-        </el-table-column>
-
-        <!-- 对齐方式 -->
-        <el-table-column
-          prop="align"
-          label="对齐方式"
-          align="center"
-          width="90"
-        >
-          <template slot-scope="scope">
-            <el-tag
-              v-if="scope.row.align"
-              size="mini"
-              :type="getAlignType(scope.row.align)"
-            >
-              {{ getAlignText(scope.row.align) }}
-            </el-tag>
-          </template>
-        </el-table-column>
-
-        <!-- 固定列 -->
-        <el-table-column prop="fixed" label="固定列" align="center" width="80">
-          <template slot-scope="scope">
-            <el-tag v-if="scope.row.fixed" size="mini" type="warning">
-              {{ scope.row.fixed === "left" ? "左" : "右" }}
-            </el-tag>
-            <span v-else>-</span>
-          </template>
-        </el-table-column>
-
         <!-- 关联表单 -->
         <el-table-column
-          prop="formName"
+          prop="vo.formName"
           label="关联表单"
           width="140"
           show-overflow-tooltip
         >
           <template slot-scope="scope">
             <el-tag v-if="scope.row.formName" size="mini" type="primary">
-              {{ scope.row.formName }}
+              {{ scope.row.vo.formName }}
             </el-tag>
-            <span v-else>-</span>
           </template>
         </el-table-column>
 
         <!-- 排序号 -->
         <el-table-column
-          prop="sortNum"
+          prop="vo.sortNum"
           label="排序号"
           align="center"
           width="80"
@@ -205,120 +162,97 @@
         </el-table-column>
 
         <!-- 状态 -->
-        <el-table-column prop="status" label="状态" align="center" width="80">
+        <el-table-column
+          prop="vo.status"
+          label="启用状态"
+          align="center"
+          width="80"
+        >
           <template slot-scope="scope">
             <el-tag
-              :type="scope.row.status === '1' ? 'success' : 'info'"
+              :type="scope.row.vo.status === '1' ? 'success' : 'info'"
               size="mini"
               effect="dark"
             >
-              {{ scope.row.status === "1" ? "启用" : "停用" }}
+              {{ scope.row.vo.status === "1" ? "启用" : "停用" }}
             </el-tag>
           </template>
         </el-table-column>
 
         <!-- 注销状态 -->
-        <el-table-column prop="zxbs" label="注销状态" align="center" width="90">
-          <template slot-scope="scope">
-            <el-tag
-              :type="scope.row.zxbs === '0' ? 'success' : 'danger'"
-              size="mini"
-            >
-              {{ scope.row.zxbs === "0" ? "未注销" : "已注销" }}
-            </el-tag>
-          </template>
-        </el-table-column>
-
-        <!-- 创建时间 -->
         <el-table-column
-          prop="createTime"
-          label="创建时间"
+          prop="vo.zxbs"
+          label="注销状态"
           align="center"
-          width="150"
+          width="90"
         >
           <template slot-scope="scope">
-            <i class="el-icon-time"></i>
-            <span v-html="formatDatetime(scope.row.createTime)"></span>
+            <div v-if="scope.row.vo.zxbs === '0'" style="color: #01b3c1">
+              {{ scope.row.vox.zxbs }}
+            </div>
+            <div v-else style="color: #ff0b00">{{ scope.row.vox.zxbs }}</div>
           </template>
-        </el-table-column>
-
-        <!-- 备注 -->
-        <el-table-column
-          prop="memo"
-          label="备注"
-          min-width="150"
-          show-overflow-tooltip
-        >
         </el-table-column>
 
         <!-- 操作列 -->
-        <el-table-column fixed="right" label="操作" align="center" width="280">
+        <el-table-column fixed="right" label="操作" align="center" width="100">
           <template slot-scope="scope">
-            <hd-button-container>
-              <!-- 详情 -->
-              <hd-button
-                name="detail"
-                type="success"
-                size="mini"
-                @click="handleDetail(scope.row)"
-              >
-                详情
-              </hd-button>
+            <el-dropdown>
+              <el-button type="info">操作</el-button>
+              <el-dropdown-menu slot="dropdown">
+                <!-- 详情 -->
+                <hd-button
+                  name="detail"
+                  type="success"
+                  @click="handleDetail(scope.row)"
+                >
+                  详情
+                </hd-button>
 
-              <!-- 编辑 -->
-              <hd-button
-                name="edit"
-                type="primary"
-                size="mini"
-                :disabled="scope.row.zxbs === '1'"
-                @click="handleEdit(scope.row)"
-              >
-                编辑
-              </hd-button>
+                <!-- 编辑 -->
+                <hd-button
+                  v-if="scope.row.vo.zxbs === '0'"
+                  name="edit"
+                  type="primary"
+                  @click="handleEdit(scope.row)"
+                >
+                  编辑
+                </hd-button>
 
-              <!-- 启用/停用 -->
-              <hd-button
-                v-if="scope.row.status === '0'"
-                name="enable"
-                type="warning"
-                size="mini"
-                :disabled="scope.row.zxbs === '1'"
-                @click="handleEnable(scope.row)"
-              >
-                启用
-              </hd-button>
-              <hd-button
-                v-else
-                name="disable"
-                type="info"
-                size="mini"
-                :disabled="scope.row.zxbs === '1'"
-                @click="handleDisable(scope.row)"
-              >
-                停用
-              </hd-button>
+                <!-- 启用/停用 -->
+                <hd-button
+                  v-if="
+                    scope.row.vo.zxbs === '0' && scope.row.vo.status === '0'
+                  "
+                  name="edit"
+                  type="warning"
+                  @click="handleEnable(scope.row)"
+                >
+                  启用
+                </hd-button>
+                <hd-button
+                  v-if="
+                    scope.row.vo.zxbs === '0' && scope.row.vo.status === '1'
+                  "
+                  name="edit"
+                  type="info"
+                  :disabled="scope.row.vo.zxbs === '1'"
+                  @click="handleDisable(scope.row)"
+                >
+                  停用
+                </hd-button>
 
-              <!-- 注销 -->
-              <hd-button
-                name="cancel"
-                type="danger"
-                size="mini"
-                :disabled="scope.row.zxbs === '1'"
-                @click="handleCancel(scope.row)"
-              >
-                注销
-              </hd-button>
-
-              <!-- 删除 -->
-              <hd-button
-                name="delete"
-                type="danger"
-                size="mini"
-                @click="handleDelete(scope.row)"
-              >
-                删除
-              </hd-button>
-            </hd-button-container>
+                <!-- 注销 -->
+                <hd-button
+                  v-if="scope.row.vo.zxbs === '0'"
+                  name="off"
+                  type="danger"
+                  @click="handleCancel(scope.row)"
+                >
+                  注销
+                </hd-button>
+              </el-dropdown-menu>
+            </el-dropdown>
           </template>
         </el-table-column>
       </el-table>
@@ -333,14 +267,7 @@
 
 <script>
 import { hdList } from "@/utils/util-framework";
-import {
-  getColumnPage,
-  deleteColumn,
-  batchDeleteColumn,
-  enableColumn,
-  disableColumn,
-  cancelColumn
-} from "../../api/column";
+import { showTree, singleDelete, logout } from "./api";
 import ColumnAdd from "./ColumnAdd";
 import ColumnEdit from "./ColumnEdit";
 import ColumnDetail from "./ColumnDetail";
@@ -365,7 +292,8 @@ export default {
         label: "",
         prop: "",
         status: "",
-        zxbs: ""
+        zxbs: "0",
+        createTime: []
       },
       // 扩展数据
       extendData: {},
@@ -388,15 +316,17 @@ export default {
       this.loading = true;
       const params = {
         ...this.queryData,
-        ...this.extendData
+        ...this.extendData,
+        current: 1,
+        size: 10
       };
 
-      getColumnPage(params)
+      showTree(params)
         .then((response) => {
           const { success, data } = response.data;
           if (success) {
             // 将扁平数据转换为树形结构
-            this.tableData = this.arrayToTree(data.records || []);
+            this.tableData = data.records || [];
           }
         })
         .catch((error) => {
@@ -410,35 +340,6 @@ export default {
           });
           this.loading = false;
         });
-    },
-
-    /**
-     * 将扁平数组转换为树形结构
-     * @param {Array} array - 扁平数组
-     * @param {String|null} parentId - 父节点ID
-     * @returns {Array} 树形结构数组
-     */
-    arrayToTree(array, parentId = null) {
-      const tree = [];
-      array.forEach((item) => {
-        // 兼容null、"null"、undefined等情况
-        const itemParentId =
-          item.parentId === "null" || item.parentId === undefined
-            ? null
-            : item.parentId;
-        if (itemParentId === parentId) {
-          // 创建新对象，避免修改原始数据
-          const node = { ...item };
-          const children = this.arrayToTree(array, item.id);
-          if (children.length > 0) {
-            // 使用 Vue.set 确保响应式
-            this.$set(node, "children", children);
-            this.$set(node, "hasChildren", true);
-          }
-          tree.push(node);
-        }
-      });
-      return tree;
     },
 
     /**
@@ -502,7 +403,13 @@ export default {
         inputErrorMessage: "启用原因不能为空"
       })
         .then(({ value }) => {
-          enableColumn(row.id, value)
+          const dataParams = {
+            id: row.id,
+            remark: value
+          };
+
+          this.$http
+            .post("/web/sjls/sysColumnConfig/enable", dataParams)
             .then((response) => {
               const { success, msg } = response.data;
               if (success) {
@@ -534,7 +441,13 @@ export default {
         inputErrorMessage: "停用原因不能为空"
       })
         .then(({ value }) => {
-          disableColumn(row.id, value)
+          const dataParams = {
+            id: row.id,
+            remark: value
+          };
+
+          this.$http
+            .post("/web/sjls/sysColumnConfig/disable", dataParams)
             .then((response) => {
               const { success, msg } = response.data;
               if (success) {
@@ -572,7 +485,7 @@ export default {
             zxyy: value
           };
 
-          cancelColumn(dataParams)
+          logout(dataParams)
             .then((response) => {
               const { success, msg } = response.data;
               if (success) {
@@ -603,7 +516,7 @@ export default {
         type: "warning"
       })
         .then(() => {
-          deleteColumn(row.id)
+          singleDelete({ id: row.id })
             .then((response) => {
               const { success, msg } = response.data;
               if (success) {
@@ -642,7 +555,10 @@ export default {
         }
       )
         .then(() => {
-          batchDeleteColumn(this.selectedIds)
+          this.$http
+            .post("/web/sjls/sysColumnConfig/batchDelete", {
+              ids: this.selectedIds
+            })
             .then((response) => {
               const { success, msg } = response.data;
               if (success) {
@@ -671,6 +587,23 @@ export default {
     handleSelectionChange(selection) {
       this.selectedIds = selection.map((item) => item.id);
       this.selectedRows = selection;
+    },
+
+    /**
+     * 获取计算类型文本
+     * @param {String} calcType - 计算类型
+     * @returns {String} 文本
+     */
+    getCalcTypeText(calcType) {
+      const textMap = {
+        sum: "SUM",
+        avg: "AVG",
+        count: "COUNT",
+        max: "MAX",
+        min: "MIN",
+        custom: "CUSTOM"
+      };
+      return textMap[calcType] || calcType;
     },
 
     /**

@@ -5,7 +5,7 @@
 
 import request from "@/config/axios-init";
 
-const API_PREFIX = "/api/flex-view";
+const API_PREFIX = "/web/sjls/sysColumnConfig";
 
 /**
  * 获取列配置树形结构
@@ -13,21 +13,11 @@ const API_PREFIX = "/api/flex-view";
  * @returns {Promise} 返回树形列表数据
  */
 export function getColumnTree(params) {
-  // TODO: 对接后端接口后替换为真实接口
-  return Promise.resolve({
-    data: {
-      success: true,
-      data: mockColumnTreeData(),
-      msg: "获取成功"
-    }
+  return request({
+    url: `${API_PREFIX}/tree`,
+    method: 'post',
+    data: params
   });
-
-  // 真实接口调用（后端开发完成后启用）
-  // return request({
-  //   url: `${API_PREFIX}/column/tree`,
-  //   method: 'get',
-  //   params
-  // });
 }
 
 /**
@@ -36,23 +26,11 @@ export function getColumnTree(params) {
  * @returns {Promise} 返回列表数据
  */
 export function getColumnPage(params) {
-  // TODO: Mock数据,对接后端后替换
-  return Promise.resolve({
-    data: {
-      success: true,
-      data: {
-        total: mockColumnListData().length,
-        records: mockColumnListData()
-      },
-      msg: "获取成功"
-    }
+  return request({
+    url: `${API_PREFIX}/page`,
+    method: 'post',
+    data: params
   });
-
-  // return request({
-  //   url: `${API_PREFIX}/column/page`,
-  //   method: 'get',
-  //   params
-  // });
 }
 
 /**
@@ -61,25 +39,11 @@ export function getColumnPage(params) {
  * @returns {Promise} 返回详情数据
  */
 export function getColumnDetail(id) {
-  // TODO: Mock数据
-  const mockList = mockColumnListData();
-  const detail = mockList.find((item) => item.id === id) || {};
-
-  return Promise.resolve({
-    data: {
-      success: true,
-      data: {
-        vo: detail,
-        vox: {}
-      },
-      msg: "获取成功"
-    }
+  return request({
+    url: `${API_PREFIX}/detail`,
+    method: 'post',
+    params: { id }
   });
-
-  // return request({
-  //   url: `${API_PREFIX}/column/detail/${id}`,
-  //   method: 'get'
-  // });
 }
 
 /**
@@ -88,22 +52,11 @@ export function getColumnDetail(id) {
  * @returns {Promise} 返回操作结果
  */
 export function addColumn(data) {
-  console.log("新增列配置:", data);
-
-  // TODO: Mock响应
-  return Promise.resolve({
-    data: {
-      success: true,
-      data: { id: "COL" + Date.now() },
-      msg: "新增成功"
-    }
+  return request({
+    url: `${API_PREFIX}/add`,
+    method: 'post',
+    data
   });
-
-  // return request({
-  //   url: `${API_PREFIX}/column/add`,
-  //   method: 'post',
-  //   data
-  // });
 }
 
 /**
@@ -112,21 +65,11 @@ export function addColumn(data) {
  * @returns {Promise} 返回操作结果
  */
 export function editColumn(data) {
-  console.log("编辑列配置:", data);
-
-  // TODO: Mock响应
-  return Promise.resolve({
-    data: {
-      success: true,
-      msg: "编辑成功"
-    }
+  return request({
+    url: `${API_PREFIX}/edit`,
+    method: 'post',
+    data
   });
-
-  // return request({
-  //   url: `${API_PREFIX}/column/edit`,
-  //   method: 'post',
-  //   data
-  // });
 }
 
 /**
@@ -135,20 +78,11 @@ export function editColumn(data) {
  * @returns {Promise} 返回操作结果
  */
 export function deleteColumn(id) {
-  console.log("删除列配置:", id);
-
-  // TODO: Mock响应
-  return Promise.resolve({
-    data: {
-      success: true,
-      msg: "删除成功"
-    }
+  return request({
+    url: `${API_PREFIX}/singleDelete`,
+    method: 'post',
+    params: { id }
   });
-
-  // return request({
-  //   url: `${API_PREFIX}/column/delete/${id}`,
-  //   method: 'post'
-  // });
 }
 
 /**
@@ -158,21 +92,11 @@ export function deleteColumn(id) {
  * @returns {Promise} 返回操作结果
  */
 export function enableColumn(id, remark) {
-  console.log("启用列配置:", id, remark);
-
-  // TODO: Mock响应
-  return Promise.resolve({
-    data: {
-      success: true,
-      msg: "启用成功"
-    }
+  return request({
+    url: `${API_PREFIX}/enable`,
+    method: 'post',
+    data: { id, remark }
   });
-
-  // return request({
-  //   url: `${API_PREFIX}/column/enable`,
-  //   method: 'post',
-  //   data: { id, remark }
-  // });
 }
 
 /**
@@ -182,21 +106,11 @@ export function enableColumn(id, remark) {
  * @returns {Promise} 返回操作结果
  */
 export function disableColumn(id, remark) {
-  console.log("停用列配置:", id, remark);
-
-  // TODO: Mock响应
-  return Promise.resolve({
-    data: {
-      success: true,
-      msg: "停用成功"
-    }
+  return request({
+    url: `${API_PREFIX}/disable`,
+    method: 'post',
+    data: { id, remark }
   });
-
-  // return request({
-  //   url: `${API_PREFIX}/column/disable`,
-  //   method: 'post',
-  //   data: { id, remark }
-  // });
 }
 
 /**
@@ -205,21 +119,11 @@ export function disableColumn(id, remark) {
  * @returns {Promise} 返回操作结果
  */
 export function cancelColumn(data) {
-  console.log("注销列配置:", data);
-
-  // TODO: Mock响应
-  return Promise.resolve({
-    data: {
-      success: true,
-      msg: "注销成功"
-    }
+  return request({
+    url: `${API_PREFIX}/logout`,
+    method: 'post',
+    data
   });
-
-  // return request({
-  //   url: `${API_PREFIX}/column/cancel`,
-  //   method: 'post',
-  //   data
-  // });
 }
 
 /**
@@ -228,49 +132,50 @@ export function cancelColumn(data) {
  * @returns {Promise} 返回操作结果
  */
 export function batchDeleteColumn(ids) {
-  console.log("批量删除列配置:", ids);
-
-  // TODO: Mock响应
-  return Promise.resolve({
-    data: {
-      success: true,
-      msg: `已删除 ${ids.length} 条记录`
-    }
+  return request({
+    url: `${API_PREFIX}/batchDelete`,
+    method: 'post',
+    data: { ids }
   });
-
-  // return request({
-  //   url: `${API_PREFIX}/column/batch-delete`,
-  //   method: 'post',
-  //   data: { ids }
-  // });
 }
+
+/**
+ * 获取列配置列表(分页) - 别名导出
+ * @param {Object} params - 分页查询参数
+ * @returns {Promise} 返回列表数据
+ */
+export const page = getColumnPage;
+
+/**
+ * 单个删除 - 别名导出
+ * @param {Object} params - 参数对象 {id}
+ * @returns {Promise} 返回操作结果
+ */
+export function singleDelete(params) {
+  return request({
+    url: `${API_PREFIX}/singleDelete`,
+    method: 'post',
+    params
+  });
+}
+
+/**
+ * 注销 - 别名导出
+ * @param {Object} data - 注销数据 {id, zxyy}
+ * @returns {Promise} 返回操作结果
+ */
+export const logout = cancelColumn;
 
 /**
  * 获取表单列表(用于关联表单选择)
  * @returns {Promise} 返回表单列表
  */
 export function getFormList() {
-  // TODO: Mock数据
-  return Promise.resolve({
-    data: {
-      success: true,
-      data: [
-        { id: "FORM001", formCode: "CHECK_RECORD", formName: "抽查记录表单" },
-        { id: "FORM002", formCode: "DISPUTE_RECORD", formName: "矛盾纠纷表单" },
-        {
-          id: "FORM003",
-          formCode: "POPULATION_RECORD",
-          formName: "人口登记表单"
-        }
-      ],
-      msg: "获取成功"
-    }
+  return request({
+    url: '/web/fk/formManage/list',
+    method: 'post',
+    data: {}
   });
-
-  // return request({
-  //   url: `${API_PREFIX}/form/list`,
-  //   method: 'get'
-  // });
 }
 
 // ==================== Mock数据 ====================

@@ -20,80 +20,80 @@
 
 ### 2.1 配置管理模块
 
-#### 2.1.1 列配置表 (SYS_COLUMN_CONFIG)
+#### 2.1.1 列配置表 (T_SJLS_COLUMN_CONFIG)
 存储数据统计列表的列配置信息,支持树形结构。
 
 ```sql
-CREATE TABLE SYS_COLUMN_CONFIG (
-    ID                VARCHAR2(32) PRIMARY KEY,           -- 主键ID
-    PARENT_ID         VARCHAR2(32),                       -- 父节点ID (NULL表示根节点)
-    LABEL             VARCHAR2(100) NOT NULL,             -- 列显示名称
-    PROP              VARCHAR2(100),                      -- 属性名名 (叶子节点必填)
-    COLUMN_WIDTH      NUMBER(10),                         -- 列宽度
-    ALIGN             VARCHAR2(20) DEFAULT 'center',      -- 对齐方式: left/center/right
-    FIXED             VARCHAR2(20),                       -- 固定列: left/right/NULL
-    SORTABLE          VARCHAR2(10) DEFAULT 'false',       -- 是否可排序: true/false
-    DEFAULT_EXPAND    VARCHAR2(10) DEFAULT 'true',        -- 默认展开: true/false
-    FORM_ID           VARCHAR2(32),                       -- 关联表单ID (可点击录入时配置)
-    CALC_TYPE         VARCHAR2(50),                       -- 计算类型: sum/avg/count/custom
-    CALC_RULE         CLOB,                               -- 计算规则 (JSON格式)
+CREATE TABLE T_SJLS_COLUMN_CONFIG (
+    F_ID                VARCHAR2(32) PRIMARY KEY,           -- 主键ID
+    F_PARENT_ID         VARCHAR2(32),                       -- 父节点ID (NULL表示根节点)
+    F_LABEL             VARCHAR2(100) NOT NULL,             -- 列显示名称
+    F_PROP              VARCHAR2(100),                      -- 属性名名 (叶子节点必填)
+    F_COLUMN_WIDTH      NUMBER(10),                         -- 列宽度
+    F_ALIGN             VARCHAR2(20) DEFAULT 'center',      -- 对齐方式: left/center/right
+    F_FIXED             VARCHAR2(20),                       -- 固定列: left/right/NULL
+    F_SORTABLE          VARCHAR2(10) DEFAULT 'false',       -- 是否可排序: true/false
+    F_DEFAULT_EXPAND    VARCHAR2(10) DEFAULT 'true',        -- 默认展开: true/false
+    F_FORM_ID           VARCHAR2(32),                       -- 关联表单ID (可点击录入时配置)
+    F_CALC_TYPE         VARCHAR2(50),                       -- 计算类型: sum/avg/count/custom
+    F_CALC_RULE         CLOB,                               -- 计算规则 (JSON格式)
 
     
     -- 前端配置(新增,存储前端特有的渲染配置)
-    COLUMN_CONFIG     CLOB,                               -- 列配置JSON(样式、格式化、条件显示等)
+    F_COLUMN_CONFIG     CLOB,                               -- 列配置JSON(样式、格式化、条件显示等)
     
-    SORT_NUM          NUMBER(10) DEFAULT 0,               -- 排序号
+    F_SORT_NUM          NUMBER(10) DEFAULT 0,               -- 排序号
     
     -- 启用状态及操作信息
-    STATUS            VARCHAR2(1) DEFAULT '1' NOT NULL,   -- 启用状态: 1-启用 0-停用
-    STATUS_REMARK     VARCHAR2(500),                      -- 启用/停用备注
-    ENABLE_USER_GMSFHM VARCHAR2(18),                      -- 启用操作人身份证号
-    ENABLE_USERNAME   VARCHAR2(50),                       -- 启用操作人姓名
-    ENABLE_TIME       VARCHAR2(14),                       -- 启用操作时间
-    DISABLE_USER_GMSFHM VARCHAR2(18),                     -- 停用操作人身份证号
-    DISABLE_USERNAME  VARCHAR2(50),                       -- 停用操作人姓名
-    DISABLE_TIME      VARCHAR2(14),                       -- 停用操作时间
+    F_STATUS            VARCHAR2(1) DEFAULT '1' NOT NULL,   -- 启用状态: 1-启用 0-停用
+    F_STATUS_REMARK     VARCHAR2(500),                      -- 启用/停用备注
+    F_ENABLE_USER_GMSFHM VARCHAR2(18),                      -- 启用操作人身份证号
+    F_ENABLE_USERNAME   VARCHAR2(50),                       -- 启用操作人姓名
+    F_ENABLE_TIME       VARCHAR2(14),                       -- 启用操作时间
+    F_DISABLE_USER_GMSFHM VARCHAR2(18),                     -- 停用操作人身份证号
+    F_DISABLE_USERNAME  VARCHAR2(50),                       -- 停用操作人姓名
+    F_DISABLE_TIME      VARCHAR2(14),                       -- 停用操作时间
     
     -- 注销标识
-    ZXBS              VARCHAR2(1) DEFAULT '0' NOT NULL,   -- 注销状态: 0-未注销 1-已注销
-    ZXR_USER_GMSFHM   VARCHAR2(18),                       -- 注销人身份证号
-    ZXR_USERNAME      VARCHAR2(30),                       -- 注销人姓名
-    ZXDW              VARCHAR2(12),                       -- 注销机构
-    ZXSJ              VARCHAR2(14),                       -- 注销时间
-    ZXYY              VARCHAR2(500),                      -- 注销原因
+    F_ZXBS              VARCHAR2(1) DEFAULT '0' NOT NULL,   -- 注销状态: 0-未注销 1-已注销
+    F_ZXR_USER_GMSFHM   VARCHAR2(18),                       -- 注销人身份证号
+    F_ZXR_USERNAME      VARCHAR2(30),                       -- 注销人姓名
+    F_ZXDW              VARCHAR2(12),                       -- 注销机构
+    F_ZXSJ              VARCHAR2(14),                       -- 注销时间
+    F_ZXYY              VARCHAR2(500),                      -- 注销原因
     
     -- 系统字段
-    CREATE_USER_GMSFHM VARCHAR2(18),                      -- 采集人身份证号
-    CREATE_USERNAME   VARCHAR2(50),                       -- 采集人姓名
-    CREATE_TIME       VARCHAR2(14),                       -- 采集时间
-    CREATE_ORG_ID     VARCHAR2(12),                       -- 采集人机构
-    UPDATE_USER_GMSFHM VARCHAR2(18),                      -- 操作人身份证号
-    UPDATE_USERNAME   VARCHAR2(50),                       -- 操作人姓名
-    UPDATE_TIME       VARCHAR2(14),                       -- 操作时间
-    UPDATE_ORG_ID     VARCHAR2(12),                       -- 操作人机构
-    MEMO              VARCHAR2(500),                      -- 备注
+    F_CREATE_USER_GMSFHM VARCHAR2(18),                      -- 采集人身份证号
+    F_CREATE_USERNAME   VARCHAR2(50),                       -- 采集人姓名
+    F_CREATE_TIME       VARCHAR2(14),                       -- 采集时间
+    F_CREATE_ORG_ID     VARCHAR2(12),                       -- 采集人机构
+    F_UPDATE_USER_GMSFHM VARCHAR2(18),                      -- 操作人身份证号
+    F_UPDATE_USERNAME   VARCHAR2(50),                       -- 操作人姓名
+    F_UPDATE_TIME       VARCHAR2(14),                       -- 操作时间
+    F_UPDATE_ORG_ID     VARCHAR2(12),                       -- 操作人机构
+    F_MEMO              VARCHAR2(500),                      -- 备注
     
-    CONSTRAINT FK_COLUMN_PARENT FOREIGN KEY (PARENT_ID) REFERENCES SYS_COLUMN_CONFIG(ID)
+    CONSTRAINT FK_COLUMN_PARENT FOREIGN KEY (F_PARENT_ID) REFERENCES T_SJLS_COLUMN_CONFIG(F_ID)
 );
 
 -- 索引
-CREATE INDEX IDX_COLUMN_PARENT ON SYS_COLUMN_CONFIG(PARENT_ID);
-CREATE INDEX IDX_COLUMN_ZXBS ON SYS_COLUMN_CONFIG(ZXBS);
-CREATE INDEX IDX_COLUMN_SORT ON SYS_COLUMN_CONFIG(SORT_NUM);
+CREATE INDEX IDX_COLUMN_PARENT ON T_SJLS_COLUMN_CONFIG(F_PARENT_ID);
+CREATE INDEX IDX_COLUMN_ZXBS ON T_SJLS_COLUMN_CONFIG(F_ZXBS);
+CREATE INDEX IDX_COLUMN_SORT ON T_SJLS_COLUMN_CONFIG(F_SORT_NUM);
 
 -- 注释
-COMMENT ON TABLE SYS_COLUMN_CONFIG IS '统计列配置表';
-COMMENT ON COLUMN SYS_COLUMN_CONFIG.ID IS '主键ID';
-COMMENT ON COLUMN SYS_COLUMN_CONFIG.PARENT_ID IS '父节点ID';
-COMMENT ON COLUMN SYS_COLUMN_CONFIG.LABEL IS '列显示名称';
-COMMENT ON COLUMN SYS_COLUMN_CONFIG.PROP IS '属性名名';
-COMMENT ON COLUMN SYS_COLUMN_CONFIG.FORM_ID IS '关联表单ID(可点击录入)';
-COMMENT ON COLUMN SYS_COLUMN_CONFIG.DEFAULT_EXPAND IS '默认展开状态';
-COMMENT ON COLUMN SYS_COLUMN_CONFIG.COLUMN_CONFIG IS '列前端配置JSON(样式、格式化、条件显示等)';
-COMMENT ON COLUMN SYS_COLUMN_CONFIG.STATUS IS '启用状态:1-启用 0-停用';
-COMMENT ON COLUMN SYS_COLUMN_CONFIG.STATUS_REMARK IS '启用/停用备注说明';
-COMMENT ON COLUMN SYS_COLUMN_CONFIG.CREATE_USER_GMSFHM IS '采集人身份证号码';
-COMMENT ON COLUMN SYS_COLUMN_CONFIG.ZXR_USER_GMSFHM IS '注销人身份证号码';
+COMMENT ON TABLE T_SJLS_COLUMN_CONFIG IS '统计列配置表';
+COMMENT ON COLUMN T_SJLS_COLUMN_CONFIG.F_ID IS '主键ID';
+COMMENT ON COLUMN T_SJLS_COLUMN_CONFIG.F_PARENT_ID IS '父节点ID';
+COMMENT ON COLUMN T_SJLS_COLUMN_CONFIG.F_LABEL IS '列显示名称';
+COMMENT ON COLUMN T_SJLS_COLUMN_CONFIG.F_PROP IS '属性名名';
+COMMENT ON COLUMN T_SJLS_COLUMN_CONFIG.F_FORM_ID IS '关联表单ID(可点击录入)';
+COMMENT ON COLUMN T_SJLS_COLUMN_CONFIG.F_DEFAULT_EXPAND IS '默认展开状态';
+COMMENT ON COLUMN T_SJLS_COLUMN_CONFIG.F_COLUMN_CONFIG IS '列前端配置JSON(样式、格式化、条件显示等)';
+COMMENT ON COLUMN T_SJLS_COLUMN_CONFIG.F_STATUS IS '启用状态:1-启用 0-停用';
+COMMENT ON COLUMN T_SJLS_COLUMN_CONFIG.F_STATUS_REMARK IS '启用/停用备注说明';
+COMMENT ON COLUMN T_SJLS_COLUMN_CONFIG.F_CREATE_USER_GMSFHM IS '采集人身份证号码';
+COMMENT ON COLUMN T_SJLS_COLUMN_CONFIG.F_ZXR_USER_GMSFHM IS '注销人身份证号码';
 ```
 
 **COLUMN_CONFIG JSON配置说明**(列前端配置):
@@ -167,35 +167,35 @@ COLUMN_CONFIG字段存储列的前端特有配置,包括样式、格式化、条
 **示例数据**:
 ```sql
 -- 实有人口父节点
-INSERT INTO SYS_COLUMN_CONFIG (ID, PARENT_ID, LABEL, PROP, SORT_NUM,
-    ZXBS, CREATE_USER_ID, CREATE_USERNAME, CREATE_TIME, CREATE_ORG_ID,
-    UPDATE_USER_ID, UPDATE_USERNAME, UPDATE_TIME, UPDATE_ORG_ID) 
+INSERT INTO T_SJLS_COLUMN_CONFIG (F_ID, F_PARENT_ID, F_LABEL, F_PROP, F_SORT_NUM,
+    F_ZXBS, F_CREATE_USER_ID, F_CREATE_USERNAME, F_CREATE_TIME, F_CREATE_ORG_ID,
+    F_UPDATE_USER_ID, F_UPDATE_USERNAME, F_UPDATE_TIME, F_UPDATE_ORG_ID) 
 VALUES ('COL001', NULL, '实有人口', NULL, 1,
     '0', 'admin', '管理员', '20251125120000', '000000',
     'admin', '管理员', '20251125120000', '000000');
 
 -- 总数子节点(不可点击)
-INSERT INTO SYS_COLUMN_CONFIG (ID, PARENT_ID, LABEL, PROP, COLUMN_WIDTH, SORT_NUM, COLUMN_CONFIG,
-    ZXBS, CREATE_USER_ID, CREATE_USERNAME, CREATE_TIME, CREATE_ORG_ID,
-    UPDATE_USER_ID, UPDATE_USERNAME, UPDATE_TIME, UPDATE_ORG_ID)
+INSERT INTO T_SJLS_COLUMN_CONFIG (F_ID, F_PARENT_ID, F_LABEL, F_PROP, F_COLUMN_WIDTH, F_SORT_NUM, F_COLUMN_CONFIG,
+    F_ZXBS, F_CREATE_USER_ID, F_CREATE_USERNAME, F_CREATE_TIME, F_CREATE_ORG_ID,
+    F_UPDATE_USER_ID, F_UPDATE_USERNAME, F_UPDATE_TIME, F_UPDATE_ORG_ID)
 VALUES ('COL001001', 'COL001', '总数', 'population_total', 100, 1,
     '{"formatter":{"type":"number","precision":0}}',
     '0', 'admin', '管理员', '20251125120000', '000000',
     'admin', '管理员', '20251125120000', '000000');
 
 -- 抽查总数子节点(可点击,有样式)
-INSERT INTO SYS_COLUMN_CONFIG (ID, PARENT_ID, LABEL, PROP, COLUMN_WIDTH, FORM_ID, SORT_NUM, COLUMN_CONFIG,
-    ZXBS, CREATE_USER_ID, CREATE_USERNAME, CREATE_TIME, CREATE_ORG_ID,
-    UPDATE_USER_ID, UPDATE_USERNAME, UPDATE_TIME, UPDATE_ORG_ID)
+INSERT INTO T_SJLS_COLUMN_CONFIG (F_ID, F_PARENT_ID, F_LABEL, F_PROP, F_COLUMN_WIDTH, F_FORM_ID, F_SORT_NUM, F_COLUMN_CONFIG,
+    F_ZXBS, F_CREATE_USER_ID, F_CREATE_USERNAME, F_CREATE_TIME, F_CREATE_ORG_ID,
+    F_UPDATE_USER_ID, F_UPDATE_USERNAME, F_UPDATE_TIME, F_UPDATE_ORG_ID)
 VALUES ('COL001002', 'COL001', '抽查总数', 'check_total', 100, 'FORM001', 2,
     '{"click":{"enabled":true,"style":{"cursor":"pointer","color":"#409EFF","textDecoration":"underline"}},"formatter":{"type":"number","precision":0}}',
     '0', 'admin', '管理员', '20251125120000', '000000',
     'admin', '管理员', '20251125120000', '000000');
 
 -- 核查率子节点(条件格式化)
-INSERT INTO SYS_COLUMN_CONFIG (ID, PARENT_ID, LABEL, PROP, COLUMN_WIDTH, SORT_NUM, COLUMN_CONFIG,
-    ZXBS, CREATE_USER_ID, CREATE_USERNAME, CREATE_TIME, CREATE_ORG_ID,
-    UPDATE_USER_ID, UPDATE_USERNAME, UPDATE_TIME, UPDATE_ORG_ID)
+INSERT INTO T_SJLS_COLUMN_CONFIG (F_ID, F_PARENT_ID, F_LABEL, F_PROP, F_COLUMN_WIDTH, F_SORT_NUM, F_COLUMN_CONFIG,
+    F_ZXBS, F_CREATE_USER_ID, F_CREATE_USERNAME, F_CREATE_TIME, F_CREATE_ORG_ID,
+    F_UPDATE_USER_ID, F_UPDATE_USERNAME, F_UPDATE_TIME, F_UPDATE_ORG_ID)
 VALUES ('COL001003', 'COL001', '核查率', 'check_rate', 100, 3,
     '{"formatter":{"type":"percent","precision":2,"suffix":"%"},"conditional":{"rules":[{"condition":"value >= 95","style":{"color":"#67C23A"}},{"condition":"value < 80","style":{"color":"#F56C6C"}}]}}',
     '0', 'admin', '管理员', '20251125120000', '000000',
@@ -204,66 +204,66 @@ VALUES ('COL001003', 'COL001', '核查率', 'check_rate', 100, 3,
 
 ---
 
-#### 2.1.2 表单配置表 (SYS_FORM_CONFIG)
+#### 2.1.2 表单配置表 (T_SJLS_FORM_CONFIG)
 存储动态表单的基础信息,支持分表配置。
 
 ```sql
-CREATE TABLE SYS_FORM_CONFIG (
-    ID                VARCHAR2(32) PRIMARY KEY,           -- 主键ID
-    FORM_CODE         VARCHAR2(100) NOT NULL UNIQUE,      -- 表单编码
-    FORM_NAME         VARCHAR2(200) NOT NULL,             -- 表单名称
-    DATA_TABLE        VARCHAR2(100) DEFAULT 'BIZ_DATA_COMMON',  -- 数据存储表名(默认为BIZ_DATA_COMMON)
-    FORM_TYPE         VARCHAR2(50) DEFAULT 'COMMON',      -- 表单类型: COMMON-通用/CUSTOM-自定义
-    DESCRIPTION       VARCHAR2(500),                      -- 表单说明
-    FORM_CONFIG       CLOB,                               -- 表单配置JSON(表单级别的配置)
+CREATE TABLE T_SJLS_FORM_CONFIG (
+    F_ID                VARCHAR2(32) PRIMARY KEY,           -- 主键ID
+    F_FORM_CODE         VARCHAR2(100) NOT NULL UNIQUE,      -- 表单编码
+    F_FORM_NAME         VARCHAR2(200) NOT NULL,             -- 表单名称
+    F_DATA_TABLE        VARCHAR2(100) DEFAULT 'BIZ_DATA_COMMON',  -- 数据存储表名(默认为BIZ_DATA_COMMON)
+    F_FORM_TYPE         VARCHAR2(50) DEFAULT 'COMMON',      -- 表单类型: COMMON-通用/CUSTOM-自定义
+    F_DESCRIPTION       VARCHAR2(500),                      -- 表单说明
+    F_FORM_CONFIG       CLOB,                               -- 表单配置JSON(表单级别的配置)
     
     -- 注销标识
-    ZXBS              VARCHAR2(1) DEFAULT '0' NOT NULL,   -- 注销状态: 0-未注销 1-已注销
-    ZXR_USER_GMSFHM   VARCHAR2(18),                       -- 注销人身份证号
-    ZXR_USERNAME      VARCHAR2(30),                       -- 注销人姓名
-    ZXDW              VARCHAR2(12),                       -- 注销机构
-    ZXSJ              VARCHAR2(14),                       -- 注销时间
-    ZXYY              VARCHAR2(500),                      -- 注销原因
+    F_ZXBS              VARCHAR2(1) DEFAULT '0' NOT NULL,   -- 注销状态: 0-未注销 1-已注销
+    F_ZXR_USER_GMSFHM   VARCHAR2(18),                       -- 注销人身份证号
+    F_ZXR_USERNAME      VARCHAR2(30),                       -- 注销人姓名
+    F_ZXDW              VARCHAR2(12),                       -- 注销机构
+    F_ZXSJ              VARCHAR2(14),                       -- 注销时间
+    F_ZXYY              VARCHAR2(500),                      -- 注销原因
     
     -- 系统字段
-    CREATE_USER_GMSFHM VARCHAR2(18) NOT NULL,             -- 采集人身份证号
-    CREATE_USERNAME   VARCHAR2(50) NOT NULL,              -- 采集人姓名
-    CREATE_TIME       VARCHAR2(14) NOT NULL,              -- 采集时间
-    CREATE_ORG_ID     VARCHAR2(12) NOT NULL,              -- 采集人机构
-    UPDATE_USER_GMSFHM VARCHAR2(18) NOT NULL,             -- 操作人身份证号
-    UPDATE_USERNAME   VARCHAR2(50) NOT NULL,              -- 操作人姓名
-    UPDATE_TIME       VARCHAR2(14) NOT NULL,              -- 操作时间
-    UPDATE_ORG_ID     VARCHAR2(12) NOT NULL,              -- 操作人机构
-    MEMO              VARCHAR2(500),                      -- 备注
-    VERSION           NUMBER(10) DEFAULT 1                -- 版本号
+    F_CREATE_USER_GMSFHM VARCHAR2(18) NOT NULL,             -- 采集人身份证号
+    F_CREATE_USERNAME   VARCHAR2(50) NOT NULL,              -- 采集人姓名
+    F_CREATE_TIME       VARCHAR2(14) NOT NULL,              -- 采集时间
+    F_CREATE_ORG_ID     VARCHAR2(12) NOT NULL,              -- 采集人机构
+    F_UPDATE_USER_GMSFHM VARCHAR2(18) NOT NULL,             -- 操作人身份证号
+    F_UPDATE_USERNAME   VARCHAR2(50) NOT NULL,              -- 操作人姓名
+    F_UPDATE_TIME       VARCHAR2(14) NOT NULL,              -- 操作时间
+    F_UPDATE_ORG_ID     VARCHAR2(12) NOT NULL,              -- 操作人机构
+    F_MEMO              VARCHAR2(500),                      -- 备注
+    F_VERSION           NUMBER(10) DEFAULT 1                -- 版本号
 );
 
 -- 索引
-CREATE INDEX IDX_FORM_CODE ON SYS_FORM_CONFIG(FORM_CODE);
-CREATE INDEX IDX_FORM_ZXBS ON SYS_FORM_CONFIG(ZXBS);
-CREATE INDEX IDX_FORM_TABLE ON SYS_FORM_CONFIG(DATA_TABLE);
+CREATE INDEX IDX_FORM_CODE ON T_SJLS_FORM_CONFIG(F_FORM_CODE);
+CREATE INDEX IDX_FORM_ZXBS ON T_SJLS_FORM_CONFIG(F_ZXBS);
+CREATE INDEX IDX_FORM_TABLE ON T_SJLS_FORM_CONFIG(F_DATA_TABLE);
 
 -- 注释
-COMMENT ON TABLE SYS_FORM_CONFIG IS '表单配置表';
-COMMENT ON COLUMN SYS_FORM_CONFIG.FORM_CODE IS '表单编码(唯一)';
-COMMENT ON COLUMN SYS_FORM_CONFIG.DATA_TABLE IS '数据存储表名(默认BIZ_DATA_COMMON,支持分表)';
-COMMENT ON COLUMN SYS_FORM_CONFIG.VERSION IS '表单版本号';
+COMMENT ON TABLE T_SJLS_FORM_CONFIG IS '表单配置表';
+COMMENT ON COLUMN T_SJLS_FORM_CONFIG.F_FORM_CODE IS '表单编码(唯一)';
+COMMENT ON COLUMN T_SJLS_FORM_CONFIG.F_DATA_TABLE IS '数据存储表名(默认BIZ_DATA_COMMON,支持分表)';
+COMMENT ON COLUMN T_SJLS_FORM_CONFIG.F_VERSION IS '表单版本号';
 ```
 
 **示例数据**:
 ```sql
 -- 抽查记录表单(使用默认表)
-INSERT INTO SYS_FORM_CONFIG (ID, FORM_CODE, FORM_NAME, DATA_TABLE, DESCRIPTION,
-    ZXBS, CREATE_USER_ID, CREATE_USERNAME, CREATE_TIME, CREATE_ORG_ID,
-    UPDATE_USER_ID, UPDATE_USERNAME, UPDATE_TIME, UPDATE_ORG_ID) 
+INSERT INTO T_SJLS_FORM_CONFIG (F_ID, F_FORM_CODE, F_FORM_NAME, F_DATA_TABLE, F_DESCRIPTION,
+    F_ZXBS, F_CREATE_USER_ID, F_CREATE_USERNAME, F_CREATE_TIME, F_CREATE_ORG_ID,
+    F_UPDATE_USER_ID, F_UPDATE_USERNAME, F_UPDATE_TIME, F_UPDATE_ORG_ID) 
 VALUES ('FORM001', 'CHECK_RECORD', '抽查记录表单', 'BIZ_DATA_COMMON', '用于录入抽查相关信息',
     '0', 'admin', '管理员', '20251125120000', '000000',
     'admin', '管理员', '20251125120000', '000000');
 
 -- 矛盾纠纷表单(使用分表)
-INSERT INTO SYS_FORM_CONFIG (ID, FORM_CODE, FORM_NAME, DATA_TABLE, DESCRIPTION,
-    ZXBS, CREATE_USER_ID, CREATE_USERNAME, CREATE_TIME, CREATE_ORG_ID,
-    UPDATE_USER_ID, UPDATE_USERNAME, UPDATE_TIME, UPDATE_ORG_ID)
+INSERT INTO T_SJLS_FORM_CONFIG (F_ID, F_FORM_CODE, F_FORM_NAME, F_DATA_TABLE, F_DESCRIPTION,
+    F_ZXBS, F_CREATE_USER_ID, F_CREATE_USERNAME, F_CREATE_TIME, F_CREATE_ORG_ID,
+    F_UPDATE_USER_ID, F_UPDATE_USERNAME, F_UPDATE_TIME, F_UPDATE_ORG_ID)
 VALUES ('FORM002', 'DISPUTE_RECORD', '矛盾纠纷表单', 'BIZ_DATA_DISPUTE', '单独分表存储矛盾纠纷数据',
     '0', 'admin', '管理员', '20251125120000', '000000',
     'admin', '管理员', '20251125120000', '000000');
