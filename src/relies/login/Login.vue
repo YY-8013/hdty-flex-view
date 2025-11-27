@@ -164,7 +164,7 @@
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import { toLogin, getLoginCode, getConfig } from "@/api/user";
-import { getDictionaryInfo, getZdryTdbqConfig } from "@/api/common";
+import { getDictionaryInfo } from "@/api/common";
 export default {
   name: "Login",
   data() {
@@ -331,8 +331,6 @@ export default {
             this.$utilLogin.login(response, this);
 
             _this.getConfig();
-            _this.getConfig1();
-            _this.getZdryTypeDl();
           }
         })
         .catch((error) => {
@@ -364,85 +362,7 @@ export default {
           console.error(error);
         });
     },
-    // 获取配置
-    getConfig1() {
-      let _this = this;
 
-      // Lambda写法
-      getZdryTdbqConfig()
-        .then((response) => {
-          // 响应成功回调
-          let { success, data } = response.data;
-          if (success) {
-            _this.$storage.session.remove("configData1");
-            _this.$storage.session.set("configData1", data);
-          }
-        })
-        .catch((error) => {
-          // 响应错误回调
-          _this.reset();
-          console.error(error);
-        })
-        .finally(() => {
-          // 获取关注人员类型细类
-          _this.getZdryType();
-        });
-    },
-    // 获取关注人员类型大类
-    async getZdryTypeDl() {
-      let _this = this;
-      let dataParams = {
-        typeId: this.$global.dictType.zdrylxNew,
-        parentId: "",
-        hasParent: false
-      };
-      const response = await getDictionaryInfo(dataParams);
-      let { data, success } = response.data;
-      if (success) {
-        // 过滤掉涉恐类型
-        let filterList = data.records.filter(
-          (item) => item.key !== _this.$global.zdryLxType.skry
-        );
-        this.$storage.session.set("dict_zdrylx_dl", filterList);
-      }
-    },
-    // 获取关注人员类型
-    async getZdryType() {
-      let _this = this;
-      let zdryLxParentType = _this.$global.zdryLxParentType;
-
-      // 创建一个 Promise 数组,遍历获取完细类后，根据配置，处理人员现状类型
-      const promises = zdryLxParentType.map(async (item) => {
-        let dataParams = {
-          typeId: this.$global.dictType.zdrylxNew,
-          parentId: item.key,
-          hasParent: false
-        };
-        const response = await getDictionaryInfo(dataParams);
-        let { data, success } = response.data;
-        if (success) {
-          let data_ = data;
-          data_.records = (data_.records || []).filter(
-            (dictItem) => !(item.excludeKeys || []).includes(dictItem.key)
-          );
-
-          let obj = this.$storage.session.get("dict_zdrylx") || {};
-          obj[item.key] = data_;
-          this.$storage.session.set("dict_zdrylx", obj);
-        }
-      });
-      // 等待所有 Promise 完成
-      await Promise.all(promises);
-
-      // 所有请求完成后执行
-      _this.getRyxzRylx();
-    },
-    // 获取人员现状 对应的可选人员类型集合
-    getRyxzRylx() {
-      let result = this.$storage.session.get("configData1");
-      // 存储到session
-      this.$storage.session.set("ryxz_rylx", result);
-    },
     // 改变密码
     handlePasswordChange(val) {
       this.md5password = this.$crypto.md5(val);

@@ -104,13 +104,7 @@ export const getConfig = (params) => {
   });
 };
 
-// 获取关注人员特定标签配置信息
-export const getZdryTdbqConfig = () => {
-  return request({
-    url: "/common/config/SubStatusConfig/detail",
-    method: "post"
-  });
-};
+
 
 export const fileUpload = (params) => {
   return request({
