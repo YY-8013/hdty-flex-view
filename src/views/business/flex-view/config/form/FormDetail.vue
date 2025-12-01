@@ -1,6 +1,6 @@
 <template>
   <el-dialog
-    title="列配置详情"
+    title="表单配置详情"
     :visible.sync="visible"
     custom-class="hdty-dialog-medium new-form"
     append-to-body
@@ -45,34 +45,56 @@
                 <biz-form>
                   <biz-form-row>
                     <biz-form-item
-                      label="列&ensp;名&ensp;称"
+                      label="表单编码"
                       :required="false"
-                      :span="12"
+                      :span="14"
                     >
-                      {{ detailData.vo.label }}
+                      {{ detailData.vo.formCode }}
                     </biz-form-item>
                     <biz-form-item
-                      label="属&ensp;性&ensp;名"
+                      label="表单类型"
                       :required="false"
-                      :span="12"
+                      :span="10"
                     >
-                      {{ detailData.vo.prop }}
+                      <el-tag type="success" size="small">
+                        {{ detailData.vox.formType }}
+                      </el-tag>
                     </biz-form-item>
                   </biz-form-row>
                   <biz-form-row>
                     <biz-form-item
-                      label="父&ensp;节&ensp;点"
+                      label="表单名称"
                       :required="false"
-                      :span="12"
+                      :span="24"
+                      pClass="p-divs"
                     >
-                      {{ detailData.vox.parentId }}
+                      {{ detailData.vo.formName }}
+                    </biz-form-item>
+                  </biz-form-row>
+                  <biz-form-row>
+                    <biz-form-item
+                      label="数据存储表"
+                      :required="false"
+                      :span="14"
+                    >
+                      {{ detailData.vo.dataTable }}
                     </biz-form-item>
                     <biz-form-item
-                      label="排&emsp;&emsp;序"
+                      label="版&ensp;本&ensp;号"
                       :required="false"
-                      :span="12"
+                      :span="10"
                     >
-                      {{ detailData.vo.sortNum }}
+                      {{ detailData.vo.version }}
+                    </biz-form-item>
+                  </biz-form-row>
+                  <biz-form-row>
+                    <biz-form-item
+                      label="表单说明"
+                      :required="false"
+                      :span="24"
+                      pClass="p-divs"
+                    >
+                      {{ detailData.vo.description }}
                     </biz-form-item>
                   </biz-form-row>
                   <biz-form-row>
@@ -88,126 +110,18 @@
                 </biz-form>
               </biz-form-card>
 
-              <biz-form-card title="显示配置" :id="anchorList[1].id">
+              <biz-form-card title="表单配置" :id="anchorList[1].id">
                 <biz-form>
                   <biz-form-row>
                     <biz-form-item
-                      label="列&emsp;&emsp;宽"
-                      :required="false"
-                      :span="12"
-                    >
-                      {{
-                        detailData.vo.columnWidth
-                          ? detailData.vo.columnWidth + "px"
-                          : "自适应"
-                      }}
-                    </biz-form-item>
-                    <biz-form-item
-                      label="对齐方式"
-                      :required="false"
-                      :span="12"
-                    >
-                      <el-tag
-                        v-if="detailData.vox.align"
-                        type="primary"
-                        size="small"
-                      >
-                        {{ detailData.vox.align }}
-                      </el-tag>
-                    </biz-form-item>
-                  </biz-form-row>
-                  <biz-form-row>
-                    <biz-form-item
-                      label="固&ensp;定&ensp;列"
-                      :required="false"
-                      :span="12"
-                    >
-                      <el-tag
-                        v-if="detailData.vox.fixed"
-                        size="small"
-                        type="warning"
-                      >
-                        {{ detailData.vox.fixed }}
-                      </el-tag>
-                    </biz-form-item>
-                    <biz-form-item
-                      label="是否可排序"
-                      :required="false"
-                      :span="12"
-                    >
-                      <el-tag
-                        size="small"
-                        :type="
-                          detailData.vo.sortable === '1' ? 'success' : 'info'
-                        "
-                      >
-                        {{ detailData.vox.sortable }}
-                      </el-tag>
-                    </biz-form-item>
-                  </biz-form-row>
-                  <biz-form-row>
-                    <biz-form-item
-                      label="默认展开"
-                      :required="false"
-                      :span="12"
-                    >
-                      <el-tag
-                        size="small"
-                        :type="
-                          detailData.vo.defaultExpand === '1'
-                            ? 'success'
-                            : 'info'
-                        "
-                      >
-                        {{ detailData.vox.defaultExpand }}
-                      </el-tag>
-                    </biz-form-item>
-                    <biz-form-item
-                      label="关联表单"
-                      :required="false"
-                      :span="12"
-                    >
-                      <el-tag
-                        v-if="detailData.vo.formName"
-                        size="small"
-                        type="primary"
-                      >
-                        {{ detailData.vo.formName }}
-                      </el-tag>
-                    </biz-form-item>
-                  </biz-form-row>
-                </biz-form>
-              </biz-form-card>
-
-              <biz-form-card title="计算配置" :id="anchorList[2].id">
-                <biz-form>
-                  <biz-form-row>
-                    <biz-form-item
-                      label="计算类型"
-                      :required="false"
-                      :span="24"
-                      pClass="p-divs"
-                    >
-                      <el-tag
-                        v-if="detailData.vo.calcType"
-                        size="small"
-                        type="success"
-                      >
-                        {{ getCalcTypeText(detailData.vo.calcType) }}
-                      </el-tag>
-                      <span v-else></span>
-                    </biz-form-item>
-                  </biz-form-row>
-                  <biz-form-row>
-                    <biz-form-item
-                      label="计算规则"
+                      label="表单配置JSON"
                       :required="false"
                       :span="24"
                       pClass="p-divs"
                     >
                       <div class="json-display">
-                        <pre v-if="detailData.vo.calcRule">{{
-                          formatJSON(detailData.vo.calcRule)
+                        <pre v-if="detailData.vo.formConfig">{{
+                          formatJSON(detailData.vo.formConfig)
                         }}</pre>
                         <span v-else class="empty-text">未配置</span>
                       </div>
@@ -216,69 +130,7 @@
                 </biz-form>
               </biz-form-card>
 
-              <biz-form-card title="列前端配置" :id="anchorList[3].id">
-                <biz-form>
-                  <biz-form-row>
-                    <biz-form-item
-                      label="列配置JSON"
-                      :required="false"
-                      :span="24"
-                      pClass="p-divs"
-                    >
-                      <div class="json-display">
-                        <pre v-if="detailData.vo.columnConfig">{{
-                          formatJSON(detailData.vo.columnConfig)
-                        }}</pre>
-                        <span v-else class="empty-text">未配置</span>
-                      </div>
-                    </biz-form-item>
-                  </biz-form-row>
-                </biz-form>
-              </biz-form-card>
-
-              <biz-form-card title="状态信息" :id="anchorList[4].id">
-                <biz-form>
-                  <biz-form-row>
-                    <biz-form-item
-                      label="启用状态"
-                      :required="false"
-                      :span="24"
-                    >
-                      <el-tag
-                        :type="
-                          detailData.vo.status === '1' ? 'success' : 'info'
-                        "
-                        size="small"
-                        effect="dark"
-                      >
-                        {{ detailData.vox.status }}
-                      </el-tag>
-                    </biz-form-item>
-                  </biz-form-row>
-                  <biz-form-row v-if="detailData.vo.status === '1'">
-                    <biz-form-item
-                      label="启用备注"
-                      :required="false"
-                      :span="24"
-                      pClass="p-divs"
-                    >
-                      {{ detailData.vo.enableRemark }}
-                    </biz-form-item>
-                  </biz-form-row>
-                  <biz-form-row v-if="detailData.vo.status === '0'">
-                    <biz-form-item
-                      label="停用备注"
-                      :required="false"
-                      :span="24"
-                      pClass="p-divs"
-                    >
-                      {{ detailData.vo.disableRemark }}
-                    </biz-form-item>
-                  </biz-form-row>
-                </biz-form>
-              </biz-form-card>
-
-              <biz-form-card title="操作信息" :id="anchorList[5].id">
+              <biz-form-card title="操作信息" :id="anchorList[2].id">
                 <biz-form>
                   <biz-form-row>
                     <biz-form-item label="添&ensp;加&ensp;人" :span="12">{{
@@ -311,10 +163,10 @@
                   </biz-form-row>
                   <biz-form-row v-if="detailData.vo.zxbs === '1'">
                     <biz-form-item label="注&ensp;销&ensp;人" :span="12">{{
-                      detailData.vo.zxrUsername
+                      detailData.vo.zxUsername
                     }}</biz-form-item>
                     <biz-form-item label="注销时间" :span="12">{{
-                      detailData.vox.zxsj
+                      detailData.vox.zxTime
                     }}</biz-form-item>
                   </biz-form-row>
                   <biz-form-row v-if="detailData.vo.zxbs === '1'">
@@ -345,10 +197,10 @@ import anchorScroll from "@/views/global/mixin/anchorScroll.js";
 import { detail } from "./api";
 
 export default {
-  name: "ColumnDetail",
+  name: "FormDetail",
   provide() {
     return {
-      ColumnDetail: this
+      FormDetail: this
     };
   },
   components: {},
@@ -358,6 +210,7 @@ export default {
   data() {
     return {
       // 表单
+      detailData: {},
       extendData: {},
       // 行
       row: {},
@@ -383,27 +236,9 @@ export default {
           show: true
         },
         {
-          label: "显示配置",
-          id: "ref" + this.$utilStr.uuid(32),
-          iconClass: "el-icon-setting",
-          show: true
-        },
-        {
-          label: "计算配置",
-          id: "ref" + this.$utilStr.uuid(32),
-          iconClass: "el-icon-s-data",
-          show: true
-        },
-        {
-          label: "列前端配置",
+          label: "表单配置",
           id: "ref" + this.$utilStr.uuid(32),
           iconClass: "el-icon-edit",
-          show: true
-        },
-        {
-          label: "状态信息",
-          id: "ref" + this.$utilStr.uuid(32),
-          iconClass: "el-icon-info",
           show: true
         },
         {
@@ -435,7 +270,7 @@ export default {
       _this.loading = true;
       // 参数
       let dataParams = {
-        id: _this.row.id
+        id: _this.row.vo.id
       };
 
       // Lambda写法
@@ -462,57 +297,13 @@ export default {
     },
     // 重置
     resetForm() {
-      this.detailData = { vo: {}, vox: {} };
+      this.detailData = {};
     },
     updateAnchorList() {
       this.anchorIds = this.anchorList
         .filter((item) => item.show)
         .map((item) => item.id);
       this.activeAnchor = this.anchorIds[0];
-    },
-    /**
-     * 获取对齐方式标签类型
-     * @param {String} align - 对齐方式
-     * @returns {String} 标签类型
-     */
-    getAlignType(align) {
-      const typeMap = {
-        left: "primary",
-        center: "success",
-        right: "warning"
-      };
-      return typeMap[align] || "";
-    },
-
-    /**
-     * 获取计算类型文本
-     * @param {String} calcType - 计算类型
-     * @returns {String} 文本
-     */
-    getCalcTypeText(calcType) {
-      const textMap = {
-        sum: "求和(SUM)",
-        avg: "平均值(AVG)",
-        count: "计数(COUNT)",
-        max: "最大值(MAX)",
-        min: "最小值(MIN)",
-        custom: "自定义(CUSTOM)"
-      };
-      return textMap[calcType] || calcType;
-    },
-
-    /**
-     * 获取对齐方式文本
-     * @param {String} align - 对齐方式
-     * @returns {String} 文本
-     */
-    getAlignText(align) {
-      const textMap = {
-        left: "左对齐",
-        center: "居中",
-        right: "右对齐"
-      };
-      return textMap[align] || align;
     },
 
     /**

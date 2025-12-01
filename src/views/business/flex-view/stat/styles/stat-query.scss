@@ -1,0 +1,49 @@
+// 查询组件样式
+
+.stat-query {
+  ::v-deep .hd-query {
+    padding: 20px 24px;
+  }
+
+  ::v-deep .el-form {
+    .el-form-item {
+      margin-bottom: 16px;
+    }
+
+    .el-form-item__label {
+      font-weight: 500;
+      font-size: 13px;
+      padding-right: 8px;
+    }
+
+    .el-input__inner {
+      font-size: 13px;
+    }
+  }
+
+  ::v-deep .hd-button-container {
+    padding: 12px 24px 16px;
+    background: #fafbfc;
+    border-top: 1px solid #e8eaed;
+
+    .hd-button {
+      margin: 0 6px;
+      padding: 10px 20px;
+      font-size: 13px;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:hover {
+        transform: translateY(-1px);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+}

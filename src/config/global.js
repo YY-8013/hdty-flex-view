@@ -425,7 +425,15 @@ const dictType = {
   operationType: "4017",
 
   // 启用状态
-  enableStatus: "2119"
+  enableStatus: "2119",
+
+  // 对齐方式
+  columnDqfs: "4086",
+
+  columnGdl: "4087",
+
+  // 表单类型
+  formType: "4088"
 };
 
 // 字典项

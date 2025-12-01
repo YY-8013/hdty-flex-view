@@ -2,30 +2,36 @@
   <div class="hdty-container hdty-flex column-config-page">
     <!-- 查询区域 -->
     <div class="hdty-header">
-      <el-form ref="queryRef" :model="queryData" inline>
+      <el-form
+        ref="queryRef"
+        :model="queryData"
+        inline
+        @submit.native.prevent
+        @keyup.enter.native="handleQuery"
+      >
         <hd-component :model="extendData" ref="componentRef">
           <hd-query>
             <hd-query-fixed>
               <!-- 列名称 -->
               <el-form-item label="列名称" prop="label">
-                <el-input
+                <hd-factor-input
+                  prop="labelFilterFactor"
                   v-model="queryData.label"
+                  fuzzy="between"
+                  :model-control.sync="extendData.labelFilterFactor"
                   placeholder="请输入列名称"
-                  clearable
-                  style="width: 180px"
-                >
-                </el-input>
+                ></hd-factor-input>
               </el-form-item>
 
               <!-- 属性名 -->
               <el-form-item label="属性名" prop="prop">
-                <el-input
+                <hd-factor-input
+                  prop="propFilterFactor"
                   v-model="queryData.prop"
+                  fuzzy="between"
+                  :model-control.sync="extendData.propFilterFactor"
                   placeholder="请输入属性名"
-                  clearable
-                  style="width: 180px"
-                >
-                </el-input>
+                ></hd-factor-input>
               </el-form-item>
               <el-form-item label="启用状态" prop="status">
                 <hd-dict-radio
@@ -36,19 +42,19 @@
               </el-form-item>
             </hd-query-fixed>
             <hd-query-expand>
-              <el-form-item label="注销状态" prop="zxbs">
-                <hd-dict-radio
-                  v-model="queryData.zxbs"
-                  :dict-code="$global.dictType.zxbs"
-                  show-all-button
-                ></hd-dict-radio>
-              </el-form-item>
               <el-row>
                 <el-form-item label="创建时间" prop="createTime">
                   <hd-date-picker
                     type="datetimerange"
                     v-model="queryData.createTime"
                   ></hd-date-picker>
+                </el-form-item>
+                <el-form-item label="注销状态" prop="zxbs">
+                  <hd-dict-radio
+                    v-model="queryData.zxbs"
+                    :dict-code="$global.dictType.zxbs"
+                    show-all-button
+                  ></hd-dict-radio>
                 </el-form-item>
               </el-row>
             </hd-query-expand>
@@ -93,11 +99,11 @@
         v-loading="loading"
         ref="tableRef"
         :data="tableData"
-        row-key="vo.id"
+        row-key="id"
         :empty-text="emptyText"
-        :tree-props="{ children: 'vo.children', hasChildren: 'hasChildren' }"
-        default-expand-all
+        :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
         border
+        default-expand-all
         fit
         height="100%"
         @selection-change="handleSelectionChange"
@@ -106,55 +112,46 @@
         <el-table-column type="index" label="序号" align="center" width="60">
         </el-table-column>
 
-        <!-- 多选列 -->
-        <!-- <el-table-column
-          type="selection"
-          reserve-selection
-          align="center"
-          width="50"
-        >
-        </el-table-column> -->
-
         <!-- 列名称（树形列） -->
         <el-table-column
-          prop="vo.label"
+          prop="label"
           label="列名称"
           min-width="180"
           show-overflow-tooltip
         >
           <template slot-scope="scope">
             <span class="table-link" @click="handleDetail(scope.row)">
-              {{ scope.row.vo.label }}
+              {{ scope.row.label }}
             </span>
           </template>
         </el-table-column>
 
         <!-- 属性名 -->
         <el-table-column
-          prop="vo.prop"
+          prop="prop"
           label="属性名"
-          width="140"
+          width="200"
           show-overflow-tooltip
         >
         </el-table-column>
 
         <!-- 关联表单 -->
         <el-table-column
-          prop="vo.formName"
+          prop="formName"
           label="关联表单"
-          width="140"
+          width="200"
           show-overflow-tooltip
         >
           <template slot-scope="scope">
             <el-tag v-if="scope.row.formName" size="mini" type="primary">
-              {{ scope.row.vo.formName }}
+              {{ scope.row.formName }}
             </el-tag>
           </template>
         </el-table-column>
 
         <!-- 排序号 -->
         <el-table-column
-          prop="vo.sortNum"
+          prop="sortNum"
           label="排序号"
           align="center"
           width="80"
@@ -163,34 +160,29 @@
 
         <!-- 状态 -->
         <el-table-column
-          prop="vo.status"
+          prop="status"
           label="启用状态"
           align="center"
           width="80"
         >
           <template slot-scope="scope">
             <el-tag
-              :type="scope.row.vo.status === '1' ? 'success' : 'info'"
+              :type="scope.row.status === '1' ? 'success' : 'info'"
               size="mini"
               effect="dark"
             >
-              {{ scope.row.vo.status === "1" ? "启用" : "停用" }}
+              {{ scope.row.status === "1" ? "启用" : "停用" }}
             </el-tag>
           </template>
         </el-table-column>
 
         <!-- 注销状态 -->
-        <el-table-column
-          prop="vo.zxbs"
-          label="注销状态"
-          align="center"
-          width="90"
-        >
+        <el-table-column prop="zxbs" label="注销状态" align="center" width="90">
           <template slot-scope="scope">
-            <div v-if="scope.row.vo.zxbs === '0'" style="color: #01b3c1">
-              {{ scope.row.vox.zxbs }}
+            <div v-if="scope.row.zxbs === '0'" style="color: #01b3c1">
+              {{ scope.row.zxbsText }}
             </div>
-            <div v-else style="color: #ff0b00">{{ scope.row.vox.zxbs }}</div>
+            <div v-else style="color: #ff0b00">{{ scope.row.zxbsText }}</div>
           </template>
         </el-table-column>
 
@@ -211,7 +203,7 @@
 
                 <!-- 编辑 -->
                 <hd-button
-                  v-if="scope.row.vo.zxbs === '0'"
+                  v-if="scope.row.zxbs === '0'"
                   name="edit"
                   type="primary"
                   @click="handleEdit(scope.row)"
@@ -221,9 +213,7 @@
 
                 <!-- 启用/停用 -->
                 <hd-button
-                  v-if="
-                    scope.row.vo.zxbs === '0' && scope.row.vo.status === '0'
-                  "
+                  v-if="scope.row.zxbs === '0' && scope.row.status === '0'"
                   name="edit"
                   type="warning"
                   @click="handleEnable(scope.row)"
@@ -231,12 +221,10 @@
                   启用
                 </hd-button>
                 <hd-button
-                  v-if="
-                    scope.row.vo.zxbs === '0' && scope.row.vo.status === '1'
-                  "
+                  v-if="scope.row.zxbs === '0' && scope.row.status === '1'"
                   name="edit"
                   type="info"
-                  :disabled="scope.row.vo.zxbs === '1'"
+                  :disabled="scope.row.zxbs === '1'"
                   @click="handleDisable(scope.row)"
                 >
                   停用
@@ -244,7 +232,7 @@
 
                 <!-- 注销 -->
                 <hd-button
-                  v-if="scope.row.vo.zxbs === '0'"
+                  v-if="scope.row.zxbs === '0'"
                   name="off"
                   type="danger"
                   @click="handleCancel(scope.row)"
@@ -262,6 +250,8 @@
     <column-add ref="addRef" @refresh="loadList"></column-add>
     <column-edit ref="editRef" @refresh="loadList"></column-edit>
     <column-detail ref="detailRef"></column-detail>
+    <column-logout ref="logoutRef"></column-logout>
+    <column-status ref="statusRef"></column-status>
   </div>
 </template>
 
@@ -271,9 +261,11 @@ import { showTree, singleDelete, logout } from "./api";
 import ColumnAdd from "./ColumnAdd";
 import ColumnEdit from "./ColumnEdit";
 import ColumnDetail from "./ColumnDetail";
+import ColumnLogout from "./ColumnLogout";
+import ColumnStatus from "./ColumnStatus";
 
 export default {
-  name: "ColumnConfigList",
+  name: "ViewColumnList",
   provide() {
     return {
       hdList: this
@@ -283,7 +275,9 @@ export default {
   components: {
     ColumnAdd,
     ColumnEdit,
-    ColumnDetail
+    ColumnDetail,
+    ColumnLogout,
+    ColumnStatus
   },
   data() {
     return {
@@ -295,14 +289,43 @@ export default {
         zxbs: "0",
         createTime: []
       },
+      // 查询条件
       // 扩展数据
-      extendData: {},
-      // 表格数据
+      extendData: {
+        labelFilterFactor: this.$app.factorOptions.matchOpe.between,
+        propFilterFactor: this.$app.factorOptions.matchOpe.between
+      },
       tableData: [],
+      // 表格数据
+      tableData1: [
+        {
+          id: "c4be65a62c1944ddaf227d2015eaaaa9",
+          label: "管辖机构",
+          children: null
+        },
+        {
+          id: "350a4ce31c1a4a78a2720a4b1cf3634b",
+          label: "实有人口",
+          children: [
+            {
+              id: "a66af65e2c4841e9b23327aede368edc",
+              label: "总数",
+              children: null
+            }
+          ]
+        },
+        {
+          id: "b2fec343babe4523a6d40d14775e113a",
+          label: "机构二",
+          children: null
+        }
+      ],
       // 选中的ID列表
       selectedIds: [],
       // 选中的行数据
-      selectedRows: []
+      selectedRows: [],
+
+      refresh: true
     };
   },
   mounted() {
@@ -313,33 +336,52 @@ export default {
      * 加载列表数据
      */
     loadList() {
-      this.loading = true;
+      let _this = this;
       const params = {
-        ...this.queryData,
-        ...this.extendData,
-        current: 1,
-        size: 10
+        ..._this.queryData,
+        ..._this.extendData
       };
+      _this.refresh = false;
+
+      _this.loading = true;
 
       showTree(params)
         .then((response) => {
           const { success, data } = response.data;
           if (success) {
             // 将扁平数据转换为树形结构
-            this.tableData = data.records || [];
+            _this.tableData = _this.removeHasChildren(data.records || []);
           }
         })
         .catch((error) => {
           console.error("加载列表失败:", error);
         })
         .finally(() => {
-          this.$nextTick(() => {
-            if (this.$refs.tableRef) {
-              this.$refs.tableRef.doLayout();
+          _this.$nextTick(() => {
+            _this.refresh = true;
+          });
+          _this.$nextTick(() => {
+            if (_this.$refs.tableRef) {
+              _this.$refs.tableRef.doLayout();
             }
           });
-          this.loading = false;
+          _this.loading = false;
         });
+    },
+    removeHasChildren(arr) {
+      if (!arr || !Array.isArray(arr)) return [];
+
+      return arr.map((item) => {
+        // 创建新对象，排除 hasChildren 字段
+        const { hasChildren, ...newItem } = item;
+
+        // 递归处理子节点
+        if (newItem.children && Array.isArray(newItem.children)) {
+          newItem.children = this.removeHasChildren(newItem.children);
+        }
+
+        return newItem;
+      });
     },
 
     /**
@@ -396,37 +438,12 @@ export default {
      * @param {Object} row - 行数据
      */
     handleEnable(row) {
-      this.$prompt("请输入启用原因", "启用确认", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        inputPattern: /\S/,
-        inputErrorMessage: "启用原因不能为空"
-      })
-        .then(({ value }) => {
-          const dataParams = {
-            id: row.id,
-            remark: value
-          };
-
-          this.$http
-            .post("/web/sjls/sysColumnConfig/enable", dataParams)
-            .then((response) => {
-              const { success, msg } = response.data;
-              if (success) {
-                this.$message({
-                  showClose: true,
-                  customClass: "is-fixed",
-                  message: msg,
-                  type: "success"
-                });
-                this.loadList();
-              }
-            })
-            .catch((error) => {
-              console.error("启用失败:", error);
-            });
-        })
-        .catch(() => {});
+      this.$refs.statusRef.visible = true;
+      this.$refs.statusRef.row = row;
+      this.$refs.statusRef.status = "1";
+      this.$nextTick(() => {
+        this.$refs.statusRef.beforeLoadForm();
+      });
     },
 
     /**
@@ -434,37 +451,12 @@ export default {
      * @param {Object} row - 行数据
      */
     handleDisable(row) {
-      this.$prompt("请输入停用原因", "停用确认", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        inputPattern: /\S/,
-        inputErrorMessage: "停用原因不能为空"
-      })
-        .then(({ value }) => {
-          const dataParams = {
-            id: row.id,
-            remark: value
-          };
-
-          this.$http
-            .post("/web/sjls/sysColumnConfig/disable", dataParams)
-            .then((response) => {
-              const { success, msg } = response.data;
-              if (success) {
-                this.$message({
-                  showClose: true,
-                  customClass: "is-fixed",
-                  message: msg,
-                  type: "success"
-                });
-                this.loadList();
-              }
-            })
-            .catch((error) => {
-              console.error("停用失败:", error);
-            });
-        })
-        .catch(() => {});
+      this.$refs.statusRef.visible = true;
+      this.$refs.statusRef.row = row;
+      this.$refs.statusRef.status = "0";
+      this.$nextTick(() => {
+        this.$refs.statusRef.beforeLoadForm();
+      });
     },
 
     /**
@@ -472,37 +464,11 @@ export default {
      * @param {Object} row - 行数据
      */
     handleCancel(row) {
-      this.$prompt("请输入注销原因", "注销确认", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        inputPattern: /\S/,
-        inputErrorMessage: "注销原因不能为空",
-        inputType: "textarea"
-      })
-        .then(({ value }) => {
-          const dataParams = {
-            id: row.id,
-            zxyy: value
-          };
-
-          logout(dataParams)
-            .then((response) => {
-              const { success, msg } = response.data;
-              if (success) {
-                this.$message({
-                  showClose: true,
-                  customClass: "is-fixed",
-                  message: msg,
-                  type: "success"
-                });
-                this.loadList();
-              }
-            })
-            .catch((error) => {
-              console.error("注销失败:", error);
-            });
-        })
-        .catch(() => {});
+      this.$refs.logoutRef.visible = true;
+      this.$refs.logoutRef.row = row;
+      this.$nextTick(() => {
+        this.$refs.logoutRef.beforeLoadForm();
+      });
     },
 
     /**

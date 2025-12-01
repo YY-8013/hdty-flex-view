@@ -31,7 +31,7 @@
           </div>
         </div>
       </div>
-      <div class="con-form">
+      <div class="con-form" v-if="visible">
         <hd-pane fit v-loading="loading" :id="formId">
           <el-form
             ref="formRef"
@@ -51,16 +51,10 @@
                       pClass="p-divs"
                     >
                       <el-form-item prop="parentId">
-                        <el-cascader
+                        <biz-view-column-tree
                           v-model="formData.parentId"
-                          :options="parentOptions"
-                          :props="cascaderProps"
-                          placeholder="请选择父节点(留空为根节点)"
-                          clearable
-                          filterable
-                          style="width: 100%"
-                        >
-                        </el-cascader>
+                          :model-text.sync="extendData.parentId"
+                        ></biz-view-column-tree>
                       </el-form-item>
                     </biz-form-item>
                   </biz-form-row>
@@ -151,42 +145,28 @@
                         </hd-input-number>
                       </el-form-item>
                     </biz-form-item>
-                    <biz-form-item label="对齐方式" :required="true" :span="12">
+                    <biz-form-item
+                      label="对齐方式"
+                      :required="false"
+                      :span="12"
+                    >
                       <el-form-item prop="align">
-                        <el-select
+                        <hd-dict-select
                           v-model="formData.align"
-                          placeholder="请选择对齐方式"
-                          clearable
-                          style="width: 100%"
-                        >
-                          <el-option
-                            v-for="item in alignOptions"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value"
-                          >
-                          </el-option>
-                        </el-select>
+                          :model-text.sync="extendData.align"
+                          :dict-code="$global.dictType.columnDqfs"
+                        ></hd-dict-select>
                       </el-form-item>
                     </biz-form-item>
                   </biz-form-row>
                   <biz-form-row>
                     <biz-form-item label="固定列" :required="false" :span="12">
                       <el-form-item prop="fixed">
-                        <el-select
+                        <hd-dict-select
                           v-model="formData.fixed"
-                          placeholder="请选择固定位置"
-                          clearable
-                          style="width: 100%"
-                        >
-                          <el-option
-                            v-for="item in fixedOptions"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value"
-                          >
-                          </el-option>
-                        </el-select>
+                          :model-text.sync="extendData.fixed"
+                          :dict-code="$global.dictType.columnGdl"
+                        ></hd-dict-select>
                       </el-form-item>
                     </biz-form-item>
                     <biz-form-item
@@ -355,21 +335,8 @@ export default {
       loading: false,
       row: {},
       formData: {
-        id: "",
-        parentId: null,
-        label: "",
-        prop: "",
-        columnWidth: null,
-        align: "center",
-        fixed: null,
-        sortable: "0",
-        defaultExpand: "1",
-        formId: null,
-        calcType: null,
-        calcRule: null,
-        columnConfig: null,
-        sortNum: 0,
-        memo: ""
+        calcRule: '',
+        columnConfig: ''
       },
       extendData: {},
       rules: {
@@ -382,9 +349,6 @@ export default {
             trigger: "blur"
           }
         ],
-        align: [
-          { required: true, message: "请选择对齐方式", trigger: "change" }
-        ],
         sortable: [
           { required: true, message: "请选择是否可排序", trigger: "change" }
         ],
@@ -393,8 +357,12 @@ export default {
         ],
         sortNum: [{ required: true, message: "请输入排序号", trigger: "blur" }],
 
-        calcRule: [{ validator: this.validateJSON, trigger: "blur" }],
-        columnConfig: [{ validator: this.validateJSON, trigger: "blur" }]
+        calcRule: [
+          { required: false, message: "请输入计算规则", trigger: "blur" }
+        ],
+        columnConfig: [
+          { required: false, message: "请输入列配置JSON", trigger: "blur" }
+        ]
       },
       parentOptions: [],
       cascaderProps: {
@@ -453,7 +421,7 @@ export default {
     loadForm() {
       let _this = this;
       let dataParams = {
-        id: _this.row.vo.id
+        id: _this.row.id
       };
       _this.loading = true;
 
@@ -489,17 +457,30 @@ export default {
     },
 
     submitForm() {
-      this.$refs.formRef.validate((valid, error) => {
+      let _this = this;
+      _this.$refs.formRef.validate((valid, error) => {
         if (valid) {
-          this.loading = true;
-
-          const dataParams = {
-            ...this.formData
+          let dataParams = {
+            ..._this.formData
           };
 
           if (!dataParams.parentId) {
             dataParams.parentId = null;
           }
+
+          // 使用正则表达式去除换行和多余的空格
+          let cleanedJsonString1 = _this.formData.calcRule ? _this.formData.calcRule.replace(/\s+/g, "") : '';
+          // 将清理后的字符串转换为JSON对象
+          dataParams.calcRule = cleanedJsonString1;
+
+          let cleanedJsonString2 = _this.formData.columnConfig ? _this.formData.columnConfig.replace(
+            /\s+/g,
+            ""
+          ) : '';
+          // 将清理后的字符串转换为JSON对象
+          dataParams.columnConfig = cleanedJsonString2;
+
+          _this.loading = true;
 
           edit(dataParams)
             .then((response) => {

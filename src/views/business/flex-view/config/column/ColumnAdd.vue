@@ -51,16 +51,10 @@
                       pClass="p-divs"
                     >
                       <el-form-item prop="parentId">
-                        <el-cascader
+                        <biz-view-column-tree
                           v-model="formData.parentId"
-                          :options="parentOptions"
-                          :props="cascaderProps"
-                          placeholder="请选择父节点(留空为根节点)"
-                          clearable
-                          filterable
-                          style="width: 100%"
-                        >
-                        </el-cascader>
+                          :model-text.sync="extendData.parentId"
+                        ></biz-view-column-tree>
                       </el-form-item>
                     </biz-form-item>
                   </biz-form-row>
@@ -159,22 +153,17 @@
                         </hd-input-number>
                       </el-form-item>
                     </biz-form-item>
-                    <biz-form-item label="对齐方式" :required="true" :span="12">
+                    <biz-form-item
+                      label="对齐方式"
+                      :required="false"
+                      :span="12"
+                    >
                       <el-form-item prop="align">
-                        <el-select
+                        <hd-dict-select
                           v-model="formData.align"
-                          placeholder="请选择对齐方式"
-                          clearable
-                          style="width: 100%"
-                        >
-                          <el-option
-                            v-for="item in alignOptions"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value"
-                          >
-                          </el-option>
-                        </el-select>
+                          :model-text.sync="extendData.align"
+                          :dict-code="$global.dictType.columnDqfs"
+                        ></hd-dict-select>
                       </el-form-item>
                     </biz-form-item>
                   </biz-form-row>
@@ -185,20 +174,11 @@
                       :span="12"
                     >
                       <el-form-item prop="fixed">
-                        <el-select
+                        <hd-dict-select
                           v-model="formData.fixed"
-                          placeholder="请选择固定位置"
-                          clearable
-                          style="width: 100%"
-                        >
-                          <el-option
-                            v-for="item in fixedOptions"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value"
-                          >
-                          </el-option>
-                        </el-select>
+                          :model-text.sync="extendData.fixed"
+                          :dict-code="$global.dictType.columnGdl"
+                        ></hd-dict-select>
                       </el-form-item>
                     </biz-form-item>
                     <biz-form-item
@@ -366,22 +346,27 @@ export default {
       visible: false,
       loading: false,
       formData: {
-        parentId: null,
+        parentId: "",
         label: "",
         prop: "",
-        columnWidth: null,
-        align: "center",
-        fixed: null,
+        columnWidth: "",
+        align: "",
+        fixed: "",
         sortable: "0",
         defaultExpand: "1",
-        formId: null,
-        calcType: null,
-        calcRule: null,
-        columnConfig: null,
+        formId: "",
+        calcType: "",
+        calcRule: {
+          type: ""
+        },
+        columnConfig: {
+          label: "",
+          prop: ""
+        },
         sortNum: 0,
         memo: ""
       },
-      extendData: {},
+      extendData: { align: "", parentId: "", fixed: "" },
       rules: {
         label: [
           { required: true, message: "请输入列名称", trigger: "blur" },
@@ -392,9 +377,6 @@ export default {
             trigger: "blur"
           }
         ],
-        align: [
-          { required: true, message: "请选择对齐方式", trigger: "change" }
-        ],
         sortable: [
           { required: true, message: "请选择是否可排序", trigger: "change" }
         ],
@@ -402,8 +384,12 @@ export default {
           { required: true, message: "请选择默认展开状态", trigger: "change" }
         ],
         sortNum: [{ required: true, message: "请输入排序号", trigger: "blur" }],
-        calcRule: [{ validator: this.validateJSON, trigger: "blur" }],
-        columnConfig: [{ validator: this.validateJSON, trigger: "blur" }]
+        calcRule: [
+          { required: false, message: "请输入计算规则", trigger: "blur" }
+        ],
+        columnConfig: [
+          { required: false, message: "请输入列配置JSON", trigger: "blur" }
+        ]
       },
       parentOptions: [],
       cascaderProps: {
@@ -459,17 +445,33 @@ export default {
     },
 
     submitForm() {
+      let _this = this;
       this.$refs.formRef.validate((valid, error) => {
         if (valid) {
-          this.loading = true;
-
-          const dataParams = {
+          let dataParams = {
             ...this.formData
           };
 
           if (!dataParams.parentId) {
             dataParams.parentId = null;
           }
+
+          // 使用正则表达式去除换行和多余的空格
+          let cleanedJsonString1 = (_this.formData.calcRule || "").replace(
+            /\s+/g,
+            ""
+          );
+          // 将清理后的字符串转换为JSON对象
+          dataParams.calcRule = cleanedJsonString1;
+
+          let cleanedJsonString2 = (_this.formData.columnConfig || "").replace(
+            /\s+/g,
+            ""
+          );
+          // 将清理后的字符串转换为JSON对象
+          dataParams.columnConfig = cleanedJsonString2;
+
+          _this.loading = true;
 
           add(dataParams)
             .then((response) => {
@@ -503,30 +505,13 @@ export default {
     },
 
     resetForm() {
+      this.extendData = {};
       if (this.$refs.formRef) {
         this.$refs.formRef.resetFields();
       }
       if (this.$refs.componentRef) {
         this.$refs.componentRef.resetFields();
       }
-
-      this.formData = {
-        parentId: null,
-        label: "",
-        prop: "",
-        columnWidth: null,
-        align: "center",
-        fixed: null,
-        sortable: "0",
-        defaultExpand: "1",
-        formId: null,
-        calcType: null,
-        calcRule: null,
-        columnConfig: null,
-        sortNum: 0,
-        memo: ""
-      };
-      this.extendData = {};
     },
 
     updateAnchorList() {

@@ -152,7 +152,12 @@ export default {
         e.stopPropagation();
       }
     });
-    let initialJson = this.$utilStr.toJSONObj(_this.value);
+    // 处理undefined值，避免JSONEditor库报错
+    let initialValue = _this.value;
+    if (initialValue === undefined || initialValue === null) {
+      initialValue = _this.type === 'String' ? '' : {};
+    }
+    let initialJson = this.$utilStr.toJSONObj(initialValue);
     _this.editor.set(initialJson);
     _this.triggerClearValidate();
   }

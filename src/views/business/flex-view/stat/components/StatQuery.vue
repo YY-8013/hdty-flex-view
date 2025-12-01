@@ -1,5 +1,5 @@
 <template>
-  <div class="stat-query">
+  <div class="hdty-header stat-query">
     <el-form
       ref="queryForm"
       :model="queryData"
@@ -10,6 +10,12 @@
         <hd-query>
           <!-- 固定显示的查询条件 -->
           <hd-query-fixed>
+            <el-form-item label="管辖机构" prop="orgId"  v-if="showOrgFilter">
+              <hd-organ
+                v-model="queryData.orgId"
+                placeholder="高级查询:请选择机构"
+              />
+            </el-form-item>
             <el-form-item
               v-for="field in fixedFields"
               :key="field.prop"
@@ -27,13 +33,7 @@
               />
             </el-form-item>
 
-            <!-- 高级过滤项，slot="after" -->
-            <el-form-item prop="orgId" slot="after" v-if="showOrgFilter">
-              <hd-organ
-                v-model="queryData.orgId"
-                placeholder="高级查询:请选择机构"
-              />
-            </el-form-item>
+           
           </hd-query-fixed>
 
           <!-- 可展开的查询条件 -->
@@ -91,6 +91,10 @@ export default {
     queryFields: {
       type: Array,
       default: () => []
+    },
+    currentTheme: {
+      type: String,
+      default: "police"
     }
   },
   data() {
@@ -133,7 +137,6 @@ export default {
 
     // 导出
     handleExport() {
-      // TODO: 实现导出逻辑
       this.$message.info("导出功能待实现");
     }
   }
@@ -141,5 +144,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// 查询组件样式继承自 hd-query，无需额外样式
+@import "../styles/stat-query.scss";
 </style>

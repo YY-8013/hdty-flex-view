@@ -1,0 +1,41 @@
+// 主题下拉菜单样式
+
+::v-deep .theme-dropdown {
+  padding: 6px 0;
+  min-width: 140px;
+
+  .el-dropdown-menu__item {
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    transition: all 0.2s ease;
+
+    .theme-icon {
+      opacity: 0;
+      font-size: 14px;
+      transition: opacity 0.2s ease;
+      color: #10b981;
+    }
+
+    span {
+      flex: 1;
+    }
+
+    &.is-active {
+      color: #10b981;
+      font-weight: 600;
+      background-color: #f0fdf4;
+
+      .theme-icon {
+        opacity: 1;
+      }
+    }
+
+    &:hover {
+      background-color: #f3f4f6;
+      transform: translateX(2px);
+    }
+  }
+}

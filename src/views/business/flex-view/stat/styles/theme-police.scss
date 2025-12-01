@@ -1,0 +1,113 @@
+// 警用蓝主题样式
+
+.theme-police {
+  .stat-header-bar {
+    // 警用蓝主题色遮罩层
+    &::after {
+      background: linear-gradient(135deg, #1e40af 0%, #1d4ed8 100%);
+    }
+
+    .header-icon,
+    .title-icon {
+      color: #93c5fd;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    }
+
+    .system-title {
+      // 保留原有渐变色样式
+    }
+
+    .user-info {
+      color: #dbeafe;
+    }
+
+    .theme-switch {
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.25);
+        border-color: rgba(255, 255, 255, 0.5);
+      }
+    }
+  }
+
+  // 查询区域样式
+  ::v-deep .hdty-header {
+    background: linear-gradient(to bottom, #eff6ff 0%, #ffffff 100%);
+    border-bottom: 2px solid #3b82f6;
+
+    .el-form-item__label {
+      color: #1e3a8a;
+      font-weight: 600;
+    }
+
+    .hd-button-container {
+      background: linear-gradient(to bottom, #f0f9ff 0%, #fafbfc 100%);
+      border-top: 1px solid #bfdbfe;
+
+      .hd-button--info {
+        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        border-color: #2563eb;
+        box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+
+        &:hover {
+          background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+          box-shadow: 0 4px 10px rgba(37, 99, 235, 0.35);
+        }
+      }
+    }
+  }
+
+  // 表格区域样式
+  ::v-deep .stat-table {
+    .el-table {
+      th {
+        background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%);
+        color: #ffffff;
+        font-weight: 600;
+        border-color: #2563eb;
+      }
+
+      .clickable-cell {
+        color: #2563eb;
+        font-weight: 600;
+      }
+
+      tr:hover > td {
+        background-color: #eff6ff !important;
+      }
+
+      &--striped .el-table__body tr.el-table__row--striped td {
+        background: #f9fafb;
+      }
+    }
+  }
+
+  // 分页样式
+  ::v-deep .el-pagination {
+    .el-pagination__total {
+      color: #1e3a8a;
+      font-weight: 500;
+    }
+
+    .btn-prev,
+    .btn-next,
+    .el-pager li {
+      color: #2563eb;
+      font-weight: 500;
+
+      &:hover {
+        color: #1d4ed8;
+      }
+
+      &.active {
+        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        color: #ffffff;
+        box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+      }
+    }
+  }
+}

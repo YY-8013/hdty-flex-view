@@ -1,0 +1,88 @@
+// 表格组件样式
+
+.stat-table {
+  height: 100%;
+  padding: 0;
+
+  ::v-deep .el-table {
+    font-size: 13px;
+
+    // 表头样式
+    th {
+      font-weight: 600;
+      text-align: center;
+      padding: 12px 0;
+      font-size: 13px;
+
+      .cell {
+        padding: 0 10px;
+        line-height: 20px;
+      }
+    }
+
+    // 单元格样式
+    td {
+      padding: 10px 0;
+
+      .cell {
+        padding: 0 10px;
+        line-height: 20px;
+        word-break: break-word;
+      }
+    }
+
+    // 表格边框
+    &--border {
+      border-color: #e4e7ed;
+
+      th,
+      td {
+        border-color: #e4e7ed;
+      }
+    }
+
+    // 斑马纹样式
+    &--striped .el-table__body tr.el-table__row--striped td {
+      background: rgba(0, 0, 0, 0.018);
+    }
+
+    // hover效果
+    &__body tr:hover > td {
+      background-color: rgba(0, 0, 0, 0.028) !important;
+      transition: background-color 0.2s ease;
+    }
+
+    // 空数据样式
+    .el-table__empty-block {
+      padding: 60px 0;
+    }
+  }
+
+  // 可点击的单元格
+  ::v-deep .clickable-cell {
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    text-underline-offset: 3px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-block;
+    font-weight: 500;
+
+    &:hover {
+      opacity: 0.8;
+      transform: scale(1.05);
+      text-decoration-style: solid;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+
+  // 数值单元格样式
+  ::v-deep .cell {
+    span:not(.clickable-cell) {
+      display: inline-block;
+    }
+  }
+}
