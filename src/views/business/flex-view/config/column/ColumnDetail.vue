@@ -168,11 +168,11 @@
                       :span="12"
                     >
                       <el-tag
-                        v-if="detailData.vo.formName"
+                        v-if="detailData.vox.formId"
                         size="small"
                         type="primary"
                       >
-                        {{ detailData.vo.formName }}
+                        {{ detailData.vox.formId }}
                       </el-tag>
                     </biz-form-item>
                   </biz-form-row>

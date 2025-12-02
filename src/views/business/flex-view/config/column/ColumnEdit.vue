@@ -45,7 +45,7 @@
                 <biz-form>
                   <biz-form-row>
                     <biz-form-item
-                      label="父节点"
+                      label="父&ensp;节&ensp;点"
                       :required="false"
                       :span="24"
                       pClass="p-divs"
@@ -60,7 +60,7 @@
                   </biz-form-row>
                   <biz-form-row>
                     <biz-form-item
-                      label="列名称"
+                      label="列&ensp;名&ensp;称"
                       :required="true"
                       :span="24"
                       pClass="p-divs"
@@ -93,7 +93,11 @@
                         </el-input>
                       </el-form-item>
                     </biz-form-item>
-                    <biz-form-item label="排序号" :required="true" :span="12">
+                    <biz-form-item
+                      label="排&emsp;&emsp;序"
+                      :required="true"
+                      :span="12"
+                    >
                       <el-form-item prop="sortNum">
                         <hd-input-number
                           v-model="formData.sortNum"
@@ -132,7 +136,11 @@
               <biz-form-card title="显示配置" :id="anchorList[1].id">
                 <biz-form>
                   <biz-form-row>
-                    <biz-form-item label="列宽" :required="false" :span="12">
+                    <biz-form-item
+                      label="列&emsp;&emsp;宽"
+                      :required="false"
+                      :span="12"
+                    >
                       <el-form-item prop="columnWidth">
                         <hd-input-number
                           v-model="formData.columnWidth"
@@ -160,7 +168,11 @@
                     </biz-form-item>
                   </biz-form-row>
                   <biz-form-row>
-                    <biz-form-item label="固定列" :required="false" :span="12">
+                    <biz-form-item
+                      label="固&ensp;定&ensp;列"
+                      :required="false"
+                      :span="12"
+                    >
                       <el-form-item prop="fixed">
                         <hd-dict-select
                           v-model="formData.fixed"
@@ -199,21 +211,12 @@
                       :span="12"
                     >
                       <el-form-item prop="formId">
-                        <el-select
+                        <biz-view-form-select
                           v-model="formData.formId"
-                          placeholder="请选择关联表单"
-                          clearable
-                          filterable
-                          style="width: 100%"
-                        >
-                          <el-option
-                            v-for="item in formOptions"
-                            :key="item.id"
-                            :label="item.formName"
-                            :value="item.id"
-                          >
-                          </el-option>
-                        </el-select>
+                          :model-text.sync="extendData.formId"
+                          ref="formSelectRef"
+                          placeholder="请选择表单"
+                        ></biz-view-form-select>
                       </el-form-item>
                     </biz-form-item>
                   </biz-form-row>
@@ -335,8 +338,8 @@ export default {
       loading: false,
       row: {},
       formData: {
-        calcRule: '',
-        columnConfig: ''
+        calcRule: "",
+        columnConfig: ""
       },
       extendData: {},
       rules: {
@@ -469,14 +472,15 @@ export default {
           }
 
           // 使用正则表达式去除换行和多余的空格
-          let cleanedJsonString1 = _this.formData.calcRule ? _this.formData.calcRule.replace(/\s+/g, "") : '';
+          let cleanedJsonString1 = _this.formData.calcRule
+            ? _this.formData.calcRule.replace(/\s+/g, "")
+            : "";
           // 将清理后的字符串转换为JSON对象
           dataParams.calcRule = cleanedJsonString1;
 
-          let cleanedJsonString2 = _this.formData.columnConfig ? _this.formData.columnConfig.replace(
-            /\s+/g,
-            ""
-          ) : '';
+          let cleanedJsonString2 = _this.formData.columnConfig
+            ? _this.formData.columnConfig.replace(/\s+/g, "")
+            : "";
           // 将清理后的字符串转换为JSON对象
           dataParams.columnConfig = cleanedJsonString2;
 

@@ -211,21 +211,11 @@
                       :span="12"
                     >
                       <el-form-item prop="formId">
-                        <el-select
+                        <biz-view-form-select
                           v-model="formData.formId"
-                          placeholder="请选择关联表单"
-                          clearable
-                          filterable
-                          style="width: 100%"
-                        >
-                          <el-option
-                            v-for="item in formOptions"
-                            :key="item.id"
-                            :label="item.formName"
-                            :value="item.id"
-                          >
-                          </el-option>
-                        </el-select>
+                          ref="formSelectRef"
+                          placeholder="请选择表单"
+                        ></biz-view-form-select>
                       </el-form-item>
                     </biz-form-item>
                   </biz-form-row>

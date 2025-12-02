@@ -1,6 +1,6 @@
 <template>
   <el-dialog
-    title="表单配置详情"
+    title="表单项配置详情"
     :visible.sync="visible"
     custom-class="hdty-dialog-medium new-form"
     append-to-body
@@ -23,7 +23,6 @@
               </a>
             </div>
           </div>
-          <!--回到顶部-->
           <div class="anchor-item">
             <a href="javascript:;" @click.prevent="handleAnchor('top')">
               <i class="el-icon-caret-top"></i>
@@ -34,103 +33,115 @@
       </div>
       <div class="con-form">
         <hd-pane fit v-loading="loading" :id="formId">
-          <el-form
-            :model="detailData"
-            :rules="rules"
-            ref="formRef"
-            label-width="0"
-          >
+          <el-form :model="detailData" ref="formRef" label-width="0">
             <hd-component :model="extendData" ref="componentRef">
               <biz-form-card title="基本信息" :id="anchorList[0].id">
                 <biz-form>
                   <biz-form-row>
-                    <biz-form-item
-                      label="表单编码"
-                      :required="false"
-                      :span="14"
-                    >
-                      {{ detailData.vo.formCode }}
-                    </biz-form-item>
-                    <biz-form-item
-                      label="表单类型"
-                      :required="false"
-                      :span="10"
-                    >
-                      <el-tag type="success" size="small">
-                        {{ detailData.vox.formType }}
+                    <biz-form-item label="组件类型" :span="12">
+                      <el-tag type="primary" size="small">
+                        {{ getItemTypeLabel(detailData.vo.itemType) }}
                       </el-tag>
                     </biz-form-item>
+                    <biz-form-item label="组件排序" :span="12">
+                      {{ detailData.vo.itemOrder }}
+                    </biz-form-item>
+                  </biz-form-row>
+                  <biz-form-row>
+                    <biz-form-item label="组件标签" :span="24" pClass="p-divs">
+                      {{ detailData.vo.itemLabel }}
+                    </biz-form-item>
                   </biz-form-row>
                   <biz-form-row>
                     <biz-form-item
-                      label="表单名称"
-                      :required="false"
+                      label="属&ensp;性&ensp;名"
                       :span="24"
                       pClass="p-divs"
                     >
-                      {{ detailData.vo.formName }}
-                    </biz-form-item>
-                  </biz-form-row>
-                  <biz-form-row>
-                    <biz-form-item
-                      label="数据存储表"
-                      :required="false"
-                      :span="14"
-                    >
-                      {{ detailData.vo.dataTable }}
-                    </biz-form-item>
-                    <biz-form-item
-                      label="版&ensp;本&ensp;号"
-                      :required="false"
-                      :span="10"
-                    >
-                      {{ detailData.vo.version }}
-                    </biz-form-item>
-                  </biz-form-row>
-                  <biz-form-row>
-                    <biz-form-item
-                      label="表单说明"
-                      :required="false"
-                      :span="24"
-                      pClass="p-divs"
-                    >
-                      {{ detailData.vo.description }}
-                    </biz-form-item>
-                  </biz-form-row>
-                  <biz-form-row>
-                    <biz-form-item
-                      label="备&emsp;&emsp;注"
-                      :required="false"
-                      :span="24"
-                      pClass="p-divs"
-                    >
-                      {{ detailData.vo.memo }}
+                      {{ detailData.vo.itemProp }}
                     </biz-form-item>
                   </biz-form-row>
                 </biz-form>
               </biz-form-card>
 
-              <biz-form-card title="表单配置" :id="anchorList[1].id">
+              <biz-form-card title="数据映射" :id="anchorList[1].id">
                 <biz-form>
                   <biz-form-row>
                     <biz-form-item
-                      label="表单配置JSON"
-                      :required="false"
+                      label="是否映射表字段"
+                      :span="24"
+                      pClass="p-divs"
+                    >
+                      <el-tag
+                        :type="
+                          detailData.vo.isFixed === '1' ? 'success' : 'info'
+                        "
+                        size="small"
+                      >
+                        {{ detailData.vo.isFixed === "1" ? "是" : "否" }}
+                      </el-tag>
+                    </biz-form-item>
+                  </biz-form-row>
+                  <template v-if="detailData.vo.isFixed === '1'">
+                    <biz-form-row>
+                      <biz-form-item label="列&ensp;类&ensp;型" :span="12">
+                        {{ detailData.vo.keyType || "-" }}
+                      </biz-form-item>
+                      <biz-form-item label="数据类型" :span="12">
+                        {{ detailData.vo.dataType || "-" }}
+                      </biz-form-item>
+                    </biz-form-row>
+                    <biz-form-row>
+                      <biz-form-item
+                        label="映射列名"
+                        :span="24"
+                        pClass="p-divs"
+                      >
+                        {{ detailData.vo.tableKey || "-" }}
+                      </biz-form-item>
+                    </biz-form-row>
+                    <biz-form-row>
+                      <biz-form-item
+                        label="字典类型"
+                        :span="24"
+                        pClass="p-divs"
+                      >
+                        {{ detailData.vo.dicType || "-" }}
+                      </biz-form-item>
+                    </biz-form-row>
+                  </template>
+                </biz-form>
+              </biz-form-card>
+
+              <biz-form-card title="组件配置" :id="anchorList[2].id">
+                <biz-form>
+                  <biz-form-row>
+                    <biz-form-item
+                      label="组件配置JSON"
                       :span="24"
                       pClass="p-divs"
                     >
                       <div class="json-display">
-                        <pre v-if="detailData.vo.formConfig">{{
-                          formatJSON(detailData.vo.formConfig)
+                        <pre v-if="detailData.vo.itemConfig">{{
+                          formatJSON(detailData.vo.itemConfig)
                         }}</pre>
                         <span v-else class="empty-text">未配置</span>
                       </div>
                     </biz-form-item>
                   </biz-form-row>
+                  <biz-form-row>
+                    <biz-form-item
+                      label="备&emsp;&emsp;注"
+                      :span="24"
+                      pClass="p-divs"
+                    >
+                      {{ detailData.vo.memo || "-" }}
+                    </biz-form-item>
+                  </biz-form-row>
                 </biz-form>
               </biz-form-card>
 
-              <biz-form-card title="操作信息" :id="anchorList[2].id">
+              <biz-form-card title="操作信息" :id="anchorList[3].id">
                 <biz-form>
                   <biz-form-row>
                     <biz-form-item label="添&ensp;加&ensp;人" :span="12">{{
@@ -195,39 +206,28 @@
 import { hdForm } from "@/utils/util-framework";
 import anchorScroll from "@/views/global/mixin/anchorScroll.js";
 import { detail } from "./api";
+import { ITEM_TYPE_OPTIONS } from "./constants";
 
 export default {
-  name: "FormDetail",
+  name: "FormItemDetail",
   provide() {
     return {
-      FormDetail: this
+      FormItemDetail: this
     };
   },
-  components: {},
   inject: ["hdList"],
   mixins: [hdForm, anchorScroll],
-
   data() {
     return {
-      // 表单
-      detailData: {},
+      detailData: { vo: {}, vox: {} },
       extendData: {},
-      // 行
       row: {},
-      rules: {},
-      // 显示
       visible: false,
-      // 表单id
       formId: "form" + this.$utilStr.uuid(32),
       anchorIds: [],
-      // 当前滚动选中的锚点
       activeAnchor: "",
-      // 是否为点击锚点操作
       clickAnchor: false,
       loading: false,
-      // 详情数据
-      detailData: { vo: {}, vox: {} },
-      // 动态为锚点添加id
       anchorList: [
         {
           label: "基本信息",
@@ -236,7 +236,13 @@ export default {
           show: true
         },
         {
-          label: "表单配置",
+          label: "数据映射",
+          id: "ref" + this.$utilStr.uuid(32),
+          iconClass: "el-icon-connection",
+          show: true
+        },
+        {
+          label: "组件配置",
           id: "ref" + this.$utilStr.uuid(32),
           iconClass: "el-icon-edit",
           show: true
@@ -247,58 +253,63 @@ export default {
           iconClass: "el-icon-time",
           show: true
         }
-      ]
+      ],
+      // 组件类型选项
+      itemTypeOptions: ITEM_TYPE_OPTIONS
     };
   },
-  mounted() {},
   methods: {
-    // 加载表单之前
+    /**
+     * 根据组件类型值获取标签
+     */
+    getItemTypeLabel(value) {
+      const item = this.itemTypeOptions.find(
+        (option) => option.value === value
+      );
+      return item ? item.label : value;
+    },
+
     beforeLoadForm() {
       let _this = this;
       _this.updateAnchorList();
       _this.$nextTick(() => {
-        // 初始化滚动区域;
         _this.initScrollBox();
         _this.resetForm();
-        // 加载表单
         _this.loadForm();
       });
     },
-    // 加载表单
+
     loadForm() {
       let _this = this;
       _this.loading = true;
-      // 参数
       let dataParams = {
         id: _this.row.vo.id
       };
 
-      // Lambda写法
       detail(dataParams)
         .then((response) => {
-          //响应成功回调
           let { success, data } = response.data;
           if (success) {
             _this.detailData = data || {};
           }
         })
         .catch((error) => {
-          // 响应错误回调
           console.error(error);
         })
         .finally(() => {
           _this.loading = false;
         });
     },
-    // 取消
+
     cancelForm() {
       this.visible = false;
       this.resetForm();
     },
-    // 重置
+
     resetForm() {
-      this.detailData = {};
+      this.detailData = { vo: {}, vox: {} };
     },
+
     updateAnchorList() {
       this.anchorIds = this.anchorList
         .filter((item) => item.show)
@@ -306,11 +317,6 @@ export default {
       this.activeAnchor = this.anchorIds[0];
     },
 
-    /**
-     * 格式化JSON显示
-     * @param {String} json - JSON字符串
-     * @returns {String} 格式化后的JSON
-     */
     formatJSON(json) {
       try {
         const obj = typeof json === "string" ? JSON.parse(json) : json;
@@ -318,28 +324,6 @@ export default {
       } catch (e) {
         return json;
       }
-    },
-
-    /**
-     * 格式化日期时间
-     * @param {String} datetime - 日期时间字符串(YYYYMMDDHHmmss)
-     * @returns {String} 格式化后的字符串
-     */
-    formatDatetime(datetime) {
-      if (!datetime) return "-";
-      // 格式: 20251126100000 => 2025-11-26 10:00:00
-      const str = datetime.toString();
-      if (str.length < 14) return datetime;
-
-      const date = str.substring(0, 8);
-      const time = str.substring(8, 14);
-      return `${date.substring(0, 4)}-${date.substring(4, 6)}-${date.substring(
-        6,
-        8
-      )} ${time.substring(0, 2)}:${time.substring(2, 4)}:${time.substring(
-        4,
-        6
-      )}`;
     }
   }
 };

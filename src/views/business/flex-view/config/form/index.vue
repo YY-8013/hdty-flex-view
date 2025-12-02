@@ -129,9 +129,23 @@
         <el-table-column
           prop="vo.dataTable"
           label="数据存储表"
-          width="180"
+          width="240"
           show-overflow-tooltip
         >
+        </el-table-column>
+
+        <!-- 表单项 -->
+        <el-table-column
+          prop="vo.itemNum"
+          label="表单项"
+          align="center"
+          width="100"
+        >
+          <template slot-scope="scope">
+            <a href="javascript:;" @click="handleFormItem(scope.row)">
+              <el-tag type="success">{{ scope.row.vo.itemNum || 0 }}</el-tag>
+            </a>
+          </template>
         </el-table-column>
 
         <!-- 表单类型 -->
@@ -243,7 +257,8 @@
     <form-add ref="addRef" @refresh="loadList"></form-add>
     <form-edit ref="editRef" @refresh="loadList"></form-edit>
     <form-detail ref="detailRef"></form-detail>
-    <form-logout ref="logoutRef"></form-logout>
+    <form-logout ref="logoutRef" @refresh="loadList"></form-logout>
+    <form-item-list ref="itemListRef"></form-item-list>
   </div>
 </template>
 
@@ -255,6 +270,7 @@ import FormAdd from "./FormAdd";
 import FormEdit from "./FormEdit";
 import FormDetail from "./FormDetail";
 import FormLogout from "./FormLogout";
+import FormItemList from "../form-item/index";
 
 export default {
   name: "ViewFormList",
@@ -268,7 +284,8 @@ export default {
     FormAdd,
     FormEdit,
     FormDetail,
-    FormLogout
+    FormLogout,
+    FormItemList
   },
   data() {
     return {
@@ -419,6 +436,19 @@ export default {
             });
         })
         .catch(() => {});
+    },
+
+    /**
+     * 表单项管理
+     * @param {Object} row - 行数据
+     */
+    handleFormItem(row) {
+      this.$refs.itemListRef.visible = true;
+      this.$refs.itemListRef.row = row;
+      this.$nextTick(() => {
+        this.$refs.itemListRef.queryData.zxbs = this.queryData.zxbs;
+        this.$refs.itemListRef.loadList();
+      });
     },
 
     /**

@@ -137,14 +137,14 @@
 
         <!-- 关联表单 -->
         <el-table-column
-          prop="formName"
+          prop="formIdText"
           label="关联表单"
           width="200"
           show-overflow-tooltip
         >
           <template slot-scope="scope">
-            <el-tag v-if="scope.row.formName" size="mini" type="primary">
-              {{ scope.row.formName }}
+            <el-tag v-if="scope.row.formIdText" size="mini" type="primary">
+              {{ scope.row.formIdText }}
             </el-tag>
           </template>
         </el-table-column>
