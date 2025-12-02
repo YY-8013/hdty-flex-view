@@ -2,89 +2,58 @@
   <el-dialog
     :title="dialogTitle"
     :visible="visible"
-    width="80%"
+    custom-class="hdty-dialog-medium new-form"
     :close-on-click-modal="false"
     @close="handleClose"
   >
-    <div class="hdty-container hdty-flex detail-dialog-content">
-      <!-- 查询条件（使用 DynamicForm 组件） -->
-      <div class="hdty-header" v-if="queryFields.length > 0">
-        <dynamic-form ref="queryForm" :form-items="queryFields" :inline="true">
-          <template #footer>
-            <hd-button-container>
-              <hd-button name="query" type="info" @click="handleQuery">
-                查询
-              </hd-button>
-              <hd-button @click="handleReset">清空</hd-button>
-              <hd-button name="add" type="success" @click="handleAdd">
-                新增
-              </hd-button>
-            </hd-button-container>
-          </template>
-        </dynamic-form>
-      </div>
-
-      <!-- 明细列表（使用 DynamicTable 组件） -->
-      <div class="hdty-fit">
-        <dynamic-table
-          :columns="detailColumns"
-          :data="detailData"
-          :loading="loading"
-          :show-operation="true"
-          @edit="handleEdit"
-          @delete="handleDelete"
-        />
-      </div>
-
-      <!-- 分页 -->
-      <div class="hdty-footer">
-        <el-pagination
-          :current-page="pagination.current"
-          :page-size="pagination.pageSize"
-          :total="pagination.total"
-          :page-sizes="[10, 20, 50, 100]"
-          layout="total, sizes, prev, pager, next"
-          @current-change="handlePageChange"
-          @size-change="handleSizeChange"
-        />
-      </div>
-    </div>
+    <!-- 明细列表视图 -->
+    <detail-list-view
+      ref="listView"
+      :form-config="formConfig"
+      :yw-form-id="formId"
+      :org-id="orgId"
+      :column-prop="columnProp"
+      @add="handleAdd"
+      @edit="handleEdit"
+      @detail="handleDetail"
+      @delete="handleDelete"
+      @refresh="handleRefresh"
+    />
 
     <!-- 新增/编辑表单弹窗 -->
-    <el-dialog
-      :title="editMode === 'add' ? '新增' : '编辑'"
+    <detail-form-dialog
       :visible.sync="editVisible"
-      width="60%"
-      append-to-body
-      :close-on-click-modal="false"
-    >
-      <hd-pane fit v-loading="submitting">
-        <dynamic-form
-          ref="editForm"
-          :form-items="formFields"
-          :init-data="currentRow"
-        >
-          <template #footer>
-            <hd-button-container>
-              <hd-button @click="editVisible = false">取消</hd-button>
-              <hd-button type="primary" @click="handleSave">保存</hd-button>
-            </hd-button-container>
-          </template>
-        </dynamic-form>
-      </hd-pane>
-    </el-dialog>
+      :mode="editMode"
+      :form-config="formConfig"
+      :yw-form-id="formId"
+      :org-id="orgId"
+      :column-prop="columnProp"
+      :current-row="currentRow"
+      @save-success="handleSaveSuccess"
+    />
+
+    <!-- 详情弹窗 -->
+    <detail-detail-view
+      :visible.sync="detailVisible"
+      :form-config="formConfig"
+      :yw-form-id="formId"
+      :current-row="currentRow"
+    />
   </el-dialog>
 </template>
 
 <script>
-import DynamicTable from "../../components/common/DynamicTable";
-import DynamicForm from "../../components/common/DynamicForm";
+import DetailListView from "./DetailListView";
+import DetailFormDialog from "./DetailFormDialog";
+import DetailDetailView from "./DetailDetailView";
+import { formInfo } from "../../config/form/api";
 
 export default {
   name: "DetailDialog",
   components: {
-    DynamicTable,
-    DynamicForm
+    DetailListView,
+    DetailFormDialog,
+    DetailDetailView
   },
   props: {
     visible: {
@@ -98,85 +67,73 @@ export default {
   data() {
     return {
       // 表单配置
-      formConfig: {},
-      formFields: [],
-      queryFields: [],
-
-      // 明细列配置
-      detailColumns: [],
-
-      // 明细数据
-      detailData: [],
-      loading: false,
-
-      // 分页
-      pagination: {
-        current: 1,
-        pageSize: 20,
-        total: 0
-      },
+      formConfig: null,
 
       // 编辑状态
       editVisible: false,
       editMode: "add", // add | edit
       currentRow: {},
-      submitting: false,
 
-      // 查询参数
-      queryParams: {}
+      // 详情状态
+      detailVisible: false
     };
   },
   computed: {
     dialogTitle() {
-      // TODO: 从配置获取标题
-      return `${this.orgId || ""} - ${this.columnProp || "明细数据"}`;
+      return (this.formConfig && this.formConfig.formName) || "明细数据";
     }
   },
   watch: {
     visible(val) {
       if (val) {
         this.init();
+      } else {
+        this.reset();
       }
     }
   },
   methods: {
     async init() {
-      // TODO: 初始化数据
-      // 1. 加载表单配置
-      // 2. 加载明细数据
+      try {
+        // 加载表单配置
+        await this.loadFormConfig();
+      } catch (error) {
+        console.error("初始化失败:", error);
+        this.$message.error("加载配置失败");
+      }
     },
 
     // 加载表单配置
     async loadFormConfig() {
-      // TODO: 从后端加载表单配置
-    },
+      if (!this.formId) {
+        throw new Error("缺少formId参数");
+      }
 
-    // 加载明细数据
-    async loadData() {
-      // TODO: 加载明细数据
-      this.loading = true;
-      try {
-        // 模拟数据
-        this.detailData = [];
-      } finally {
-        this.loading = false;
+      const response = await formInfo({ id: this.formId });
+      const { success, data } = response.data;
+      if (success) {
+        // 解析formConfig
+        const formConfigObj = this.parseConfig(data.formInfo.formConfig);
+
+        this.formConfig = {
+          ...data.formInfo,
+          formConfigObj, // 解析后的配置对象
+          formItemList: data.formItemList || [] // 表单项列表
+        };
+      } else {
+        throw new Error("加载表单配置失败");
       }
     },
 
-    // 查询
-    handleQuery() {
-      // TODO: 获取查询参数并重新加载数据
-      this.queryParams = this.$refs.queryForm?.getFormData() || {};
-      this.pagination.current = 1;
-      this.loadData();
-    },
-
-    // 重置
-    handleReset() {
-      this.$refs.queryForm?.resetFields();
-      this.queryParams = {};
-      this.pagination.current = 1;
-      this.loadData();
+    // 解析配置JSON
+    parseConfig(configStr) {
+      try {
+        return typeof configStr === "string"
+          ? JSON.parse(configStr)
+          : configStr || {};
+      } catch {
+        return {};
+      }
     },
 
     // 新增
@@ -193,69 +150,49 @@ export default {
       this.editVisible = true;
     },
 
-    // 保存
-    async handleSave() {
-      // TODO: 保存数据
-      const formData = this.$refs.editForm?.getFormData();
-      if (!formData) return;
-
-      this.submitting = true;
-      try {
-        // 保存数据
-        this.$message.success("保存成功");
-        this.editVisible = false;
-        this.loadData();
-        this.$emit("refresh");
-      } catch (error) {
-        this.$message.error("保存失败");
-      } finally {
-        this.submitting = false;
-      }
+    // 详情
+    handleDetail(row) {
+      this.currentRow = { ...row };
+      this.detailVisible = true;
     },
 
     // 删除
-    async handleDelete(row) {
-      try {
-        await this.$confirm("确定删除该数据?", "提示", {
-          type: "warning"
-        });
-
-        // TODO: 删除数据
-        this.$message.success("删除成功");
-        this.loadData();
-        this.$emit("refresh");
-      } catch (error) {
-        if (error !== "cancel") {
-          this.$message.error("删除失败");
-        }
-      }
+    handleDelete(row) {
+      // 委托给列表视图处理
+      this.$refs.listView.handleDelete(row);
     },
 
-    // 分页切换
-    handlePageChange(page) {
-      this.pagination.current = page;
-      this.loadData();
+    // 保存成功后刷新列表
+    handleSaveSuccess() {
+      this.editVisible = false;
+      this.$refs.listView?.refreshData();
+      this.$emit("refresh");
     },
 
-    // 每页条数切换
-    handleSizeChange(size) {
-      this.pagination.pageSize = size;
-      this.pagination.current = 1;
-      this.loadData();
+    // 刷新
+    handleRefresh() {
+      this.$emit("refresh");
     },
 
     // 关闭弹窗
     handleClose() {
       this.$emit("update:visible", false);
+    },
+
+    // 重置
+    reset() {
+      this.formConfig = null;
+      this.currentRow = {};
+      this.editVisible = false;
+      this.detailVisible = false;
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-// Dialog内容样式
-.detail-dialog-content {
-  min-height: 500px;
-  max-height: 70vh;
+// Dialog样式
+::v-deep .el-dialog__body {
+  padding: 10px 20px;
 }
 </style>

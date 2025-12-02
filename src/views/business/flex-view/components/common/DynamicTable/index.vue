@@ -62,10 +62,19 @@
         fixed="right"
         label="操作"
         align="center"
-        width="150"
+        width="200"
       >
         <template slot-scope="scope">
           <hd-button-container>
+            <hd-button
+              v-if="showDetail"
+              name="detail"
+              type="info"
+              size="mini"
+              @click="handleDetail(scope.row)"
+            >
+              详情
+            </hd-button>
             <hd-button
               v-if="showEdit"
               name="edit"
@@ -119,6 +128,11 @@ export default {
     showOperation: {
       type: Boolean,
       default: false
+    },
+    // 是否显示详情按钮
+    showDetail: {
+      type: Boolean,
+      default: true
     },
     // 是否显示编辑按钮
     showEdit: {
@@ -178,6 +192,11 @@ export default {
     // 排序变化
     handleSortChange({ column, prop, order }) {
       this.$emit("sort-change", { column, prop, order });
+    },
+
+    // 详情
+    handleDetail(row) {
+      this.$emit("detail", row);
     },
 
     // 编辑

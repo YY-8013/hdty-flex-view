@@ -45,6 +45,15 @@ export const detail = (params) => {
   });
 };
 
+// 获取表单以及配置详情
+export const formInfo = (params) => {
+  return request({
+    url: "/web/sjls/sysFormConfig/formInfo",
+    method: "post",
+    params: params
+  });
+};
+
 // 编辑之前
 export const editBefore = (params) => {
   return request({

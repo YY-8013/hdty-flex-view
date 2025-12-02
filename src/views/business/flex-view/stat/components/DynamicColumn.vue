@@ -49,37 +49,76 @@ export default {
   methods: {
     // 单元格点击
     handleCellClick(column, row) {
-      this.$emit("cell-click", { column, row });
+      this.$emit("cell-click", column, row);
     },
 
     // 获取单元格样式类
     getCellClass(column, row) {
       const classes = [];
 
+      // 解析列配置
+      const columnConfig = this.parseColumnConfig(column);
+
       // 可点击的单元格
-      if (column.formId) {
+      if (columnConfig.clickable?.enabled || column.formId) {
         classes.push("clickable-cell");
       }
 
-      // TODO: 根据配置添加条件样式
       return classes.join(" ");
     },
 
     // 获取单元格样式
     getCellStyle(column, row) {
       const style = {};
+      const columnConfig = this.parseColumnConfig(column);
 
-      // TODO: 根据配置添加条件样式
-      // 例如:根据数值范围设置颜色
+      // 应用基础样式
+      if (columnConfig.style) {
+        Object.assign(style, columnConfig.style);
+      }
+
+      // 应用条件样式
+      if (columnConfig.conditional?.rules) {
+        const value = row[column.prop];
+        for (const rule of columnConfig.conditional.rules) {
+          try {
+            // 简单的条件表达式解析
+            if (this.evalCondition(rule.condition, value)) {
+              Object.assign(style, rule.style);
+              break;
+            }
+          } catch (error) {
+            console.warn("条件样式解析失败:", error);
+          }
+        }
+      }
 
       return style;
+    },
+
+    // 解析列配置JSON
+    parseColumnConfig(column) {
+      try {
+        return typeof column.columnConfig === "string"
+          ? JSON.parse(column.columnConfig)
+          : column.columnConfig || {};
+      } catch {
+        return {};
+      }
+    },
+
+    // 简单条件表达式求值
+    evalCondition(condition, value) {
+      // 替换condition中的value为实际值
+      const expr = condition.replace(/value/g, JSON.stringify(value));
+      // 使用Function构造器求值(注意:生产环境应该使用更安全的方式)
+      return new Function(`return ${expr}`)();
     },
 
     // 格式化单元格值
     formatCellValue(row, column) {
       //  如果配置了  "showPropText": true,"propText": "orgName"
       // 解析转json为obj
-      console.log("column", column);
 
       let fieldProp = column.prop;
       let columnConfig = null;

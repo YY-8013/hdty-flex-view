@@ -64,10 +64,10 @@ export default {
   },
   methods: {
     // 单元格点击
-    handleCellClick(payload) {
+    handleCellClick(column, row) {
       // 只有可点击的列才触发事件
-      if (payload.column.formId) {
-        this.$emit("cell-click", payload);
+      if (column.formId) {
+        this.$emit("cell-click", column, row);
       }
     },
 

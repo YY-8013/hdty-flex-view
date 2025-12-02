@@ -1,393 +1,287 @@
-# 数据晾晒统计页面
+# 数据晾晒统计页面 - 使用说明
 
-## 📋 目录结构
+## 功能概述
+
+数据晾晒统计页面提供了完整的动态统计列表及二级明细功能：
+
+- ✅ **动态多层级列表**: 根据列配置动态渲染表格
+- ✅ **可点击单元格**: 配置 formId 的列可点击查看明细  
+- ✅ **二级明细列表**: 弹窗展示明细数据列表
+- ✅ **动态表单**: 完全配置化的查询、新增、编辑表单
+- ✅ **灵活布局**: 通过JSON配置控制表单布局
+- ✅ **条件样式**: 根据数据值动态显示不同样式
+- ✅ **数据格式化**: 支持数字、日期、字典等格式化
+
+## 目录结构
 
 ```
 stat/
+├── index.vue                   # 统计页面主组件
 ├── api/
-│   └── index.js              # API接口定义
+│   └── index.js               # API接口定义
 ├── components/
-│   ├── DetailDialog.vue      # 明细数据弹窗组件
-│   ├── DynamicColumn.vue     # 动态列递归组件(支持任意层级)✨新增
-│   ├── StatQuery.vue         # 查询组件
-│   └── StatTable.vue         # 统计表格组件
-├── styles/                   # 样式文件目录 ✨新增
-│   ├── index.scss            # 主页面基础样式
-│   ├── theme-police.scss     # 警用蓝主题
-│   ├── theme-green.scss      # 科技绿主题 ✨新增
-│   ├── theme-dark.scss       # 深邃黑主题 ✨新增
-│   ├── theme-dropdown.scss   # 主题下拉菜单
-│   ├── stat-query.scss       # 查询组件样式
-│   ├── stat-table.scss       # 表格组件样式
-│   └── README.md             # 样式文件说明
-├── index.vue                 # 主页面入口
-└── README.md                 # 本文档
+│   ├── StatQuery.vue          # 查询组件
+│   ├── StatTable.vue          # 统计表格组件
+│   ├── DynamicColumn.vue      # 动态列组件(递归)
+│   └── DetailDialog.vue       # 二级明细弹窗组件
+├── styles/                    # 样式文件
+│   ├── index.scss
+│   ├── stat-query.scss
+│   ├── stat-table.scss
+│   ├── theme-police.scss      # 警用蓝主题
+│   ├── theme-green.scss       # 科技绿主题
+│   └── theme-dark.scss        # 深邃黑主题
+└── README.md                  # 本文件
 ```
 
-## 🎨 最新优化内容(2025-11-28)
+## 核心组件说明
 
-### 1. 整体UI优化
+### 1. DetailDialog (二级明细弹窗)
 
-**优化项**:
-- ✅ Header高度优化: 70px → **56px** (更简洁精致)
-- ✅ 字体大小优化:
-  - 系统标题: 28px → **18px**
-  - 标题图标: 32px → **22px**
-  - 用户信息: 15px → **14px**
-  - 字间距: 4px → **2px**
-- ✅ 主题切换按钮优化:
-  - 更小巧的尺寸: padding 10px 24px → **8px 18px**
-  - 更精致的圆角: 24px → **20px**
-  - 更流畅的动画效果
-- ✅ 表格字体: 14px → **13px** (更紧凑,数据更多)
-- ✅ 查询区域表单字体: **13px** (统一风格)
+**功能**:
+- 根据 formId 加载表单配置
+- 动态构建查询表单、列表、新增编辑表单
+- 实现完整的增删改查功能
 
-### 2. 三主题配色方案
-
-**新增两个主题**:
-
-#### 警用蓝主题 (police)
-- Header: 深蓝色渐变 `#1e40af → #1d4ed8`
-- 查询区域: 淡蓝背景 `#eff6ff`
-- 表头: 蓝色渐变 `#3b82f6 → #2563eb`
-- 适用场景: 公安、政府部门
-
-#### 科技绿主题 (green) ✨新增
-- Header: 绿色渐变 `#047857 → #059669`
-- 查询区域: 淡绿背景 `#f0fdf4`
-- 表头: 绿色渐变 `#10b981 → #059669`
-- 适用场景: 环保、科技、健康领域
-
-#### 深邃黑主题 (dark) ✨新增
-- Header: 深灰渐变 `#1f2937 → #111827`
-- 查询区域: 淡灰背景 `#f9fafb`
-- 表头: 灰色渐变 `#4b5563 → #374151`
-- 适用场景: 高端商务、科技感
-
-### 3. 查询区域优化
-
-**优化项**:
-- ✅ 使用 `hd-query` 组件,实现查询项和按钮左右分布
-- ✅ 支持展开更多筛选条件
-- ✅ 按钮区域独立样式:
-  - 淡灰背景 `#fafbfc`
-  - 顶部边框分隔
-  - 按钮hover动效优化
-- ✅ 表单项间距优化: **16px**
-- ✅ 查询区域内边距: **20px 24px**
-
-### 4. 主题下拉菜单优化
-
-**优化项**:
-- ✅ 激活项使用绿色高亮 `#10b981`
-- ✅ 激活项背景色 `#f0fdf4`
-- ✅ hover时轻微右移动效
-- ✅ 图标显隐动画更流畅
-- ✅ 更紧凑的间距设计
-
-### 5. 表格样式优化
-
-**优化项**:
-- ✅ 表头字体: bold → **600** (更柔和)
-- ✅ 单元格内边距减小: 14px/12px → **12px/10px**
-- ✅ hover效果优化:
-  - 背景色更浅: `rgba(0, 0, 0, 0.035)` → **`rgba(0, 0, 0, 0.028)`**
-  - 添加过渡动画
-- ✅ 可点击单元格优化:
-  - 字重: **500**
-  - 缩放比例: 1.03 → **1.05**
-  - 更流畅的贝塞尔曲线动画
-
-### 6. 分页区域优化
-
-**优化项**:
-- ✅ 独立样式设计:
-  - 淡灰背景 `#fafbfc`
-  - 顶部边框分隔 `#e8eaed`
-- ✅ 分页按钮圆角: **4px**
-- ✅ 字体大小统一: **13px**
-- ✅ 右对齐布局
-
-### 7. CSS样式模块化
-
-**实现**:
-
-#### 主页面(index.vue)
-```scss
-// 导入基础样式
-@import "./styles/index.scss";
-// 导入主题样式
-@import "./styles/theme-police.scss";
-@import "./styles/theme-green.scss";
-@import "./styles/theme-dark.scss";
-// 导入下拉菜单样式
-@import "./styles/theme-dropdown.scss";
-```
-
-**优势**:
-- ✅ 样式文件模块化,职责清晰
-- ✅ 三主题样式独立,便于扩展
-- ✅ 组件样式可复用
-- ✅ 代码更简洁易维护
-
-### 8. 动态列多层级支持
-
-**问题**:原先的动态列实现只支持2层嵌套(一级+二级),无法处理更深层级的列结构。
-
-**解决方案**:
-- ✅ 创建递归组件 `DynamicColumn.vue`
-- ✅ 支持任意层级的列嵌套
-- ✅ 自动递归渲染所有子列
-- ✅ 完全依赖后端配置,前端无需硬编码层级
-
-**技术实现**:
-``vue
-<!-- 叶子节点:无子列时渲染普通列 -->
-<el-table-column v-if="!column.children || column.children.length === 0" ... />
-
-<!-- 分组节点:有子列时递归渲染 -->
-<el-table-column v-else ...>
-  <dynamic-column
-    v-for="child in column.children"
-    :key="child.id"
-    :column="child"
-    @cell-click="handleCellClick"
-  />
-</el-table-column>
-```
-
-### 2. Header布局优化
-
-**优化项**:
-- ✅ 高度从60px增加到**70px**,更大气
-- ✅ 左中右三栏布局优化,中间部分采用 `flex: 0 0 auto`,标题不会被压缩
-- ✅ 字体大小提升:
-  - 系统标题:26px → **28px**
-  - 标题图标:28px → **32px**
-  - 用户图标:18px → **20px**
-  - 用户信息:14px → **15px**
-- ✅ 字间距增加:3px → **4px**
-- ✅ 内边距优化:左右从32px增加到**40px**
-- ✅ 添加 `white-space: nowrap` 确保标题不换行
-- ✅ 主题切换按钮内边距增加:8px 20px → **10px 24px**
-
-### 3. CSS样式抽离
-
-**目标**:将所有内联样式抽离到独立的SCSS文件中,便于维护和扩展。
-
-**实现**:
-
-#### 主页面(index.vue)
-```scss
-// 导入基础样式
-@import "./styles/index.scss";
-// 导入主题样式
-@import "./styles/theme-police.scss";
-@import "./styles/theme-green.scss";
-@import "./styles/theme-dark.scss";
-// 导入下拉菜单样式
-@import "./styles/theme-dropdown.scss";
-```
-
-#### 查询组件(StatQuery.vue)
-```scss
-@import "../styles/stat-query.scss";
-```
-
-#### 表格组件(StatTable.vue)
-```scss
-@import "../styles/stat-table.scss";
-```
-
-**优势**:
-- ✅ 样式文件模块化,职责清晰
-- ✅ 主题样式独立,便于扩展新主题
-- ✅ 组件样式可复用
-- ✅ 代码更简洁易维护
-
-## 📊 功能说明
-
-### 核心功能
-
-1. **统计数据展示**
-   - 支持任意层级的多级表头
-   - 动态列配置,完全由后端控制
-   - 支持固定列、列宽设置、对齐方式等
-
-2. **主题切换**
-   - 警用蓝主题(默认)
-   - 常规主题(紫色系)
-   - 主题本地存储,刷新后保持
-
-3. **数据交互**
-   - 可点击单元格查看明细数据
-   - 支持分页查询
-   - 支持条件筛选
-
-4. **明细数据管理**
-   - 弹窗展示明细列表
-   - 支持新增、编辑、删除操作
-   - 使用动态表单和动态表格组件
-
-### 1. 三主题切换
-- **警用蓝主题**: 深蓝色渐变背景,适合警务、政府系统
-- **科技绿主题**: 绿色渐变背景,适合环保、科技、健康领域 ✨新增
-- **深邃黑主题**: 深灰色渐变背景,适合高端商务场景 ✨新增
-- 主题自动保存到本地存储,下次访问自动恢复
-
-### 2. 顶部公共区域（56px）
-- **左侧**: 显示当前登录用户名
-- **中间**: 系统名称「基础管控数据晾晒系统」
-- **右侧**: 主题切换下拉菜单
-
-### 3. 动态列配置
-- 从后端接口加载启用且未注销的列配置
-- 支持多级表头展示（无限层级）
-- 支持列宽、对齐方式、关联表单等配置
-- 自动降级到默认列配置（实有人口示例）
-
-### 4. Mock数据
-- 鄂尔多斯市9个旗区的模拟统计数据
-  - 东胜区
-  - 康巴什区
-  - 达拉特旗
-  - 准格尔旗
-  - 鄂托克前旗
-  - 鄂托克旗
-  - 杭锦旗
-  - 乌审旗
-  - 伊金霍洛旗
-
-### 5. 数据交互
-- 可点击单元格查看明细数据（需列配置关联表单）
-- 分页查询支持
-- 数据导出（待实现）
-
-## 🎯 使用方式
-
-### 页面访问
-
-通过路由访问:`/stat` 或配置的路由路径
-
-### 列配置示例
-
-后端返回的树形列配置:
-
-``javascript
-[
-  {
-    id: '1',
-    prop: 'orgName',
-    label: '机构名称',
-    width: '200',
-    align: 'left',
-    fixed: 'left'
-  },
-  {
-    id: '2',
-    label: '实有人口',
-    align: 'center',
-    children: [
-      {
-        id: '2-1',
-        prop: 'syrk_total',
-        label: '总数',
-        width: '100',
-        align: 'center'
-      },
-      {
-        id: '2-2',
-        label: '流动人口',
-        align: 'center',
-        children: [
-          {
-            id: '2-2-1',
-            prop: 'syrk_ldrk',
-            label: '人数',
-            width: '100'
-          },
-          {
-            id: '2-2-2',
-            prop: 'syrk_ldrkl',
-            label: '占比',
-            width: '100'
-          }
-        ]
-      }
-    ]
-  }
-]
-```
-
-### 数据格式
-
-``javascript
+**Props**:
+```javascript
 {
-  id: '150102',
-  orgId: '150102',
-  orgName: '东胜区',
-  syrk_total: 5420,
-  syrk_ldrk: 1626,
-  syrk_ldrkl: '30.0%',
-  // ... 其他字段
+  visible: Boolean,    // 是否显示
+  formId: String,      // 表单ID
+  orgId: String,       // 机构ID
+  columnProp: String   // 列属性名
 }
 ```
 
-## 🔧 技术栈
+**Events**:
+```javascript
+{
+  'update:visible': Boolean,  // 更新显示状态
+  'refresh': void             // 刷新统计数据
+}
+```
 
-- Vue 2.x
-- Element UI
-- Vuex(状态管理)
-- Axios(HTTP请求)
-- SCSS(样式预处理)
+### 2. DynamicColumn (动态列组件)
 
-## 📝 开发规范
+**功能**:
+- 递归渲染多层级列
+- 支持点击事件
+- 支持条件样式
+- 支持数据格式化
 
-### 组件开发
+**Props**:
+```javascript
+{
+  column: Object  // 列配置对象
+}
+```
 
-1. 所有新增组件必须放在 `components/` 目录下
-2. 组件命名采用 PascalCase
-3. 样式文件统一放在 `styles/` 目录下
-4. 使用 SCSS 编写样式
+### 3. StatTable (统计表格)
 
-### 样式规范
+**功能**:
+- 渲染统计表格
+- 处理单元格点击事件
+- 支持序号列
 
-1. 使用 `scoped` 避免样式污染
-2. 颜色、字体等使用变量定义
-3. 主题样式独立文件管理
-4. 合理使用 `::v-deep` 修改组件库样式
+## 配置说明
 
-### 代码规范
+### 列配置 (columnConfig JSON)
 
-1. 遵循 ESLint 规则
-2. 使用 async/await 处理异步操作
-3. 合理使用计算属性和侦听器
-4. 组件方法按功能分组(初始化、数据加载、事件处理等)
+```json
+{
+  // 点击配置
+  "clickable": {
+    "enabled": true,
+    "formId": "FORM001",
+    "openType": "dialog"
+  },
+  
+  // 样式配置
+  "style": {
+    "color": "#409EFF",
+    "cursor": "pointer"
+  },
+  
+  // 条件样式
+  "conditional": {
+    "rules": [
+      {
+        "condition": "value > 90",
+        "style": { "color": "#67C23A" }
+      }
+    ]
+  },
+  
+  // 格式化
+  "formatter": {
+    "type": "number",
+    "precision": 2
+  }
+}
+```
 
-## 🚀 后续优化方向
+### 表单项配置 (itemConfig JSON)
 
-1. **性能优化**
-   - 大数据量虚拟滚动
-   - 列配置缓存机制
-   - 分页数据预加载
+```json
+{
+  // 显示控制
+  "display": {
+    "showInForm": true,
+    "showInList": true,
+    "showInQuery": false,
+    "columnWidth": 120
+  },
+  
+  // 布局配置
+  "layout": {
+    "span": 12,          // 12=半行, 24=整行
+    "labelWidth": "120px"
+  },
+  
+  // 验证配置
+  "validation": {
+    "required": true,
+    "message": "不能为空"
+  },
+  
+  // 组件属性
+  "componentProps": {
+    "clearable": true,
+    "filterable": true
+  }
+}
+```
 
-2. **功能扩展**
-   - 导出Excel功能完善
-   - 列宽拖拽调整
-   - 列显示/隐藏配置
-   - 自定义单元格渲染
+## 使用示例
 
-3. **用户体验**
-   - 数据加载骨架屏
-   - 操作引导提示
-   - 快捷键支持
-   - 移动端适配
+### 配置可点击列
 
-## 📞 联系方式
+1. 在列配置管理中找到要配置的列
+2. 编辑 `columnConfig` 字段:
 
-如有问题或建议,请联系开发团队。
+```json
+{
+  "clickable": {
+    "enabled": true,
+    "formId": "CHECK_PERSON_FORM"
+  },
+  "style": {
+    "color": "#409EFF",
+    "cursor": "pointer",
+    "textDecoration": "underline"
+  }
+}
+```
+
+3. 保存配置，刷新页面即可生效
+
+### 配置表单项
+
+1. 在表单项配置中编辑 `itemConfig`
+2. 设置显示和布局:
+
+```json
+{
+  "display": {
+    "showInForm": true,
+    "showInList": true,
+    "showInQuery": true,
+    "columnWidth": 120
+  },
+  "layout": {
+    "span": 12
+  }
+}
+```
+
+### 表单布局控制
+
+- **一行2个字段**: `"span": 12`
+- **独占一行**: `"span": 24`
+
+适用场景:
+- 输入框、下拉框、日期: span=12
+- 文本域、JSON编辑器: span=24
+
+## API 接口
+
+### 统计数据接口
+
+```javascript
+// 获取列配置
+GET /web/sjls/sysColumnConfig/showTree
+
+// 获取统计数据
+POST /web/sjls/statData/page
+```
+
+### 明细数据接口
+
+```javascript
+// 获取表单配置
+POST /web/sjls/sysFormConfig/detail?id=xxx
+
+// 获取表单项列表
+POST /web/sjls/sysFormItemConfig/page
+
+// 明细数据 CRUD
+POST /web/sjls/detailData/page    // 查询
+POST /web/sjls/detailData/add     // 新增
+POST /web/sjls/detailData/update  // 更新
+POST /web/sjls/detailData/delete  // 删除
+```
+
+## 主题切换
+
+支持3种主题:
+- 🔵 警用蓝 (police) - 默认
+- 🟢 科技绿 (green)
+- ⚫ 深邃黑 (dark)
+
+点击右上角主题切换按钮即可切换。
+
+## 注意事项
+
+1. **JSON格式**: 配置必须是合法的JSON
+2. **formId关联**: 确保关联的表单已配置
+3. **字典编码**: dictCode要与系统字典一致
+4. **字段映射**: tableKey要与数据库字段对应
+5. **向后兼容**: 未配置的字段使用默认值
+
+## 常见问题
+
+### Q: 列点击没反应?
+**A**: 检查 columnConfig 中的 `clickable.enabled` 和 `clickable.formId`
+
+### Q: 表单字段不显示?
+**A**: 检查 itemConfig 中的 `display.showInForm`
+
+### Q: 表单布局不对?
+**A**: 检查 `layout.span` 配置，12=半行，24=整行
+
+### Q: 字典不显示?
+**A**: 检查 `componentProps.dictCode` 与系统字典是否一致
+
+## 开发计划
+
+- [x] 动态多层级列表
+- [x] 可点击单元格
+- [x] 二级明细弹窗
+- [x] 动态表单(查询/新增/编辑)
+- [x] 灵活布局控制
+- [x] 条件样式
+- [x] 数据格式化
+- [ ] 字段联动
+- [ ] 条件显示/隐藏
+- [ ] 批量导入/导出
+
+## 参考文档
+
+- [动态表单JSON配置规范](../../../../project-docs/09-动态表单JSON配置规范.md)
+- [动态统计列表与二级明细实现说明](../../../../project-docs/10-动态统计列表与二级明细实现说明.md)
+- [数据库设计文档](../../../../dev-document/01-数据库设计文档.md)
 
 ---
 
-**最后更新**: 2025-11-28  
-**版本**: v3.0.0 (全面优化版 - 三主题+整体UI优化)
+**维护人员**: 开发团队  
+**最后更新**: 2025-12-02

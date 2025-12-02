@@ -100,7 +100,6 @@ import { getEnabledColumns, getMockStatData } from "./api";
 import StatQuery from "./components/StatQuery.vue";
 import StatTable from "./components/StatTable.vue";
 import DetailDialog from "./components/DetailDialog.vue";
-import { mapState } from "vuex";
 
 export default {
   name: "ViewStatPage",
@@ -114,7 +113,7 @@ export default {
       // 主题
       currentTheme: "police", // police | normal
       // 用户名
-      userName: "",
+      userName: this.$utilPublic.getUserInfo().xm,
       // 列配置
       columns: [],
       // 统计数据
@@ -134,7 +133,6 @@ export default {
     };
   },
   computed: {
-    ...mapState("system", ["user"]),
     // 查询字段（从列配置中提取可查询的字段）
     queryFields() {
       // 固定查询字段
@@ -155,9 +153,6 @@ export default {
   },
   methods: {
     async init() {
-      // 获取用户信息
-      this.userName = this.user?.userName || this.user?.name || "系统管理员";
-
       // 从本地存储恢复主题
       const savedTheme = localStorage.getItem("stat_page_theme");
       if (savedTheme) {
@@ -255,15 +250,29 @@ export default {
     },
 
     // 单元格点击（打开明细弹窗）
-    handleCellClick({ column, row }) {
-      if (!column.formId) {
-        return;
-      }
+    handleCellClick(column, row) {
+      console.log("Cell clicked:", column, row);
+      // 解析列配置
+      const columnConfig = this.parseColumnConfig(column.columnConfig);
 
-      this.currentFormId = column.formId;
-      this.currentOrgId = row.orgId;
-      this.currentColumnProp = column.prop;
-      this.detailVisible = true;
+      // 兼容旧配置: 直接使用column.formId
+      if (column.formId) {
+        this.currentFormId = column.formId;
+        this.currentOrgId = row.orgId;
+        this.currentColumnProp = column.prop;
+        this.detailVisible = true;
+      }
+    },
+
+    // 解析列配置JSON
+    parseColumnConfig(configStr) {
+      try {
+        return typeof configStr === "string"
+          ? JSON.parse(configStr)
+          : configStr || {};
+      } catch {
+        return {};
+      }
     },
 
     // 分页切换

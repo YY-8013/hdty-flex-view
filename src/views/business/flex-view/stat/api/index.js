@@ -60,6 +60,33 @@ export const exportStatData = (params) => {
   });
 };
 
+// 动态表单新增
+export const dynamicFormAdd = (params) => {
+  return request({
+    url: "/web/sjls/sysBizDataCommon/upload",
+    method: "post",
+    data: params
+  });
+};
+
+// 动态表单编辑
+export const dynamicFormEdit = (params) => {
+  return request({
+    url: "/web/sjls/sysBizDataCommon/update",
+    method: "post",
+    data: params
+  });
+};
+
+// 动态表单详情
+export const dynamicFormDetail = (params) => {
+  return request({
+    url: "/web/sjls/sysBizDataCommon/detail",
+    method: "post",
+    data: params
+  });
+};
+
 /**
  * Mock 数据 - 鄂尔多斯市各旗区统计数据
  * 按照动态列配置生成数据：
@@ -95,7 +122,7 @@ export const getMockStatData = () => {
 
     // 实有单位数据
     const sydwTotal = Math.floor(Math.random() * 1000) + 300; // 实有单位总数 300-1300
-    const sydwCcTotal = Math.floor(sydwTotal * 0.90); // 实有单位抽查总数
+    const sydwCcTotal = Math.floor(sydwTotal * 0.9); // 实有单位抽查总数
 
     // 特定对象数据
     const tddxTotal = Math.floor(Math.random() * 500) + 100; // 特定对象数 100-600
