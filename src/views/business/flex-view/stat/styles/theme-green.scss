@@ -76,6 +76,20 @@
         font-weight: 600;
       }
 
+      // 机构列链接样式
+      .p-org-name .org-link {
+        color: #059669;
+        font-weight: 600;
+
+        &:hover {
+          color: #047857;
+        }
+
+        &:active {
+          color: #065f46;
+        }
+      }
+
       tr:hover > td {
         background-color: #ecfdf5 !important;
       }

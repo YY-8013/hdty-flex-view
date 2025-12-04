@@ -20,11 +20,13 @@
         fixed="left"
       >
       </el-table-column>
+
       <!-- 动态多层级列:递归渲染任意层级 -->
       <dynamic-column
         v-for="column in columns"
         :key="column.id"
         :column="column"
+        :row-data="data"
         @cell-click="handleCellClick"
       />
     </el-table>
@@ -65,8 +67,15 @@ export default {
   methods: {
     // 单元格点击
     handleCellClick(column, row) {
-      // 只有可点击的列才触发事件
-      if (column.formId) {
+      // 对于钻取机构列类型，触发机构钻取事件
+      if (column.columnType === "drillOrg") {
+        this.$emit(
+          "cell-click",
+          { prop: "orgName", columnType: "drillOrg" },
+          row
+        );
+      } else if (column.formId) {
+        // 只有可点击的列才触发事件
         this.$emit("cell-click", column, row);
       }
     },

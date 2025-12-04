@@ -130,6 +130,10 @@ export default {
 
     // 执行参数映射
     executeParamMapping() {
+      console.log("执行参数映射");
+
+      console.log(this.formConfig);
+
       if (!this.formConfig || !this.formConfig.formConfigObj) {
         this.mappedParams = {};
         return;

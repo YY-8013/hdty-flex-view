@@ -51,8 +51,10 @@
       <!-- 查询区域 -->
       <div class="hdty-header">
         <stat-query
+          ref="statQueryRef"
           :query-fields="queryFields"
           :current-theme="currentTheme"
+          :input-param-org-id="inputParamOrgId"
           @query="handleQuery"
           @reset="handleReset"
         />
@@ -98,7 +100,7 @@
 </template>
 
 <script>
-import { getEnabledColumns, getSjlsTotal, getMockStatData } from "./api";
+import { getEnabledColumns, getSjlsTotal, getMockStatData } from "./api/index";
 import StatQuery from "./components/StatQuery.vue";
 import StatTable from "./components/StatTable.vue";
 import DetailDialog from "./components/DetailDialog.vue";
@@ -133,7 +135,12 @@ export default {
       currentOrgId: null,
       currentColumnProp: null,
       // 传递给明细页的初始参数
-      detailInitParams: {}
+      detailInitParams: {},
+      // 机构相关
+      inputParamOrgId: "",
+      inputParamOrgName: "",
+
+      currentQueryDataParams: {}
     };
   },
   computed: {
@@ -194,8 +201,13 @@ export default {
         return [];
       }
 
+      // 解析列配置
+
       // 递归处理树形数据为表格列配置
       const processNode = (node) => {
+        const columnConfig = this.parseColumnConfig(node.columnConfig);
+        console.log("columnConfig:", columnConfig);
+
         let column = {
           ...node,
           id: node.id,
@@ -203,7 +215,8 @@ export default {
           label: node.label,
           minWidth: node.columnWidth,
           align: node.align || "center",
-          formId: node.formId // 关联的表单ID（用于点击弹出明细）
+          formId: node.formId, // 关联的表单ID（用于点击弹出明细）
+          columnType: columnConfig.columnType || ""
         };
         delete column.children;
         if (node.children && node.children.length > 0) {
@@ -230,16 +243,24 @@ export default {
         if (response.data.success) {
           this.statData = response.data.data.records || [];
           this.pagination.total = response.data.data.total || 0;
+
+          // 保存当前查询的机构信息（用于返回上级判断）
+          if (response.data.data.dto) {
+            this.inputParamOrgId = response.data.data.dto.orgId || params.orgId;
+            this.inputParamOrgName = response.data.data.dto.orgName || "";
+
+            // 同步到查询组件
+            if (this.$refs.statQueryRef) {
+              this.$refs.statQueryRef.extendData.orgId = this.inputParamOrgName;
+            }
+          } else {
+            this.inputParamOrgId = params.orgId;
+          }
+
+          this.currentQueryDataParams = this.$utilStr.deepClone(params);
         } else {
           this.$message.error(response.data.msg || "加载数据失败");
         }
-
-        // 备用: Mock数据（如需测试，可将下面注释取消）
-        // const response = getMockStatData();
-        // if (response.success) {
-        //   this.statData = response.data.records;
-        //   this.pagination.total = response.data.total;
-        // }
       } catch (error) {
         console.error("加载统计数据失败:", error);
         this.$message.error("加载数据失败");
@@ -267,9 +288,16 @@ export default {
       this.loadData();
     },
 
-    // 单元格点击（打开明细弹窗）
+    // 单元格点击（打开明细弹窗或机构钻取）
     handleCellClick(column, row) {
       console.log("Cell clicked:", column, row);
+
+      // 如果是钻取机构列的点击
+      if (column.columnType === "drillOrg" && this.canDrillDown(row)) {
+        this.handleOrgDrillDown(row);
+        return;
+      }
+
       // 解析列配置
       const columnConfig = this.parseColumnConfig(column.columnConfig);
 
@@ -281,11 +309,31 @@ export default {
 
         // 构建初始参数：将查询参数和行数据传递给明细页
         this.detailInitParams = {
-          query: { ...this.queryParams }, // 当前统计列表的查询参数
+          query: { ...this.currentQueryDataParams }, // 当前统计列表的查询参数
           row: { ...row } // 点击的行数据
         };
 
         this.detailVisible = true;
+      }
+    },
+
+    // 判断是否可以钻取
+    canDrillDown(row) {
+      // 最后一行（汇总行）不可钻取
+      if (
+        row.isLeaf ||
+        this.statData.indexOf(row) === this.statData.length - 1
+      ) {
+        return false;
+      }
+      return true;
+    },
+
+    // 机构钻取
+    handleOrgDrillDown(row) {
+      // 通知查询组件更新机构
+      if (this.$refs.statQueryRef) {
+        this.$refs.statQueryRef.handleClickOrg(0, row);
       }
     },
 

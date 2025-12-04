@@ -110,6 +110,10 @@ export default {
     currentTheme: {
       type: String,
       default: "police"
+    },
+    inputParamOrgId: {
+      type: String,
+      default: ""
     }
   },
   data() {
@@ -156,6 +160,14 @@ export default {
   },
   created() {
     this.updateOrgList();
+  },
+  watch: {
+    // 监听外部传入的机构ID变化
+    inputParamOrgId(newVal) {
+      if (newVal) {
+        this.queryData.orgId = newVal;
+      }
+    }
   },
   methods: {
     // 查询
@@ -212,11 +224,12 @@ export default {
         this.queryData.orgLevel = (Number(currentOrgLevel) + 1).toString();
       }
     },
-    // 点击机构
-    handleClickOrg(idnex, row) {
-      this.queryData.orgId = row.orgId; // 设置机构编码，机构统一在返回参数中获取，保证返回上一级操作时能够显示入参机构名称
+    // 点击机构（机构钻取）
+    handleClickOrg(index, row) {
+      this.queryData.orgId = row.orgId; // 设置机构编码
+      this.extendData.orgId = row.orgName; // 设置机构名称
       this.updateOrgList(true);
-      this.handleQuery();
+      this.handleQuery(); // 触发查询
     },
     // 显示“返回上级机构”按钮
     showReturn() {
@@ -244,9 +257,11 @@ export default {
     },
     // 返回上级机构
     handleReturnLast() {
-      this.queryData.orgId = this.$utilAll.getParentOrgId(this.inputParamOrgId);
+      // 使用外部传入的 inputParamOrgId（当前实际查询的机构ID）
+      const currentOrgId = this.inputParamOrgId || this.queryData.orgId;
+      this.queryData.orgId = this.$utilAll.getParentOrgId(currentOrgId);
       this.updateOrgList(true);
-      this.handleQuery();
+      this.handleQuery(); // 触发查询
     }
   }
 };

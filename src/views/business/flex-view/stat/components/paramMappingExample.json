@@ -1,0 +1,84 @@
+{
+  "说明": "此配置应添加到表单配置管理中，对应表单的 formConfig JSON 字段",
+  "formConfig": {
+    "paramMapping": {
+      "enabled": true,
+      "mappings": [
+        {
+          "sourceType": "query",
+          "sourceProp": "checkDate",
+          "targetProp": "check_date",
+          "required": false,
+          "说明": "从统计列表的查询条件中获取抽查日期范围，映射到明细表单的 check_date 字段"
+        },
+        {
+          "sourceType": "query",
+          "sourceProp": "orgId",
+          "targetProp": "org_id",
+          "required": false,
+          "说明": "从统计列表的查询条件中获取机构ID（优先级较低）"
+        },
+        {
+          "sourceType": "row",
+          "sourceProp": "orgId",
+          "targetProp": "org_id",
+          "required": true,
+          "priority": 1,
+          "说明": "从点击的行数据中获取机构ID（优先级高，会覆盖query中的orgId）"
+        }
+      ]
+    }
+  },
+  "字段映射说明": {
+    "统计列表查询参数": {
+      "checkDate": "抽查日期范围 (StatQuery.vue中的queryData.checkDate)",
+      "orgId": "机构ID (StatQuery.vue中的queryData.orgId)"
+    },
+    "点击行数据": {
+      "orgId": "当前行的机构ID (从row.orgId获取)",
+      "orgName": "当前行的机构名称 (从row.orgName获取，可选)"
+    },
+    "明细表单字段": {
+      "check_date": "抽查日期 (itemProp: check_date, tableKey: F_DATE_1)",
+      "org_id": "抽查机构 (itemProp: org_id, tableKey: F_ORG_ID)"
+    }
+  },
+  "数据流转示例": {
+    "步骤1_统计列表查询": {
+      "queryData": {
+        "orgId": "150602000000",
+        "orgLevel": "4",
+        "checkDate": ["2024-12-01", "2024-12-31"]
+      }
+    },
+    "步骤2_点击某行": {
+      "row": {
+        "orgId": "150602010000",
+        "orgName": "东胜分局",
+        "checkTotal": 120
+      }
+    },
+    "步骤3_参数映射结果": {
+      "mappedParams": {
+        "check_date": ["2024-12-01", "2024-12-31"],
+        "org_id": "150602010000"
+      },
+      "说明": "check_date来自query.checkDate，org_id来自row.orgId(优先级高)"
+    },
+    "步骤4_明细页面初始化": {
+      "queryData": {
+        "check_date": ["2024-12-01", "2024-12-31"],
+        "org_id": "150602010000",
+        "check_total_num": "",
+        "check_hg_num": "",
+        "createTime": [],
+        "zxbs": "0"
+      }
+    }
+  },
+  "特别说明": {
+    "日期字段处理": "check_date字段的itemConfig中已配置 queryValueType: array 和 queryDateType: daterange，会自动转换为日期范围查询",
+    "机构字段优先级": "row.orgId的优先级(priority=1)高于query.orgId，所以会优先使用点击行的机构ID",
+    "必填参数": "row.orgId设置为required:true，确保从点击行必须能获取到机构ID"
+  }
+}

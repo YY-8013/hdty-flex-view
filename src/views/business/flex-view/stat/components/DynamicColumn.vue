@@ -1,7 +1,35 @@
 <template>
+  <!-- 钻取机构列（根据 columnType 判断） -->
+  <el-table-column
+    v-if="isOrgDrillColumn"
+    :prop="column.prop || 'orgName'"
+    :label="column.label || '管辖机构'"
+    :width="column.width || 280"
+    :align="column.align || 'center'"
+    :fixed="column.fixed || 'left'"
+    show-overflow-tooltip
+  >
+    <template slot-scope="scope">
+      <!-- 叶子节点或最后一行（汇总行）：不可点击 -->
+      <p class="p-org-name" v-if="scope.row.isLeaf || isLastRow(scope.$index)">
+        {{ formatCellValue(scope.row, column) }}
+      </p>
+      <!-- 非叶子节点：可点击钻取 -->
+      <p class="p-org-name" v-else>
+        <a
+          href="javascript:;"
+          class="org-link"
+          @click="handleOrgClick(scope.$index, scope.row)"
+        >
+          {{ formatCellValue(scope.row, column) }}
+        </a>
+      </p>
+    </template>
+  </el-table-column>
+
   <!-- 叶子节点列（无子列） -->
   <el-table-column
-    v-if="!column.children || column.children.length === 0"
+    v-else-if="!column.children || column.children.length === 0"
     :prop="column.prop"
     :label="column.label"
     :width="column.width"
@@ -44,10 +72,29 @@ export default {
     column: {
       type: Object,
       required: true
+    },
+    rowData: {
+      type: Array,
+      default: () => []
+    }
+  },
+  computed: {
+    // 判断是否是钻取机构列
+    isOrgDrillColumn() {
+      return this.column.columnType === "drillOrg";
     }
   },
   methods: {
-    // 单元格点击
+    // 机构列点击
+    handleOrgClick(index, row) {
+      this.$emit("cell-click", { ...this.column, columnType: "drillOrg" }, row);
+    },
+
+    // 判断是否是最后一行
+    isLastRow(index) {
+      return index === this.rowData.length - 1;
+    },
+    // 叶子节点点击
     handleCellClick(column, row) {
       this.$emit("cell-click", column, row);
     },
