@@ -4,7 +4,7 @@
       ref="tableRef"
       v-loading="loading"
       :data="data"
-      row-key="id"
+      row-key="vo.id"
       border
       stripe
       fit
@@ -51,8 +51,25 @@
             :row="scope.row"
             :column="column"
           >
-            {{ formatValue(scope.row[column.prop], column) }}
+            {{ getColumnValue(scope.row, column) }}
           </slot>
+        </template>
+      </el-table-column>
+
+      <!-- 注销状态 -->
+      <el-table-column
+        prop="vo.zxbs"
+        label="注销状态"
+        align="center"
+        width="90"
+      >
+        <template slot-scope="scope">
+          <div v-if="scope.row.vo.zxbs === '0'" style="color: #01b3c1">
+            {{ scope.row.vox.zxbs }}
+          </div>
+          <div v-else style="color: #ff0b00">
+            {{ scope.row.vox.zxbs }}
+          </div>
         </template>
       </el-table-column>
 
@@ -62,38 +79,43 @@
         fixed="right"
         label="操作"
         align="center"
-        width="200"
+        width="100"
       >
         <template slot-scope="scope">
-          <hd-button-container>
-            <hd-button
-              v-if="showDetail"
-              name="detail"
-              type="info"
-              size="mini"
-              @click="handleDetail(scope.row)"
-            >
-              详情
-            </hd-button>
-            <hd-button
-              v-if="showEdit"
-              name="edit"
-              type="primary"
-              size="mini"
-              @click="handleEdit(scope.row)"
-            >
-              编辑
-            </hd-button>
-            <hd-button
-              v-if="showDelete"
-              name="delete"
-              type="danger"
-              size="mini"
-              @click="handleDelete(scope.row)"
-            >
-              删除
-            </hd-button>
-          </hd-button-container>
+          <el-dropdown>
+            <el-button type="info">操作</el-button>
+            <el-dropdown-menu slot="dropdown">
+              <!-- 详情 -->
+              <hd-button
+                v-if="showDetail"
+                name="detail"
+                type="success"
+                @click="handleDetail(scope.row)"
+              >
+                详情
+              </hd-button>
+
+              <!-- 编辑 -->
+              <hd-button
+                v-if="showEdit && scope.row.vo.zxbs === '0'"
+                name="edit"
+                type="primary"
+                @click="handleEdit(scope.row)"
+              >
+                编辑
+              </hd-button>
+
+              <!-- 注销 -->
+              <hd-button
+                v-if="showLogout && scope.row.vo.zxbs === '0'"
+                name="off"
+                type="danger"
+                @click="handleLogout(scope.row)"
+              >
+                注销
+              </hd-button>
+            </el-dropdown-menu>
+          </el-dropdown>
         </template>
       </el-table-column>
     </el-table>
@@ -144,6 +166,11 @@ export default {
       type: Boolean,
       default: true
     },
+    // 是否显示注销按钮
+    showLogout: {
+      type: Boolean,
+      default: false
+    },
     // 分页配置（用于计算序号）
     pagination: {
       type: Object,
@@ -159,6 +186,17 @@ export default {
     };
   },
   methods: {
+    // 根据列类型获取对应的值
+    getColumnValue(row, column) {
+      const { keyType, prop } = column;
+      // 如果 keyType 是 org、region、dict、date，则从 vox 取值
+      if (["org", "region", "dict", "date"].includes(keyType)) {
+        return row.vox[prop];
+      }
+      // 其他情况从 vo 取值
+      return row.vo[prop];
+    },
+
     // 设置序号（支持分页）
     setIndex(index) {
       const { current = 1, pageSize = 20 } = this.pagination;
@@ -207,6 +245,11 @@ export default {
     // 删除
     handleDelete(row) {
       this.$emit("delete", row);
+    },
+
+    // 注销
+    handleLogout(row) {
+      this.$emit("logout", row);
     },
 
     // 刷新表格布局

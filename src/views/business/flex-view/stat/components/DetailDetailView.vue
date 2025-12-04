@@ -4,6 +4,7 @@
     :visible.sync="visible"
     custom-class="hdty-dialog-medium new-form"
     append-to-body
+    @close="handleClose"
   >
     <div class="con-form-anchor">
       <!-- 左侧锚点导航 -->
@@ -42,18 +43,16 @@
               <!-- 表单数据 -->
               <biz-form-card title="表单数据" :id="anchorList[0].id">
                 <biz-form>
-                  <biz-form-row
-                    v-for="(row, rowIndex) in formFieldsRows"
-                    :key="rowIndex"
-                  >
+                  <biz-form-row>
                     <biz-form-item
-                      v-for="field in row"
+                      v-for="field in formFields"
                       :key="field.prop"
-                      :label="field.label"
+                      :label="formatLabel(field.label)"
                       :required="false"
                       :span="field.span"
+                      :pClass="field.pClass || 'p-divs'"
                     >
-                      {{ detailData[field.prop] || "-" }}
+                      <biz-html :value="getFieldValue(field)"></biz-html>
                     </biz-form-item>
                   </biz-form-row>
                 </biz-form>
@@ -63,25 +62,25 @@
               <biz-form-card title="操作信息" :id="anchorList[1].id">
                 <biz-form>
                   <biz-form-row>
-                    <biz-form-item label="添 加 人" :span="12">
-                      {{ detailData.createUsername || "-" }}
+                    <biz-form-item label="添&ensp;加&ensp;人" :span="12">
+                      {{ detailData.vo.createUsername || "-" }}
                     </biz-form-item>
                     <biz-form-item label="添加时间" :span="12">
-                      {{ formatDatetime(detailData.createTime) }}
+                      {{ detailData.vox.createTime }}
                     </biz-form-item>
                   </biz-form-row>
                   <biz-form-row>
-                    <biz-form-item label="操 作 人" :span="12">
-                      {{ detailData.updateUsername || "-" }}
+                    <biz-form-item label="操&ensp;作&ensp;人" :span="12">
+                      {{ detailData.vo.updateUsername || "-" }}
                     </biz-form-item>
                     <biz-form-item label="操作时间" :span="12">
-                      {{ formatDatetime(detailData.updateTime) }}
+                      {{ detailData.vox.updateTime }}
                     </biz-form-item>
                   </biz-form-row>
                   <biz-form-row>
                     <biz-form-item label="注销状态" :span="24">
                       <div
-                        v-if="detailData.zxbs === '0'"
+                        v-if="detailData.vo.zxbs === '0'"
                         style="color: #01b3c1"
                       >
                         正常
@@ -89,17 +88,17 @@
                       <div v-else style="color: #ff0b00">已注销</div>
                     </biz-form-item>
                   </biz-form-row>
-                  <biz-form-row v-if="detailData.zxbs === '1'">
-                    <biz-form-item label="注 销 人" :span="12">
-                      {{ detailData.zxrUsername || "-" }}
+                  <biz-form-row v-if="detailData.vo.zxbs === '1'">
+                    <biz-form-item label="注&ensp;销&ensp;人" :span="12">
+                      {{ detailData.vo.zxrUsername || "-" }}
                     </biz-form-item>
                     <biz-form-item label="注销时间" :span="12">
-                      {{ formatDatetime(detailData.zxsj) }}
+                      {{ detailData.vox.zxsj }}
                     </biz-form-item>
                   </biz-form-row>
-                  <biz-form-row v-if="detailData.zxbs === '1'">
+                  <biz-form-row v-if="detailData.vo.zxbs === '1'">
                     <biz-form-item label="注销原因" :span="24" pClass="p-divs">
-                      {{ detailData.zxyy || "-" }}
+                      {{ detailData.vo.zxyy || "-" }}
                     </biz-form-item>
                   </biz-form-row>
                 </biz-form>
@@ -125,18 +124,17 @@ export default {
   name: "DetailDetailView",
   mixins: [hdForm, anchorScroll],
   props: {
-    visible: {
-      type: Boolean,
-      default: false
-    },
     formConfig: Object,
-    ywFormId: String,
-    currentRow: Object
+    ywFormId: String
   },
   data() {
     return {
+      // 弹窗显示控制
+      visible: false,
+      // 当前行数据
+      currentRow: {},
       // 详情数据
-      detailData: {},
+      detailData: { vo: {}, vox: {} },
       extendData: {},
       // 表单字段
       formFields: [],
@@ -167,35 +165,6 @@ export default {
   computed: {
     dialogTitle() {
       return (this.formConfig && this.formConfig.formName + "详情") || "详情";
-    },
-    // 将表单字段按行分组(动态根据span计算)
-    formFieldsRows() {
-      const rows = [];
-      let currentRow = [];
-      let currentSpan = 0;
-
-      this.formFields.forEach((field) => {
-        const fieldSpan = field.span || 12;
-
-        // 如果当前行加上这个字段会超过24,或者字段span=24则新起一行
-        if (currentSpan + fieldSpan > 24 || fieldSpan === 24) {
-          if (currentRow.length > 0) {
-            rows.push(currentRow);
-          }
-          currentRow = [field];
-          currentSpan = fieldSpan;
-        } else {
-          currentRow.push(field);
-          currentSpan += fieldSpan;
-        }
-      });
-
-      // 添加最后一行
-      if (currentRow.length > 0) {
-        rows.push(currentRow);
-      }
-
-      return rows;
     }
   },
   watch: {
@@ -206,20 +175,29 @@ export default {
         }
       },
       immediate: true
-    },
-    visible(val) {
-      if (val) {
-        this.updateAnchorList();
-        this.$nextTick(() => {
-          this.initScrollBox();
-          this.loadDetail();
-        });
-      } else {
-        this.reset();
-      }
     }
   },
   methods: {
+    // 根据字段类型获取对应的值
+    getFieldValue(field) {
+      const { keyType, prop } = field;
+      // 如果类型是 org、region、dict、date，则从 vox 取值
+      if (["org", "region", "dict", "date"].includes(keyType)) {
+        return this.detailData.vox[prop];
+      }
+      // 其他情况从 vo 取值
+      return this.detailData.vo[prop];
+    },
+
+    // 加载前初始化
+    beforeLoadForm() {
+      this.updateAnchorList();
+      this.$nextTick(() => {
+        this.initScrollBox();
+        this.loadDetail();
+      });
+    },
+
     // 解析表单配置
     parseFormConfig() {
       if (!this.formConfig || !this.formConfig.formItemList) {
@@ -239,13 +217,18 @@ export default {
 
       // 构建表单字段(showInForm=true)
       this.formFields = parsedItems
-        .filter((item) => item.config.display?.showInForm !== false)
+        .filter((item) =>
+          item.config && item.config.display
+            ? item.config.display.showInForm !== false
+            : true
+        )
         .map((item) => {
           const layoutConfig = item.config.layout || {};
           return {
             prop: item.itemProp,
             label: item.itemLabel,
             type: item.itemType,
+            keyType: item.keyType, // 添加 keyType 用于 getFieldValue 判断
             span: layoutConfig.span || 12, // 从配置中动态获取span
             config: item.config
           };
@@ -265,19 +248,21 @@ export default {
 
     // 加载详情数据
     async loadDetail() {
-      if (!this.currentRow || !this.currentRow.id) {
+      if (!this.currentRow || !this.currentRow.vo.id) {
         return;
       }
 
       this.loading = true;
       try {
         const response = await dynamicFormDetail({
-          id: this.currentRow.id,
+          id: this.currentRow.vo.id,
           formId: this.ywFormId
         });
 
         if (response.data.success) {
-          this.detailData = response.data.data || {};
+          this.detailData = (response &&
+            response.data &&
+            response.data.data) || { vo: {}, vox: {} };
         }
       } catch (error) {
         console.error("加载详情失败:", error);
@@ -289,12 +274,13 @@ export default {
 
     // 关闭
     handleClose() {
-      this.$emit("update:visible", false);
+      this.visible = false;
+      this.reset();
     },
 
     // 重置
     reset() {
-      this.detailData = {};
+      this.detailData = { vo: {}, vox: {} };
     },
 
     // 更新锚点列表
@@ -305,25 +291,20 @@ export default {
       this.activeAnchor = this.anchorIds[0];
     },
 
-    /**
-     * 格式化日期时间
-     * @param {String} datetime - 日期时间字符串
-     * @returns {String} 格式化后的字符串
-     */
-    formatDatetime(datetime) {
-      if (!datetime) return "-";
-      const str = datetime.toString();
-      if (str.length < 14) return datetime;
+    // label动态格式化处理
+    formatLabel(label) {
+      if (!label) return label;
 
-      const date = str.substring(0, 8);
-      const time = str.substring(8, 14);
-      return `${date.substring(0, 4)}-${date.substring(4, 6)}-${date.substring(
-        6,
-        8
-      )} ${time.substring(0, 2)}:${time.substring(2, 4)}:${time.substring(
-        4,
-        6
-      )}`;
+      const len = label.length;
+      if (len === 2) {
+        // 2个字：中间加&emsp;&emsp;(两个全角空格)
+        return label[0] + "&emsp;&emsp;" + label[1];
+      } else if (len === 3) {
+        // 3个字：每两个字间加&ensp;(一个半角空格)
+        return label[0] + "&ensp;" + label[1] + "&ensp;" + label[2];
+      }
+      // 其余情况返回原label
+      return label;
     }
   }
 };

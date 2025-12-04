@@ -89,6 +89,8 @@
         :form-id="currentFormId"
         :org-id="currentOrgId"
         :column-prop="currentColumnProp"
+        :init-params="detailInitParams"
+        :query-params="queryParams"
         @refresh="refreshStatData"
       />
     </div>
@@ -96,7 +98,7 @@
 </template>
 
 <script>
-import { getEnabledColumns, getMockStatData } from "./api";
+import { getEnabledColumns, getSjlsTotal, getMockStatData } from "./api";
 import StatQuery from "./components/StatQuery.vue";
 import StatTable from "./components/StatTable.vue";
 import DetailDialog from "./components/DetailDialog.vue";
@@ -129,7 +131,9 @@ export default {
       detailVisible: false,
       currentFormId: null,
       currentOrgId: null,
-      currentColumnProp: null
+      currentColumnProp: null,
+      // 传递给明细页的初始参数
+      detailInitParams: {}
     };
   },
   computed: {
@@ -216,12 +220,26 @@ export default {
     async loadData() {
       this.loading = true;
       try {
-        // 使用Mock数据（后期替换为真实接口）
-        const response = getMockStatData();
-        if (response.success) {
-          this.statData = response.data.records;
-          this.pagination.total = response.data.total;
+        // 构建查询参数
+        const params = {
+          ...this.queryParams
+        };
+
+        // 使用真实接口
+        const response = await getSjlsTotal(params);
+        if (response.data.success) {
+          this.statData = response.data.data.records || [];
+          this.pagination.total = response.data.data.total || 0;
+        } else {
+          this.$message.error(response.data.msg || "加载数据失败");
         }
+
+        // 备用: Mock数据（如需测试，可将下面注释取消）
+        // const response = getMockStatData();
+        // if (response.success) {
+        //   this.statData = response.data.records;
+        //   this.pagination.total = response.data.total;
+        // }
       } catch (error) {
         console.error("加载统计数据失败:", error);
         this.$message.error("加载数据失败");
@@ -260,6 +278,13 @@ export default {
         this.currentFormId = column.formId;
         this.currentOrgId = row.orgId;
         this.currentColumnProp = column.prop;
+
+        // 构建初始参数：将查询参数和行数据传递给明细页
+        this.detailInitParams = {
+          query: { ...this.queryParams }, // 当前统计列表的查询参数
+          row: { ...row } // 点击的行数据
+        };
+
         this.detailVisible = true;
       }
     },

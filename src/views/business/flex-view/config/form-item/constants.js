@@ -235,62 +235,62 @@ export const TABLE_KEY_OPTIONS = [
     label: "字典字段",
     options: [
       {
-        value: "F_DICF_1",
-        label: "F_DICF_1",
+        value: "F_DICT_1",
+        label: "F_DICT_1",
         type: "VARCHAR2(50)",
         desc: "字典字段1"
       },
       {
-        value: "F_DICF_2",
-        label: "F_DICF_2",
+        value: "F_DICT_2",
+        label: "F_DICT_2",
         type: "VARCHAR2(50)",
         desc: "字典字段2"
       },
       {
-        value: "F_DICF_3",
-        label: "F_DICF_3",
+        value: "F_DICT_3",
+        label: "F_DICT_3",
         type: "VARCHAR2(50)",
         desc: "字典字段3"
       },
       {
-        value: "F_DICF_4",
-        label: "F_DICF_4",
+        value: "F_DICT_4",
+        label: "F_DICT_4",
         type: "VARCHAR2(50)",
         desc: "字典字段4"
       },
       {
-        value: "F_DICF_5",
-        label: "F_DICF_5",
+        value: "F_DICT_5",
+        label: "F_DICT_5",
         type: "VARCHAR2(50)",
         desc: "字典字段5"
       },
       {
-        value: "F_DICF_6",
-        label: "F_DICF_6",
+        value: "F_DICT_6",
+        label: "F_DICT_6",
         type: "VARCHAR2(50)",
         desc: "字典字段6"
       },
       {
-        value: "F_DICF_7",
-        label: "F_DICF_7",
+        value: "F_DICT_7",
+        label: "F_DICT_7",
         type: "VARCHAR2(50)",
         desc: "字典字段7"
       },
       {
-        value: "F_DICF_8",
-        label: "F_DICF_8",
+        value: "F_DICT_8",
+        label: "F_DICT_8",
         type: "VARCHAR2(50)",
         desc: "字典字段8"
       },
       {
-        value: "F_DICF_9",
-        label: "F_DICF_9",
+        value: "F_DICT_9",
+        label: "F_DICT_9",
         type: "VARCHAR2(50)",
         desc: "字典字段9"
       },
       {
-        value: "F_DICF_10",
-        label: "F_DICF_10",
+        value: "F_DICT_10",
+        label: "F_DICT_10",
         type: "VARCHAR2(50)",
         desc: "字典字段10"
       }

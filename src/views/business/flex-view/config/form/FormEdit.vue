@@ -31,7 +31,7 @@
           </div>
         </div>
       </div>
-      <div class="con-form">
+      <div class="con-form" v-if="visible">
         <hd-pane fit v-loading="loading" :id="formId">
           <el-form
             ref="formRef"
@@ -173,7 +173,7 @@
                       <el-form-item prop="formConfig">
                         <hd-json-editor
                           v-model="formData.formConfig"
-                          height="250"
+                          height="350"
                           maxlength="4000"
                           type="String"
                         >

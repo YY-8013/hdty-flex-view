@@ -3,7 +3,7 @@
  */
 
 // 项目名称配置
-const projectName = "基础管控数据晾晒系统";
+const projectName = "基础管控系统·数据晾晒";
 // const projectName = "鄂尔多斯基础管控系统";
 
 // 项目标志配置
@@ -32,7 +32,7 @@ const sizeDefault = "small";
 const schemeDefault = "upanddown";
 
 // 网站标题前缀配置
-const webTitleSuffix = "华动泰越";
+const webTitleSuffix = ""; // 华动泰越
 
 // 网站图标配置
 const webFavicon =

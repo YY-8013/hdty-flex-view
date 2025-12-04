@@ -74,7 +74,9 @@ export default {
     // 刷新表格布局
     doLayout() {
       this.$nextTick(() => {
-        this.$refs.tableRef?.doLayout();
+        if (this.$refs.tableRef && this.$refs.tableRef.doLayout) {
+          this.$refs.tableRef.doLayout();
+        }
       });
     }
   }

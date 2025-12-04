@@ -60,7 +60,12 @@ export default {
       const columnConfig = this.parseColumnConfig(column);
 
       // 可点击的单元格
-      if (columnConfig.clickable?.enabled || column.formId) {
+      if (
+        (columnConfig &&
+          columnConfig.clickable &&
+          columnConfig.clickable.enabled) ||
+        column.formId
+      ) {
         classes.push("clickable-cell");
       }
 
@@ -73,12 +78,16 @@ export default {
       const columnConfig = this.parseColumnConfig(column);
 
       // 应用基础样式
-      if (columnConfig.style) {
+      if (columnConfig && columnConfig.style) {
         Object.assign(style, columnConfig.style);
       }
 
       // 应用条件样式
-      if (columnConfig.conditional?.rules) {
+      if (
+        columnConfig &&
+        columnConfig.conditional &&
+        columnConfig.conditional.rules
+      ) {
         const value = row[column.prop];
         for (const rule of columnConfig.conditional.rules) {
           try {

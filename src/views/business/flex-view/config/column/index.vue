@@ -148,6 +148,19 @@
             </el-tag>
           </template>
         </el-table-column>
+        <!-- 关联表单 -->
+        <el-table-column
+          prop="formItemIdText"
+          label="关联表单项"
+          width="200"
+          show-overflow-tooltip
+        >
+          <template slot-scope="scope">
+            <el-tag v-if="scope.row.formItemIdText" size="mini" type="primary">
+              {{ scope.row.formItemIdText }}
+            </el-tag>
+          </template>
+        </el-table-column>
 
         <!-- 排序号 -->
         <el-table-column

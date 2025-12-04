@@ -72,7 +72,7 @@ export const dynamicFormAdd = (params) => {
 // 动态表单编辑
 export const dynamicFormEdit = (params) => {
   return request({
-    url: "/web/sjls/sysBizDataCommon/update",
+    url: "/web/sjls/sysBizDataCommon/edit",
     method: "post",
     data: params
   });
@@ -82,6 +82,33 @@ export const dynamicFormEdit = (params) => {
 export const dynamicFormDetail = (params) => {
   return request({
     url: "/web/sjls/sysBizDataCommon/detail",
+    method: "post",
+    params: params
+  });
+};
+
+// 动态表单注销
+export const dynamicFormLogout = (params) => {
+  return request({
+    url: "/web/sjls/sysBizDataCommon/logout",
+    method: "post",
+    data: params
+  });
+};
+
+// 动态表单分页查询
+export const dynamicFormPage = (params) => {
+  return request({
+    url: "/web/sjls/sysBizDataCommon/page",
+    method: "post",
+    data: params
+  });
+};
+
+// 数据晾晒统计接口
+export const getSjlsTotal = (params) => {
+  return request({
+    url: "/web/sjls/total",
     method: "post",
     data: params
   });

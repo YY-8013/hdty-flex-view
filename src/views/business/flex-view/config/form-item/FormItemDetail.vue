@@ -68,6 +68,22 @@
                 <biz-form>
                   <biz-form-row>
                     <biz-form-item
+                      label="列&ensp;类&ensp;型"
+                      :span="detailData.vo.keyType === 'dict' ? 12 : 24"
+                      :pClass="detailData.vo.keyType === 'dict' ? '' : 'p-divs'"
+                    >
+                      {{ getKeyTypeLabel(detailData.vo.keyType) }}
+                    </biz-form-item>
+                    <biz-form-item
+                      v-if="detailData.vo.keyType === 'dict'"
+                      label="字典编码"
+                      :span="12"
+                    >
+                      {{ detailData.vo.dicType || "-" }}
+                    </biz-form-item>
+                  </biz-form-row>
+                  <biz-form-row>
+                    <biz-form-item
                       label="是否映射表字段"
                       :span="24"
                       pClass="p-divs"
@@ -84,29 +100,11 @@
                   </biz-form-row>
                   <template v-if="detailData.vo.isFixed === '1'">
                     <biz-form-row>
-                      <biz-form-item label="列&ensp;类&ensp;型" :span="12">
-                        {{ detailData.vo.keyType || "-" }}
-                      </biz-form-item>
                       <biz-form-item label="数据类型" :span="12">
                         {{ detailData.vo.dataType || "-" }}
                       </biz-form-item>
-                    </biz-form-row>
-                    <biz-form-row>
-                      <biz-form-item
-                        label="映射列名"
-                        :span="24"
-                        pClass="p-divs"
-                      >
+                      <biz-form-item label="映射列名" :span="12">
                         {{ detailData.vo.tableKey || "-" }}
-                      </biz-form-item>
-                    </biz-form-row>
-                    <biz-form-row>
-                      <biz-form-item
-                        label="字典类型"
-                        :span="24"
-                        pClass="p-divs"
-                      >
-                        {{ detailData.vo.dicType || "-" }}
                       </biz-form-item>
                     </biz-form-row>
                   </template>
@@ -206,7 +204,7 @@
 import { hdForm } from "@/utils/util-framework";
 import anchorScroll from "@/views/global/mixin/anchorScroll.js";
 import { detail } from "./api";
-import { ITEM_TYPE_OPTIONS } from "./constants";
+import { ITEM_TYPE_OPTIONS, KEY_TYPE_OPTIONS } from "./constants";
 
 export default {
   name: "FormItemDetail",
@@ -255,7 +253,9 @@ export default {
         }
       ],
       // 组件类型选项
-      itemTypeOptions: ITEM_TYPE_OPTIONS
+      itemTypeOptions: ITEM_TYPE_OPTIONS,
+      // 列类型选项
+      keyTypeOptions: KEY_TYPE_OPTIONS
     };
   },
   methods: {
@@ -267,6 +267,14 @@ export default {
         (option) => option.value === value
       );
       return item ? item.label : value;
+    },
+
+    /**
+     * 根据列类型值获取标签
+     */
+    getKeyTypeLabel(value) {
+      const item = this.keyTypeOptions.find((option) => option.value === value);
+      return item ? item.label : value || "-";
     },
 
     beforeLoadForm() {

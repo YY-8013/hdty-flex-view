@@ -31,7 +31,7 @@
           </div>
         </div>
       </div>
-      <div class="con-form">
+      <div class="con-form" v-if="visible">
         <hd-pane fit v-loading="loading" :id="formId">
           <el-form
             ref="formRef"
@@ -122,6 +122,46 @@
                 <biz-form>
                   <biz-form-row>
                     <biz-form-item
+                      label="列&ensp;类&ensp;型"
+                      :required="true"
+                      :span="formData.keyType === 'dict' ? 12 : 24"
+                      :pClass="formData.keyType === 'dict' ? '' : 'p-divs'"
+                    >
+                      <el-form-item prop="keyType">
+                        <el-select
+                          v-model="formData.keyType"
+                          placeholder="请选择列类型"
+                          @change="handleKeyTypeChange"
+                        >
+                          <el-option
+                            v-for="item in keyTypeOptions"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value"
+                          >
+                          </el-option>
+                        </el-select>
+                      </el-form-item>
+                    </biz-form-item>
+                    <biz-form-item
+                      v-if="formData.keyType === 'dict'"
+                      label="字典编码"
+                      :required="true"
+                      :span="12"
+                    >
+                      <el-form-item prop="dicType">
+                        <el-input
+                          v-model="formData.dicType"
+                          placeholder="请输入字典编码"
+                          maxlength="100"
+                          clearable
+                        >
+                        </el-input>
+                      </el-form-item>
+                    </biz-form-item>
+                  </biz-form-row>
+                  <biz-form-row>
+                    <biz-form-item
                       label="是否映射表字段"
                       :required="false"
                       :span="24"
@@ -139,26 +179,6 @@
                   </biz-form-row>
                   <template v-if="formData.isFixed === '1'">
                     <biz-form-row>
-                      <biz-form-item
-                        label="列&ensp;类&ensp;型"
-                        :required="true"
-                        :span="12"
-                      >
-                        <el-form-item prop="keyType">
-                          <el-select
-                            v-model="formData.keyType"
-                            placeholder="请选择列类型"
-                          >
-                            <el-option
-                              v-for="item in keyTypeOptions"
-                              :key="item.value"
-                              :label="item.label"
-                              :value="item.value"
-                            >
-                            </el-option>
-                          </el-select>
-                        </el-form-item>
-                      </biz-form-item>
                       <biz-form-item
                         label="数据类型"
                         :required="true"
@@ -179,13 +199,10 @@
                           </el-select>
                         </el-form-item>
                       </biz-form-item>
-                    </biz-form-row>
-                    <biz-form-row>
                       <biz-form-item
                         label="映射列名"
                         :required="true"
-                        :span="24"
-                        pClass="p-divs"
+                        :span="12"
                       >
                         <el-form-item prop="tableKey">
                           <el-popover
@@ -269,25 +286,6 @@
                         </el-form-item>
                       </biz-form-item>
                     </biz-form-row>
-                    <biz-form-row>
-                      <biz-form-item
-                        label="字典类型"
-                        :required="formData.keyType === 'dict'"
-                        :span="24"
-                        pClass="p-divs"
-                      >
-                        <el-form-item prop="dicType">
-                          <el-input
-                            v-model="formData.dicType"
-                            placeholder="字典类型编码"
-                            maxlength="100"
-                            clearable
-                            :disabled="formData.keyType !== 'dict'"
-                          >
-                          </el-input>
-                        </el-form-item>
-                      </biz-form-item>
-                    </biz-form-row>
                   </template>
                 </biz-form>
               </biz-form-card>
@@ -304,7 +302,7 @@
                       <el-form-item prop="itemConfig">
                         <hd-json-editor
                           v-model="formData.itemConfig"
-                          height="300"
+                          height="350"
                           maxlength="4000"
                           type="String"
                         >
@@ -422,18 +420,7 @@ export default {
             trigger: "change"
           }
         ],
-        keyType: [
-          {
-            validator: (rule, value, callback) => {
-              if (this.formData.isFixed === "1" && !value) {
-                callback(new Error("请选择列类型"));
-              } else {
-                callback();
-              }
-            },
-            trigger: "change"
-          }
-        ],
+
         dataType: [
           {
             validator: (rule, value, callback) => {
@@ -446,11 +433,14 @@ export default {
             trigger: "change"
           }
         ],
+        keyType: [
+          { required: true, message: "请选择列类型", trigger: "change" }
+        ],
         dicType: [
           {
             validator: (rule, value, callback) => {
               if (this.formData.keyType === "dict" && !value) {
-                callback(new Error("请输入字典类型编码"));
+                callback(new Error("请输入字典编码"));
               } else {
                 callback();
               }
@@ -564,6 +554,13 @@ export default {
     selectField(item) {
       this.formData.tableKey = item.value;
       this.tableKeyPopoverVisible = false;
+    },
+
+    handleKeyTypeChange(val) {
+      // 当列类型改变时，如果不是字典类型，清空字典编码
+      if (val !== "dict") {
+        this.formData.dicType = "";
+      }
     },
 
     handleFixedChange(val) {

@@ -147,6 +147,19 @@
                   </biz-form-row>
                   <biz-form-row>
                     <biz-form-item
+                      label="关联表单"
+                      :required="false"
+                      :span="12"
+                    >
+                      <el-tag
+                        v-if="detailData.vox.formId"
+                        size="small"
+                        type="primary"
+                      >
+                        {{ detailData.vox.formId }}
+                      </el-tag>
+                    </biz-form-item>
+                    <biz-form-item
                       label="默认展开"
                       :required="false"
                       :span="12"
@@ -162,17 +175,19 @@
                         {{ detailData.vox.defaultExpand }}
                       </el-tag>
                     </biz-form-item>
+                  </biz-form-row>
+                  <biz-form-row v-if="detailData.vo.formId">
                     <biz-form-item
-                      label="关联表单"
+                      label="关联表单项"
                       :required="false"
-                      :span="12"
+                      :span="24"
                     >
                       <el-tag
-                        v-if="detailData.vox.formId"
+                        v-if="detailData.vox.formItemId"
                         size="small"
                         type="primary"
                       >
-                        {{ detailData.vox.formId }}
+                        {{ detailData.vox.formItemId }}
                       </el-tag>
                     </biz-form-item>
                   </biz-form-row>

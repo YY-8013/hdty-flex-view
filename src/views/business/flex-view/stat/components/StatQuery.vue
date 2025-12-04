@@ -10,34 +10,40 @@
         <hd-query>
           <!-- 固定显示的查询条件 -->
           <hd-query-fixed>
-            <el-form-item label="管辖机构" prop="orgId"  v-if="showOrgFilter">
+            <el-form-item label="管辖机构" prop="orgId">
               <hd-organ
+                style="width: 230px"
                 v-model="queryData.orgId"
-                placeholder="高级查询:请选择机构"
-              />
+                :model-text.sync="extendData.orgId"
+                :clearable="false"
+                :showLevel="5"
+                placeholder="请选择管辖机构"
+                @currentChanged="updateOrgList"
+              ></hd-organ>
             </el-form-item>
-            <el-form-item
-              v-for="field in fixedFields"
-              :key="field.prop"
-              :label="field.label"
-              :prop="field.prop"
-            >
-              <!-- TODO: 根据 field.type 动态渲染组件 -->
-              <el-input
-                v-if="field.type === 'input'"
-                v-model="queryData[field.prop]"
-                :placeholder="
-                  field.config?.placeholder || `请输入${field.label}`
-                "
-                clearable
-              />
+            <el-form-item label="机构级别" prop="orgLevel">
+              <el-select
+                v-model="queryData.orgLevel"
+                placeholder="请选择机构级别"
+                style="width: 100px"
+              >
+                <el-option
+                  v-for="item in showOrgLevelList"
+                  :key="item.key"
+                  :label="item.value"
+                  :value="item.key"
+                >
+                </el-option>
+              </el-select>
             </el-form-item>
-
-           
+            <el-form-item label="抽查日期" prop="checkDate">
+              <!-- 日期时间范围选择器 -->
+              <hd-date-picker type="daterange" v-model="queryData.checkDate" />
+            </el-form-item>
           </hd-query-fixed>
 
           <!-- 可展开的查询条件 -->
-          <hd-query-expand>
+          <hd-query-expand v-if="false">
             <el-row>
               <el-form-item
                 v-for="field in expandFields"
@@ -50,7 +56,9 @@
                   v-if="field.type === 'input'"
                   v-model="queryData[field.prop]"
                   :placeholder="
-                    field.config?.placeholder || `请输入${field.label}`
+                    field && field.config && field.config.placeholder
+                      ? field.config.placeholder
+                      : `请输入${field.label}`
                   "
                   clearable
                 />
@@ -63,6 +71,13 @@
 
     <!-- 按钮区域 -->
     <hd-button-container>
+      <hd-button
+        v-if="showReturn()"
+        type="warning"
+        icon="el-icon-back"
+        @click="handleReturnLast"
+        >返回上级机构</hd-button
+      >
       <hd-button
         name="query"
         type="info"
@@ -99,9 +114,33 @@ export default {
   },
   data() {
     return {
-      queryData: {},
-      extendData: {},
-      showOrgFilter: true
+      queryData: {
+        orgId: this.$utilPublic.getUserInfo().orgId,
+        orgLevel: (
+          Number(this.$utilPublic.getUserInfo().orgLevel) + 1
+        ).toString(),
+        checkDate: []
+      },
+      extendData: {
+        orgId: this.$utilPublic.getUserInfo().orgName
+      },
+      showOrgFilter: true,
+
+      orgLevelList: [
+        {
+          key: "3",
+          value: "市局"
+        },
+        {
+          key: "4",
+          value: "分局"
+        },
+        {
+          key: "5",
+          value: "派出所"
+        }
+      ],
+      showOrgLevelList: []
     };
   },
   computed: {
@@ -115,15 +154,20 @@ export default {
       return this.queryFields.slice(3);
     }
   },
+  created() {
+    this.updateOrgList();
+  },
   methods: {
     // 查询
     handleQuery() {
       this.$refs.queryForm.validate((valid) => {
         if (valid) {
-          this.$emit("query", {
-            ...this.queryData,
-            ...this.extendData
-          });
+          // 返回完整的 queryData，包括抽查日期
+          const queryData = {
+            ...this.queryData
+          };
+          console.log("StatQuery - 查询参数:", queryData);
+          this.$emit("query", queryData);
         }
       });
     },
@@ -132,12 +176,77 @@ export default {
     handleClear() {
       this.$refs.queryForm.resetFields();
       this.$refs.componentRef.resetFields();
+      // 重置查询数据
+      this.queryData = {
+        orgId: this.$utilPublic.getUserInfo().orgId,
+        orgLevel: (
+          Number(this.$utilPublic.getUserInfo().orgLevel) + 1
+        ).toString(),
+        checkDate: []
+      };
+      this.updateOrgList();
+
+      this.extendData = {
+        orgId: this.$utilPublic.getUserInfo().orgName
+      };
       this.$emit("reset");
     },
 
     // 导出
     handleExport() {
       this.$message.info("导出功能待实现");
+    },
+    updateOrgList(isChange) {
+      let currentOrgId =
+        this.queryData.orgId || this.$utilPublic.getUserInfo().orgId;
+      let currentOrgLevel = this.$utilAll.getOrgIdLevel(currentOrgId);
+
+      this.showOrgLevelList = this.orgLevelList.filter(
+        (item) => Number(item.key) > Number(currentOrgLevel)
+      );
+
+      if (
+        isChange ||
+        this.queryData.orgLevel < (Number(currentOrgLevel) + 1).toString()
+      ) {
+        this.queryData.orgLevel = (Number(currentOrgLevel) + 1).toString();
+      }
+    },
+    // 点击机构
+    handleClickOrg(idnex, row) {
+      this.queryData.orgId = row.orgId; // 设置机构编码，机构统一在返回参数中获取，保证返回上一级操作时能够显示入参机构名称
+      this.updateOrgList(true);
+      this.handleQuery();
+    },
+    // 显示“返回上级机构”按钮
+    showReturn() {
+      let res = false;
+      // 当前登录用户最简机构
+      let userSimpleOrgId = this.$utilAll.getSimpleOrgId(
+        this.$utilPublic.getUserInfo().orgId.substring(0, 8) + "0000"
+      );
+      // 当前数据查询时的最简机构
+      let inputParamSimpleOrgId = this.$utilAll.getSimpleOrgId(
+        this.inputParamOrgId
+      );
+      // 判断是否存在上下级
+      if (inputParamSimpleOrgId.indexOf(userSimpleOrgId) > -1) {
+        // 不是第一级
+        if (userSimpleOrgId !== inputParamSimpleOrgId) {
+          res = true;
+        }
+      }
+      // 如果是责任区的用户登录，则只能看当前责任区一级，不能钻取也不能返回
+      if (this.$utilPublic.getUserInfo().orgId.substring(8, 12) !== "0000") {
+        res = false;
+      }
+      return res;
+    },
+    // 返回上级机构
+    handleReturnLast() {
+      this.queryData.orgId = this.$utilAll.getParentOrgId(this.inputParamOrgId);
+      this.updateOrgList(true);
+      this.handleQuery();
     }
   }
 };

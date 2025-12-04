@@ -196,15 +196,6 @@
                     </biz-form-item>
                   </biz-form-row>
                   <biz-form-row>
-                    <biz-form-item label="默认展开" :required="true" :span="12">
-                      <el-form-item prop="defaultExpand">
-                        <hd-dict-radio
-                          v-model="formData.defaultExpand"
-                          :dict-code="$global.dictType.isOrNot"
-                        >
-                        </hd-dict-radio>
-                      </el-form-item>
-                    </biz-form-item>
                     <biz-form-item
                       label="关联表单"
                       :required="false"
@@ -217,6 +208,31 @@
                           ref="formSelectRef"
                           placeholder="请选择表单"
                         ></biz-view-form-select>
+                      </el-form-item>
+                    </biz-form-item>
+                    <biz-form-item label="默认展开" :required="true" :span="12">
+                      <el-form-item prop="defaultExpand">
+                        <hd-dict-radio
+                          v-model="formData.defaultExpand"
+                          :dict-code="$global.dictType.isOrNot"
+                        >
+                        </hd-dict-radio>
+                      </el-form-item>
+                    </biz-form-item>
+                  </biz-form-row>
+                  <biz-form-row v-if="formData.formId">
+                    <biz-form-item
+                      label="关联表单项"
+                      :required="false"
+                      :span="24"
+                    >
+                      <el-form-item prop="formItemId">
+                        <biz-view-form-item-select
+                          v-model="formData.formItemId"
+                          :model-text.sync="extendData.formItemId"
+                          :form-id="formData.formId"
+                          placeholder="请选择表单项"
+                        ></biz-view-form-item-select>
                       </el-form-item>
                     </biz-form-item>
                   </biz-form-row>
@@ -269,7 +285,7 @@
                       <el-form-item prop="calcRule">
                         <hd-json-editor
                           v-model="formData.calcRule"
-                          height="200"
+                          height="350"
                           maxlength="2000"
                           type="String"
                         >
@@ -292,7 +308,7 @@
                       <el-form-item prop="columnConfig">
                         <hd-json-editor
                           v-model="formData.columnConfig"
-                          height="250"
+                          height="350"
                           maxlength="4000"
                           type="String"
                         >
@@ -339,7 +355,8 @@ export default {
       row: {},
       formData: {
         calcRule: "",
-        columnConfig: ""
+        columnConfig: "",
+        formItemId: ""
       },
       extendData: {},
       rules: {
@@ -411,6 +428,15 @@ export default {
       ]
     };
   },
+  watch: {
+    "formData.formId"(newVal) {
+      // 当关联表单改变时，清空关联表单项的值
+      if (!newVal) {
+        this.formData.formItemId = "";
+        this.extendData.formItemId = "";
+      }
+    }
+  },
   methods: {
     beforeLoadForm() {
       this.updateAnchorList();
@@ -467,8 +493,9 @@ export default {
             ..._this.formData
           };
 
-          if (!dataParams.parentId) {
-            dataParams.parentId = null;
+          // 如果没有关联表单，清空formItemId
+          if (!dataParams.formId) {
+            dataParams.formItemId = null;
           }
 
           // 使用正则表达式去除换行和多余的空格
