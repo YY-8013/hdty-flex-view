@@ -363,7 +363,8 @@ export default {
         formItemId: "",
         calcType: "",
         calcRule: {
-          type: ""
+          dataType: "0",
+          defaultValue: ""
         },
         columnConfig: {
           label: "",

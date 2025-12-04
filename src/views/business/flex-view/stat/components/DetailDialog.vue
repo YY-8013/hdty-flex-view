@@ -7,6 +7,7 @@
   >
     <!-- 明细列表视图 -->
     <detail-list-view
+      v-if="visible"
       ref="listView"
       :form-config="formConfig"
       :yw-form-id="formId"
@@ -22,6 +23,7 @@
 
     <!-- 新增/编辑表单弹窗 -->
     <detail-form-dialog
+      v-if="visible"
       ref="formDialogRef"
       :form-config="formConfig"
       :yw-form-id="formId"
@@ -32,6 +34,7 @@
 
     <!-- 详情弹窗 -->
     <detail-detail-view
+      v-if="visible"
       ref="detailViewRef"
       :form-config="formConfig"
       :yw-form-id="formId"
@@ -201,6 +204,10 @@ export default {
       });
 
       this.mappedParams = mappedParams;
+
+      if (this.$refs.listView) {
+        this.$refs.listView.beforeLoadForm();
+      }
     },
 
     // 解析配置JSON

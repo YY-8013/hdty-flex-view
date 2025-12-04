@@ -161,6 +161,9 @@ export default {
   created() {
     this.updateOrgList();
   },
+  mounted() {
+    this.handleQuery();
+  },
   watch: {
     // 监听外部传入的机构ID变化
     inputParamOrgId(newVal) {
@@ -201,12 +204,12 @@ export default {
       this.extendData = {
         orgId: this.$utilPublic.getUserInfo().orgName
       };
-      this.$emit("reset");
+      this.$emit("query", this.queryData);
     },
 
     // 导出
     handleExport() {
-      this.$message.info("导出功能待实现");
+      this.$emit("export");
     },
     updateOrgList(isChange) {
       let currentOrgId =

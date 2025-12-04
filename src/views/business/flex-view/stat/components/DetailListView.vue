@@ -63,6 +63,7 @@
                 v-else-if="field.queryType === 'organ'"
                 :placeholder="field.config && field.config.placeholder"
                 v-model="queryData[field.prop]"
+                :model-text.sync="extendData[field.prop]"
               />
               <!-- 地区选择 -->
               <hd-region
@@ -202,28 +203,16 @@ export default {
       isInitialized: false
     };
   },
-  watch: {
-    formConfig: {
-      handler(val) {
-        if (val) {
-          this.parseFormConfig();
-          this.applyInitParams(); // 应用初始参数
-          this.loadList();
-        }
-      },
-      immediate: true
-    },
-    // 监听 initParams 变化
-    initParams: {
-      handler(val) {
-        if (val && Object.keys(val).length > 0 && !this.isInitialized) {
-          this.applyInitParams();
-        }
-      },
-      deep: true
-    }
-  },
+  watch: {},
   methods: {
+    beforeLoadForm() {
+      let _this = this;
+      _this.$nextTick(() => {
+        _this.parseFormConfig();
+        _this.applyInitParams(); // 应用初始参数
+        _this.loadList();
+      });
+    },
     // 解析表单配置
     parseFormConfig() {
       if (!this.formConfig || !this.formConfig.formItemList) {
@@ -371,8 +360,22 @@ export default {
         if (value !== undefined && value !== null && value !== "") {
           // 检查是否在查询字段中
           const queryField = this.queryFields.find((f) => f.prop === prop);
+          console.log("queryField", queryField);
+          console.log("value", value);
+
           if (queryField) {
             this.$set(this.queryData, prop, value);
+            if (
+              queryField.config &&
+              queryField.config.showPropText &&
+              queryField.config.propText
+            ) {
+              this.$set(
+                this.extendData,
+                prop,
+                this.initParams[queryField.config.propText]
+              );
+            }
 
             // 如果是因子输入字段，需要设置因子
             if (
@@ -561,6 +564,7 @@ export default {
         this.$set(this.queryData, field.prop, "");
       });
       this.pageOptions.current = 1;
+      this.applyInitParams();
       this.isInitialized = false; // 重置初始化标志
       this.loadList();
     },

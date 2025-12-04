@@ -57,6 +57,7 @@
           :input-param-org-id="inputParamOrgId"
           @query="handleQuery"
           @reset="handleReset"
+          @export="handleExport"
         />
       </div>
 
@@ -73,7 +74,7 @@
       </div>
 
       <!-- 分页区域 -->
-      <div class="hdty-footer">
+      <!-- <div class="hdty-footer">
         <el-pagination
           :current-page="pagination.current"
           :page-size="pagination.pageSize"
@@ -83,7 +84,7 @@
           @current-change="handlePageChange"
           @size-change="handleSizeChange"
         />
-      </div>
+      </div> -->
 
       <!-- 明细数据弹窗 -->
       <detail-dialog
@@ -104,6 +105,8 @@ import { getEnabledColumns, getSjlsTotal, getMockStatData } from "./api/index";
 import StatQuery from "./components/StatQuery.vue";
 import StatTable from "./components/StatTable.vue";
 import DetailDialog from "./components/DetailDialog.vue";
+
+import ExcelExporter from "@/utils/excelExport"; // 引入封装好的类
 
 export default {
   name: "ViewStatPage",
@@ -174,7 +177,7 @@ export default {
       await this.loadColumns();
 
       // 加载统计数据
-      await this.loadData();
+      // await this.loadData();
     },
 
     // 加载列配置
@@ -231,11 +234,15 @@ export default {
 
     // 加载统计数据
     async loadData() {
-      this.loading = true;
+      let _this = this;
+      _this.loading = true;
       try {
+        console.log("_this.queryParams", _this.queryParams);
+
         // 构建查询参数
         const params = {
-          ...this.queryParams
+          ..._this.queryParams,
+          leafLevel: 5
         };
 
         // 使用真实接口
@@ -308,9 +315,22 @@ export default {
         this.currentColumnProp = column.prop;
 
         // 构建初始参数：将查询参数和行数据传递给明细页
+        // 创建行数据的副本
+        const rowCopy = { ...row };
+
+        // 遍历rowCopy对象，查找值为"总计"的字段并替换为this.inputParamOrgName
+        Object.keys(rowCopy).forEach((key) => {
+          if (rowCopy[key] === "总计") {
+            rowCopy[key] = this.inputParamOrgName;
+          }
+          if (rowCopy[key] === "999999999999") {
+            rowCopy[key] = this.inputParamOrgId;
+          }
+        });
+
         this.detailInitParams = {
           query: { ...this.currentQueryDataParams }, // 当前统计列表的查询参数
-          row: { ...row } // 点击的行数据
+          row: rowCopy // 点击的行数据（已处理"总计"值）
         };
 
         this.detailVisible = true;
@@ -382,6 +402,127 @@ export default {
     // 刷新统计数据
     refreshStatData() {
       this.loadData();
+    },
+
+    // 生成导出表头
+    generateExportHeaders() {
+      // 递归处理列配置为导出表头
+      const processColumns = (columns) => {
+        return columns.map((column) => {
+          // 解析列配置
+          let columnConfig = {};
+          try {
+            columnConfig =
+              typeof column.columnConfig === "string"
+                ? JSON.parse(column.columnConfig)
+                : column.columnConfig || {};
+          } catch (e) {
+            console.warn("解析列配置失败:", column.prop, e);
+          }
+
+          // 根据配置决定使用哪个prop
+          let propToUse = column.prop;
+          if (columnConfig.showPropText && columnConfig.propText) {
+            propToUse = columnConfig.propText;
+          }
+
+          const item = {
+            label: column.label,
+            prop: propToUse,
+            width: Math.floor((column.minWidth || 100) / 7) // 转换宽度
+          };
+
+          // 如果有子列，递归处理
+          if (column.children && column.children.length > 0) {
+            item.children = processColumns(column.children);
+          }
+
+          return item;
+        });
+      };
+
+      // 处理所有列
+      return processColumns(this.columns);
+    },
+
+    // 导出
+
+    async handleExport() {
+      if (this.exporting) return;
+
+      try {
+        this.exporting = true;
+
+        // ====== 1️⃣ 生成 headerList 动态结构 ======
+        const headerList = this.generateExportHeaders();
+
+        // ====== 2️⃣ 构建导出器 ======
+        const exporter = new ExcelExporter()
+          .initWorkbook("系统")
+          .addWorksheet("数据晾晒统计")
+          .buildDynamicHeaders(headerList)
+          .setColumnWidth()
+          .freezeHeaderAndColumns(1); // 冻结表头
+
+        // ====== 3️⃣ 构造样式配置 ======
+        const styleConfig = {
+          // 行样式
+          rowStyles: [
+            {
+              // 最后一行橘色背景
+              condition: (rowIndex) => rowIndex === this.statData.length - 1,
+              style: {
+                fill: {
+                  type: "pattern",
+                  pattern: "solid",
+                  fgColor: { argb: "FFFFA500" }
+                }
+              }
+            }
+          ],
+          // 单元格样式
+          cellStyles: [
+            {
+              prop: "orgName",
+              condition: (rowIndex, rowData) =>
+                rowIndex < this.statData.length - 1,
+              style: {
+                fill: {
+                  type: "pattern",
+                  pattern: "solid",
+                  fgColor: { argb: "FFEAF5FF" }
+                }
+              }
+            },
+            {
+              // 管辖机构列最后一行样式（总计行）
+              prop: "orgName",
+              condition: (rowIndex, rowData) =>
+                rowIndex === this.statData.length - 1,
+              style: {
+                fill: {
+                  type: "pattern",
+                  pattern: "solid",
+                  fgColor: { argb: "FFFF9933" }
+                },
+                font: {
+                  bold: true
+                }
+              }
+            }
+          ]
+        };
+
+        // ====== 4️⃣ 添加数据 ======
+        exporter.addData(this.statData, styleConfig);
+
+        // ====== 5️⃣ 导出文件 ======
+        await exporter.export("数据晾晒统计");
+      } catch (error) {
+        console.error("导出失败：", error);
+      } finally {
+        this.exporting = false;
+      }
     }
   }
 };
